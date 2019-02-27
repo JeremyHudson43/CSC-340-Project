@@ -24,55 +24,79 @@ public class VerifyLogin extends javax.swing.JPanel {
             String _password, String _filePath, String _userType)
             throws FileNotFoundException {
 
-        boolean _found = false;
-        String _tempUsername = "";
-        String _tempPassword = "";
-
         Scanner reader = new Scanner(System.in);
 
         reader = new Scanner(new File(_filePath));
         reader.useDelimiter("[,\n]");
 
+        boolean _found = false;
+
         while (reader.hasNext() && !_found) {
-            _tempUsername = reader.next();
-            _tempPassword = reader.next();
+            String tempUsername = reader.next();
+            String tempPassword = reader.next();
 
-            if (_tempUsername.trim().equals(_username)
-                    && _tempPassword.trim().equals(_password)
-                    && _userType.equals("librarian")) {
-                _found = true;
-                JOptionPane.showMessageDialog(null, "Sucessful login");
-
-                JFrame libFrame = new JFrame("Librarian View");
-                LibrarianView librarianView = new LibrarianView();
-                libFrame.add(BorderLayout.CENTER, librarianView);
-                librarianView.setPreferredSize(new Dimension(640, 480));
-
-                libFrame.pack();
-                libFrame.setVisible(true);
-                librarianView.setVisible(true);
-                
-            } else if (_tempUsername.trim().equals(_username)
-                    && _tempPassword.trim().equals(_password)
-                    && _userType.equals("customer")) {
-                _found = true;
-                JOptionPane.showMessageDialog(null, "Sucessful login");
-
-                JFrame custFrame = new JFrame("Customer View");
-                CustomerView custView = new CustomerView();
-                custFrame.add(BorderLayout.CENTER, custView);
-
-                custView.setPreferredSize(new Dimension(640, 480));
-                custFrame.pack();
-                custFrame.setVisible(true);
-
-            }
+            _found = trimAndLogin(tempUsername, _username,
+                    tempPassword, _password, _userType);
         }
+
         if (_found == false) {
             JOptionPane.showMessageDialog(null, "Unsucessful login");
+
         }
         reader.close();
 
     }
 
+    private static boolean trimAndLogin(String _tempUsername,
+            String _username, String _tempPassword,
+            String _password, String _userType) {
+
+        boolean _found = false;
+
+        if (_tempUsername.trim().equals(_username)
+                && _tempPassword.trim().equals(_password)
+                && _userType.equals("librarian")) {
+
+            _found = true;
+
+            verifyLoginLibrarian();
+
+        } else if (_tempUsername.trim().equals(_username)
+                && _tempPassword.trim().equals(_password)
+                && _userType.equals("customer")) {
+
+            _found = true;
+
+            verifyLoginCustomer();
+        }
+
+        return _found;
+    }
+
+    private static void verifyLoginLibrarian() {
+        JOptionPane.showMessageDialog(null, "Sucessful login");
+
+        JFrame libFrame = new JFrame("Librarian View");
+        LibrarianView librarianView = new LibrarianView();
+        libFrame.add(BorderLayout.CENTER, librarianView);
+        librarianView.setPreferredSize(new Dimension(640, 480));
+
+        libFrame.pack();
+        libFrame.setVisible(true);
+        librarianView.setVisible(true);
+
+    }
+
+    private static void verifyLoginCustomer() {
+        JOptionPane.showMessageDialog(null, "Sucessful login");
+
+        JFrame custFrame = new JFrame("Customer View");
+        CustomerView custView = new CustomerView();
+        custFrame.add(BorderLayout.CENTER, custView);
+
+        custView.setPreferredSize(new Dimension(640, 480));
+        custFrame.pack();
+        custFrame.setVisible(true);
+
+    }
 }

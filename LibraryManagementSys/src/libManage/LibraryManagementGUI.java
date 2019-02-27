@@ -135,7 +135,7 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
     private void cusotmer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusotmer_buttonActionPerformed
 
-        JFrame frame = new JFrame("Testing");
+        JFrame frame = new JFrame("Customer Login");
         CustomerLogin customer = new CustomerLogin();
         frame.add(BorderLayout.CENTER, customer);
         customer.setPreferredSize(new Dimension(800, 800));

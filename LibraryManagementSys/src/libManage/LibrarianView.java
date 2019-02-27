@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 /**
  * @author Charles Brady
  * @author Jeremy Hudson
- * 
- * This class allows the librarian to search the book database
- * and to check the books they have checked out, in addition to searching
- * for and creating new customers 
- * 
+ *
+ * This class allows the librarian to search the book database and to check the
+ * books they have checked out, in addition to searching for and creating new
+ * customers
+ *
  * Last updated 2/23
  */
 public class LibrarianView extends javax.swing.JPanel {
@@ -262,8 +262,8 @@ public class LibrarianView extends javax.swing.JPanel {
     }//GEN-LAST:event_libCustomerSearchTxtFldActionPerformed
 
     private void libBookSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libBookSearchButtonActionPerformed
-         
- 
+
+
     }//GEN-LAST:event_libBookSearchButtonActionPerformed
 
     private void libCustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libCustomerSearchButtonActionPerformed

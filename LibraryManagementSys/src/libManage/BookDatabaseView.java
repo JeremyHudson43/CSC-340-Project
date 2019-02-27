@@ -16,9 +16,9 @@ Last updated 2-23-2019
  */
 public class BookDatabaseView extends javax.swing.JPanel {
 
-    /**
-     * Creates new form BookDatabaseView
-     */
+    private String author;
+    private String volume;
+
     public BookDatabaseView() {
         initComponents();
     }
@@ -224,9 +224,12 @@ public class BookDatabaseView extends javax.swing.JPanel {
 
     private void searchAPIForBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAPIForBooksActionPerformed
         ManageBookInfo MBI = new ManageBookInfo();
+
+        author = searchAuthorNoLoginTxtFld.getText();
+        volume = searchVolumeNoLoginTxtFld.getText();
+
         try {
-            MBI.getRequest(searchAuthorNoLoginTxtFld.getText(),
-                    searchVolumeNoLoginTxtFld.getText());
+            MBI.getRequest(author, volume);
         } catch (IOException ex) {
             Logger.getLogger(BookDatabaseView.class.getName())
                     .log(Level.SEVERE, null, ex);

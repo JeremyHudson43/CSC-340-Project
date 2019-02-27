@@ -14,9 +14,11 @@ import java.util.logging.Logger;
  */
 public class LibrarianLogin extends VerifyLogin {
 
-    /**
-     * Creates new form librarianLogin1
-     */
+    private String username;
+    private String password;
+    private String filePath;
+
+    
     public LibrarianLogin() {
         initComponents();
     }
@@ -113,9 +115,9 @@ public class LibrarianLogin extends VerifyLogin {
 
     private void libLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libLoginButtonActionPerformed
 
-        String username = librarian_username_txtfield.getText();
-        String password = librarian_password_txtfield.getText();
-        String filePath = "librarians.txt";
+         username = librarian_username_txtfield.getText();
+         password = librarian_password_txtfield.getText();
+         filePath = "librarians.txt";
 
         try {
             verifyLogin(username, password, filePath, "librarian");

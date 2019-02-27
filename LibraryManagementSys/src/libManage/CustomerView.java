@@ -8,8 +8,8 @@ import javax.swing.JFrame;
  * @author Jeremy Hudson
  * @author Charles Brady
  *
- * This class allows the customer to search the book database
- * and to check the books they have checked out
+ * This class allows the customer to search the book database and to check the
+ * books they have checked out
  *
  * Last updated 2/20
  */

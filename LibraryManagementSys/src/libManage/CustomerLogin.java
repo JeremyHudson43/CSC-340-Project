@@ -15,7 +15,10 @@ import java.util.logging.Logger;
  */
 public class CustomerLogin extends VerifyLogin {
 
-    /** Creates new form CustomerLogin */
+    private String username;
+    private String password;
+    private String filePath;
+    
     public CustomerLogin() {
         initComponents();
     }
@@ -110,9 +113,9 @@ public class CustomerLogin extends VerifyLogin {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cust_login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cust_login_buttonActionPerformed
-        String username = customer_username_txtfield.getText();
-        String password = customer_password_txtfield.getText();
-        String filePath = "customers.txt";
+        username = customer_username_txtfield.getText();
+        password = customer_password_txtfield.getText();
+        filePath = "customers.txt";
 
         try {
             verifyLogin(username, password, filePath, "customer");

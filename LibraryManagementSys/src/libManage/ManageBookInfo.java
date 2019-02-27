@@ -27,31 +27,35 @@ import org.json.JSONObject;
  */
 public class ManageBookInfo {
 
+    private final String baseURL
+            = "https://www.googleapis.com/books/v1/volumes?q=";
+    private final String apiKey
+            = "&AIzaSyD2l4xicCXG_xS6iszQodS9O2u5e18s3Ck";
+
     public void getRequest(String _Author, String _Volume)
             throws ProtocolException, IOException {
 
         String responseString = "";
 
-        URL url = new URL("https://www.googleapis.com/books/v1/volumes?q="
-                + _Volume + "+inauthor:" + _Author
-                + "&AIzaSyD2l4xicCXG_xS6iszQodS9O2u5e18s3Ck");
-        
+        URL url = new URL(baseURL + _Volume + "+inauthor:" + _Author + apiKey);
+
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("GET");
 
-        try (
-                BufferedReader in = new BufferedReader 
-                (new InputStreamReader(connection.getInputStream()))) {
+        try {
+            BufferedReader in = new BufferedReader
+            (new InputStreamReader(connection.getInputStream()));
+
             String str;
             while ((str = in.readLine()) != null) {
 
-                
                 responseString += str + "\n";
                 System.out.println(responseString);
                 parseBook(responseString);
             }
-
+        } catch (IOException e) {
+            System.out.println("No results found, try again");
         }
     }
 
@@ -59,9 +63,13 @@ public class ManageBookInfo {
             throws FileNotFoundException, UnsupportedEncodingException,
             IOException {
         try (FileWriter writer = new FileWriter("books.txt", true)) {
+            
             writer.write(author + "\n");
             writer.write(title + "\n");
             writer.write(imageLink + "\n");
+            writer.write("\n");
+
+            
             writer.close();
         }
     }
@@ -71,11 +79,14 @@ public class ManageBookInfo {
         try {
             JSONObject root = new JSONObject(responseString);
             JSONArray books = root.getJSONArray("items");
+
             for (int i = 0; i < books.length(); i++) {
                 JSONObject book = books.getJSONObject(i);
+
                 JSONObject info = book.getJSONObject("volumeInfo");
                 String title = info.getString("title");
                 JSONArray authors = info.getJSONArray("authors");
+
                 String author = authors.getString(0);
                 JSONObject imageLinks = info.getJSONObject("imageLinks");
                 String imageLink = imageLinks.getString("smallThumbnail");
@@ -94,20 +105,24 @@ public class ManageBookInfo {
         URL obj = new URL(null, "https://www.example.com",
                 new sun.net.www.protocol.https.Handler());
 
-        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpsURLConnection connection
+                = (HttpsURLConnection) obj.openConnection();
 
-        con.setRequestMethod("POST");
+        connection.setRequestMethod("POST");
 
         String urlParameters = "test";
 
-        con.setDoOutput(true);
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        connection.setDoOutput(true);
+
+        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+
         wr.writeBytes(urlParameters);
         wr.flush();
         wr.close();
 
         BufferedReader in
-                = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
         String inputLine;
         StringBuffer res = new StringBuffer();
 
