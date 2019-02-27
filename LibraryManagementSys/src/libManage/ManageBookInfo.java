@@ -59,14 +59,14 @@ public class ManageBookInfo {
         }
     }
 
-    private void writeToText(String title, String author, String imageLink)
+    private void writeToText(String _title, String _author, String _imageLink)
             throws FileNotFoundException, UnsupportedEncodingException,
             IOException {
         try (FileWriter writer = new FileWriter("books.txt", true)) {
             
-            writer.write(author + "\n");
-            writer.write(title + "\n");
-            writer.write(imageLink + "\n");
+            writer.write(_author + "\n");
+            writer.write(_title + "\n");
+            writer.write(_imageLink + "\n");
             writer.write("\n");
 
             
@@ -74,10 +74,10 @@ public class ManageBookInfo {
         }
     }
 
-    private void parseBook(String responseString) throws FileNotFoundException,
+    private void parseBook(String _responseString) throws FileNotFoundException,
             UnsupportedEncodingException, IOException {
         try {
-            JSONObject root = new JSONObject(responseString);
+            JSONObject root = new JSONObject(_responseString);
             JSONArray books = root.getJSONArray("items");
 
             for (int i = 0; i < books.length(); i++) {
@@ -99,7 +99,7 @@ public class ManageBookInfo {
         }
     }
 
-    private void postRequest(String website) throws ProtocolException,
+    private void postRequest(String _website) throws ProtocolException,
             IOException {
 
         URL obj = new URL(null, "https://www.example.com",
@@ -114,15 +114,17 @@ public class ManageBookInfo {
 
         connection.setDoOutput(true);
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+        DataOutputStream wr = new DataOutputStream
+        (connection.getOutputStream());
 
         wr.writeBytes(urlParameters);
         wr.flush();
         wr.close();
 
         BufferedReader in
-                = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream()));
+        = new BufferedReader
+        (new InputStreamReader(connection.getInputStream()));
+        
         String inputLine;
         StringBuffer res = new StringBuffer();
 
