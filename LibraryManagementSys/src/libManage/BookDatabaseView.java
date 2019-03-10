@@ -1,24 +1,25 @@
 package libManage;
 
 import java.io.*;
+import libManage.Database;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /*
 Jeremy Hudson
-Charles Brady 
+Charles Brady
 *
-* This class is used to access the database of books 
+* This class is used to access the database of books
 *
 *
 Last updated 2-23-2019
  */
 public class BookDatabaseView extends javax.swing.JPanel {
 
-    private String author;
-    private String volume;
-
+    /**
+     * Creates new form BookDatabaseView
+     */
     public BookDatabaseView() {
         initComponents();
     }
@@ -208,15 +209,15 @@ public class BookDatabaseView extends javax.swing.JPanel {
 
     private void searchLocalDatabaseNoLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchLocalDatabaseNoLoginButtonActionPerformed
 
-        //        try {
-        //            postRequest("example.com");
-        //        } catch (IOException ex) {
-        //            Logger.getLogger(LibraryManagementGUI.
-        //          class.getName()).log(Level.SEVERE, null, ex);
-        //        }
+        Database d = new Database();
+        try{
+            d.getConnection();
+        }
+        catch (Exception ex) {
+            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_searchLocalDatabaseNoLoginButtonActionPerformed
-
 
     private void searchVolumeNoLoginTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchVolumeNoLoginTxtFldActionPerformed
         // TODO add your handling code here:
@@ -224,12 +225,9 @@ public class BookDatabaseView extends javax.swing.JPanel {
 
     private void searchAPIForBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAPIForBooksActionPerformed
         ManageBookInfo MBI = new ManageBookInfo();
-
-        author = searchAuthorNoLoginTxtFld.getText();
-        volume = searchVolumeNoLoginTxtFld.getText();
-
         try {
-            MBI.getRequest(author, volume);
+            MBI.getRequest(searchAuthorNoLoginTxtFld.getText(),
+                    searchVolumeNoLoginTxtFld.getText());
         } catch (IOException ex) {
             Logger.getLogger(BookDatabaseView.class.getName())
                     .log(Level.SEVERE, null, ex);

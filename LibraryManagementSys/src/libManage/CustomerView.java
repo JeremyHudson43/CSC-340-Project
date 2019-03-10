@@ -1,8 +1,5 @@
 package libManage;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.JFrame;
 
 /**
  * @author Jeremy Hudson
@@ -11,7 +8,7 @@ import javax.swing.JFrame;
  * This class allows the customer to search the book database and to check the
  * books they have checked out
  *
- * Last updated 2/20
+ * Last updated 3/6
  */
 public class CustomerView extends javax.swing.JPanel {
 
@@ -105,12 +102,8 @@ public class CustomerView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void custSearchDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custSearchDatabaseButtonActionPerformed
-        JFrame frame = new JFrame("Book DB view");
+
         BookDatabaseView BookDBView = new BookDatabaseView();
-        frame.add(BorderLayout.CENTER, BookDBView);
-        BookDBView.setPreferredSize(new Dimension(800, 800));
-        frame.pack();
-        frame.setVisible(true);
         BookDBView.setVisible(true);
 
     }//GEN-LAST:event_custSearchDatabaseButtonActionPerformed

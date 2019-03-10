@@ -1,5 +1,6 @@
 package libManage;
 
+import Models.User;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -7,11 +8,11 @@ import javax.swing.JFrame;
 /**
  * @author Jeremy Hudson
  * @author Charles Brady
- * 
- * This class is used as a gateway to the rest of the program, where users
- * can open the database to search, or login as a customer or librarian 
- * 
- * 
+ *
+ * This class is used as a gateway to the rest of the program, where users can
+ * open the database to search, or login as a customer or librarian
+ *
+ *
  * Last updated 2/20
  */
 public class LibraryManagementGUI extends javax.swing.JFrame {
@@ -19,6 +20,7 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
     /**
      * Creates new form LibraryManagementGUI
      */
+    
     public LibraryManagementGUI() {
         initComponents();
         this.setTitle("Library Management System");
@@ -35,31 +37,18 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
         LibManageSys = new javax.swing.JPanel();
         selectUserTypeLbl = new javax.swing.JLabel();
-        cusotmer_button = new javax.swing.JButton();
-        librarian_button = new javax.swing.JButton();
         exitProgramButton = new javax.swing.JButton();
         searchDatabaseNoLogin = new javax.swing.JLabel();
         searchDatabaseNoLoginButton = new javax.swing.JButton();
+        Register_Button = new javax.swing.JButton();
+        Login_Button = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LibManageSys.setBorder(javax.swing.BorderFactory.createTitledBorder("Library Management System"));
 
-        selectUserTypeLbl.setText("Select User type");
-
-        cusotmer_button.setText("Customer");
-        cusotmer_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusotmer_buttonActionPerformed(evt);
-            }
-        });
-
-        librarian_button.setText("Librarian");
-        librarian_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                librarian_buttonActionPerformed(evt);
-            }
-        });
+        selectUserTypeLbl.setText("New User");
 
         exitProgramButton.setText("Exit Program");
         exitProgramButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +66,22 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
             }
         });
 
+        Register_Button.setText("Register");
+        Register_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Register_ButtonActionPerformed(evt);
+            }
+        });
+
+        Login_Button.setText("Login");
+        Login_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Login_ButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Returning User");
+
         javax.swing.GroupLayout LibManageSysLayout = new javax.swing.GroupLayout(LibManageSys);
         LibManageSys.setLayout(LibManageSysLayout);
         LibManageSysLayout.setHorizontalGroup(
@@ -84,32 +89,40 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
             .addGroup(LibManageSysLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addComponent(selectUserTypeLbl)
-                        .addGap(18, 18, 18)
-                        .addComponent(cusotmer_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(librarian_button))
                     .addComponent(exitProgramButton)
                     .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addComponent(searchDatabaseNoLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchDatabaseNoLoginButton)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                        .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(LibManageSysLayout.createSequentialGroup()
+                                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(searchDatabaseNoLogin)
+                                    .addComponent(jLabel1))
+                                .addGap(15, 15, 15))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LibManageSysLayout.createSequentialGroup()
+                                .addComponent(selectUserTypeLbl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(8, 8, 8)
+                        .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(searchDatabaseNoLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Register_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Login_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         LibManageSysLayout.setVerticalGroup(
             LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LibManageSysLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(35, 35, 35)
                 .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selectUserTypeLbl)
-                    .addComponent(cusotmer_button)
-                    .addComponent(librarian_button))
+                    .addComponent(Login_Button)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchDatabaseNoLogin)
                     .addComponent(searchDatabaseNoLoginButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectUserTypeLbl)
+                    .addComponent(Register_Button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(exitProgramButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -133,31 +146,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cusotmer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusotmer_buttonActionPerformed
-
-        JFrame frame = new JFrame("Customer Login");
-        CustomerLogin customer = new CustomerLogin();
-        frame.add(BorderLayout.CENTER, customer);
-        customer.setPreferredSize(new Dimension(800, 800));
-        frame.pack();
-        frame.setVisible(true);
-
-        customer.setVisible(true);
-    }//GEN-LAST:event_cusotmer_buttonActionPerformed
-
-    private void librarian_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_librarian_buttonActionPerformed
-
-        JFrame frame = new JFrame("Librarian Login");
-        LibrarianLogin libLogin = new LibrarianLogin();
-        frame.add(BorderLayout.CENTER, libLogin);
-        libLogin.setPreferredSize(new Dimension(800, 800));
-        frame.pack();
-        frame.setVisible(true);
-
-        libLogin.setVisible(true);
-
-    }//GEN-LAST:event_librarian_buttonActionPerformed
-
     private void exitProgramButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProgramButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitProgramButtonActionPerformed
@@ -175,47 +163,36 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_searchDatabaseNoLoginButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void Register_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Register_ButtonActionPerformed
 
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LibraryManagementGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LibraryManagementGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LibraryManagementGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LibraryManagementGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        
+        RegisterView libReg = new RegisterView("Customer");
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LibraryManagementGUI().setVisible(true);
-            }
-        });
-    }
+        this.setVisible(false);
+
+        libReg.setVisible(true);
+
+    }//GEN-LAST:event_Register_ButtonActionPerformed
+
+    private void Login_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_ButtonActionPerformed
+        JFrame frame = new JFrame("Login");
+        Login log = new Login();
+        frame.add(BorderLayout.CENTER, log);
+        frame.pack();
+        frame.setVisible(true);
+        this.setVisible(false);
+
+        log.setVisible(true);
+    }//GEN-LAST:event_Login_ButtonActionPerformed
+
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LibManageSys;
-    private javax.swing.JButton cusotmer_button;
+    private javax.swing.JButton Login_Button;
+    private javax.swing.JButton Register_Button;
     private javax.swing.JButton exitProgramButton;
-    private javax.swing.JButton librarian_button;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel searchDatabaseNoLogin;
     private javax.swing.JButton searchDatabaseNoLoginButton;
     private javax.swing.JLabel selectUserTypeLbl;

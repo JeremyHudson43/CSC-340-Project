@@ -1,10 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package libManage;
 
+import Controllers.UserController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
+ *
  * @author Charles Brady
  * @author Jeremy Hudson
  *
@@ -12,12 +21,12 @@ import javax.swing.JFrame;
  * books they have checked out, in addition to searching for and creating new
  * customers
  *
- * Last updated 2/23
+ * Last Updated 3/10
  */
-public class LibrarianView extends javax.swing.JPanel {
+public class LibrarianView extends javax.swing.JFrame {
 
     /**
-     * Creates new form librarianView1
+     * Creates new form NewJFrame
      */
     public LibrarianView() {
         initComponents();
@@ -32,249 +41,147 @@ public class LibrarianView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-        libBookSearchLbl = new javax.swing.JLabel();
-        libCustomerSearchLbl = new javax.swing.JLabel();
-        libBookSearchTxtFld = new javax.swing.JTextField();
-        libCustomerSearchTxtFld = new javax.swing.JTextField();
-        libViewLbl = new javax.swing.JLabel();
-        libBookSearchButton = new javax.swing.JButton();
-        libCustomerSearchButton = new javax.swing.JButton();
-        libCreateNewCustomerLbl = new javax.swing.JLabel();
-        libCreateNewCustomerTxtFld = new javax.swing.JTextField();
-        libCreateNewCustomerButton = new javax.swing.JButton();
-        libViewExitButton = new javax.swing.JButton();
-        libViewLbl1 = new javax.swing.JLabel();
-        libBookSearchButton1 = new javax.swing.JButton();
-        libCustomerSearchButton1 = new javax.swing.JButton();
-        libCreateNewCustomerLbl1 = new javax.swing.JLabel();
-        libCreateNewCustomerTxtFld1 = new javax.swing.JTextField();
-        libCreateNewCustomerButton1 = new javax.swing.JButton();
-        libViewExitButton1 = new javax.swing.JButton();
-        libBookSearchLbl1 = new javax.swing.JLabel();
-        libCustomerSearchLbl1 = new javax.swing.JLabel();
-        libCustomerSearchTxtFld1 = new javax.swing.JTextField();
+        LibrarianLabel = new javax.swing.JLabel();
+        BookSearchLabel = new javax.swing.JLabel();
+        CustomerSearchLabel = new javax.swing.JLabel();
+        AddBookLabel = new javax.swing.JLabel();
+        AddLibrarianLabel = new javax.swing.JLabel();
+        CheckInLabel = new javax.swing.JLabel();
+        CheckOutLabel = new javax.swing.JLabel();
+        CustomerSearchTextField = new javax.swing.JTextField();
+        CheckOutButton = new javax.swing.JButton();
+        OpenDatabaseButton = new javax.swing.JButton();
+        CustomerSearchButton = new javax.swing.JButton();
+        AddBookButton = new javax.swing.JButton();
+        AddLibrarianButton = new javax.swing.JButton();
+        CheckInButton = new javax.swing.JButton();
 
-        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        libBookSearchLbl.setText("Book search:");
+        LibrarianLabel.setText("Librarian");
 
-        libCustomerSearchLbl.setText("Customer search:");
+        BookSearchLabel.setText("Book Search:");
 
-        libBookSearchTxtFld.setText("Book search");
+        CustomerSearchLabel.setText("Customer Search (ID):");
 
-        libCustomerSearchTxtFld.setText("Customer search");
-        libCustomerSearchTxtFld.addActionListener(new java.awt.event.ActionListener() {
+        AddBookLabel.setText("Add Book to Library");
+
+        AddLibrarianLabel.setText("Add New Librarian");
+
+        CheckInLabel.setText("Check In:");
+
+        CheckOutLabel.setText("Check Out:");
+
+        CheckOutButton.setText("Check Out");
+        CheckOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libCustomerSearchTxtFldActionPerformed(evt);
+                CheckOutButtonActionPerformed(evt);
             }
         });
 
-        libViewLbl.setText("Librarian View");
-
-        libBookSearchButton.setText("Book Search");
-        libBookSearchButton.addActionListener(new java.awt.event.ActionListener() {
+        OpenDatabaseButton.setText("Open Database");
+        OpenDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libBookSearchButtonActionPerformed(evt);
+                OpenDatabaseButtonActionPerformed(evt);
             }
         });
 
-        libCustomerSearchButton.setText("Customer Search");
-        libCustomerSearchButton.addActionListener(new java.awt.event.ActionListener() {
+        CustomerSearchButton.setText("Customer Search");
+        CustomerSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libCustomerSearchButtonActionPerformed(evt);
+                CustomerSearchButtonActionPerformed(evt);
             }
         });
 
-        libCreateNewCustomerLbl.setText("Create new Customer:");
-
-        libCreateNewCustomerTxtFld.setText("Create Customer");
-
-        libCreateNewCustomerButton.setText("Create Customer");
-
-        libViewExitButton.setText("Exit Program");
-        libViewExitButton.addActionListener(new java.awt.event.ActionListener() {
+        AddBookButton.setText("Add Book");
+        AddBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libViewExitButtonActionPerformed(evt);
+                AddBookButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jFrame1Layout.createSequentialGroup()
-                                .addComponent(libCustomerSearchLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCustomerSearchTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCustomerSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jFrame1Layout.createSequentialGroup()
-                                .addComponent(libCreateNewCustomerLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCreateNewCustomerTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCreateNewCustomerButton))
-                            .addGroup(jFrame1Layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(libViewLbl))
-                            .addGroup(jFrame1Layout.createSequentialGroup()
-                                .addComponent(libBookSearchLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libBookSearchTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libBookSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(libViewExitButton)))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(libViewLbl)
-                .addGap(22, 22, 22)
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(libBookSearchLbl)
-                    .addComponent(libBookSearchTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(libBookSearchButton))
-                .addGap(10, 10, 10)
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(libCustomerSearchLbl)
-                    .addComponent(libCustomerSearchTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(libCustomerSearchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(libCreateNewCustomerLbl)
-                    .addComponent(libCreateNewCustomerTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(libCreateNewCustomerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(libViewExitButton)
-                .addContainerGap())
-        );
-
-        libViewLbl1.setText("Librarian View");
-
-        libBookSearchButton1.setText("Open Database");
-        libBookSearchButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddLibrarianButton.setText("Add Librarian");
+        AddLibrarianButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libBookSearchButton1ActionPerformed(evt);
+                AddLibrarianButtonActionPerformed(evt);
             }
         });
 
-        libCustomerSearchButton1.setText("Customer Search");
-        libCustomerSearchButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libCustomerSearchButton1ActionPerformed(evt);
-            }
-        });
+        CheckInButton.setText("Check In");
 
-        libCreateNewCustomerLbl1.setText("Create new Customer:");
-
-        libCreateNewCustomerTxtFld1.setText("Create Customer");
-
-        libCreateNewCustomerButton1.setText("Create Customer");
-
-        libViewExitButton1.setText("Exit Program");
-        libViewExitButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libViewExitButton1ActionPerformed(evt);
-            }
-        });
-
-        libBookSearchLbl1.setText("Book search:");
-
-        libCustomerSearchLbl1.setText("Customer search:");
-
-        libCustomerSearchTxtFld1.setText("Customer search");
-        libCustomerSearchTxtFld1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                libCustomerSearchTxtFld1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(libCustomerSearchLbl1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCustomerSearchTxtFld1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCustomerSearchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(libCreateNewCustomerLbl1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCreateNewCustomerTxtFld1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libCreateNewCustomerButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(libViewLbl1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(libBookSearchLbl1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(libBookSearchButton1))))
+                        .addGap(168, 168, 168)
+                        .addComponent(LibrarianLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(libViewExitButton1)))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CustomerSearchLabel)
+                            .addComponent(BookSearchLabel)
+                            .addComponent(AddBookLabel)
+                            .addComponent(AddLibrarianLabel)
+                            .addComponent(CheckInLabel)
+                            .addComponent(CheckOutLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(CustomerSearchTextField)
+                            .addComponent(CheckOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(OpenDatabaseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AddBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AddLibrarianButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CheckInButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(CustomerSearchButton)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(libViewLbl1)
-                .addGap(22, 22, 22)
+                .addComponent(LibrarianLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(libBookSearchLbl1)
-                    .addComponent(libBookSearchButton1))
-                .addGap(10, 10, 10)
+                    .addComponent(BookSearchLabel)
+                    .addComponent(OpenDatabaseButton))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(libCustomerSearchLbl1)
-                    .addComponent(libCustomerSearchTxtFld1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(libCustomerSearchButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(CustomerSearchLabel)
+                    .addComponent(CustomerSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CustomerSearchButton))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(libCreateNewCustomerLbl1)
-                    .addComponent(libCreateNewCustomerTxtFld1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(libCreateNewCustomerButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                .addComponent(libViewExitButton1)
-                .addContainerGap())
+                    .addComponent(AddBookLabel)
+                    .addComponent(AddBookButton))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddLibrarianLabel)
+                    .addComponent(AddLibrarianButton))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CheckInLabel)
+                    .addComponent(CheckInButton))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CheckOutLabel)
+                    .addComponent(CheckOutButton))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void libCustomerSearchTxtFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libCustomerSearchTxtFldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_libCustomerSearchTxtFldActionPerformed
+    private void AddBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBookButtonActionPerformed
+        AddBookView abv = new AddBookView();
+        abv.setVisible(true);
+    }//GEN-LAST:event_AddBookButtonActionPerformed
 
-    private void libBookSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libBookSearchButtonActionPerformed
-
-
-    }//GEN-LAST:event_libBookSearchButtonActionPerformed
-
-    private void libCustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libCustomerSearchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_libCustomerSearchButtonActionPerformed
-
-    private void libViewExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libViewExitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_libViewExitButtonActionPerformed
-
-    private void libBookSearchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libBookSearchButton1ActionPerformed
+    private void OpenDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenDatabaseButtonActionPerformed
+        // Open the Database
         JFrame frame = new JFrame("Book DB view");
         BookDatabaseView BookDBView = new BookDatabaseView();
         frame.add(BorderLayout.CENTER, BookDBView);
@@ -283,44 +190,48 @@ public class LibrarianView extends javax.swing.JPanel {
         frame.setVisible(true);
 
         BookDBView.setVisible(true);
+    }//GEN-LAST:event_OpenDatabaseButtonActionPerformed
 
-    }//GEN-LAST:event_libBookSearchButton1ActionPerformed
+    private void CustomerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerSearchButtonActionPerformed
+        try {
+            String id = CustomerSearchTextField.getText();
+            UserController uc = new UserController();
+            uc.searchUser(id);
 
-    private void libCustomerSearchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libCustomerSearchButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_libCustomerSearchButton1ActionPerformed
+            //Code to display User
+        } catch (Exception ex) {
+            Logger.getLogger(LibrarianView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_CustomerSearchButtonActionPerformed
 
-    private void libViewExitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libViewExitButton1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_libViewExitButton1ActionPerformed
+    private void AddLibrarianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLibrarianButtonActionPerformed
+        RegisterView rv = new RegisterView("librarian");
+        rv.setVisible(true);
+    }//GEN-LAST:event_AddLibrarianButtonActionPerformed
 
-    private void libCustomerSearchTxtFld1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libCustomerSearchTxtFld1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_libCustomerSearchTxtFld1ActionPerformed
+    private void CheckOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckOutButtonActionPerformed
+        CheckoutView cv = new CheckoutView();
+        cv.setVisible(true);
+    }//GEN-LAST:event_CheckOutButtonActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JButton libBookSearchButton;
-    private javax.swing.JButton libBookSearchButton1;
-    private javax.swing.JLabel libBookSearchLbl;
-    private javax.swing.JLabel libBookSearchLbl1;
-    private javax.swing.JTextField libBookSearchTxtFld;
-    private javax.swing.JButton libCreateNewCustomerButton;
-    private javax.swing.JButton libCreateNewCustomerButton1;
-    private javax.swing.JLabel libCreateNewCustomerLbl;
-    private javax.swing.JLabel libCreateNewCustomerLbl1;
-    private javax.swing.JTextField libCreateNewCustomerTxtFld;
-    private javax.swing.JTextField libCreateNewCustomerTxtFld1;
-    private javax.swing.JButton libCustomerSearchButton;
-    private javax.swing.JButton libCustomerSearchButton1;
-    private javax.swing.JLabel libCustomerSearchLbl;
-    private javax.swing.JLabel libCustomerSearchLbl1;
-    private javax.swing.JTextField libCustomerSearchTxtFld;
-    private javax.swing.JTextField libCustomerSearchTxtFld1;
-    private javax.swing.JButton libViewExitButton;
-    private javax.swing.JButton libViewExitButton1;
-    private javax.swing.JLabel libViewLbl;
-    private javax.swing.JLabel libViewLbl1;
+    private javax.swing.JButton AddBookButton;
+    private javax.swing.JLabel AddBookLabel;
+    private javax.swing.JButton AddLibrarianButton;
+    private javax.swing.JLabel AddLibrarianLabel;
+    private javax.swing.JLabel BookSearchLabel;
+    private javax.swing.JButton CheckInButton;
+    private javax.swing.JLabel CheckInLabel;
+    private javax.swing.JButton CheckOutButton;
+    private javax.swing.JLabel CheckOutLabel;
+    private javax.swing.JButton CustomerSearchButton;
+    private javax.swing.JLabel CustomerSearchLabel;
+    private javax.swing.JTextField CustomerSearchTextField;
+    private javax.swing.JLabel LibrarianLabel;
+    private javax.swing.JButton OpenDatabaseButton;
     // End of variables declaration//GEN-END:variables
 }

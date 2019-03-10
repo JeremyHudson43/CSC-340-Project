@@ -27,26 +27,22 @@ import org.json.JSONObject;
  */
 public class ManageBookInfo {
 
-    private final String baseURL
-            = "https://www.googleapis.com/books/v1/volumes?q=";
-    private final String apiKey
-            = "&AIzaSyD2l4xicCXG_xS6iszQodS9O2u5e18s3Ck";
-
     public void getRequest(String _Author, String _Volume)
             throws ProtocolException, IOException {
 
         String responseString = "";
 
-        URL url = new URL(baseURL + _Volume + "+inauthor:" + _Author + apiKey);
+        URL url = new URL("https://www.googleapis.com/books/v1/volumes?q="
+                + _Volume + "+inauthor:" + _Author
+                + "&key=AIzaSyDPvUouD8UQzYc2bWylpp07l3M0uNLfcQQ");
+        //            + "&AIzaSyD2l4xicCXG_xS6iszQodS9O2u5e18s3Ck");
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("GET");
 
-        try {
-            BufferedReader in = new BufferedReader
-            (new InputStreamReader(connection.getInputStream()));
-
+        try (
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String str;
             while ((str = in.readLine()) != null) {
 
@@ -54,39 +50,31 @@ public class ManageBookInfo {
                 System.out.println(responseString);
                 parseBook(responseString);
             }
-        } catch (IOException e) {
-            System.out.println("No results found, try again");
+
         }
     }
 
-    private void writeToText(String _title, String _author, String _imageLink)
+    private void writeToText(String title, String author, String imageLink)
             throws FileNotFoundException, UnsupportedEncodingException,
             IOException {
         try (FileWriter writer = new FileWriter("books.txt", true)) {
-            
-            writer.write(_author + "\n");
-            writer.write(_title + "\n");
-            writer.write(_imageLink + "\n");
-            writer.write("\n");
-
-            
+            writer.write(author + "\n");
+            writer.write(title + "\n");
+            writer.write(imageLink + "\n");
             writer.close();
         }
     }
 
-    private void parseBook(String _responseString) throws FileNotFoundException,
+    private void parseBook(String responseString) throws FileNotFoundException,
             UnsupportedEncodingException, IOException {
         try {
-            JSONObject root = new JSONObject(_responseString);
+            JSONObject root = new JSONObject(responseString);
             JSONArray books = root.getJSONArray("items");
-
             for (int i = 0; i < books.length(); i++) {
                 JSONObject book = books.getJSONObject(i);
-
                 JSONObject info = book.getJSONObject("volumeInfo");
                 String title = info.getString("title");
                 JSONArray authors = info.getJSONArray("authors");
-
                 String author = authors.getString(0);
                 JSONObject imageLinks = info.getJSONObject("imageLinks");
                 String imageLink = imageLinks.getString("smallThumbnail");
@@ -99,32 +87,26 @@ public class ManageBookInfo {
         }
     }
 
-    private void postRequest(String _website) throws ProtocolException,
+    private void postRequest(String website) throws ProtocolException,
             IOException {
 
         URL obj = new URL(null, "https://www.example.com",
                 new sun.net.www.protocol.https.Handler());
 
-        HttpsURLConnection connection
-                = (HttpsURLConnection) obj.openConnection();
+        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
-        connection.setRequestMethod("POST");
+        con.setRequestMethod("POST");
 
         String urlParameters = "test";
 
-        connection.setDoOutput(true);
-
-        DataOutputStream wr = new DataOutputStream
-        (connection.getOutputStream());
-
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
         wr.writeBytes(urlParameters);
         wr.flush();
         wr.close();
 
         BufferedReader in
-        = new BufferedReader
-        (new InputStreamReader(connection.getInputStream()));
-        
+                = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer res = new StringBuffer();
 
