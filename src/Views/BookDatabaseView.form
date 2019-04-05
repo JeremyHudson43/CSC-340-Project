@@ -37,9 +37,8 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="LibManageSys" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="exitProgramButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="searchLocalDatabaseNoLoginButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="searchLocalDatabaseButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -51,14 +50,8 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="LibManageSys" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="exitProgramButton" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="searchLocalDatabaseNoLoginButton" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="searchLocalDatabaseButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -141,21 +134,10 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="exitProgramButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Exit Program"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitProgramButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="searchLocalDatabaseNoLoginButton">
+    <Component class="javax.swing.JButton" name="searchLocalDatabaseButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search Database"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchLocalDatabaseNoLoginButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

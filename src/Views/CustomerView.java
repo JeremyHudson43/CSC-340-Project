@@ -1,16 +1,14 @@
 package Views;
 
-import Controllers.BooksController;
-import Controllers.ViewsController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.event.ActionListener;
+
 
 
 /**
  * @author Jeremy Hudson
  * @author Charles Brady
  *
- * Last updated 3/13
+ * Last updated 4/5
  *
  * This class is the view that the customer will see.
  * This allows the customer to search the book database and to check the
@@ -18,7 +16,6 @@ import java.util.logging.Logger;
  */
 public class CustomerView extends javax.swing.JPanel {
 
-    ViewsController viewController = new ViewsController();
     /**
      * Creates new form CustomerView
      */
@@ -38,9 +35,8 @@ public class CustomerView extends javax.swing.JPanel {
         custBookSearchLbl = new javax.swing.JLabel();
         custViewLabel = new javax.swing.JLabel();
         showMyCheckoutsCustomerViewTxtLbl = new javax.swing.JLabel();
-        custSearchDatabaseButton = new javax.swing.JButton();
-        custViewExitButton = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        custSearchDatabaseButton = new javax.swing.JButton();
         goToSelectedBookCustomerViewButton = new javax.swing.JButton();
 
         custBookSearchLbl.setText("Search book database:");
@@ -49,56 +45,39 @@ public class CustomerView extends javax.swing.JPanel {
 
         showMyCheckoutsCustomerViewTxtLbl.setText("My checkouts:");
 
-        custSearchDatabaseButton.setText("Open Database");
-        custSearchDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custSearchDatabaseButtonActionPerformed(evt);
-            }
-        });
-
-        custViewExitButton.setText("Exit Program");
-        custViewExitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custViewExitButtonActionPerformed(evt);
-            }
-        });
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        goToSelectedBookCustomerViewButton.setText("Go to selected book");
-        goToSelectedBookCustomerViewButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goToSelectedBookCustomerViewButtonActionPerformed(evt);
-            }
-        });
+        custSearchDatabaseButton.setText("Search Database");
+
+        goToSelectedBookCustomerViewButton.setText("Go to Selected Checkout");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(custViewExitButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(goToSelectedBookCustomerViewButton)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(custViewLabel))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(goToSelectedBookCustomerViewButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(showMyCheckoutsCustomerViewTxtLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(162, 162, 162)
+                                .addComponent(custViewLabel))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(custBookSearchLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(custSearchDatabaseButton)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(showMyCheckoutsCustomerViewTxtLbl)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(custBookSearchLbl)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(custSearchDatabaseButton)))))
+                        .addGap(0, 144, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,38 +93,25 @@ public class CustomerView extends javax.swing.JPanel {
                     .addComponent(showMyCheckoutsCustomerViewTxtLbl)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(custViewExitButton)
-                    .addComponent(goToSelectedBookCustomerViewButton))
+                .addComponent(goToSelectedBookCustomerViewButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    //Open the Book Database View
-    private void custSearchDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custSearchDatabaseButtonActionPerformed
+    public void databaseListener(ActionListener listenForDatabase){
 
-        viewController.determineView("SearchDB");
+        custSearchDatabaseButton.addActionListener(listenForDatabase);
+       
+    }
+    
+       public void goToBookListener(ActionListener listenForGoToBook){
 
-    }//GEN-LAST:event_custSearchDatabaseButtonActionPerformed
-
-    private void custViewExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custViewExitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_custViewExitButtonActionPerformed
-
-    private void goToSelectedBookCustomerViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToSelectedBookCustomerViewButtonActionPerformed
-        try {
-//            BooksController bookController = new BooksController();
-//            bookController.individualBookViewMethod(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-        } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_goToSelectedBookCustomerViewButtonActionPerformed
-
+        custSearchDatabaseButton.addActionListener(listenForGoToBook);
+       
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel custBookSearchLbl;
     private javax.swing.JButton custSearchDatabaseButton;
-    private javax.swing.JButton custViewExitButton;
     private javax.swing.JLabel custViewLabel;
     private javax.swing.JButton goToSelectedBookCustomerViewButton;
     private javax.swing.JComboBox<String> jComboBox1;

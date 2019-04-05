@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Views;
 
 /**
@@ -34,12 +30,12 @@ public class IndividualCustomerView extends javax.swing.JPanel {
         individualCustomerViewEmailTxtLbl = new javax.swing.JLabel();
         individualCustomerViewLibCardNumberTxtLbl = new javax.swing.JLabel();
         individualCustomerViewCheckoutsTxtLbl = new javax.swing.JLabel();
-        individualCustomerViewComboBox = new javax.swing.JComboBox<>();
         namePlaceholderTxtLbl = new javax.swing.JLabel();
         emailAddressPlaceholderTxtLbl = new javax.swing.JLabel();
         libraryCardNumberPlaceholderTxtLbl = new javax.swing.JLabel();
         individualCustomerViewIDNumberTxtLbl = new javax.swing.JLabel();
         customerIDNumberPlaceholderTxtLbl = new javax.swing.JLabel();
+        individualCustomerViewComboBox = new javax.swing.JComboBox<>();
 
         individualCustomerViewBackButton.setText("Back");
 
@@ -55,13 +51,6 @@ public class IndividualCustomerView extends javax.swing.JPanel {
 
         individualCustomerViewCheckoutsTxtLbl.setText("Books Customer has checked out:");
 
-        individualCustomerViewComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        individualCustomerViewComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                individualCustomerViewComboBoxActionPerformed(evt);
-            }
-        });
-
         namePlaceholderTxtLbl.setText("Customer Name Placeholder");
 
         emailAddressPlaceholderTxtLbl.setText("Customer Email Address Placeholder");
@@ -71,6 +60,8 @@ public class IndividualCustomerView extends javax.swing.JPanel {
         individualCustomerViewIDNumberTxtLbl.setText("Customer ID Number:");
 
         customerIDNumberPlaceholderTxtLbl.setText("Customer ID Number Placeholder");
+
+        individualCustomerViewComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,9 +90,9 @@ public class IndividualCustomerView extends javax.swing.JPanel {
                             .addComponent(individualCustomerViewCheckoutsTxtLbl)
                             .addComponent(individualCustomerViewIDNumberTxtLbl))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerIDNumberPlaceholderTxtLbl)
-                            .addComponent(individualCustomerViewComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(customerIDNumberPlaceholderTxtLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(individualCustomerViewComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,10 +127,6 @@ public class IndividualCustomerView extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void individualCustomerViewComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_individualCustomerViewComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_individualCustomerViewComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

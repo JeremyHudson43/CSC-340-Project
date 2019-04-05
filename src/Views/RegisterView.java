@@ -1,11 +1,9 @@
 package Views;
 
-import Controllers.UserController;
-import SQL_Translator.MySQLDBTranslator;
+
 import Models.UserModel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.JButton;
+
 
 /**
  *
@@ -23,8 +21,35 @@ public class RegisterView extends javax.swing.JFrame {
     // This will open up a registration form while also obtaining the type of user
     public RegisterView(String _userType) {
         initComponents();
-        user = new UserModel();
+         user = new UserModel();
         user.setUserType(_userType);
+        
+        userType(user);
+
+    }
+    
+    public UserModel userType(UserModel _userType) {
+        return _userType;
+    }
+
+    public JButton registerButton () {
+        return registerButton;
+    }
+    
+    public String getName() {
+        return NameTextField.getText();
+    }
+    
+    public String getUserID() {
+        return IDTextField.getText();
+    }
+    
+    public String getUserPassword() {
+        return PasswordTextField.getText();
+    }
+    
+    public String getUserEmail() {
+        return EmailTextField.getText();
     }
 
     /**
@@ -44,8 +69,8 @@ public class RegisterView extends javax.swing.JFrame {
         NameTextField = new javax.swing.JTextField();
         IDTextField = new javax.swing.JTextField();
         EmailTextField = new javax.swing.JTextField();
-        registerButton = new javax.swing.JButton();
         PasswordTextField = new javax.swing.JPasswordField();
+        registerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,39 +86,37 @@ public class RegisterView extends javax.swing.JFrame {
         EmailLabel.setText("Email:");
 
         registerButton.setText("Register");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PasswordLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(PasswordTextField))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(PasswordLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(PasswordTextField))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(NameLabel)
+                                    .addComponent(IDLabel))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RegisterLabel)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(NameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                        .addComponent(IDTextField))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(EmailLabel)
+                                .addGap(40, 40, 40)
+                                .addComponent(EmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NameLabel)
-                            .addComponent(IDLabel))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegisterLabel)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(NameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                .addComponent(IDTextField))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(EmailLabel)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registerButton)
-                            .addComponent(EmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
+                        .addGap(94, 94, 94)
+                        .addComponent(registerButton)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,37 +140,13 @@ public class RegisterView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmailLabel)
                     .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(registerButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    //This method adds a new user to the database
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-
-     
-//            try {
-//                UserController usercontrol = new UserController();
-//
-//            String Name = NameTextField.getText();
-//            String id = IDTextField.getText();
-//            String password = new String(PasswordTextField.getPassword());
-//            String Email = EmailTextField.getText();
-//                        UserModel user = new UserModel();
-//
-//            usercontrol.checkRegister(user, Name, password, id, Email);
-//            } catch (Exception ex) {
-//                Logger.getLogger(RegisterView.class.getName())
-//                        .log(Level.SEVERE, null, ex);
-//            }
-
-
-
-           
-    }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
      * @param args the command line arguments

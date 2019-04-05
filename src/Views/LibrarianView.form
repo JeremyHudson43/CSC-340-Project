@@ -41,23 +41,27 @@
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="CustomerSearchTextField" max="32767" attributes="0"/>
-                          <Component id="checkOutButton" max="32767" attributes="0"/>
-                          <Component id="openDatabaseButton" alignment="1" max="32767" attributes="0"/>
-                          <Component id="addBookButton" max="32767" attributes="0"/>
-                          <Component id="addLibrarianButton" max="32767" attributes="0"/>
-                          <Component id="checkInButton" max="32767" attributes="0"/>
-                          <Component id="librarianViewCheckoutComboBox" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerSearchButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="librarianViewGoToSelectedBookButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="openDatabaseButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="addLibrarianButton" alignment="0" pref="107" max="32767" attributes="0"/>
+                                  <Component id="addBookButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="CustomerSearchTextField" max="32767" attributes="0"/>
+                                  <Component id="librarianViewCheckoutComboBox" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="customerSearchButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="GoToSelectedBookButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="checkInButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkOutButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,7 +105,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="librarianViewCheckoutComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="librarianViewGoToSelectedBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="GoToSelectedBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
@@ -146,54 +150,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="CustomerSearchTextField">
     </Component>
-    <Component class="javax.swing.JButton" name="checkOutButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Check Out"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkOutButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="openDatabaseButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Open Database"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openDatabaseButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="customerSearchButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Search"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerSearchButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="addBookButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add Book"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBookButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="addLibrarianButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add Librarian"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addLibrarianButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="checkInButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Check In"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkInButtonActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="My Check Outs:"/>
@@ -214,13 +170,40 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="librarianViewGoToSelectedBookButton">
+    <Component class="javax.swing.JButton" name="openDatabaseButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Go to selected book"/>
+        <Property name="text" type="java.lang.String" value="Open Database"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="librarianViewGoToSelectedBookButtonActionPerformed"/>
-      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="customerSearchButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Search Customer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addBookButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Book"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addLibrarianButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Librarian"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="checkInButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Check in Book"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="checkOutButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Check out Book"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="GoToSelectedBookButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Go To Selected Book"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

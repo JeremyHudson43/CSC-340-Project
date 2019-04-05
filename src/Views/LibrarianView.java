@@ -1,19 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
-import Controllers.BooksController;
-import Controllers.UserController;
-import Controllers.ViewsController;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javax.swing.JComponent.TOOL_TIP_TEXT_KEY;
-import javax.swing.JFrame;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -28,13 +15,43 @@ import javax.swing.JFrame;
  */
 public class LibrarianView extends javax.swing.JFrame {
 
-    ViewsController viewController = new ViewsController();
-    
+
     /**
      * Creates new form NewJFrame
      */
     public LibrarianView() {
         initComponents();
+    }
+
+    public void databaseListener(ActionListener listenForDatabase) {
+
+        openDatabaseButton.addActionListener(listenForDatabase);
+
+    }
+
+    public void customerSearchListener(ActionListener listenForCustomerSearch) {
+
+        customerSearchButton.addActionListener(listenForCustomerSearch);
+    }
+
+    public void bookAddListener(ActionListener listenForAddBook) {
+        addBookButton.addActionListener(listenForAddBook);
+    }
+
+    public void librarianSearchListener(ActionListener listenForAddLibrarian) {
+        addBookButton.addActionListener(listenForAddLibrarian);
+    }
+
+    public void checkInListener(ActionListener listenForCheckIn) {
+        addBookButton.addActionListener(listenForCheckIn);
+    }
+
+    public void checkOutListener(ActionListener listenForCheckOut) {
+        checkOutButton.addActionListener(listenForCheckOut);
+    }
+
+    public void goToBookListener(ActionListener listenForGoToBook) {
+        GoToSelectedBookButton.addActionListener(listenForGoToBook);
     }
 
     /**
@@ -54,15 +71,15 @@ public class LibrarianView extends javax.swing.JFrame {
         CheckInLabel = new javax.swing.JLabel();
         CheckOutLabel = new javax.swing.JLabel();
         CustomerSearchTextField = new javax.swing.JTextField();
-        checkOutButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        librarianViewCheckoutComboBox = new javax.swing.JComboBox<>();
         openDatabaseButton = new javax.swing.JButton();
         customerSearchButton = new javax.swing.JButton();
         addBookButton = new javax.swing.JButton();
         addLibrarianButton = new javax.swing.JButton();
         checkInButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        librarianViewCheckoutComboBox = new javax.swing.JComboBox<>();
-        librarianViewGoToSelectedBookButton = new javax.swing.JButton();
+        checkOutButton = new javax.swing.JButton();
+        GoToSelectedBookButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,58 +97,23 @@ public class LibrarianView extends javax.swing.JFrame {
 
         CheckOutLabel.setText("Check Out:");
 
-        checkOutButton.setText("Check Out");
-        checkOutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkOutButtonActionPerformed(evt);
-            }
-        });
-
-        openDatabaseButton.setText("Open Database");
-        openDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openDatabaseButtonActionPerformed(evt);
-            }
-        });
-
-        customerSearchButton.setText("Customer Search");
-        customerSearchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerSearchButtonActionPerformed(evt);
-            }
-        });
-
-        addBookButton.setText("Add Book");
-        addBookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookButtonActionPerformed(evt);
-            }
-        });
-
-        addLibrarianButton.setText("Add Librarian");
-        addLibrarianButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addLibrarianButtonActionPerformed(evt);
-            }
-        });
-
-        checkInButton.setText("Check In");
-        checkInButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkInButtonActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("My Check Outs:");
 
         librarianViewCheckoutComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        librarianViewGoToSelectedBookButton.setText("Go to selected book");
-        librarianViewGoToSelectedBookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                librarianViewGoToSelectedBookButtonActionPerformed(evt);
-            }
-        });
+        openDatabaseButton.setText("Open Database");
+
+        customerSearchButton.setText("Search Customer");
+
+        addBookButton.setText("Add Book");
+
+        addLibrarianButton.setText("Add Librarian");
+
+        checkInButton.setText("Check in Book");
+
+        checkOutButton.setText("Check out Book");
+
+        GoToSelectedBookButton.setText("Go To Selected Book");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,19 +135,21 @@ public class LibrarianView extends javax.swing.JFrame {
                             .addComponent(CheckOutLabel)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(CustomerSearchTextField)
-                            .addComponent(checkOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(openDatabaseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addLibrarianButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(checkInButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(librarianViewCheckoutComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customerSearchButton)
-                            .addComponent(librarianViewGoToSelectedBookButton))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(openDatabaseButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(addLibrarianButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(addBookButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CustomerSearchTextField)
+                                    .addComponent(librarianViewCheckoutComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(customerSearchButton)
+                                    .addComponent(GoToSelectedBookButton)))
+                            .addComponent(checkInButton)
+                            .addComponent(checkOutButton))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,61 +185,12 @@ public class LibrarianView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(librarianViewCheckoutComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(librarianViewGoToSelectedBookButton))
+                    .addComponent(GoToSelectedBookButton))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
-      viewController.determineView("AddBook");
-    }//GEN-LAST:event_addBookButtonActionPerformed
-
-    private void openDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openDatabaseButtonActionPerformed
-      viewController.determineView("SearchDB");
-
-    }//GEN-LAST:event_openDatabaseButtonActionPerformed
-
-    // Searches for customer within the database
-    private void customerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerSearchButtonActionPerformed
-        try {
-            String id = CustomerSearchTextField.getText();
-//            UserController userControl = new UserController();
-//            userControl.searchUser(id);
-
-            //Code to display User
-        } catch (Exception ex) {
-            Logger.getLogger(LibrarianView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_customerSearchButtonActionPerformed
-
-    // Opens the Register view with a librarian usertype in order to add a new librarian to the system
-    private void addLibrarianButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLibrarianButtonActionPerformed
-      viewController.determineView("AddLibrarian");
-    }//GEN-LAST:event_addLibrarianButtonActionPerformed
-
-    // Opens the Checkout view so the librarian can checkout a book for the customer
-    private void checkOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutButtonActionPerformed
-             viewController.determineView("CheckoutView");
-
-    }//GEN-LAST:event_checkOutButtonActionPerformed
-
-    private void librarianViewGoToSelectedBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_librarianViewGoToSelectedBookButtonActionPerformed
-          try {
-//            BooksController bookController = new BooksController();
-//            bookController.individualBookViewMethod
-//            (TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-        } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-       
-    }//GEN-LAST:event_librarianViewGoToSelectedBookButtonActionPerformed
-
-    private void checkInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInButtonActionPerformed
-
-    }//GEN-LAST:event_checkInButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +204,7 @@ public class LibrarianView extends javax.swing.JFrame {
     private javax.swing.JLabel CheckOutLabel;
     private javax.swing.JLabel CustomerSearchLabel;
     private javax.swing.JTextField CustomerSearchTextField;
+    private javax.swing.JButton GoToSelectedBookButton;
     private javax.swing.JLabel LibrarianLabel;
     private javax.swing.JButton addBookButton;
     private javax.swing.JButton addLibrarianButton;
@@ -277,7 +213,6 @@ public class LibrarianView extends javax.swing.JFrame {
     private javax.swing.JButton customerSearchButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> librarianViewCheckoutComboBox;
-    private javax.swing.JButton librarianViewGoToSelectedBookButton;
     private javax.swing.JButton openDatabaseButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,11 +5,10 @@ import API.ApiConnector;
 import Controllers.BooksController;
 import SQL_Translator.MySQLDBTranslator;
 import Views.BookDatabaseView;
+import Views.CheckoutView;
 import Views.IndividualBookView;
 import java.awt.BorderLayout;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +22,9 @@ import org.json.JSONObject;
 /**
  *
  * @author Charles Brady
+ * @author Jeremy Hudson 
  *
- * Last Updated 3/5
+ * Last Updated 4/5
  *
  * This is the model for the books class.
  */
@@ -168,6 +168,28 @@ public class BooksModel {
         (_author, _title, _category, _isbn, _imageLink);
 
         IndividaulBV.setVisible(true);
+    }
+    
+    public void checkOutBooksByISBN() {
+//         String[] isbn = new String[] {"", "", "", ""};
+//        isbn[0] = ISBNTextField.getText();
+//        isbn[1] = ISBNTextField1.getText();
+//        isbn[2] = ISBNTextField2.getText();
+//        isbn[3] = ISBNTextField3.getText();
+//
+//        String userID = CustomerTextField.getText();
+//        int id = Integer.valueOf(userID);
+//        
+//        try {
+//            MySQLDBTranslator translator = new MySQLDBTranslator();
+//            translator.checkoutBooks(isbn, id);
+//            this.dispose();
+//        } catch (Exception ex) {
+//            Logger.getLogger(CheckoutView.class.getName())
+//                    .log(Level.SEVERE, null, ex);
+//        }
+
+    
     }
 
     public BooksModel() throws Exception {

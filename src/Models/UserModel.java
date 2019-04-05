@@ -93,7 +93,7 @@ public class UserModel {
 //================================================================
     
      // If something is entered, the program will check to see if it exists in the database
-    public void checkLogin(String _username, String _password) {
+    public String checkLogin(String _username, String _password) {
           if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. Please try again.");
         } 
@@ -109,10 +109,12 @@ public class UserModel {
                 if (result == null ? librarian == null : result.equals(librarian)) {
                     LibrarianView librarianView = new LibrarianView();
                     librarianView.setVisible(true);
+                    return "librarian";
                     // if the user is a customer, it will open the customer view.
                 } else if (result == null ? customer == null : result.equals(customer)) {
                     CustomerView customerView = new CustomerView();
                     customerView.setVisible(true);
+                    return "customer";
                 /* if the username and password is not in the database, it will ask the
                 * the user to try again
                 */
@@ -123,6 +125,7 @@ public class UserModel {
                 Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+          return "";
     }
 
     //creates acocunt if all input is valid 

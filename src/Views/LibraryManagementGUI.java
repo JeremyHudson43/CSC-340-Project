@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Views;
 
-import Controllers.BooksController;
-import Controllers.ViewsController;
-import Models.BooksModel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Controllers.UserController;
+import Models.UserModel;
+import java.awt.event.ActionListener;
+
 
 /**
  *
@@ -20,12 +15,16 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
     /**
      * Creates new form LibraryManagementGUI2
      */
-            ViewsController viewController = new ViewsController();
+          
 
-    public LibraryManagementGUI() {
+    
+       public LibraryManagementGUI() {
         initComponents();
         
     }
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,31 +35,17 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginButton = new javax.swing.JButton();
-        register_Button = new javax.swing.JButton();
-        selectUserTypeLbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        newUserLbl = new javax.swing.JLabel();
+        returningUserLabel = new javax.swing.JLabel();
         exitProgramButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        loginButton.setText("Login");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
+        newUserLbl.setText("New User");
 
-        register_Button.setText("Register");
-        register_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                register_ButtonActionPerformed(evt);
-            }
-        });
-
-        selectUserTypeLbl.setText("New User");
-
-        jLabel1.setText("Returning User");
+        returningUserLabel.setText("Returning User");
 
         exitProgramButton.setText("Exit Program");
         exitProgramButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +54,10 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
             }
         });
 
+        registerButton.setText("Register");
+
+        loginButton.setText("Login");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,12 +65,12 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(selectUserTypeLbl))
+                    .addComponent(returningUserLabel)
+                    .addComponent(newUserLbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(register_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
@@ -93,12 +82,12 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginButton)
-                    .addComponent(jLabel1))
+                    .addComponent(returningUserLabel)
+                    .addComponent(loginButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(register_Button)
-                    .addComponent(selectUserTypeLbl))
+                    .addComponent(newUserLbl)
+                    .addComponent(registerButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(exitProgramButton)
                 .addGap(21, 21, 21))
@@ -107,49 +96,51 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-           viewController.determineView("LoginUser");
-
-    }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void register_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register_ButtonActionPerformed
-
-          viewController.determineView("RegisterUser");
-
-    }//GEN-LAST:event_register_ButtonActionPerformed
-
     private void exitProgramButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProgramButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitProgramButtonActionPerformed
 
+   public void addLoginListener(ActionListener listenForLogin){
+
+        loginButton.addActionListener(listenForLogin);
+
+         
+    }
+   public void addRegisterListener(ActionListener listenForLogin){
+
+        registerButton.addActionListener(listenForLogin);
+
+         
+    }
+
+      
     /**
      * @param args the command line arguments
      */
+        
     public static void main(String args[]) {
-//         try {
-//
-//            BooksModel bookModel = new BooksModel();
-//            BookDatabaseView bookDBView = new BookDatabaseView();
-//            BooksController bookController = 
-//                    new BooksController(bookModel, bookDBView);
-//            bookController.initController();
-//
-//
-//        } catch (Exception ex) {
-//            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LibraryManagementGUI().setVisible(true);
+        
+        
+            LibraryManagementGUI  libManage = new LibraryManagementGUI();
+            UserModel userModel = new UserModel();
+            LoginView loginView = new LoginView();
+            RegisterView registerView = new RegisterView("customer");
+        
+            
+            UserController userController = 
+                    new UserController(libManage, userModel, loginView, registerView);
+            userController.initController();
+
+                libManage.setVisible(true);
             }
-        });
-    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitProgramButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JButton register_Button;
-    private javax.swing.JLabel selectUserTypeLbl;
+    private javax.swing.JLabel newUserLbl;
+    private javax.swing.JButton registerButton;
+    private javax.swing.JLabel returningUserLabel;
     // End of variables declaration//GEN-END:variables
 }

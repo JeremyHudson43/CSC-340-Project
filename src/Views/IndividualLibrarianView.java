@@ -31,7 +31,6 @@ public class IndividualLibrarianView extends javax.swing.JPanel {
         individualLibrarianViewEmailTxtLbl = new javax.swing.JLabel();
         individualLibrarianViewLibCardNumberTxtLbl = new javax.swing.JLabel();
         individualLibrarianViewCheckoutsTxtLbl = new javax.swing.JLabel();
-        individualLibrarianViewComboBox = new javax.swing.JComboBox<>();
         LibrarianNamePlaceholderTxtLbl = new javax.swing.JLabel();
         LibrarianEmailAddressPlaceholderTxtLbl = new javax.swing.JLabel();
         LibrarianLibraryCardNumberPlaceholderTxtLbl = new javax.swing.JLabel();
@@ -40,6 +39,7 @@ public class IndividualLibrarianView extends javax.swing.JPanel {
         individualCustomerViewExiProgramButton = new javax.swing.JButton();
         LibrarianIDNumberPlaceholderTxtLbl = new javax.swing.JLabel();
         individualCustomerViewTxtLbl = new javax.swing.JLabel();
+        individualLibrarianViewComboBox = new javax.swing.JComboBox<>();
 
         individualLibrarianViewNameTxtLbl.setText("Librarian Name:");
 
@@ -48,13 +48,6 @@ public class IndividualLibrarianView extends javax.swing.JPanel {
         individualLibrarianViewLibCardNumberTxtLbl.setText("Librarian Library Card Number:");
 
         individualLibrarianViewCheckoutsTxtLbl.setText("Books Librarian has checked out:");
-
-        individualLibrarianViewComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        individualLibrarianViewComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                individualLibrarianViewComboBoxActionPerformed(evt);
-            }
-        });
 
         LibrarianNamePlaceholderTxtLbl.setText("Librarian Name Placeholder");
 
@@ -71,6 +64,8 @@ public class IndividualLibrarianView extends javax.swing.JPanel {
         LibrarianIDNumberPlaceholderTxtLbl.setText("Librarian ID Number Placeholder");
 
         individualCustomerViewTxtLbl.setText("Individual Librarian View");
+
+        individualLibrarianViewComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,9 +94,9 @@ public class IndividualLibrarianView extends javax.swing.JPanel {
                             .addComponent(individualLibrarianViewCheckoutsTxtLbl)
                             .addComponent(individualLibrarianViewIDNumberTxtLbl))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LibrarianIDNumberPlaceholderTxtLbl)
-                            .addComponent(individualLibrarianViewComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LibrarianIDNumberPlaceholderTxtLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(individualLibrarianViewComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,10 +131,6 @@ public class IndividualLibrarianView extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void individualLibrarianViewComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_individualLibrarianViewComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_individualLibrarianViewComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

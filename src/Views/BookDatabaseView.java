@@ -43,8 +43,7 @@ public class BookDatabaseView extends javax.swing.JPanel {
         searchTitleNoLoginTxtFld = new javax.swing.JTextField();
         searchISBNNoLoginTxtFld = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        exitProgramButton = new javax.swing.JButton();
-        searchLocalDatabaseNoLoginButton = new javax.swing.JButton();
+        searchLocalDatabaseButton = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -95,19 +94,7 @@ public class BookDatabaseView extends javax.swing.JPanel {
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        exitProgramButton.setText("Exit Program");
-        exitProgramButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitProgramButtonActionPerformed(evt);
-            }
-        });
-
-        searchLocalDatabaseNoLoginButton.setText("Search Database");
-        searchLocalDatabaseNoLoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchLocalDatabaseNoLoginButtonActionPerformed(evt);
-            }
-        });
+        searchLocalDatabaseButton.setText("Search Database");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -118,9 +105,8 @@ public class BookDatabaseView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LibManageSys, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(exitProgramButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchLocalDatabaseNoLoginButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(searchLocalDatabaseButton)))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -128,39 +114,11 @@ public class BookDatabaseView extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LibManageSys, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitProgramButton)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(searchLocalDatabaseNoLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
+                .addComponent(searchLocalDatabaseButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitProgramButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProgramButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitProgramButtonActionPerformed
-
-    private void searchLocalDatabaseNoLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchLocalDatabaseNoLoginButtonActionPerformed
-             try {
-
-            BooksModel bookModel = new BooksModel();
-            BookDatabaseView bookDBView = new BookDatabaseView();
-            BooksController bookController = 
-                    new BooksController(bookModel, bookDBView);
-            bookController.initController(searchAuthorNoLoginTxtFld.getText(), 
-                    searchTitleNoLoginTxtFld.getText(), 
-                    searchISBNNoLoginTxtFld.getText());
-
-
-        } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
- 
-
-    }//GEN-LAST:event_searchLocalDatabaseNoLoginButtonActionPerformed
 
 
     public String getAuthorName() {
@@ -181,14 +139,13 @@ public class BookDatabaseView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LibManageSys;
-    private javax.swing.JButton exitProgramButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JTextField searchAuthorNoLoginTxtFld;
     private javax.swing.JLabel searchDatabaseNoLogin;
     private javax.swing.JTextField searchISBNNoLoginTxtFld;
-    private javax.swing.JButton searchLocalDatabaseNoLoginButton;
+    private javax.swing.JButton searchLocalDatabaseButton;
     private javax.swing.JTextField searchTitleNoLoginTxtFld;
     // End of variables declaration//GEN-END:variables
 

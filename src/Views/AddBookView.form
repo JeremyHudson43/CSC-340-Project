@@ -97,14 +97,6 @@
         <Property name="text" type="java.lang.String" value="ISBN:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="searchButtonAddBookView">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add Book(s) to Local Database"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonAddBookViewActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="authorLabelAddBook">
       <Properties>
         <Property name="text" type="java.lang.String" value="Author:"/>
@@ -129,6 +121,11 @@
     <Component class="javax.swing.JLabel" name="getAllMatchingResultsAddBookViewLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add all matching results by author/ book name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="searchButtonAddBookView">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Book(s) to Local Database"/>
       </Properties>
     </Component>
   </SubComponents>

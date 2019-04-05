@@ -1,15 +1,12 @@
 package Views;
 
-import API.APITranslator;
-import Controllers.BooksController;
-import Models.BooksModel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JButton;
+
 /**
  *
  * @author Charles Brady
- *
- * Last Updated 3/13
+ * @author Jeremy Hudson 
+ * Last Updated 4/5
  *
  *
  * This is the view for the librarian to add a book to the database
@@ -22,6 +19,10 @@ public class AddBookView extends javax.swing.JFrame {
     public AddBookView() {
         initComponents();
     }
+    
+    public JButton addBookButton() {
+        return searchButtonAddBookView;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +34,6 @@ public class AddBookView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        searchButtonAddBookView = new javax.swing.JButton();
         authorLabelAddBook = new javax.swing.JLabel();
         authorTextFieldAddBook = new javax.swing.JTextField();
         bookNameAddBookView = new javax.swing.JLabel();
@@ -41,17 +41,11 @@ public class AddBookView extends javax.swing.JFrame {
         ISBNtxtfieldAddBookView = new javax.swing.JTextField();
         addBookISBNLbl = new javax.swing.JLabel();
         getAllMatchingResultsAddBookViewLbl = new javax.swing.JLabel();
+        searchButtonAddBookView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("ISBN:");
-
-        searchButtonAddBookView.setText("Add Book(s) to Local Database");
-        searchButtonAddBookView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonAddBookViewActionPerformed(evt);
-            }
-        });
 
         authorLabelAddBook.setText("Author:");
 
@@ -60,6 +54,8 @@ public class AddBookView extends javax.swing.JFrame {
         addBookISBNLbl.setText("Add Individual book by ISBN");
 
         getAllMatchingResultsAddBookViewLbl.setText("Add all matching results by author/ book name");
+
+        searchButtonAddBookView.setText("Add Book(s) to Local Database");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,26 +114,6 @@ public class AddBookView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-/* This will search the api for the book to obtain information,
- *  and then add the book to the database.
-*/
-    private void searchButtonAddBookViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonAddBookViewActionPerformed
-           try {
-               AddBookView addBookView = new AddBookView();
-               BooksModel bookModel = new BooksModel();
-               BooksController bookController = 
-                       new BooksController(bookModel, addBookView);
-               bookController.addBook(authorTextFieldAddBook.getText()
-                       , bookTextFieldAddBook.getText(), 
-                       ISBNtxtfieldAddBookView.getText());
-             
-
-        } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_searchButtonAddBookViewActionPerformed
 
     /**
      * @param args the command line arguments
