@@ -5,9 +5,12 @@ import API.ApiConnector;
 import Controllers.BooksController;
 import SQL_Translator.MySQLDBTranslator;
 import Views.BookDatabaseView;
-import Views.CheckoutView;
 import Views.IndividualBookView;
+import Views.LibraryCardView;
 import java.awt.BorderLayout;
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -146,7 +149,8 @@ public class BooksModel {
         JFrame frame = new JFrame();
 
         IndividualBookView bookView
-                = new IndividualBookView(author, title, category, isbn, imagelink);
+                = new IndividualBookView(author, title, category, isbn, 
+                        imagelink);
         frame.add(BorderLayout.CENTER, bookView);
         frame.pack();
         frame.setVisible(true);
@@ -190,6 +194,35 @@ public class BooksModel {
 //        }
 
     
+    }
+    
+    public void LibraryCardPrint() {
+              PrinterJob job = PrinterJob.getPrinterJob();
+        PageFormat pageFormat = job.defaultPage();
+        //job.setPrintable(new Printer(this, 0.75));
+        if(job.printDialog()){
+            try {
+                job.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(
+                        LibraryCardView.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    public void LibraryCardView () {
+//          try {
+//            initComponents();
+//            BarcodeController bc = new BarcodeController();
+//            Barcode b = bc.createBarcode(Integer.toString(_u.getId()), _u.getName());
+//            BufferedImage bi = BarcodeImageHandler.getImage(b);
+//            BarCode.setIcon(new ImageIcon(bi));
+//            NameTextField.setText(_u.getName());
+//        } catch (BarcodeException ex) {
+//            Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (OutputException ex) {
+//            Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public BooksModel() throws Exception {

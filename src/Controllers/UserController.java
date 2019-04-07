@@ -1,14 +1,17 @@
 package Controllers;
 
 import Models.UserModel;
+import Views.BookDatabaseView;
 import Views.CustomerView;
 import Views.LibrarianView;
 import Views.LibraryManagementGUI;
 import Views.LoginView;
 import Views.RegisterView;
+import java.awt.BorderLayout;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,7 +20,7 @@ import java.util.logging.Logger;
  *
  * Last updated 4/5
  */
-public class UserController extends MasterController {
+public class UserController extends ParentController {
 
     private UserModel userModel;
     private RegisterView registerView;
@@ -39,29 +42,16 @@ public class UserController extends MasterController {
         this.loginView = loginView;
         this.libraryManagement = libraryManagement;
 
-        libraryManagement.addLoginListener(e -> displayLogin());
-        libraryManagement.addRegisterListener(e -> displayRegister());
-
-//        librarianView.addLibrarianSearchListener(e -> displayBookDB());
-//        librarianView.addCustomerSearchListener(e -> displayBookDB());
     }
     
-        public UserController(LibraryManagementGUI libManage, 
-                UserModel userModel, LoginView loginView, 
-                RegisterView registerView) {
-            
-        this.libraryManagement = libManage;    
-        this.userModel = userModel;
-        this.registerView = registerView;
-        this.loginView = loginView;
+
+
+
+    public void initUserController() {
         
-                libraryManagement.addLoginListener(e -> displayLogin());
+        libraryManagement.addLoginListener(e -> displayLogin());
         libraryManagement.addRegisterListener(e -> displayRegister());
-            
-        }
-
-
-    public void initController() {
+        //librarianView.customerSearchListener(e -> displayBookDB());
 
     }
 
@@ -96,14 +86,18 @@ public class UserController extends MasterController {
     public void checkLogin(String username, String password) throws SQLException {
 
         String userType = userModel.checkLogin(username, password);
+        if(userType.equals("customer")) {
+            customerView.setVisible(true);
+        }
+        else if(userType.equals("librarian")) {
+          librarianView.setVisible(true);
 
-        BooksController bookController; 
-        if (userType.equals("librarian")) {
-            bookController = new BooksController(librarianView);
-        }
-        else if(userType.equals("customer")) {
-            bookController = new BooksController(customerView);
-        }
+
+          
+          
+    }
+        
+
 
     }
 

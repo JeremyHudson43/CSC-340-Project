@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 3/10
+ * Last Updated 4/6
  *
  * This class allows the librarian to search the book database and to check the
  * books they have checked out, in addition to searching for and creating new

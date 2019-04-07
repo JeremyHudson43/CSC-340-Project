@@ -107,13 +107,11 @@ public class UserModel {
                 String result = translator.checkLogin(user);
                 // if the user is a librarian, it will open the librarian view.
                 if (result == null ? librarian == null : result.equals(librarian)) {
-                    LibrarianView librarianView = new LibrarianView();
-                    librarianView.setVisible(true);
+
                     return "librarian";
                     // if the user is a customer, it will open the customer view.
                 } else if (result == null ? customer == null : result.equals(customer)) {
-                    CustomerView customerView = new CustomerView();
-                    customerView.setVisible(true);
+
                     return "customer";
                 /* if the username and password is not in the database, it will ask the
                 * the user to try again

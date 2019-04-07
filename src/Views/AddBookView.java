@@ -1,12 +1,12 @@
 package Views;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson 
- * Last Updated 4/5
+ * @author Jeremy Hudson Last Updated 4/5
  *
  *
  * This is the view for the librarian to add a book to the database
@@ -19,9 +19,23 @@ public class AddBookView extends javax.swing.JFrame {
     public AddBookView() {
         initComponents();
     }
-    
-    public JButton addBookButton() {
-        return searchButtonAddBookView;
+
+       public void addBookListener(ActionListener listenForAddBook) {
+
+        searchButtonAddBookView.addActionListener(listenForAddBook);
+
+    }
+
+    public String getISBN() {
+        return ISBNtxtfieldAddBookView.getText();
+    }
+
+    public String getAuthor() {
+        return authorTextFieldAddBook.getText();
+    }
+
+    public String getBookTitle() {
+        return bookTextFieldAddBook.getText();
     }
 
     /**

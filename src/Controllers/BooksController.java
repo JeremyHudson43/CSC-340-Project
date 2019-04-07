@@ -3,13 +3,17 @@ package Controllers;
 import Models.BooksModel;
 import Views.AddBookView;
 import Views.BookDatabaseView;
+import Views.CheckoutView;
 import Views.CustomerView;
 import Views.LibrarianView;
 import Views.LibraryManagementGUI;
+import java.awt.BorderLayout;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+
 
 /**
  *
@@ -20,77 +24,108 @@ import java.util.logging.Logger;
  *
  * This is the controller for the books class
  */
-public class BooksController extends MasterController{
+public class BooksController extends ParentController{
 
     private BooksModel bookModel;
-    private BookDatabaseView bookDBView;
     private AddBookView addBookView;
+    private BookDatabaseView bookDBView;
+    private CheckoutView checkoutView;
 
 
     public BooksController(LibrarianView librarianView, 
                CustomerView customerView, 
                LibraryManagementGUI libraryManagement, BooksModel bookModel,
-               BookDatabaseView bookDBview, AddBookView addBookView) {
+               BookDatabaseView bookDBview, AddBookView addBookView) throws SQLException {
         
         super(librarianView, customerView, libraryManagement);
         
         this.bookModel = bookModel;
         this.bookDBView = bookDBview;
+        this.addBookView = addBookView;
+        
+        
+        initBookController();
     }
     
-       public BooksController(LibrarianView librarianView) throws SQLException{
-           this.librarianView = librarianView;
-           initController();
-       }
-       
-         public BooksController(CustomerView customerView) throws SQLException{
-           this.customerView = customerView;
-           initController();
-       }
+
         
 
 
     
-    public void initController()
-            throws SQLException {
+    public void initBookController() {
+                
+                
+    librarianView.databaseListener(e -> displayBookDB());
+    //customerView.databaseListener(e -> displayBookDB());
+    addBookView.addBookListener(e -> displayAddBookView());
 
+    //librarianView.checkInListener(e -> displayBookDB());
+    librarianView.checkOutListener(e -> checkOutView());
+    //librarianView.goToBookListener(e -> displayBookDB());
+    librarianView.bookAddListener(e -> {
+        try {
+            displayAddBookView();
+        } catch (Exception ex) {
+            Logger.getLogger(BooksController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+    });
+
+        
       
 
-        librarianView.databaseListener(e -> displayBookDB());
-//        librarianView.bookAddListener
-//        (e -> {
-//            try {
-//                displayAddBookView(_author, _bookTitle, _ISBN);
-//            } catch (Exception ex) {
-//                Logger.getLogger(BooksController.class.getName())
-//                        .log(Level.SEVERE, null, ex);
-//            }
-//        });
-        
-        //librarianView.checkInListener(e -> displayBookDB());
-        //librarianView.checkOutListener(e -> displayBookDB());
-        //librarianView.goToBookListener(e -> displayBookDB());
-        
-        customerView.databaseListener(e -> displayBookDB());
-        //customerView.goToBookListener(e -> displayBookDB());
-
 
     }
 
-    public void displayBookDB() {
+
+public void checkOutView () {
+    checkoutView.setVisible(true);
+}
+   
+ public void displayBookDB() {
+        
+                   JFrame frame = new JFrame();   
+        frame.add(BorderLayout.CENTER, bookDBView);
+        frame.pack();
+        frame.setVisible(true);
         bookDBView.setVisible(true);
-//          bookModel.setAuthor(_author);
-//        bookModel.setTitle(_bookTitle);
-//        bookModel.setISBN(_ISBN);
+        bookDBView.searchDBListener(e -> {
+                       try {
+                           searchDB();
+                       } catch (SQLException ex) {
+                           Logger.getLogger
+        (BooksController.class.getName()).log(Level.SEVERE, null, ex);
+                       }
+                   });
     }
+ 
+ 
+ private void searchDB() throws SQLException {
+     bookModel.searchBook(bookDBView.getAuthorName(), bookDBView.getBookTitle(), 
+             bookDBView.getISBN());
+ }
+ private void displayAddBookView() {
+         addBookView.setVisible(true);
+         addBookView.addBookListener(e -> {
+             try {
+                 addBooks();
+             } catch (Exception ex) {
+                 Logger.getLogger
+        (BooksController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         });
 
-    private void displayAddBookView
-        (String _author, String _bookTitle, String _ISBN)
-            throws SQLException, Exception {
-        if (_ISBN.equals("")) {
-            bookModel.loadBookNameByAuthorAndTitle(_author, _bookTitle);
+ }
+    private void addBooks() throws Exception {
+
+      String author = addBookView.getAuthor();
+      String title = addBookView.getTitle();
+      String ISBN = addBookView.getISBN();
+      
+        if (ISBN.equals("")) {
+            bookModel.loadBookNameByAuthorAndTitle(author, title);
         } else {
-            bookModel.loadBookByISBN(_ISBN);
+            bookModel.loadBookByISBN(ISBN);
         }
     }
 

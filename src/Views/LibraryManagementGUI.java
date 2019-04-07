@@ -1,7 +1,9 @@
 
 package Views;
 
+import Controllers.BooksController;
 import Controllers.UserController;
+import Models.BooksModel;
 import Models.UserModel;
 import java.awt.event.ActionListener;
 
@@ -118,18 +120,36 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
         
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
         
         
             LibraryManagementGUI  libManage = new LibraryManagementGUI();
+            
             UserModel userModel = new UserModel();
             LoginView loginView = new LoginView();
             RegisterView registerView = new RegisterView("customer");
-        
+            
+            BooksModel bookModel = new BooksModel();       
+            LibrarianView librarianView = new LibrarianView();
+            CustomerView customerView = new CustomerView();
+            BookDatabaseView bookDBview = new BookDatabaseView();
+            AddBookView addBookView = new AddBookView();
+            
             
             UserController userController = 
-                    new UserController(libManage, userModel, loginView, registerView);
-            userController.initController();
+                    new UserController(librarianView, 
+                            customerView, libManage, userModel, 
+                            loginView, registerView);
+            
+            userController.initUserController();
+            
+            BooksController bookController  = new BooksController(librarianView, 
+               customerView, 
+                libManage, bookModel,
+               bookDBview, addBookView);
+            
+            bookController.initBookController();
+            
 
                 libManage.setVisible(true);
             }

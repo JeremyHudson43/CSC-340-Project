@@ -1,14 +1,9 @@
 package API;
 
-import Models.BooksModel;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,20 +21,15 @@ public class GoogleBooksAPI implements ApiConnector {
     public String loadBookNameByISBN(String _ISBN) {
             String response = getRequest("", "", _ISBN);
             return response;
-
-
     }
 
     @Override
     public String loadBookNameByAuthorAndTitle(String _author, String _title)  {
 
             String response = getRequest(_author, _title, "");
-            return response;
-
-
-       
-
+            return response; 
     }
+    
     //get request to the API using data from BookDatabaseView
     public String getRequest(String _Author, String _Volume, String _ISBN) {
 

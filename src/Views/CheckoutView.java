@@ -1,11 +1,14 @@
 package Views;
 
+import java.awt.event.ActionListener;
+
 
 /**
  *
  * @author Charles Brady
+ * @author Jeremy Hudson
  *
- * Last Updated 3/31
+ * Last Updated 4/7
  *
  * This is the view for librarians to check out a customers book
  */
@@ -16,6 +19,12 @@ public class CheckoutView extends javax.swing.JFrame {
      */
     public CheckoutView() {
         initComponents();
+    }
+    
+     public void checkOutListener(ActionListener listenForCheckout) {
+
+        CheckoutButton.addActionListener(listenForCheckout);
+
     }
 
     /**

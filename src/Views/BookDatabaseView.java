@@ -1,10 +1,7 @@
 package Views;
 
-import Controllers.BooksController;
-import Models.BooksModel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
+import java.awt.event.ActionListener;
+
 
 
 
@@ -15,7 +12,7 @@ Charles Brady
 * This class is used to access the database of books
 *
 *
-Last updated 2-23-2019
+Last updated 4-7-2019
  */
 public class BookDatabaseView extends javax.swing.JPanel {
 
@@ -120,6 +117,11 @@ public class BookDatabaseView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+        public void searchDBListener(ActionListener listenForSearch) {
+
+        searchLocalDatabaseButton.addActionListener(listenForSearch);
+
+    }
 
     public String getAuthorName() {
         return searchAuthorNoLoginTxtFld.getText();
