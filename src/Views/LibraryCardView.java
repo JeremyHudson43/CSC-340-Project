@@ -1,6 +1,6 @@
 package Views;
 
-import Controllers.BarcodeController;
+import Translators.BarcodeTranslator;
 import Models.Printer;
 import Models.UserModel;
 import java.awt.image.BufferedImage;
@@ -33,7 +33,7 @@ public class LibraryCardView extends javax.swing.JFrame {
     public LibraryCardView(UserModel _u) {
         try {
             initComponents();
-            BarcodeController bc = new BarcodeController();
+            BarcodeTranslator bc = new BarcodeTranslator();
             Barcode b = bc.createBarcode(Integer.toString(_u.getId()), _u.getName());
             BufferedImage bi = BarcodeImageHandler.getImage(b);
             BarCode.setIcon(new ImageIcon(bi));

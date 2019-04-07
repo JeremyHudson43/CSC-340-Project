@@ -3,7 +3,7 @@ package Models;
 import API.APITranslator;
 import API.ApiConnector;
 import Controllers.BooksController;
-import SQL_Translator.MySQLDBTranslator;
+import Translators.MySQLDBTranslator;
 import Views.BookDatabaseView;
 import Views.CheckoutView;
 import Views.IndividualBookView;
@@ -22,24 +22,23 @@ import org.json.JSONObject;
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson 
+ * @author Jeremy Hudson
  *
  * Last Updated 4/5
  *
  * This is the model for the books class.
  */
 public class BooksModel {
-    
+
     protected final static ApiConnector myAPI = new APITranslator();
-    
-        MySQLDBTranslator SQL;
+
+    MySQLDBTranslator SQL;
 
     private String author;
     private String title;
     private String ISBN;
     private String category;
     private String imageLink;
-    
 
     public String getAuthor() {
         return author;
@@ -80,8 +79,10 @@ public class BooksModel {
     public void setImageLink(String _imageLink) {
         this.imageLink = _imageLink;
     }
-    
-       public void bookDBMethod(String _author, String _title, String _isbn) throws SQLException {
+
+    //===================================================================================================
+
+    public void bookDBMethod(String _author, String _title, String _isbn) throws SQLException {
         try {
             String[] columns = {"ISBN", "Title", "Author", "Category", "ImageLink"};
             Object[][] data = null;
@@ -154,42 +155,46 @@ public class BooksModel {
         bookView.setVisible(true);
     }
 
-    ;
-
-    
-    /*method that creates the individual book view instance with all passed
-    arguments 
-    */
+    /*method that creates the individual book view instance with all passed arguments
+     */
     public void individualBookViewMethod(String _author,
             String _title, String _category, String _isbn,
             String _imageLink) throws IOException {
 
-        IndividualBookView IndividaulBV = new IndividualBookView
-        (_author, _title, _category, _isbn, _imageLink);
+        IndividualBookView IndividaulBV = new IndividualBookView(_author, _title, _category, _isbn, _imageLink);
 
         IndividaulBV.setVisible(true);
     }
-    
-    public void checkOutBooksByISBN() {
-//         String[] isbn = new String[] {"", "", "", ""};
-//        isbn[0] = ISBNTextField.getText();
-//        isbn[1] = ISBNTextField1.getText();
-//        isbn[2] = ISBNTextField2.getText();
-//        isbn[3] = ISBNTextField3.getText();
-//
-//        String userID = CustomerTextField.getText();
-//        int id = Integer.valueOf(userID);
-//        
-//        try {
-//            MySQLDBTranslator translator = new MySQLDBTranslator();
-//            translator.checkoutBooks(isbn, id);
-//            this.dispose();
-//        } catch (Exception ex) {
-//            Logger.getLogger(CheckoutView.class.getName())
-//                    .log(Level.SEVERE, null, ex);
-//        }
 
-    
+    // Checkout books for a specific customer
+    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
+
+        int id = Integer.valueOf(_userID);
+
+        try {
+            MySQLDBTranslator translator = new MySQLDBTranslator();
+            translator.checkoutBooks(_isbn, id);
+
+        } catch (Exception ex) {
+            Logger.getLogger(CheckoutView.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void checkInBooksByISBN(String[] _isbn, String _userID) {
+
+        int id = Integer.valueOf(_userID);
+
+        try {
+            MySQLDBTranslator translator = new MySQLDBTranslator();
+            translator.checkInBooks(_isbn, id);
+
+        } catch (Exception ex) {
+            Logger.getLogger(CheckoutView.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public BooksModel() throws Exception {
@@ -216,14 +221,11 @@ public class BooksModel {
         data = SQL.searchBooks(_author, _title, _isbn);
         return data;
     }
-    
-        
-
 
     //Create a new book
-    public static BooksModel buildBook(String _author, String _title, 
-            String _category, String _isbn, String _imageLink) 
-            throws Exception {
+    public static BooksModel buildBook(String _author, String _title,
+            String _category, String _isbn, String _imageLink) throws Exception {
+
         BooksModel b = new BooksModel();
         b.setAuthor(_author);
         b.setTitle(_title);
@@ -232,24 +234,23 @@ public class BooksModel {
         b.setImageLink(_imageLink);
         return b;
     }
-    
-      public void loadBookByISBN(String _isbn) throws Exception {
+
+    public void loadBookByISBN(String _isbn) throws Exception {
         BooksModel book = new BooksModel();
         book.setISBN(_isbn);
         String bookData = book.myAPI.loadBookNameByISBN(_isbn);
         parseBook(bookData);
     }
-      
-       public void loadBookNameByAuthorAndTitle(String _author, 
-               String _title) throws Exception {
+
+    public void loadBookNameByAuthorAndTitle(String _author,
+            String _title) throws Exception {
         BooksModel book = new BooksModel();
-        String bookData = book.myAPI.loadBookNameByAuthorAndTitle
-        (_author, _title);
+        String bookData = book.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
         parseBook(bookData);
     }
-              
-      public  void parseBook(String _responseString){
-          
+
+    public void parseBook(String _responseString) {
+
         try {
 
             JSONObject root = new JSONObject(_responseString);
@@ -260,37 +261,31 @@ public class BooksModel {
 
                 JSONObject info = book.getJSONObject("volumeInfo");
                 String bookTitle = info.getString("title");
-                
+
                 JSONArray authors = info.getJSONArray("authors");
 
                 String bookAuthor = authors.getString(0);
                 JSONObject imageLinks = info.getJSONObject("imageLinks");
                 String bookImageLink = imageLinks.getString("smallThumbnail");
-                
+
                 String bookISBN = generateNumber();
-                
-    
-                BooksModel bookObject = 
-                        buildBook(bookAuthor, bookTitle, "", bookISBN, bookImageLink); 
 
+                BooksModel bookObject
+                        = buildBook(bookAuthor, bookTitle, "", bookISBN, bookImageLink);
 
-                       
-
-                        SQL.addBooks(bookObject);
+                SQL.addBooks(bookObject);
             }
         } catch (Exception e) {
 
         }
     }
-      
-        
-          public static String generateNumber() {
+
+    public static String generateNumber() {
         String ISBN = "978-";
         for (int i = 0; i < 10; i++) {
-            ISBN += (int)(Math.random() * 9 + 1);
+            ISBN += (int) (Math.random() * 9 + 1);
         }
         return ISBN;
-   }
+    }
 
-    
 }

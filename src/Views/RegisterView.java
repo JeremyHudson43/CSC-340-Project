@@ -1,9 +1,7 @@
 package Views;
 
-
 import Models.UserModel;
 import javax.swing.JButton;
-
 
 /**
  *
@@ -21,33 +19,33 @@ public class RegisterView extends javax.swing.JFrame {
     // This will open up a registration form while also obtaining the type of user
     public RegisterView(String _userType) {
         initComponents();
-         user = new UserModel();
+        user = new UserModel();
         user.setUserType(_userType);
-        
+
         userType(user);
 
     }
-    
+
     public UserModel userType(UserModel _userType) {
         return _userType;
     }
 
-    public JButton registerButton () {
+    public JButton registerButton() {
         return registerButton;
     }
-    
+
     public String getName() {
         return NameTextField.getText();
     }
-    
+
     public String getUserID() {
         return IDTextField.getText();
     }
-    
+
     public String getUserPassword() {
         return PasswordTextField.getText();
     }
-    
+
     public String getUserEmail() {
         return EmailTextField.getText();
     }

@@ -5,32 +5,32 @@
  */
 package Views;
 
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
-
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ *
+ * Last updated 4/7
  */
 public class IndividualBookView extends javax.swing.JPanel {
 
     /**
      * Creates new form IndividualBookView
      */
-    public IndividualBookView(String _author, String _title, String _category, 
+    public IndividualBookView(String _author, String _title, String _category,
             String _isbn, String _imageLink) throws MalformedURLException,
             IOException {
         initComponents();
-         IndividualBookVewNamePlaceholderTxtLbl.setText(_title);
+        IndividualBookVewNamePlaceholderTxtLbl.setText(_title);
         IndividualBookVewAuthorPlaceholderTxtLbl.setText(_author);
         IndividualBookVewISBNPlaceholderTxtLbl.setText(_isbn);
         IndividualBookVewCategoryPlaceholderTxtLbl.setText(_category);
-        
+
         BufferedImage img = ImageIO.read(new URL(_imageLink));
         imagePlaceholderLbl.setText("");
         imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));

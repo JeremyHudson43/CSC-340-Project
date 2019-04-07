@@ -1,10 +1,8 @@
-
 package Views;
 
 import Controllers.UserController;
 import Models.UserModel;
 import java.awt.event.ActionListener;
-
 
 /**
  *
@@ -15,16 +13,10 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
     /**
      * Creates new form LibraryManagementGUI2
      */
-          
-
-    
-       public LibraryManagementGUI() {
+    public LibraryManagementGUI() {
         initComponents();
-        
-    }
-    
 
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +49,11 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         registerButton.setText("Register");
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,40 +97,38 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitProgramButtonActionPerformed
 
-   public void addLoginListener(ActionListener listenForLogin){
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    public void addLoginListener(ActionListener listenForLogin) {
 
         loginButton.addActionListener(listenForLogin);
 
-         
     }
-   public void addRegisterListener(ActionListener listenForLogin){
+
+    public void addRegisterListener(ActionListener listenForLogin) {
 
         registerButton.addActionListener(listenForLogin);
 
-         
     }
 
-      
     /**
      * @param args the command line arguments
      */
-        
     public static void main(String args[]) {
-        
-        
-            LibraryManagementGUI  libManage = new LibraryManagementGUI();
-            UserModel userModel = new UserModel();
-            LoginView loginView = new LoginView();
-            RegisterView registerView = new RegisterView("customer");
-        
-            
-            UserController userController = 
-                    new UserController(libManage, userModel, loginView, registerView);
-            userController.initController();
 
-                libManage.setVisible(true);
-            }
+        LibraryManagementGUI libManage = new LibraryManagementGUI();
+        UserModel userModel = new UserModel();
+        LoginView loginView = new LoginView();
+        RegisterView registerView = new RegisterView("customer");
 
+        UserController userController
+                = new UserController(libManage, userModel, loginView, registerView);
+        userController.initController();
+
+        libManage.setVisible(true);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2,17 +2,14 @@ package Views;
 
 import java.awt.event.ActionListener;
 
-
-
 /**
  * @author Jeremy Hudson
  * @author Charles Brady
  *
  * Last updated 4/5
  *
- * This class is the view that the customer will see.
- * This allows the customer to search the book database and to check the
- * books they have checked out
+ * This class is the view that the customer will see. This allows the customer
+ * to search the book database and to check the books they have checked out
  */
 public class CustomerView extends javax.swing.JPanel {
 
@@ -98,16 +95,16 @@ public class CustomerView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void databaseListener(ActionListener listenForDatabase){
+    public void databaseListener(ActionListener listenForDatabase) {
 
         custSearchDatabaseButton.addActionListener(listenForDatabase);
-       
+
     }
-    
-       public void goToBookListener(ActionListener listenForGoToBook){
+
+    public void goToBookListener(ActionListener listenForGoToBook) {
 
         custSearchDatabaseButton.addActionListener(listenForGoToBook);
-       
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel custBookSearchLbl;

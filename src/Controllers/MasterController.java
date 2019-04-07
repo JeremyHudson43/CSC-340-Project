@@ -11,34 +11,31 @@ import Views.LibraryManagementGUI;
 
 /**
  *
- * @author Jeremy Hudson
- * Last Updated 4-5-2019
+ * @author Jeremy Hudson Last Updated 4-5-2019
  */
 public class MasterController {
-      LibrarianView librarianView;
-      CustomerView customerView;
-      LibraryManagementGUI libraryManagement;
-      
-       public MasterController(LibrarianView librarianView, 
-               CustomerView customerView, 
-               LibraryManagementGUI libraryManagement) {
+
+    LibrarianView librarianView;
+    CustomerView customerView;
+    LibraryManagementGUI libraryManagement;
+
+    public MasterController(LibrarianView librarianView,
+            CustomerView customerView,
+            LibraryManagementGUI libraryManagement) {
         this.librarianView = librarianView;
         this.customerView = customerView;
         this.libraryManagement = libraryManagement;
     }
-       
-        public MasterController(LibrarianView librarianView) {
+
+    public MasterController(LibrarianView librarianView) {
         this.librarianView = librarianView;
     }
-        
-        public MasterController(CustomerView customerView) {
+
+    public MasterController(CustomerView customerView) {
         this.customerView = customerView;
     }
-        
-        public MasterController() {
+
+    public MasterController() {
     }
 
-
-
-    
 }

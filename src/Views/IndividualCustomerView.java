@@ -3,7 +3,9 @@ package Views;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ *
+ * Last updated 4/7
  */
 public class IndividualCustomerView extends javax.swing.JPanel {
 

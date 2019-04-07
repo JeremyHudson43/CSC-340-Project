@@ -5,7 +5,7 @@ import javax.swing.JButton;
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson 
+ * @author Jeremy Hudson
  * Last Updated 4/5
  *
  *
@@ -19,7 +19,7 @@ public class AddBookView extends javax.swing.JFrame {
     public AddBookView() {
         initComponents();
     }
-    
+
     public JButton addBookButton() {
         return searchButtonAddBookView;
     }

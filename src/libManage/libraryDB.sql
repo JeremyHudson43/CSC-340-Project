@@ -1727,20 +1727,16 @@ DROP TABLE IF EXISTS `checkout`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `checkout` (
-  `ID1` int(11) NOT NULL AUTO_INCREMENT,
   `ID` int(11) NOT NULL,
   `ISBN` varchar(13) NOT NULL,
   `checkoutDate` date DEFAULT NULL,
-  PRIMARY KEY `book_idx` (`ID1`),
+  KEY `book_idx` (`ISBN`),
+  KEY `UserID_idx` (`ID`),
+  CONSTRAINT `ISBN` FOREIGN KEY (`ISBN`) REFERENCES `book` (`isbn`),
   CONSTRAINT `UserID` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-CREATE DEFINER=`librarian`@`localhost` TRIGGER `checkout_BEFORE_INSERT` BEFORE INSERT ON `checkout` FOR EACH ROW BEGIN
-	IF (NEW.checkoutdate IS NULL) THEN
-		Set NEW.checkoutDate = now();
-	END IF;
-END
 --
 -- Dumping data for table `checkout`
 --

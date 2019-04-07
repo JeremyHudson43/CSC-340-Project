@@ -6,8 +6,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 
-
-
 /*
 Jeremy Hudson
 Charles Brady
@@ -120,22 +118,18 @@ public class BookDatabaseView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     public String getAuthorName() {
         return searchAuthorNoLoginTxtFld.getText();
     }
-    
-      public String getBookTitle() {
+
+    public String getBookTitle() {
         return searchTitleNoLoginTxtFld.getText();
     }
-      
-       public String getISBN() {
+
+    public String getISBN() {
         return searchISBNNoLoginTxtFld.getText();
     }
-       
 
-   
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LibManageSys;

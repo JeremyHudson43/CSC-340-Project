@@ -3,7 +3,9 @@ package API;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ *
+ * Last updated 4/5
  */
 public class APITranslator implements ApiConnector {
 

@@ -1,7 +1,7 @@
 package Models;
 
 import Controllers.UserController;
-import SQL_Translator.MySQLDBTranslator;
+import Translators.MySQLDBTranslator;
 import Views.CustomerView;
 import Views.LibrarianView;
 import Views.LibraryCardView;
@@ -13,16 +13,16 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Charles Brady
+ * @author Jeremy Hudson
  *
- * Last Updated 3/7
+ * Last Updated 4/7
  *
  * This is the model for the user class.
  */
 public class UserModel {
-    
-        private static final String librarian = "librarian";
-    private static final String customer = "customer";
 
+    private static final String LIBRARIAN = "librarian";
+    private static final String CUSTOMER = "customer";
 
     private String name;
     private int id;
@@ -91,13 +91,11 @@ public class UserModel {
     }
 
 //================================================================
-    
-     // If something is entered, the program will check to see if it exists in the database
+    // If something is entered, the program will check to see if it exists in the database
     public String checkLogin(String _username, String _password) {
-          if (_username.equals("") || _password.equals("")) {
+        if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. Please try again.");
-        } 
-        else {
+        } else {
             try {
                 UserModel user = new UserModel();
                 user.setUserId(_username);
@@ -106,33 +104,33 @@ public class UserModel {
                 MySQLDBTranslator translator = new MySQLDBTranslator();
                 String result = translator.checkLogin(user);
                 // if the user is a librarian, it will open the librarian view.
-                if (result == null ? librarian == null : result.equals(librarian)) {
+                if (result == null ? LIBRARIAN == null : result.equals(LIBRARIAN)) {
                     LibrarianView librarianView = new LibrarianView();
                     librarianView.setVisible(true);
                     return "librarian";
                     // if the user is a customer, it will open the customer view.
-                } else if (result == null ? customer == null : result.equals(customer)) {
+                } else if (result == null ? CUSTOMER == null : result.equals(CUSTOMER)) {
                     CustomerView customerView = new CustomerView();
                     customerView.setVisible(true);
                     return "customer";
-                /* if the username and password is not in the database, it will ask the
+                    /* if the username and password is not in the database, it will ask the
                 * the user to try again
-                */
+                     */
                 } else {
                     JOptionPane.showMessageDialog(null, " User does not exist. Please try again.");
                 }
             } catch (Exception ex) {
                 Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }
-          return "";
+        }
+        return "";
     }
 
-    //creates acocunt if all input is valid 
-    public void checkRegister(UserModel _user, String _name, String _password, 
-            String _id, String _Email)  throws Exception {
-        
-          try {
+    //creates acocunt if all input is valid
+    public void checkRegister(UserModel _user, String _name, String _password,
+            String _id, String _Email) throws Exception {
+
+        try {
             int result;
             _user.setName(_name);
             _user.setPassword(_password);
@@ -155,8 +153,9 @@ public class UserModel {
                     .log(Level.SEVERE, null, ex);
 
         }
-    
+
     }
+
     //Create new user account
     public int createAccount(UserModel _user) {
         int result = 0;
@@ -164,7 +163,7 @@ public class UserModel {
             MySQLDBTranslator SQL = new MySQLDBTranslator();
             result = SQL.createAccount(_user);
         } catch (Exception ex) {
-            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, 
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE,
                     null, ex);
         }
         return result;
@@ -182,5 +181,5 @@ public class UserModel {
         }
         return searched;
     }
-    
+
 }
