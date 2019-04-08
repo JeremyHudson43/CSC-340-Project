@@ -1,26 +1,14 @@
 package Views;
 
-import Controllers.BarcodeController;
-import Models.Printer;
-import Models.UserModel;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.awt.print.PageFormat;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import net.sourceforge.barbecue.Barcode;
-import net.sourceforge.barbecue.BarcodeException;
-import net.sourceforge.barbecue.BarcodeImageHandler;
-import net.sourceforge.barbecue.output.OutputException;
+
 
 /**
  *
  * @author Charles Brady
+ * @author Jeremy Hudson 
  *
- * Last Updated 3/16
+ * Last Updated 4-8-2019
  *
  * This is the view for a customer to create and print out a library card
  *
@@ -31,8 +19,8 @@ public class LibraryCardView extends javax.swing.JFrame {
      * Creates new form LibraryCardView
      * @param _u
      */
-    public LibraryCardView(UserModel _u) {
-  
+    public LibraryCardView() {
+  //UserModel _u
     }
     
         public void printListener(ActionListener listenForPrint) {

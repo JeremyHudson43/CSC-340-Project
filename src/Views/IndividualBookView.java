@@ -22,18 +22,20 @@ public class IndividualBookView extends javax.swing.JPanel {
     /**
      * Creates new form IndividualBookView
      */
-    public IndividualBookView(String _author, String _title, String _category, 
-            String _isbn, String _imageLink) throws MalformedURLException,
+    public IndividualBookView() throws MalformedURLException,
             IOException {
         initComponents();
-         IndividualBookVewNamePlaceholderTxtLbl.setText(_title);
-        IndividualBookVewAuthorPlaceholderTxtLbl.setText(_author);
-        IndividualBookVewISBNPlaceholderTxtLbl.setText(_isbn);
-        IndividualBookVewCategoryPlaceholderTxtLbl.setText(_category);
         
-        BufferedImage img = ImageIO.read(new URL(_imageLink));
-        imagePlaceholderLbl.setText("");
-        imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
+//        String _author, String _title, String _category, 
+//            String _isbn, String _imageLink
+//         IndividualBookVewNamePlaceholderTxtLbl.setText(_title);
+//        IndividualBookVewAuthorPlaceholderTxtLbl.setText(_author);
+//        IndividualBookVewISBNPlaceholderTxtLbl.setText(_isbn);
+//        IndividualBookVewCategoryPlaceholderTxtLbl.setText(_category);
+//        
+//        BufferedImage img = ImageIO.read(new URL(_imageLink));
+//        imagePlaceholderLbl.setText("");
+//        imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
 
     }
 

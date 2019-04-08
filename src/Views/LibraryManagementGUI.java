@@ -127,7 +127,7 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
             
             UserModel userModel = new UserModel();
             LoginView loginView = new LoginView();
-            RegisterView registerView = new RegisterView("customer");
+            RegisterView registerView = new RegisterView();
             
             BooksModel bookModel = new BooksModel();       
             LibrarianView librarianView = new LibrarianView();

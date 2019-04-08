@@ -147,8 +147,8 @@ public class UserModel {
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Account Created");
                 _user = SQL.searchUser(_id);
-                LibraryCardView libraryCard = new LibraryCardView(_user);
-                libraryCard.setVisible(true);
+                //LibraryCardView libraryCard = new LibraryCardView(_user);
+                //libraryCard.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to create account");
             }

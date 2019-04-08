@@ -19,12 +19,14 @@ public class RegisterView extends javax.swing.JFrame {
     UserModel user;
 
     // This will open up a registration form while also obtaining the type of user
-    public RegisterView(String _userType) {
+    public RegisterView() {
         initComponents();
-         user = new UserModel();
-        user.setUserType(_userType);
         
-        userType(user);
+//         String _userType        
+//         user = new UserModel();
+//        user.setUserType(_userType);
+//        
+//        userType(user);
 
     }
     

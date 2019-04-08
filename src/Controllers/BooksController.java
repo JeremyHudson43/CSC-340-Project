@@ -37,7 +37,8 @@ public class BooksController extends ParentController {
     public BooksController(LibrarianView librarianView,
             CustomerView customerView,
             LibraryManagementGUI libraryManagement, BooksModel bookModel,
-            BookDatabaseView bookDBview, AddBookView addBookView) throws SQLException {
+            BookDatabaseView bookDBview, AddBookView addBookView)
+            throws SQLException {
 
         super(librarianView, customerView, libraryManagement);
 
@@ -170,15 +171,15 @@ public class BooksController extends ParentController {
         String[] bookInfo = bookModel.parseTable(table);
         JFrame frame = new JFrame();
 
-        IndividualBookView bookView
-                = new IndividualBookView(bookInfo[2],
-                        bookInfo[2], bookInfo[3], bookInfo[0],
-                        bookInfo[4]);
-        frame.add(BorderLayout.CENTER, bookView);
-        frame.pack();
-        frame.setVisible(true);
-
-        bookView.setVisible(true);
+//        IndividualBookView bookView
+//                = new IndividualBookView(bookInfo[2],
+//                        bookInfo[2], bookInfo[3], bookInfo[0],
+//                        bookInfo[4]);
+//        frame.add(BorderLayout.CENTER, bookView);
+//        frame.pack();
+//        frame.setVisible(true);
+//
+//        bookView.setVisible(true);
     }
 
 }
