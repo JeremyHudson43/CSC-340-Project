@@ -2,12 +2,9 @@ package Models;
 
 import API.APITranslator;
 import API.ApiConnector;
-import Controllers.BooksController;
 import SQL_Translator.MySQLDBTranslator;
 import Views.BookDatabaseView;
-import Views.IndividualBookView;
 import Views.LibraryCardView;
-import java.awt.BorderLayout;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
@@ -15,8 +12,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import org.json.JSONArray;
@@ -83,44 +78,31 @@ public class BooksModel {
     public void setImageLink(String _imageLink) {
         this.imageLink = _imageLink;
     }
+    //======================================================================
     
-       public void bookDBMethod(String _author, String _title, String _isbn) throws SQLException {
+      
+    //creates table from given author, title and ISBN
+    public JTable createTable(String _author, String _title, String _isbn)  {
         try {
-            String[] columns = {"ISBN", "Title", "Author", "Category", "ImageLink"};
-            Object[][] data = null;
-            data = searchBook(_author, _title, _isbn);
+            String[] columns = {"ISBN", "Title", "Author", "Category", 
+                "ImageLink"};
+            Object[][] data = searchBook(_author, _title, _isbn);
             JTable table = new JTable(data, columns);
+            return table;
 
-            table.addMouseListener(new java.awt.event.MouseAdapter() {
-
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    try {
-                        mouseClick(table);
-                    } catch (IOException ex) {
-                        Logger.getLogger(BooksController.class.getName())
-                                .log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
-
-            JFrame frame = new JFrame();
-            JScrollPane scrollPane = new JScrollPane(table);
-
-            frame.getContentPane().setLayout(new BorderLayout());
-            frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-            frame.setSize(500, 600);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
 
         } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BookDatabaseView.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     //helper method for BookDB method
-    public void mouseClick(JTable _table) throws IOException {
+    public String[] parseTable(JTable _table) throws IOException {
 
         TableModel model = (TableModel) _table.getModel();
+        String[] bookInfo = new String[5];
 
         String author = "";
         String title = "";
@@ -132,48 +114,30 @@ public class BooksModel {
         int selectedRowIndex = _table.getSelectedRow();
         if (model.getValueAt(selectedRowIndex, 0) != null) {
             isbn = model.getValueAt(selectedRowIndex, 0).toString();
+            bookInfo[0] = isbn;
         }
         if (model.getValueAt(selectedRowIndex, 1) != null) {
             title = model.getValueAt(selectedRowIndex, 1).toString();
+            bookInfo[1] = title;
         }
         if (model.getValueAt(selectedRowIndex, 2) != null) {
             author = model.getValueAt(selectedRowIndex, 2).toString();
+            bookInfo[2] = author;
         }
         if (model.getValueAt(selectedRowIndex, 3) != null) {
             category = model.getValueAt(selectedRowIndex, 3).toString();
+            bookInfo[3] = category;
         }
         if (model.getValueAt(selectedRowIndex, 4) != null) {
             imagelink = model.getValueAt(selectedRowIndex, 4).toString();
+            bookInfo[4] = imagelink;
         }
+        
+        return bookInfo;
 
-        JFrame frame = new JFrame();
-
-        IndividualBookView bookView
-                = new IndividualBookView(author, title, category, isbn, 
-                        imagelink);
-        frame.add(BorderLayout.CENTER, bookView);
-        frame.pack();
-        frame.setVisible(true);
-
-        bookView.setVisible(true);
     }
 
-    ;
-
-    
-    /*method that creates the individual book view instance with all passed
-    arguments 
-    */
-    public void individualBookViewMethod(String _author,
-            String _title, String _category, String _isbn,
-            String _imageLink) throws IOException {
-
-        IndividualBookView IndividaulBV = new IndividualBookView
-        (_author, _title, _category, _isbn, _imageLink);
-
-        IndividaulBV.setVisible(true);
-    }
-    
+    //placeholder method for checkout logic
     public void checkOutBooksByISBN() {
 //         String[] isbn = new String[] {"", "", "", ""};
 //        isbn[0] = ISBNTextField.getText();
@@ -196,6 +160,7 @@ public class BooksModel {
     
     }
     
+    //placeholder method for printing library card
     public void LibraryCardPrint() {
               PrinterJob job = PrinterJob.getPrinterJob();
         PageFormat pageFormat = job.defaultPage();
@@ -210,6 +175,8 @@ public class BooksModel {
             }
         }
     }
+    
+    //placeholder method for library card logic
     public void LibraryCardView () {
 //          try {
 //            initComponents();
@@ -226,7 +193,6 @@ public class BooksModel {
     }
 
     public BooksModel() throws Exception {
-        super();
         SQL = new MySQLDBTranslator();
     }
 
@@ -270,7 +236,7 @@ public class BooksModel {
         BooksModel book = new BooksModel();
         book.setISBN(_isbn);
         String bookData = book.myAPI.loadBookNameByISBN(_isbn);
-        parseBook(bookData);
+        parseBookFromAPI(bookData);
     }
       
        public void loadBookNameByAuthorAndTitle(String _author, 
@@ -278,10 +244,10 @@ public class BooksModel {
         BooksModel book = new BooksModel();
         String bookData = book.myAPI.loadBookNameByAuthorAndTitle
         (_author, _title);
-        parseBook(bookData);
+        parseBookFromAPI(bookData);
     }
               
-      public  void parseBook(String _responseString){
+      public  void parseBookFromAPI(String _responseString){
           
         try {
 
@@ -304,7 +270,8 @@ public class BooksModel {
                 
     
                 BooksModel bookObject = 
-                        buildBook(bookAuthor, bookTitle, "", bookISBN, bookImageLink); 
+                        buildBook(bookAuthor, bookTitle, "", bookISBN, 
+                                bookImageLink); 
 
 
                        

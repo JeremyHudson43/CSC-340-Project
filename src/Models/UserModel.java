@@ -2,8 +2,6 @@ package Models;
 
 import Controllers.UserController;
 import SQL_Translator.MySQLDBTranslator;
-import Views.CustomerView;
-import Views.LibrarianView;
 import Views.LibraryCardView;
 import Views.LoginView;
 import java.util.logging.Level;
@@ -92,10 +90,12 @@ public class UserModel {
 
 //================================================================
     
-     // If something is entered, the program will check to see if it exists in the database
+     /* If something is entered, the program will check to see if it exists in
+    the database */
     public String checkLogin(String _username, String _password) {
           if (_username.equals("") || _password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Required fields not entered. Please try again.");
+            JOptionPane.showMessageDialog(null, "Required fields not entered. "
+                    + "Please try again.");
         } 
         else {
             try {
@@ -106,21 +106,25 @@ public class UserModel {
                 MySQLDBTranslator translator = new MySQLDBTranslator();
                 String result = translator.checkLogin(user);
                 // if the user is a librarian, it will open the librarian view.
-                if (result == null ? librarian == null : result.equals(librarian)) {
+                if (result == null ? librarian == null 
+                        : result.equals(librarian)) {
 
                     return "librarian";
-                    // if the user is a customer, it will open the customer view.
-                } else if (result == null ? customer == null : result.equals(customer)) {
+                   // if the user is a customer, it will open the customer view.
+                } else if (result == null ? customer == null : 
+                        result.equals(customer)) {
 
                     return "customer";
-                /* if the username and password is not in the database, it will ask the
-                * the user to try again
+                /* if the username and password is not in the database, 
+                    it will ask the user to try again
                 */
                 } else {
-                    JOptionPane.showMessageDialog(null, " User does not exist. Please try again.");
+                    JOptionPane.showMessageDialog(null, " User does not exist."
+                            + " Please try again.");
                 }
             } catch (Exception ex) {
-                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginView.class.getName())
+                        .log(Level.SEVERE, null, ex);
             }
     }
           return "";
