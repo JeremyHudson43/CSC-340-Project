@@ -1,12 +1,17 @@
 package Views;
 
+import Controllers.BooksController;
 import Controllers.UserController;
+import Models.BooksModel;
 import Models.UserModel;
 import java.awt.event.ActionListener;
 
 /**
  *
- * @author DELL6420
+ * @author Charles Brady
+ * @author Jeremy Hudson
+ *
+ * Last updated 4/12
  */
 public class LibraryManagementGUI extends javax.swing.JFrame {
 
@@ -49,11 +54,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         registerButton.setText("Register");
 
         loginButton.setText("Login");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,10 +97,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitProgramButtonActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-
-    }//GEN-LAST:event_loginButtonActionPerformed
-
     public void addLoginListener(ActionListener listenForLogin) {
 
         loginButton.addActionListener(listenForLogin);
@@ -116,16 +112,32 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
 
         LibraryManagementGUI libManage = new LibraryManagementGUI();
+
         UserModel userModel = new UserModel();
         LoginView loginView = new LoginView();
-        RegisterView registerView = new RegisterView("customer");
+        RegisterView registerView = new RegisterView();
 
-        UserController userController
-                = new UserController(libManage, userModel, loginView, registerView);
-        userController.initController();
+        BooksModel bookModel = new BooksModel();
+        LibrarianView librarianView = new LibrarianView();
+        CustomerView customerView = new CustomerView();
+        BookDatabaseView bookDBview = new BookDatabaseView();
+        AddBookView addBookView = new AddBookView();
+        CheckoutView checkOutView = new CheckoutView();
+        CheckinView checkInView = new CheckinView();
+
+        UserController userController = new UserController(librarianView, customerView,
+                libManage, userModel, loginView, registerView);
+
+        userController.initUserController();
+
+        BooksController bookController = new BooksController(librarianView,
+                customerView, libManage, bookModel, bookDBview,
+                addBookView, checkOutView, checkInView);
+
+        bookController.initBookController();
 
         libManage.setVisible(true);
     }

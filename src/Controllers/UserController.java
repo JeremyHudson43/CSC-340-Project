@@ -6,11 +6,6 @@ import Views.LibrarianView;
 import Views.LibraryManagementGUI;
 import Views.LoginView;
 import Views.RegisterView;
-import Views.AddBookView;
-import Views.BookDatabaseView;
-import Views.CheckinView;
-import Views.CheckoutView;
-import Views.IndividualBookView;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,61 +17,39 @@ import java.util.logging.Logger;
  *
  * Last updated 4/5
  */
-public class UserController extends MasterController {
+public class UserController extends ParentController {
 
     private UserModel userModel;
     private RegisterView registerView;
     private LoginView loginView;
-    private CheckoutView checkoutView;
-    private CheckinView checkinView;
 
-    public UserController(LibrarianView _librarianView,
-            CustomerView _customerView,
-            LibraryManagementGUI _libraryManagement,
-            UserModel _userModel,
-            LoginView _loginView,
-            RegisterView _registerView,
-            AddBookView _addBookView,
-            BookDatabaseView _bookDatabaseView,
-            CheckinView _checkinView,
-            CheckoutView _checkoutView,
-            IndividualBookView _individualBookView
+    public UserController(LibrarianView librarianView,
+            CustomerView customerView,
+            LibraryManagementGUI libraryManagement,
+            UserModel userModel,
+            LoginView loginView,
+            RegisterView registerView
     ) {
 
-        super(_librarianView, _customerView, _libraryManagement);
+        super(librarianView, customerView, libraryManagement);
 
         this.userModel = userModel;
         this.registerView = registerView;
         this.loginView = loginView;
         this.libraryManagement = libraryManagement;
-        this.checkinView = checkinView;
-        this.checkoutView = checkoutView;
+
+    }
+
+    //adds listenres to main login and register buttons
+    public void initUserController() {
 
         libraryManagement.addLoginListener(e -> displayLogin());
         libraryManagement.addRegisterListener(e -> displayRegister());
-
-//        librarianView.addLibrarianSearchListener(e -> displayBookDB());
-//        librarianView.addCustomerSearchListener(e -> displayBookDB());
-    }
-
-    public UserController(LibraryManagementGUI libManage,
-            UserModel userModel, LoginView loginView,
-            RegisterView registerView) {
-
-        this.libraryManagement = libManage;
-        this.userModel = userModel;
-        this.registerView = registerView;
-        this.loginView = loginView;
-
-        libraryManagement.addLoginListener(e -> displayLogin());
-        libraryManagement.addRegisterListener(e -> displayRegister());
+        //librarianView.customerSearchListener(e -> displayBookDB());
 
     }
 
-    public void initController() {
-
-    }
-
+    //opens register view and registers user if info is valid
     public void displayRegister() {
         registerView.setVisible(true);
         registerView.registerButton().addActionListener(e -> {
@@ -92,6 +65,7 @@ public class UserController extends MasterController {
         });
     }
 
+    //displays login view and logs the relevant user type in
     public void displayLogin() {
         loginView.setVisible(true);
         loginView.loginButton().addActionListener(e -> {
@@ -104,19 +78,20 @@ public class UserController extends MasterController {
         });
     }
 
+    //checks for customer or librarian
     public void checkLogin(String username, String password) throws SQLException {
 
         String userType = userModel.checkLogin(username, password);
+        if (userType.equals("customer")) {
+            customerView.setVisible(true);
+        } else if (userType.equals("librarian")) {
+            librarianView.setVisible(true);
 
-        BooksController bookController;
-        if (userType.equals("librarian")) {
-            bookController = new BooksController(librarianView);
-        } else if (userType.equals("customer")) {
-            bookController = new BooksController(customerView);
         }
 
     }
 
+    //helper method for register view
     public void checkRegister(UserModel user, String name, String userID,
             String password, String email) throws Exception {
         userModel.checkRegister(user, name, password, userID, email);

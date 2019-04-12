@@ -19,14 +19,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charles Brady
  *
- * Last updated 3/13
+ * Last updated 4/12
  */
 public class MySQLDBTranslator {
 
     private Connection connection;
     private PreparedStatement preparedstate;
     private final static String URL = "jdbc:mysql://localhost:3306"
-            + "/library";
+            + "/library?autoReconnect=true&useSSL=false";
     private final static String acct = "root";
     private final static String pass = "Alexandria";
 
@@ -89,39 +89,35 @@ public class MySQLDBTranslator {
     }
 
     //Search for a book in the MySQL Database.
-    public Object[][] searchBooks(String _author, String _title, String _isbn) throws SQLException
-            {
+    public Object[][] searchBooks(String _author, String _title, String _isbn) throws SQLException {
 
         String sql = "";
         ResultSet resultset;
-               
-       
-       searchBooksHelper(_author, _title, _isbn, sql);
-       
-          resultset = preparedstate.executeQuery();
-            resultset.last();
-            int row = resultset.getRow();
-            resultset.first();
-            int i = 0;
-            Object[][] data = new Object[row][5];
-            
-            while (resultset.next()) {
-                data[i][0] = resultset.getString(1);
-                data[i][1] = resultset.getString(2);
-                data[i][2] = resultset.getString(3);
-                data[i][3] = resultset.getString(4);
-                data[i][4] = resultset.getString(5);
-                i++;
-            }
-            return data;
-            
+
+        resultset = searchBooksHelper(_author, _title, _isbn, sql);
+
+        resultset.last();
+        int row = resultset.getRow();
+        resultset.first();
+        int i = 0;
+        Object[][] data = new Object[row][5];
+
+        while (resultset.next()) {
+            data[i][0] = resultset.getString(1);
+            data[i][1] = resultset.getString(2);
+            data[i][2] = resultset.getString(3);
+            data[i][3] = resultset.getString(4);
+            data[i][4] = resultset.getString(5);
+            i++;
+        }
+        return data;
+
     }
-   
 
     //helper method for searchBooks to ensure main method is not too long
-public void searchBooksHelper (String _author, String _title, String _isbn,
-        String _sql) {
- try {
+    public ResultSet searchBooksHelper(String _author, String _title, String _isbn,
+            String _sql) {
+        try {
             if (!_isbn.equals("")) {
                 _sql = "SELECT * FROM book WHERE isbn like ?";
                 preparedstate = connection.prepareStatement(_sql);
@@ -146,24 +142,25 @@ public void searchBooksHelper (String _author, String _title, String _isbn,
                     preparedstate.setString(1, "%" + _title + "%");
                 }
             }
-               } catch (SQLException ex) {
+            return preparedstate.executeQuery();
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.exit(0);
         }
-}
+        return null;
+    }
 
-
-     //Check out a book for a user within the MySQL Database.
-    public int checkoutBooks(String[] _bookISBN, int _ID) {
+    //Check out a book for a user within the MySQL Database.
+    public int checkoutBooks(String[] _isbn, String _id) {
         boolean result = false;
         String sql = "";
         int cnt = 0;
 
         try {
-            for(int i = 0; i < 10; i++){
-                if (!_bookISBN[i].equals("")) {
+            for (int i = 0; i < 4; i++) {
+                if (!_isbn[i].equals("")) {
                     sql = "INSERT INTO checkout (ID, ISBN) VALUES"
-                            + "(" + _ID + ", '" + _bookISBN[i] + "')";
+                            + "(" + _id + ", '" + _isbn[i] + "')";
                     preparedstate = connection.prepareCall(sql);
                     result = preparedstate.execute(sql);
                     cnt++;
@@ -175,16 +172,16 @@ public void searchBooksHelper (String _author, String _title, String _isbn,
         return cnt;
     }
 
-
     //Check in a Users checked out book within the MySQL Database.
-    public int checkInBooks(BooksModel _book, UserModel _user) {
+    public int checkInBooks(String[] _isbn, String _id) {
         int res = 0;
         String sql = "";
 
         try {
-            sql = "DELETE FROM checkout WHERE isbn = '" 
-                    + _book.getISBN() + "' AND ID = " + _user.getId();
-
+            for (int i = 0; i < 4; i++) {
+                sql = "DELETE FROM checkout WHERE isbn = '"
+                        + _isbn[i] + "' AND ID = " + _id;
+            }
             preparedstate = connection.prepareCall(sql);
             //code to set date
             res = preparedstate.executeUpdate(sql);
@@ -214,9 +211,9 @@ public void searchBooksHelper (String _author, String _title, String _isbn,
         return res;
     }
 
-    /*Checks within the MySQL database whether or not a user is a Librarian 
+    /*Checks within the MySQL database whether or not a user is a Librarian
     or a Customer
-    */
+     */
     public String checkLogin(UserModel _user) throws Exception {
         String sql = "";
         ResultSet rs = null;
@@ -287,7 +284,7 @@ public void searchBooksHelper (String _author, String _title, String _isbn,
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         while (_resultSet.next()) {
             Vector<Object> vector = new Vector<Object>();
-            for (int columnIndex = 1; columnIndex <= columnCount; 
+            for (int columnIndex = 1; columnIndex <= columnCount;
                     columnIndex++) {
                 vector.add(_resultSet.getObject(columnIndex));
             }

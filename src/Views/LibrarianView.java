@@ -7,14 +7,13 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/5
+ * Last Updated 4/6
  *
  * This class allows the librarian to search the book database and to check the
  * books they have checked out, in addition to searching for and creating new
  * customers
  */
 public class LibrarianView extends javax.swing.JFrame {
-
 
     /**
      * Creates new form NewJFrame
@@ -24,18 +23,19 @@ public class LibrarianView extends javax.swing.JFrame {
     }
 
     public void databaseListener(ActionListener listenForDatabase) {
-
         openDatabaseButton.addActionListener(listenForDatabase);
-
     }
 
     public void customerSearchListener(ActionListener listenForCustomerSearch) {
-
         customerSearchButton.addActionListener(listenForCustomerSearch);
     }
 
     public void bookAddListener(ActionListener listenForAddBook) {
         addBookButton.addActionListener(listenForAddBook);
+    }
+
+    public void addLibrarianListener(ActionListener listenForAddLibrarian) {
+        addLibrarianButton.addActionListener(listenForAddLibrarian);
     }
 
     public void librarianSearchListener(ActionListener listenForAddLibrarian) {
@@ -147,8 +147,9 @@ public class LibrarianView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(customerSearchButton)
                                     .addComponent(GoToSelectedBookButton)))
-                            .addComponent(checkInButton)
-                            .addComponent(checkOutButton))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(checkInButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(checkOutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -13,28 +13,25 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Jeremy Hudson
- *
- * Last updated 4/7
+ * @author Charles Brady
  */
 public class IndividualBookView extends javax.swing.JPanel {
 
     /**
      * Creates new form IndividualBookView
      */
-    public IndividualBookView(String _author, String _title, String _category,
-            String _isbn, String _imageLink) throws MalformedURLException,
-            IOException {
+    public IndividualBookView(String[] _bookinfo) throws MalformedURLException, IOException {
         initComponents();
-        IndividualBookVewNamePlaceholderTxtLbl.setText(_title);
-        IndividualBookVewAuthorPlaceholderTxtLbl.setText(_author);
-        IndividualBookVewISBNPlaceholderTxtLbl.setText(_isbn);
-        IndividualBookVewCategoryPlaceholderTxtLbl.setText(_category);
 
-        BufferedImage img = ImageIO.read(new URL(_imageLink));
-        imagePlaceholderLbl.setText("");
-        imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
-
+//        String _author, String _title, String _category, 
+//            String _isbn, String _imageLink
+          IndividualBookVewNamePlaceholderTxtLbl.setText(_bookinfo[0]);
+          IndividualBookVewAuthorPlaceholderTxtLbl.setText(_bookinfo[1]);
+          IndividualBookVewISBNPlaceholderTxtLbl.setText(_bookinfo[2]);
+          IndividualBookVewCategoryPlaceholderTxtLbl.setText(_bookinfo[3]);
+          BufferedImage img = ImageIO.read(new URL(_bookinfo[4]));
+          imagePlaceholderLbl.setText("");
+          imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
     }
 
     /**

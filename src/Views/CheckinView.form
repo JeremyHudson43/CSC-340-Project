@@ -40,31 +40,39 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="CustomerLabel" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="BookISBNLabel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="CustomerTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="CheckinButton" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="isbnTextField1" pref="120" max="32767" attributes="0"/>
-                              <Component id="isbnTextField3" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="CustomerLabel" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="isbnTextField2" pref="123" max="32767" attributes="0"/>
-                              <Component id="isbnTextField4" max="32767" attributes="0"/>
+                          <Component id="BookISBNLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="CustomerTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="checkInButton" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="isbnTextField1" pref="120" max="32767" attributes="0"/>
+                                      <Component id="isbnTextField3" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="isbnTextField2" pref="123" max="32767" attributes="0"/>
+                                      <Component id="isbnTextField4" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -74,7 +82,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustomerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CustomerTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -91,7 +101,7 @@
                   <Component id="isbnTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="CheckinButton" min="-2" max="-2" attributes="0"/>
+              <Component id="checkInButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -108,9 +118,9 @@
         <Property name="text" type="java.lang.String" value="Enter books by ISBN:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="CheckinButton">
+    <Component class="javax.swing.JButton" name="checkInButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Checkin"/>
+        <Property name="text" type="java.lang.String" value="Check In"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -125,6 +135,11 @@
     <Component class="javax.swing.JTextField" name="isbnTextField3">
     </Component>
     <Component class="javax.swing.JTextField" name="isbnTextField4">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Check In"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

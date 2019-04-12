@@ -1,10 +1,6 @@
 package Views;
 
-import Controllers.BooksController;
-import Models.BooksModel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
+import java.awt.event.ActionListener;
 
 /*
 Jeremy Hudson
@@ -13,7 +9,7 @@ Charles Brady
 * This class is used to access the database of books
 *
 *
-Last updated 2-23-2019
+Last updated 4-12-2019
  */
 public class BookDatabaseView extends javax.swing.JPanel {
 
@@ -41,6 +37,8 @@ public class BookDatabaseView extends javax.swing.JPanel {
         searchTitleNoLoginTxtFld = new javax.swing.JTextField();
         searchISBNNoLoginTxtFld = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         searchLocalDatabaseButton = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -51,11 +49,11 @@ public class BookDatabaseView extends javax.swing.JPanel {
 
         searchDatabaseNoLogin.setText("Search database ");
 
-        searchAuthorNoLoginTxtFld.setText("Author Name");
-
-        searchTitleNoLoginTxtFld.setText("Title of Book");
-
         jLabel1.setText("Search by ISBN");
+
+        jLabel2.setText("Author:");
+
+        jLabel3.setText("Title:");
 
         javax.swing.GroupLayout LibManageSysLayout = new javax.swing.GroupLayout(LibManageSys);
         LibManageSys.setLayout(LibManageSysLayout);
@@ -64,18 +62,20 @@ public class BookDatabaseView extends javax.swing.JPanel {
             .addGroup(LibManageSysLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addComponent(searchDatabaseNoLogin)
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LibManageSysLayout.createSequentialGroup()
-                        .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(searchAuthorNoLoginTxtFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(searchTitleNoLoginTxtFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(searchISBNNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 183, Short.MAX_VALUE))))
+                        .addComponent(searchAuthorNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchDatabaseNoLogin)
+                    .addGroup(LibManageSysLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(31, 31, 31)
+                        .addComponent(searchTitleNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 69, Short.MAX_VALUE)
+                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchISBNNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(77, 77, 77))
         );
         LibManageSysLayout.setVerticalGroup(
             LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,9 +86,12 @@ public class BookDatabaseView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchAuthorNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchISBNNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchISBNNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchTitleNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchTitleNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -118,6 +121,10 @@ public class BookDatabaseView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void searchDBListener(ActionListener listenForSearch) {
+        searchLocalDatabaseButton.addActionListener(listenForSearch);
+    }
+
     public String getAuthorName() {
         return searchAuthorNoLoginTxtFld.getText();
     }
@@ -135,6 +142,8 @@ public class BookDatabaseView extends javax.swing.JPanel {
     private javax.swing.JPanel LibManageSys;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JTextField searchAuthorNoLoginTxtFld;
     private javax.swing.JLabel searchDatabaseNoLogin;

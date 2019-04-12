@@ -1,6 +1,5 @@
 package Views;
 
-import Controllers.UserController;
 import javax.swing.JButton;
 
 /**
@@ -11,14 +10,13 @@ import javax.swing.JButton;
  * This class allows a user to login. It will check if the user is a librarian
  * or a customer, and direct them to the appropriate page.
  *
- * Last updated 4/7
-
+ * Last updated 3/5
  */
 public class LoginView extends javax.swing.JFrame {
 
-    private static final String LIBRARIAN = "librarian";
-    private static final String CUSTOMER = "customer";
-
+    private static final String librarian = "librarian";
+    private static final String customer = "customer";
+    
     /**
      * Creates new form CustomerLogin
      */
@@ -26,6 +24,7 @@ public class LoginView extends javax.swing.JFrame {
         initComponents();
         this.pack();
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,11 +55,6 @@ public class LoginView extends javax.swing.JFrame {
         Password_label.setText("Password");
 
         loginButton.setText("Login");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
 
         registerButton.setText("Register");
 
@@ -111,15 +105,11 @@ public class LoginView extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-
-    }//GEN-LAST:event_loginButtonActionPerformed
-
     public String username(){
        return Username_txtfield.getText();
     }
      public String password(){
-       return new String(Password_txtField.getPassword());
+       return Password_txtField.getText();
     }
      public JButton loginButton() {
          return loginButton;
