@@ -92,7 +92,7 @@ public class UserModel {
 //================================================================
     
      /* If something is entered, the program will check to see if it exists in
-    the database */
+    the database. */
     public String checkLogin(String _username, String _password) {
           if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. "
@@ -117,7 +117,7 @@ public class UserModel {
 
                     return "customer";
                 /* if the username and password is not in the database, 
-                    it will ask the user to try again
+                    it will ask the user to try again.
                 */
                 } else {
                     JOptionPane.showMessageDialog(null, " User does not exist."
@@ -131,16 +131,16 @@ public class UserModel {
           return "";
     }
 
-    //creates acocunt if all input is valid 
+    //This creates an acocunt if all input is valid.
     public void checkRegister(UserModel _user, String _name, String _password, 
-            String _id, String _Email)  throws Exception {
+            String _id, String _email)  throws Exception {
         
           try {
             int result;
             _user.setName(_name);
             _user.setPassword(_password);
             _user.setUserId(_id);
-            _user.setEmail(_Email);
+            _user.setEmail(_email);
 
             MySQLCaller SQL = new MySQLCaller();
             result = SQL.createAccount(_user);
@@ -160,7 +160,7 @@ public class UserModel {
         }
     
     }
-    //Create new user account
+    //This creates a new user account.
     public int createAccount(UserModel _user) {
         int result = 0;
         try {
@@ -173,7 +173,7 @@ public class UserModel {
         return result;
     }
 
-    //Search for user in the database
+    //This searches for user in the database.
     public UserModel searchUser(String _id) {
         UserModel searched = null;
         try {

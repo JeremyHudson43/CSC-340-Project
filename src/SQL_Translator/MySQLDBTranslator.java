@@ -33,9 +33,9 @@ public class MySQLDBTranslator {
 
     public MySQLDBTranslator() throws Exception {
         try {
-            // This will load the MySQL driver, each DB has its own driver
+            // This will load the MySQL driver, each DB has its own driver.
             Class.forName("com.mysql.jdbc.Driver");
-            // Setup the connection with the DB
+            // This sets up the connection with the DB.
             connection = DriverManager.getConnection(URL, acct, pass);
             if (connection == null) {
                 JOptionPane.showMessageDialog(null, "Cannot connect to database."
@@ -49,7 +49,7 @@ public class MySQLDBTranslator {
         }
     }
 
-    //Add a book to the MySQL Database.
+    //This adds a book to the MySQL Database.
     public int addBooks(BooksModel _book) {
         int res = 0;
         String sql = "";
@@ -89,7 +89,7 @@ public class MySQLDBTranslator {
         return result;
     }
 
-    //Search for a book in the MySQL Database.
+    //This searches for a book in the MySQL Database.
     public Object[][] searchBooks(String _author, String _title, String _isbn) throws SQLException {
 
         String sql = "";
@@ -115,7 +115,9 @@ public class MySQLDBTranslator {
 
     }
 
-    //helper method for searchBooks to ensure main method is not too long
+    /*This is a helper method for searchBooks to ensure the main method is not 
+    too long
+    */
     public ResultSet searchBooksHelper(String _author, String _title, String _isbn,
             String _sql) {
         try {
@@ -151,7 +153,7 @@ public class MySQLDBTranslator {
         return null;
     }
 
-    //Check out a book for a user within the MySQL Database.
+    // This checks out a book for a user within the MySQL Database.
     public int checkoutBooks(String[] _isbn, String _id) {
         boolean result = false;
         String sql = "";
@@ -173,7 +175,7 @@ public class MySQLDBTranslator {
         return cnt;
     }
 
-    //Check in a Users checked out book within the MySQL Database.
+    //This checks in a Users checked out book within the MySQL Database.
     public int checkInBooks(String[] _isbn, String _id) {
         int res = 0;
         String sql = "";
@@ -192,7 +194,7 @@ public class MySQLDBTranslator {
         return res;
     }
 
-    //Create new user for the MySQL Database
+    //This creates a new user for the MySQL Database.
     public int createAccount(UserModel _user) {
         int res = 0;
         String sql = "";
@@ -212,8 +214,8 @@ public class MySQLDBTranslator {
         return res;
     }
 
-    /*Checks within the MySQL database whether or not a user is a Librarian
-    or a Customer
+    /*This checks within the MySQL database whether or not a user is a 
+    Librarian or a Customer.
      */
     public String checkLogin(UserModel _user) throws Exception {
         String sql = "";
@@ -239,7 +241,7 @@ public class MySQLDBTranslator {
         return type;
     }
 
-    //Search for a user within the MySQL Database
+    //This searches for a user within the MySQL Database.
     public UserModel searchUser(String _id) {
 
         String sql = "";
@@ -268,20 +270,20 @@ public class MySQLDBTranslator {
         return u;
     }
 
-    //Table model
+    //This is the Table model
     public static DefaultTableModel buildTableModel(ResultSet _resultSet)
             throws SQLException {
 
         ResultSetMetaData metaData = _resultSet.getMetaData();
 
-        //names of columns
+        //These are the names of the columns
         Vector<String> columnNames = new Vector<String>();
         int columnCount = metaData.getColumnCount();
         for (int column = 1; column <= columnCount; column++) {
             columnNames.add(metaData.getColumnName(column));
         }
 
-        //data of the table
+        //This is the data of the table
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         while (_resultSet.next()) {
             Vector<Object> vector = new Vector<Object>();

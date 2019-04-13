@@ -18,8 +18,8 @@ public class GoogleBooksAPI implements ApiConnector {
             + "volumes?q=";
 
     @Override
-    public String loadBookNameByISBN(String _ISBN) {
-            String response = getRequest("", "", _ISBN);
+    public String loadBookNameByISBN(String _isbn) {
+            String response = getRequest("", "", _isbn);
             return response;
     }
 
@@ -30,11 +30,11 @@ public class GoogleBooksAPI implements ApiConnector {
             return response; 
     }
     
-    //get request to the API using data from BookDatabaseView
-    public String getRequest(String _Author, String _Volume, String _ISBN) {
+    //This is a get request to the API using data from BookDatabaseView.
+    public String getRequest(String _author, String _volume, String _isbn) {
 
         try {
-            URL url = new URL(baseURL + _Volume + "+inauthor:" + _Author
+            URL url = new URL(baseURL + _volume + "+inauthor:" + _author
                     + "&key=" + apiKey);
             
             HttpURLConnection connection = (HttpURLConnection) 
@@ -42,7 +42,7 @@ public class GoogleBooksAPI implements ApiConnector {
             
             connection.setRequestMethod("GET");
             
-            if (_ISBN.equals("")) {
+            if (_isbn.equals("")) {
                 
                 String responseString = (connectionHelper(connection));
                 
@@ -50,7 +50,7 @@ public class GoogleBooksAPI implements ApiConnector {
                 
                 
             } else {
-                URL ISBNurl = new URL(baseURL + _ISBN + "&key=" + apiKey);
+                URL ISBNurl = new URL(baseURL + _isbn + "&key=" + apiKey);
                 
                 ISBNurl.openConnection();
                 HttpURLConnection ISBNconnection
@@ -70,7 +70,7 @@ public class GoogleBooksAPI implements ApiConnector {
         return null;
     }
 
-    //helper method to read data from API
+    //This is a helper method to read data from API.
     private static String connectionHelper(
             HttpURLConnection _connection) throws IOException, Exception {
 

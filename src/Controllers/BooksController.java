@@ -47,16 +47,16 @@ public class BooksController {
     public void initControllerForLibrarian() {
         librarianView.setVisible(true);
         
-        librarianView.databaseListener(e -> displayBookDB());
-        librarianView.bookAddListener(e -> displayAddBookView());
-        librarianView.customerSearchListener(e -> customerDisplay());
-        librarianView.checkInListener(e -> displayCheckInView());
-        librarianView.checkOutListener(e -> displayCheckOutView());
+        this.librarianView.databaseListener(e -> displayBookDB());
+        this.librarianView.bookAddListener(e -> displayAddBookView());
+        this.librarianView.customerSearchListener(e -> customerDisplay());
+        this.librarianView.checkInListener(e -> displayCheckInView());
+        this.librarianView.checkOutListener(e -> displayCheckOutView());
     }
 
     public void initControllerForCustomer() {
-        customerView.setVisible(true);
-        customerView.databaseListener(e -> displayBookDB());
+        this.customerView.setVisible(true);
+        this.customerView.databaseListener(e -> displayBookDB());
 
     }
 
@@ -74,6 +74,9 @@ public class BooksController {
        individualCustomerView.setVisible(true);
     }
     
+    /*This gets the userID and ISBNs from checkoutView and contacts the model to 
+    checkout the books in the database
+    */
     private void checkOut() {
         String userID = checkoutView.getUserID();
         String isbn1 = checkoutView.getISBN1();
@@ -87,9 +90,10 @@ public class BooksController {
 
     }
 
+    //This displays the checkout view.
     private void displayCheckOutView() {
-        checkoutView.setVisible(true);
-        checkoutView.checkOutListener(e -> {
+        this.checkoutView.setVisible(true);
+        this.checkoutView.checkOutListener(e -> {
             try {
                 checkOut();
             } catch (Exception ex) {
@@ -99,9 +103,10 @@ public class BooksController {
         });
     }
 
+    //This displays the checkin view.
     private void displayCheckInView() {
-        checkInView.setVisible(true);
-        checkInView.checkinListener(e -> {
+        this.checkInView.setVisible(true);
+        this.checkInView.checkinListener(e -> {
             try {
                 checkIn();
             } catch (Exception ex) {
@@ -111,6 +116,9 @@ public class BooksController {
         });
     }
 
+    /*This gets the userID and ISBNs from checkinView and contacts the model to 
+    checkout the books in the database.
+    */
     private void checkIn() {
         String userID = checkInView.getUserID();
         String isbn1 = checkInView.getISBN1();
@@ -123,21 +131,23 @@ public class BooksController {
 
     }
 
+    //This displays the book DB view. 
     public void displayBookDB() {
 
-        bookDBView.setVisible(true);
+        this.bookDBView.setVisible(true);
 
         JFrame frame = new JFrame();
         frame.add(BorderLayout.CENTER, bookDBView);
         frame.pack();
         frame.setVisible(true);
-        bookDBView.searchDBListener(e -> searchLocalDB());
+        this.bookDBView.searchDBListener(e -> searchLocalDB());
 
     }
 
+    //This displays the add book view. 
     private void displayAddBookView() {
-        addBookView.setVisible(true);
-        addBookView.addBookListener(e -> {
+        this.addBookView.setVisible(true);
+        this.addBookView.addBookListener(e -> {
             try {
                 addBooks();
             } catch (Exception ex) {
@@ -148,6 +158,7 @@ public class BooksController {
 
     }
 
+    //This gets book info from the API by title and author or by ISBN.
     private void addBooks() throws Exception {
 
         String author = addBookView.getAuthor();
@@ -161,12 +172,12 @@ public class BooksController {
         }
     }
 
-    //searches local SQL database for book matching author/title/ISBN
+    // This searches the local SQL database for book matching author/title/ISBN.
     public void searchLocalDB() {
 
-        String author = bookDBView.getAuthorName();
-        String title = bookDBView.getBookTitle();
-        String ISBN = bookDBView.getISBN();
+        String author = this.bookDBView.getAuthorName();
+        String title = this.bookDBView.getBookTitle();
+        String ISBN = this.bookDBView.getISBN();
 
         try {
             bookModel.searchBook(author, title, ISBN);
@@ -178,11 +189,11 @@ public class BooksController {
 
     }
 
-    //creates a table from book model info and displays it in a scrollPane
-    private void getIndividualBookViewTable(String author, String title,
-            String ISBN) {
+    //This creates a table from book model info and displays it in a scrollPane.
+    private void getIndividualBookViewTable(String _author, String _title,
+            String _isbn) {
 
-        JTable table = bookModel.createTable(author, title, ISBN);
+        JTable table = bookModel.createTable(_author, _title, _isbn);
 
         try {
 
@@ -214,17 +225,17 @@ public class BooksController {
         }
     }
 
-    /*displays individual book info after an item has been clicked in
-    the scroll plane
+    /*This displays individual book info after an item has been clicked in
+    the scroll plane.
      */
-    private void getInfoAboutBook(JTable table) throws IOException {
-        String[] bookInfo = bookModel.parseTable(table);
+    private void getInfoAboutBook(JTable _table) throws IOException {
+        String[] bookInfo = bookModel.parseTable(_table);
 
-        individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[0]);
-        individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[1]);
-        individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[2]);
-        individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[3]);
-        individualBookView.setImagePlaceholderLbl(bookInfo[4]);
+        this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[0]);
+        this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[1]);
+        this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[2]);
+        this.individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[3]);
+        this.individualBookView.setImagePlaceholderLbl(bookInfo[4]);
 
         JFrame frame = new JFrame();
 
@@ -232,7 +243,7 @@ public class BooksController {
         frame.pack();
         frame.setVisible(true);
 
-        individualBookView.setVisible(true);
+        this.individualBookView.setVisible(true);
     }
 
 }
