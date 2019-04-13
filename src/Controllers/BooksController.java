@@ -1,13 +1,17 @@
 package Controllers;
 
 import Models.BooksModel;
+import Models.UserModel;
+import SQL_Translator.MySQLCaller;
 import Views.AddBookView;
 import Views.BookDatabaseView;
+import Views.CheckinView;
 import Views.CheckoutView;
 import Views.CustomerView;
 import Views.IndividualBookView;
+import Views.IndividualCustomerView;
 import Views.LibrarianView;
-import Views.LibraryManagementGUI;
+
 import java.awt.BorderLayout;
 import java.io.IOException;
 
@@ -23,84 +27,114 @@ import javax.swing.JTable;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/8
+ * Last Updated 4/13
  *
  * This is the controller for the books class
  */
-public class BooksController extends ParentController {
+public class BooksController {
 
-    private BooksModel bookModel;
-    private AddBookView addBookView;
-    private BookDatabaseView bookDBView;
-    private CheckoutView checkoutView;
+    private BooksModel bookModel = new BooksModel();
+    private UserModel userModel = new UserModel();
+    private AddBookView addBookView = new AddBookView();
+    private BookDatabaseView bookDBView = new BookDatabaseView();
+    private CheckoutView checkoutView = new CheckoutView();
+    private CheckinView checkInView = new CheckinView();
+    private LibrarianView librarianView = new LibrarianView();
+    private CustomerView customerView = new CustomerView();
+    private IndividualBookView individualBookView = new IndividualBookView();
+    private IndividualCustomerView individualCustomerView = new IndividualCustomerView();
 
-    public BooksController(LibrarianView librarianView,
-            CustomerView customerView,
-            LibraryManagementGUI libraryManagement, BooksModel bookModel,
-            BookDatabaseView bookDBview, AddBookView addBookView)
-            throws SQLException {
-
-        super(librarianView, customerView, libraryManagement);
-
-        this.bookModel = bookModel;
-        this.bookDBView = bookDBview;
-        this.addBookView = addBookView;
-
-        initBookController();
-    }
-
-    public void initBookController() {
-
+    public void initControllerForLibrarian() {
+        librarianView.setVisible(true);
+        
         librarianView.databaseListener(e -> displayBookDB());
-        //customerView.databaseListener(e -> displayBookDB());
-        addBookView.addBookListener(e -> displayAddBookView());
-
-        //librarianView.checkInListener(e -> displayBookDB());
-        librarianView.checkOutListener(e -> checkOutView());
-        //librarianView.goToBookListener(e -> displayBookDB());
         librarianView.bookAddListener(e -> displayAddBookView());
+        librarianView.customerSearchListener(e -> customerDisplay());
+        librarianView.checkInListener(e -> displayCheckInView());
+        librarianView.checkOutListener(e -> displayCheckOutView());
+    }
+
+    public void initControllerForCustomer() {
+        customerView.setVisible(true);
+        customerView.databaseListener(e -> displayBookDB());
 
     }
 
-    public void checkOutView() {
+    public void customerDisplay() {
+        
+       UserModel placeholder = new UserModel();
+       
+       placeholder = userModel.searchUser
+        (librarianView.getCustomerSearchTextField());
+       
+       individualCustomerView.setCustomerName(placeholder.getName());
+       individualCustomerView.setCustomerEmail(placeholder.getEmail());
+      // individualCustomerView.setCustomerID(placeholder.getId());
+       
+       individualCustomerView.setVisible(true);
+    }
+    
+    private void checkOut() {
+        String userID = checkoutView.getUserID();
+        String isbn1 = checkoutView.getISBN1();
+        String isbn2 = checkoutView.getISBN2();
+        String isbn3 = checkoutView.getISBN2();
+        String isbn4 = checkoutView.getISBN2();
+
+        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
+
+        bookModel.checkOutBooksByISBN(isbn, userID);
+
+    }
+
+    private void displayCheckOutView() {
         checkoutView.setVisible(true);
+        checkoutView.checkOutListener(e -> {
+            try {
+                checkOut();
+            } catch (Exception ex) {
+                Logger.getLogger(BooksController.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
-    //opens book DB and adds listener to search butotn
+    private void displayCheckInView() {
+        checkInView.setVisible(true);
+        checkInView.checkinListener(e -> {
+            try {
+                checkIn();
+            } catch (Exception ex) {
+                Logger.getLogger(BooksController.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    private void checkIn() {
+        String userID = checkInView.getUserID();
+        String isbn1 = checkInView.getISBN1();
+        String isbn2 = checkInView.getISBN2();
+        String isbn3 = checkInView.getISBN2();
+        String isbn4 = checkInView.getISBN2();
+
+        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
+        bookModel.checkInBooksByISBN(isbn, userID);
+
+    }
+
     public void displayBookDB() {
+
+        bookDBView.setVisible(true);
 
         JFrame frame = new JFrame();
         frame.add(BorderLayout.CENTER, bookDBView);
         frame.pack();
         frame.setVisible(true);
-        bookDBView.setVisible(true);
-        bookDBView.searchDBListener(e -> {
-            try {
-                searchLocalDB();
-            } catch (SQLException ex) {
-                Logger.getLogger(BooksController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        });
+        bookDBView.searchDBListener(e -> searchLocalDB());
 
     }
 
-    //searches local SQL database for book matching author/title/ISBN
-    private void searchLocalDB() throws SQLException {
-        bookModel.setAuthor(bookDBView.getAuthorName());
-        bookModel.setTitle(bookDBView.getBookTitle());
-        bookModel.setISBN(bookDBView.getISBN());
-
-        String author = bookModel.getAuthor();
-        String title = bookModel.getTitle();
-        String ISBN = bookModel.getISBN();
-
-        bookModel.searchBook(author, title, ISBN);
-        getIndividualBookViewTable(author, title, ISBN);
-
-    }
-
-    //opens addBookView and adds a listener to the addBook button
     private void displayAddBookView() {
         addBookView.setVisible(true);
         addBookView.addBookListener(e -> {
@@ -114,7 +148,6 @@ public class BooksController extends ParentController {
 
     }
 
-    //helper method to call the API to add books to local database
     private void addBooks() throws Exception {
 
         String author = addBookView.getAuthor();
@@ -128,9 +161,26 @@ public class BooksController extends ParentController {
         }
     }
 
+    //searches local SQL database for book matching author/title/ISBN
+    public void searchLocalDB() {
+
+        String author = bookDBView.getAuthorName();
+        String title = bookDBView.getBookTitle();
+        String ISBN = bookDBView.getISBN();
+
+        try {
+            bookModel.searchBook(author, title, ISBN);
+        } catch (SQLException ex) {
+            Logger.getLogger(BooksController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        getIndividualBookViewTable(author, title, ISBN);
+
+    }
+
     //creates a table from book model info and displays it in a scrollPane
     private void getIndividualBookViewTable(String author, String title,
-            String ISBN) throws SQLException {
+            String ISBN) {
 
         JTable table = bookModel.createTable(author, title, ISBN);
 
@@ -166,20 +216,23 @@ public class BooksController extends ParentController {
 
     /*displays individual book info after an item has been clicked in
     the scroll plane
-    */
+     */
     private void getInfoAboutBook(JTable table) throws IOException {
         String[] bookInfo = bookModel.parseTable(table);
+
+        individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[0]);
+        individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[1]);
+        individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[2]);
+        individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[3]);
+        individualBookView.setImagePlaceholderLbl(bookInfo[4]);
+
         JFrame frame = new JFrame();
 
-//        IndividualBookView bookView
-//                = new IndividualBookView(bookInfo[2],
-//                        bookInfo[2], bookInfo[3], bookInfo[0],
-//                        bookInfo[4]);
-//        frame.add(BorderLayout.CENTER, bookView);
-//        frame.pack();
-//        frame.setVisible(true);
-//
-//        bookView.setVisible(true);
+        frame.add(BorderLayout.CENTER, individualBookView);
+        frame.pack();
+        frame.setVisible(true);
+
+        individualBookView.setVisible(true);
     }
 
 }

@@ -1,10 +1,8 @@
 
 package Views;
 
-import Controllers.BooksController;
-import Controllers.UserController;
-import Models.BooksModel;
-import Models.UserModel;
+import Controllers.ParentController;
+
 import java.awt.event.ActionListener;
 
 
@@ -122,36 +120,9 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         
     public static void main(String args[]) throws Exception {
         
-        
-            LibraryManagementGUI  libManage = new LibraryManagementGUI();
-            
-            UserModel userModel = new UserModel();
-            LoginView loginView = new LoginView();
-            RegisterView registerView = new RegisterView();
-            
-            BooksModel bookModel = new BooksModel();       
-            LibrarianView librarianView = new LibrarianView();
-            CustomerView customerView = new CustomerView();
-            BookDatabaseView bookDBview = new BookDatabaseView();
-            AddBookView addBookView = new AddBookView();
-            
-            
-            UserController userController = 
-                    new UserController(librarianView, 
-                            customerView, libManage, userModel, 
-                            loginView, registerView);
-            
-            userController.initUserController();
-            
-            BooksController bookController  = new BooksController(librarianView, 
-               customerView, 
-                libManage, bookModel,
-               bookDBview, addBookView);
-            
-            bookController.initBookController();
-            
+            ParentController parentController = new ParentController();
+            parentController.initParentController();
 
-                libManage.setVisible(true);
             }
 
 

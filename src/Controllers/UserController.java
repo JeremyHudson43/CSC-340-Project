@@ -17,32 +17,22 @@ import java.util.logging.Logger;
  *
  * Last updated 4/5
  */
-public class UserController extends ParentController {
+public class UserController  {
 
-    private UserModel userModel;
-    private RegisterView registerView;
-    private LoginView loginView;
+    private final UserModel userModel = new UserModel();
+    private RegisterView registerView = new RegisterView();
+    private LoginView loginView = new LoginView();
+    private LibrarianView librarianView = new LibrarianView();
+    private CustomerView customerView = new CustomerView();
+    private LibraryManagementGUI libraryManagement = new LibraryManagementGUI();
 
-    public UserController(LibrarianView librarianView,
-            CustomerView customerView,
-            LibraryManagementGUI libraryManagement,
-            UserModel userModel,
-            LoginView loginView,
-            RegisterView registerView
-    ) {
 
-        super(librarianView, customerView, libraryManagement);
 
-        this.userModel = userModel;
-        this.registerView = registerView;
-        this.loginView = loginView;
-        this.libraryManagement = libraryManagement;
-
-    }
     
     //adds listenres to main login and register buttons
     public void initUserController() {
 
+        libraryManagement.setVisible(true);
         libraryManagement.addLoginListener(e -> displayLogin());
         libraryManagement.addRegisterListener(e -> displayRegister());
         //librarianView.customerSearchListener(e -> displayBookDB());
@@ -81,11 +71,16 @@ public class UserController extends ParentController {
     //checks for customer or librarian
     public void checkLogin(String username, String password) throws SQLException {
 
+        BooksController bookController = new BooksController();
+        
         String userType = userModel.checkLogin(username, password);
         if (userType.equals("customer")) {
-            customerView.setVisible(true);
+            bookController.initControllerForCustomer();
+            //customerView.setVisible(true);
         } else if (userType.equals("librarian")) {
-            librarianView.setVisible(true);
+                        bookController.initControllerForLibrarian();
+
+            //librarianView.setVisible(true);
 
         }
 

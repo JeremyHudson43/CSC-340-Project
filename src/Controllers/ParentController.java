@@ -1,40 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
-
+import Models.BooksModel;
+import Models.UserModel;
+import Views.AddBookView;
+import Views.BookDatabaseView;
 import Views.CustomerView;
 import Views.LibrarianView;
 import Views.LibraryManagementGUI;
+import Views.LoginView;
 
 
 /**
  *
- * @author Jeremy Hudson Last Updated 4-5-2019
+ * @author Jeremy Hudson Last Updated 4-10-2019
  */
 public class ParentController {
 
-    LibrarianView librarianView;
-    CustomerView customerView;
-    LibraryManagementGUI libraryManagement;
+    UserModel userModel = new UserModel();
+    LoginView loginView = new LoginView();
 
-    public ParentController(LibrarianView librarianView,
-            CustomerView customerView,
-            LibraryManagementGUI libraryManagement) {
-        {
-            this.librarianView = librarianView;
-            this.customerView = customerView;
-            this.libraryManagement = libraryManagement;
+   private LibraryManagementGUI libraryManage;
 
-            initParentController();
+    public void initParentController()  {
+        
+                BooksController bookController = new BooksController();
 
-        }
-    }
 
-    public void initParentController() {
+        UserController userController = new UserController();
+        userController.initUserController();
+
+        
+
+        
 
     }
 }

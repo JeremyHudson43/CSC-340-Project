@@ -27,15 +27,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="individualCustomerViewLibCardNumberTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="individualCustomerViewEmailTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="individualCustomerViewNameTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="namePlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
                           <Component id="emailAddressPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="libraryCardNumberPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -72,12 +70,7 @@
                   <Component id="individualCustomerViewEmailTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emailAddressPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="individualCustomerViewLibCardNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="libraryCardNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="individualCustomerViewIDNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="customerIDNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -87,9 +80,9 @@
                   <Component id="individualCustomerViewCheckoutsTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="individualCustomerViewComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Component id="individualCustomerViewExiProgramButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,11 +113,6 @@
         <Property name="text" type="java.lang.String" value="Customer Email Address:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="individualCustomerViewLibCardNumberTxtLbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Library Card Number:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="individualCustomerViewCheckoutsTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Books Customer has checked out:"/>
@@ -138,11 +126,6 @@
     <Component class="javax.swing.JLabel" name="emailAddressPlaceholderTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Customer Email Address Placeholder"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="libraryCardNumberPlaceholderTxtLbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Library Card Number Placeholder"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="individualCustomerViewIDNumberTxtLbl">

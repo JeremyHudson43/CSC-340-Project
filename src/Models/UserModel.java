@@ -1,6 +1,7 @@
 package Models;
 
 import Controllers.UserController;
+import SQL_Translator.MySQLCaller;
 import SQL_Translator.MySQLDBTranslator;
 import Views.LibraryCardView;
 import Views.LoginView;
@@ -141,7 +142,7 @@ public class UserModel {
             _user.setUserId(_id);
             _user.setEmail(_Email);
 
-            MySQLDBTranslator SQL = new MySQLDBTranslator();
+            MySQLCaller SQL = new MySQLCaller();
             result = SQL.createAccount(_user);
 
             if (result > 0) {
@@ -163,7 +164,7 @@ public class UserModel {
     public int createAccount(UserModel _user) {
         int result = 0;
         try {
-            MySQLDBTranslator SQL = new MySQLDBTranslator();
+            MySQLCaller SQL = new MySQLCaller();
             result = SQL.createAccount(_user);
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, 
@@ -176,7 +177,7 @@ public class UserModel {
     public UserModel searchUser(String _id) {
         UserModel searched = null;
         try {
-            MySQLDBTranslator SQL = new MySQLDBTranslator();
+           MySQLCaller SQL = new MySQLCaller();
             searched = SQL.searchUser(_id);
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())

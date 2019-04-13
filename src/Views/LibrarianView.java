@@ -28,6 +28,10 @@ public class LibrarianView extends javax.swing.JFrame {
         openDatabaseButton.addActionListener(listenForDatabase);
 
     }
+    
+    public String getCustomerSearchTextField() {
+        return CustomerSearchTextField.getText();
+    }
 
     public void customerSearchListener(ActionListener listenForCustomerSearch) {
 
@@ -39,11 +43,11 @@ public class LibrarianView extends javax.swing.JFrame {
     }
 
     public void librarianSearchListener(ActionListener listenForAddLibrarian) {
-        addBookButton.addActionListener(listenForAddLibrarian);
+        addLibrarianButton.addActionListener(listenForAddLibrarian);
     }
 
     public void checkInListener(ActionListener listenForCheckIn) {
-        addBookButton.addActionListener(listenForCheckIn);
+        checkInButton.addActionListener(listenForCheckIn);
     }
 
     public void checkOutListener(ActionListener listenForCheckOut) {
