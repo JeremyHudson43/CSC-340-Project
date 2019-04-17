@@ -261,6 +261,7 @@ public class MySQLDBTranslator {
                 u.setName(rs.getString(1));
                 u.setUserType(rs.getString(2));
                 u.setId(rs.getInt(3));
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(MySQLDBTranslator.class.getName())

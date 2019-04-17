@@ -7,8 +7,10 @@ import Views.CheckinView;
 import Views.CheckoutView;
 import Views.IndividualCustomerView;
 import Views.LibrarianView;
+import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 public class LibrarianController extends BooksController {
 
@@ -71,8 +73,8 @@ public class LibrarianController extends BooksController {
         librarianModel.checkInBooksByISBN(isbn, userID);
 
     }
+    
     //This displays the checkout view.
-
     private void displayCheckOutView() {
         this.checkoutView.setVisible(true);
         this.checkoutView.checkOutListener(e -> {
@@ -117,6 +119,7 @@ public class LibrarianController extends BooksController {
     public void customerDisplay() {
 
         UserModel placeholder = new UserModel();
+        
 
         placeholder = userModel.searchUser(librarianView.getCustomerSearchTextField());
 
@@ -124,6 +127,11 @@ public class LibrarianController extends BooksController {
         individualCustomerView.setCustomerEmail(placeholder.getEmail());
         // individualCustomerView.setCustomerID(placeholder.getId());
 
+        
+        JFrame frame = new JFrame();
+        frame.add(BorderLayout.CENTER, individualCustomerView);
+        frame.pack();
+        frame.setVisible(true);
         individualCustomerView.setVisible(true);
     
 }

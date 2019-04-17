@@ -1,13 +1,7 @@
 
 package Models;
 
-import API.APITranslator;
-import API.ApiConnector;
 import Views.CheckoutView;
-import java.awt.print.PageFormat;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
@@ -54,20 +48,6 @@ public class LibrarianModel extends BooksModel {
         return res;
     }
 
-
-
-    //Create a new book
-    public static BooksModel buildBook(String _author, String _title,
-            String _category, String _isbn, String _imageLink)
-            throws Exception {
-        BooksModel b = new BooksModel();
-        b.setAuthor(_author);
-        b.setTitle(_title);
-        b.setCategory(_category);
-        b.setISBN(_isbn);
-        b.setImageLink(_imageLink);
-        return b;
-    }
 
     public void loadBookByISBN(String _isbn) throws Exception {
         BooksModel book = new BooksModel();

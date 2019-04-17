@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class UserModel {
     
         private static final String librarian = "librarian";
-    private static final String customer = "customer";
+    private static final String customer = "Customer";
 
 
     private String name;
@@ -175,15 +175,17 @@ public class UserModel {
 
     //This searches for user in the database.
     public UserModel searchUser(String _id) {
-        UserModel searched = null;
+        UserModel placeholder = new UserModel();
         try {
            MySQLCaller SQL = new MySQLCaller();
-            searched = SQL.searchUser(_id);
+             UserModel searched  = SQL.searchUser(_id);
+                     return searched;
+
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-        return searched;
+        return placeholder;
     }
     
 }

@@ -100,7 +100,7 @@ public class BooksModel {
     //helper method for BookDB method
     public String[] parseTable(JTable _table) throws IOException {
 
-        TableModel model = (TableModel) _table.getModel();
+        TableModel model =  _table.getModel();
         String[] bookInfo = new String[5];
 
         String author = "";
@@ -134,6 +134,19 @@ public class BooksModel {
 
         return bookInfo;
 
+    }
+    
+       //Create a new book
+    public static BooksModel buildBook(String _author, String _title,
+            String _category, String _isbn, String _imageLink)
+            throws Exception {
+        BooksModel b = new BooksModel();
+        b.setAuthor(_author);
+        b.setTitle(_title);
+        b.setCategory(_category);
+        b.setISBN(_isbn);
+        b.setImageLink(_imageLink);
+        return b;
     }
     //Search for a book in the database.
     public Object[][] searchBook(String _author, String _title, String _isbn)

@@ -69,15 +69,19 @@ public class BooksController {
             Logger.getLogger(BooksController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-        getIndividualBookViewTable(author, title, ISBN);
+        try {
+            getIndividualBookViewTable(author, title, ISBN);
+        } catch (SQLException ex) {
+            Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
     //This creates a table from book model info and displays it in a scrollPane.
-    private void getIndividualBookViewTable(String _author, String _title,
-            String _isbn) {
+     private void getIndividualBookViewTable(String author, String title,
+            String ISBN) throws SQLException {
 
-        JTable table = bookModel.createTable(_author, _title, _isbn);
+        JTable table = bookModel.createTable(author, title, ISBN);
 
         try {
 
@@ -108,6 +112,7 @@ public class BooksController {
                     .log(Level.SEVERE, null, ex);
         }
     }
+
 
     /*This displays individual book info after an item has been clicked in
     the scroll plane.
