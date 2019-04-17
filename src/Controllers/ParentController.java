@@ -1,18 +1,13 @@
 package Controllers;
 
-import Models.BooksModel;
 import Models.UserModel;
-import Views.AddBookView;
-import Views.BookDatabaseView;
-import Views.CustomerView;
-import Views.LibrarianView;
 import Views.LibraryManagementGUI;
 import Views.LoginView;
 
 
 /**
  *
- * @author Jeremy Hudson Last Updated 4-10-2019
+ * @author Jeremy Hudson Last Updated 4-17-2019
  */
 public class ParentController {
 
@@ -24,10 +19,11 @@ public class ParentController {
     public void initParentController()  {
         
                 BooksController bookController = new BooksController();
-
-
+                LibraryManagementGUIController libManage = 
+                        new LibraryManagementGUIController();       
         UserController userController = new UserController();
-        userController.initUserController();
+        
+        libManage.initLibraryManagementGUIController();
 
         
 

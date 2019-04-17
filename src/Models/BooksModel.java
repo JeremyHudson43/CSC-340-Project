@@ -30,9 +30,9 @@ import org.json.JSONObject;
  */
 public class BooksModel {
 
-    protected final static ApiConnector myAPI = new APITranslator();
-
     MySQLCaller sqlCaller = new MySQLCaller();
+            protected final static ApiConnector myAPI = new APITranslator();
+
 
     private String author;
     private String title;
@@ -135,148 +135,12 @@ public class BooksModel {
         return bookInfo;
 
     }
-
-    //placeholder method for checkout logic
-    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
-
-        try {
-            sqlCaller.checkoutBooks(_isbn, _userID);
-
-        } catch (Exception ex) {
-            Logger.getLogger(CheckoutView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public void checkInBooksByISBN(String[] _isbn, String _userID) {
-
-        try {
-            sqlCaller.checkinBooks(_isbn, _userID);
-
-        } catch (Exception ex) {
-            Logger.getLogger(CheckoutView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    //placeholder method for printing library card
-    public void LibraryCardPrint() {
-        PrinterJob job = PrinterJob.getPrinterJob();
-        PageFormat pageFormat = job.defaultPage();
-        //job.setPrintable(new Printer(this, 0.75));
-        if (job.printDialog()) {
-            try {
-                job.print();
-            } catch (PrinterException ex) {
-                Logger.getLogger(
-                        LibraryCardView.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
-    //placeholder method for library card logic
-    public void LibraryCardView() {
-//          try {
-//            initComponents();
-//            BarcodeController bc = new BarcodeController();
-//            Barcode b = bc.createBarcode(Integer.toString(_u.getId()), _u.getName());
-//            BufferedImage bi = BarcodeImageHandler.getImage(b);
-//            BarCode.setIcon(new ImageIcon(bi));
-//            NameTextField.setText(_u.getName());
-//        } catch (BarcodeException ex) {
-//            Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (OutputException ex) {
-//            Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    //Add a book to the database.
-    public int addBook(BooksModel _b) {
-        int res = sqlCaller.addBooks(_b);
-        return res;
-    }
-
-    //Remove a book from the database.
-    public int removeBook(BooksModel _b) {
-        int res = sqlCaller.removeBooks(_b.getISBN());
-        return res;
-    }
-
     //Search for a book in the database.
     public Object[][] searchBook(String _author, String _title, String _isbn)
             throws SQLException {
         Object[][] data = sqlCaller.searchBooks(_author, _title, _isbn);
         return data;
     }
-
-    //Create a new book
-    public static BooksModel buildBook(String _author, String _title,
-            String _category, String _isbn, String _imageLink)
-            throws Exception {
-        BooksModel b = new BooksModel();
-        b.setAuthor(_author);
-        b.setTitle(_title);
-        b.setCategory(_category);
-        b.setISBN(_isbn);
-        b.setImageLink(_imageLink);
-        return b;
-    }
-
-    public void loadBookByISBN(String _isbn) throws Exception {
-        BooksModel book = new BooksModel();
-        book.setISBN(_isbn);
-        String bookData = book.myAPI.loadBookNameByISBN(_isbn);
-        parseBookFromAPI(bookData);
-    }
-
-    public void loadBookNameByAuthorAndTitle(String _author,
-            String _title) throws Exception {
-        BooksModel book = new BooksModel();
-        String bookData = book.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-        parseBookFromAPI(bookData);
-    }
-
-    public void parseBookFromAPI(String _responseString) {
-
-        try {
-
-            JSONObject root = new JSONObject(_responseString);
-            JSONArray books = root.getJSONArray("items");
-
-            for (int i = 0; i < books.length(); i++) {
-                JSONObject book = books.getJSONObject(i);
-
-                JSONObject info = book.getJSONObject("volumeInfo");
-                String bookTitle = info.getString("title");
-
-                JSONArray authors = info.getJSONArray("authors");
-
-                String bookAuthor = authors.getString(0);
-                JSONObject imageLinks = info.getJSONObject("imageLinks");
-                String bookImageLink = imageLinks.getString("smallThumbnail");
-
-                String bookISBN = generateNumber();
-
-                BooksModel bookObject
-                        = buildBook(bookAuthor, bookTitle, "", bookISBN,
-                                bookImageLink);
-
-                sqlCaller.addBooks(bookObject);
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
-    public static String generateNumber() {
-        String ISBN = "978-";
-        for (int i = 0; i < 10; i++) {
-            ISBN += (int) (Math.random() * 9 + 1);
-        }
-        return ISBN;
-    }
+   
 
 }
