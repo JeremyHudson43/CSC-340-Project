@@ -14,9 +14,6 @@ import javax.swing.JButton;
  */
 public class LoginView extends javax.swing.JFrame {
 
-    private static final String librarian = "librarian";
-    private static final String customer = "customer";
-    
     /**
      * Creates new form CustomerLogin
      */

@@ -245,30 +245,35 @@ public class MySQLDBTranslator {
     public UserModel searchUser(String _id) {
 
         String sql = "";
-        ResultSet rs;
+        ResultSet result;
 
-        UserModel u = new UserModel();
+        UserModel user = new UserModel();
 
-        u.setUserId(_id);
-
+        String name = "";
+        String eMail = "";
+        
         try {
 
-            sql = "SELECT Name, usertype, id FROM users WHERE UserId = "
-                    + "'" + _id + "'";
-            rs = preparedstate.executeQuery(sql);
+            sql = "SELECT Name, eMail FROM users WHERE ID = "
+                    + "'" + _id + "';";
+            this.preparedstate = this.connection.prepareStatement(sql);
+            result = this.preparedstate.executeQuery();
 
-            if (rs.next()) {
-                u.setName(rs.getString(1));
-                u.setUserType(rs.getString(2));
-                u.setId(rs.getInt(3));
-                
+            if (result.next()) {
+                name = result.getString(1);
+                eMail = result.getString(2);
             }
+            user.setName(name);
+            user.setEmail(eMail);
+            user.setUserId(_id);
+            return user;
         } catch (SQLException ex) {
             Logger.getLogger(MySQLDBTranslator.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
 
-        return u;
+        return user;
+
     }
 
     //This is the Table model

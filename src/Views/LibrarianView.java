@@ -42,7 +42,7 @@ public class LibrarianView extends javax.swing.JFrame {
         addBookButton.addActionListener(listenForAddBook);
     }
 
-    public void librarianSearchListener(ActionListener listenForAddLibrarian) {
+    public void librarianAddListener(ActionListener listenForAddLibrarian) {
         addLibrarianButton.addActionListener(listenForAddLibrarian);
     }
 

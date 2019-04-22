@@ -3,21 +3,10 @@ package Models;
 import API.APITranslator;
 import API.ApiConnector;
 import SQL_Translator.MySQLCaller;
-import SQL_Translator.MySQLDBTranslator;
-import Views.BookDatabaseView;
-import Views.CheckoutView;
-import Views.LibraryCardView;
-import java.awt.print.PageFormat;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  *
@@ -31,8 +20,7 @@ import org.json.JSONObject;
 public class BooksModel {
 
     MySQLCaller sqlCaller = new MySQLCaller();
-            protected final static ApiConnector myAPI = new APITranslator();
-
+    protected final static ApiConnector myAPI = new APITranslator();
 
     private String author;
     private String title;
@@ -82,25 +70,20 @@ public class BooksModel {
     //======================================================================
 
     //creates table from given author, title and ISBN
-    public JTable createTable(String _author, String _title, String _isbn) {
-        try {
-            String[] columns = {"ISBN", "Title", "Author", "Category",
-                "ImageLink"};
-            Object[][] data = searchBook(_author, _title, _isbn);
-            JTable table = new JTable(data, columns);
-            return table;
+    public JTable createTable(String _author, String _title, String _isbn) throws SQLException {
+        String[] columns = {"ISBN", "Title", "Author", "Category",
+            "ImageLink"};
+        Object[][] data = searchBook(_author, _title, _isbn);
+        JTable table = new JTable(data, columns);
 
-        } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-        return null;
+        return table;
+
     }
 
     //helper method for BookDB method
     public String[] parseTable(JTable _table) throws IOException {
 
-        TableModel model =  _table.getModel();
+        TableModel model = _table.getModel();
         String[] bookInfo = new String[5];
 
         String author = "";
@@ -135,8 +118,8 @@ public class BooksModel {
         return bookInfo;
 
     }
-    
-       //Create a new book
+
+    //Create a new book
     public static BooksModel buildBook(String _author, String _title,
             String _category, String _isbn, String _imageLink)
             throws Exception {
@@ -148,12 +131,12 @@ public class BooksModel {
         b.setImageLink(_imageLink);
         return b;
     }
+
     //Search for a book in the database.
     public Object[][] searchBook(String _author, String _title, String _isbn)
             throws SQLException {
         Object[][] data = sqlCaller.searchBooks(_author, _title, _isbn);
         return data;
     }
-   
 
 }

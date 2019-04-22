@@ -2,15 +2,10 @@ package Controllers;
 
 import Models.BooksModel;
 import Models.UserModel;
-import SQL_Translator.MySQLCaller;
-import Views.AddBookView;
 import Views.BookDatabaseView;
-import Views.CheckinView;
-import Views.CheckoutView;
-import Views.CustomerView;
+import Views.BookDatabaseView;
+import Views.BookScrollView;
 import Views.IndividualBookView;
-import Views.IndividualCustomerView;
-import Views.LibrarianView;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
@@ -37,21 +32,17 @@ public class BooksController {
     UserModel userModel = new UserModel();
     private BookDatabaseView bookDBView = new BookDatabaseView();
     private IndividualBookView individualBookView = new IndividualBookView();
-
+    BookScrollView bookScrollView = new BookScrollView();
 
     /*This gets the userID and ISBNs from checkinView and contacts the model to 
     checkout the books in the database.
-    */
-
+     */
     //This displays the book DB view. 
+    
+
     public void displayBookDB() {
 
         this.bookDBView.setVisible(true);
-
-        JFrame frame = new JFrame();
-        frame.add(BorderLayout.CENTER, bookDBView);
-        frame.pack();
-        frame.setVisible(true);
         this.bookDBView.searchDBListener(e -> searchLocalDB());
 
     }
@@ -59,80 +50,61 @@ public class BooksController {
     // This searches the local SQL database for book matching author/title/ISBN.
     public void searchLocalDB() {
 
-        String author = this.bookDBView.getAuthorName();
-        String title = this.bookDBView.getBookTitle();
-        String ISBN = this.bookDBView.getISBN();
+            String author = this.bookDBView.getAuthorName();
+            String title = this.bookDBView.getBookTitle();
+            String ISBN = this.bookDBView.getISBN();
 
         try {
-            bookModel.searchBook(author, title, ISBN);
+            getIndividualBookViewTable(author, title, ISBN);
         } catch (SQLException ex) {
             Logger.getLogger(BooksController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-        try {
-            getIndividualBookViewTable(author, title, ISBN);
-        } catch (SQLException ex) {
-            Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
 
     }
 
     //This creates a table from book model info and displays it in a scrollPane.
-     private void getIndividualBookViewTable(String author, String title,
+    private void getIndividualBookViewTable(String author, String title,
             String ISBN) throws SQLException {
 
         JTable table = bookModel.createTable(author, title, ISBN);
+        JScrollPane scrollPane = new JScrollPane(table);
 
-        try {
+        bookScrollView.getContentPane().setLayout(new BorderLayout());
+        bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        bookScrollView.setSize(500, 600);
+        bookScrollView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        bookScrollView.setVisible(true);
 
-            table.addMouseListener(new java.awt.event.MouseAdapter() {
+        bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    try {
-                        getInfoAboutBook(table);
-
-                    } catch (IOException ex) {
-                        Logger.getLogger(BooksController.class.getName())
-                                .log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
-
-            JFrame frame = new JFrame();
-            JScrollPane scrollPane = new JScrollPane(table);
-
-            frame.getContentPane().setLayout(new BorderLayout());
-            frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-            frame.setSize(500, 600);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-
-        } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
     }
 
 
     /*This displays individual book info after an item has been clicked in
     the scroll plane.
      */
-    private void getInfoAboutBook(JTable _table) throws IOException {
-        String[] bookInfo = bookModel.parseTable(_table);
+    void getInfoAboutBook(JTable _table) {
+        try {
+            String[] bookInfo = bookModel.parseTable(_table);
 
-        this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[0]);
-        this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[1]);
-        this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[2]);
-        this.individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[3]);
-        this.individualBookView.setImagePlaceholderLbl(bookInfo[4]);
+            this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[2]);
+            this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[3]);
+            this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[0]);
+            this.individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[1]);
+            this.individualBookView.setImagePlaceholderLbl(bookInfo[4]);
 
-        JFrame frame = new JFrame();
+            JFrame frame = new JFrame();
 
-        frame.add(BorderLayout.CENTER, individualBookView);
-        frame.pack();
-        frame.setVisible(true);
+            frame.add(BorderLayout.CENTER, individualBookView);
+            frame.pack();
+            frame.setVisible(true);
 
-        this.individualBookView.setVisible(true);
+            this.individualBookView.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

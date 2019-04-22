@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class UserModel {
     
         private static final String librarian = "librarian";
-    private static final String customer = "Customer";
+    private static final String customer = "customer";
 
 
     private String name;
@@ -132,23 +132,25 @@ public class UserModel {
     }
 
     //This creates an acocunt if all input is valid.
-    public void checkRegister(UserModel _user, String _name, String _password, 
+    public void checkRegister(String _usertype, String _name, String _password, 
             String _id, String _email)  throws Exception {
         
+        UserModel user = new UserModel();
           try {
             int result;
-            _user.setName(_name);
-            _user.setPassword(_password);
-            _user.setUserId(_id);
-            _user.setEmail(_email);
+            user.setName(_name);
+            user.setPassword(_password);
+            user.setUserId(_id);
+            user.setEmail(_email);
+            user.setUserType(_usertype);
 
             MySQLCaller SQL = new MySQLCaller();
-            result = SQL.createAccount(_user);
+            result = SQL.createAccount(user);
 
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Account Created");
-                _user = SQL.searchUser(_id);
-                //LibraryCardView libraryCard = new LibraryCardView(_user);
+                user = SQL.searchUser(_id);
+                //LibraryCardView libraryCard = new LibraryCardView(user);
                 //libraryCard.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to create account");
