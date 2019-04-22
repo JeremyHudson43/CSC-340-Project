@@ -1,17 +1,11 @@
 package Views;
 
-import Controllers.BooksController;
-import Database.MySQLDBTranslator;
-import Models.Books;
-import Models.ManageBookInfo;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Charles Brady
- *
- * Last Updated 3/13
+ * @author Jeremy Hudson Last Updated 4/5
  *
  *
  * This is the view for the librarian to add a book to the database
@@ -25,6 +19,24 @@ public class AddBookView extends javax.swing.JFrame {
         initComponents();
     }
 
+       public void addBookListener(ActionListener listenForAddBook) {
+
+        searchButtonAddBookView.addActionListener(listenForAddBook);
+
+    }
+
+    public String getISBN() {
+        return ISBNtxtfieldAddBookView.getText();
+    }
+
+    public String getAuthor() {
+        return authorTextFieldAddBook.getText();
+    }
+
+    public String getBookTitle() {
+        return bookTextFieldAddBook.getText();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,87 +47,100 @@ public class AddBookView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        ISBNTextField = new javax.swing.JTextField();
-        SearchButton = new javax.swing.JButton();
+        authorLabelAddBook = new javax.swing.JLabel();
+        authorTextFieldAddBook = new javax.swing.JTextField();
+        bookNameAddBookView = new javax.swing.JLabel();
+        bookTextFieldAddBook = new javax.swing.JTextField();
+        ISBNtxtfieldAddBookView = new javax.swing.JTextField();
+        addBookISBNLbl = new javax.swing.JLabel();
+        getAllMatchingResultsAddBookViewLbl = new javax.swing.JLabel();
+        searchButtonAddBookView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("ISBN:");
 
-        SearchButton.setText("Search");
-        SearchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchButtonActionPerformed(evt);
-            }
-        });
+        authorLabelAddBook.setText("Author:");
+
+        bookNameAddBookView.setText("Book Name:");
+
+        addBookISBNLbl.setText("Add Individual book by ISBN");
+
+        getAllMatchingResultsAddBookViewLbl.setText("Add all matching results by author/ book name");
+
+        searchButtonAddBookView.setText("Add Book(s) to Local Database");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(ISBNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(SearchButton)
-                .addContainerGap(73, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(searchButtonAddBookView))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addBookISBNLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addComponent(getAllMatchingResultsAddBookViewLbl))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ISBNtxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bookNameAddBookView)
+                                .addGap(18, 18, 18)
+                                .addComponent(bookTextFieldAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(authorLabelAddBook)
+                                .addGap(29, 29, 29)
+                                .addComponent(authorTextFieldAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(ISBNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchButton))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addBookISBNLbl)
+                    .addComponent(getAllMatchingResultsAddBookViewLbl, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(ISBNtxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(authorLabelAddBook)
+                            .addComponent(authorTextFieldAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bookNameAddBookView)
+                            .addComponent(bookTextFieldAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(searchButtonAddBookView)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-/* This will search the api for the book to obtain information,
- *  and then add the book to the database.
-*/
-    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
-        try {
-            String isbn = ISBNTextField.getText();
-            BooksController bookControl = new BooksController();
-            Books book;
-            ManageBookInfo mbi = new ManageBookInfo();
-
-            if (isbn == null) {
-                JOptionPane.showMessageDialog(null, "ISBN not given. Please try again.");
-            } else {
-                book = mbi.getRequestISBN(isbn);
-                if (book != null) {
-                    int result = bookControl.AddBook(book);
-                    ISBNTextField.setText("");
-                    // if book is successfully added, display Book Added dialog.
-                    if (result > 0) {
-                        JOptionPane.showMessageDialog(null, "Book Added.");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Book not found.");
-                    ISBNTextField.setText("");
-                }
-
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AddBookView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_SearchButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ISBNTextField;
-    private javax.swing.JButton SearchButton;
+    private javax.swing.JTextField ISBNtxtfieldAddBookView;
+    private javax.swing.JLabel addBookISBNLbl;
+    private javax.swing.JLabel authorLabelAddBook;
+    private javax.swing.JTextField authorTextFieldAddBook;
+    private javax.swing.JLabel bookNameAddBookView;
+    private javax.swing.JTextField bookTextFieldAddBook;
+    private javax.swing.JLabel getAllMatchingResultsAddBookViewLbl;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton searchButtonAddBookView;
     // End of variables declaration//GEN-END:variables
 }

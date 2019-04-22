@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="individualCustomerViewExiProgramButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="individualCustomerViewBackButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="individualCustomerViewTxtLbl" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="individualLibrarianViewLibCardNumberTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualLibrarianViewEmailTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualLibrarianViewNameTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LibrarianNamePlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LibrarianEmailAddressPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LibrarianLibraryCardNumberPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="individualLibrarianViewCheckoutsTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualLibrarianViewIDNumberTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="LibrarianIDNumberPlaceholderTxtLbl" max="32767" attributes="0"/>
+                          <Component id="individualLibrarianViewComboBox" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="47" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="individualCustomerViewBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualCustomerViewTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="individualLibrarianViewNameTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LibrarianNamePlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="individualLibrarianViewEmailTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LibrarianEmailAddressPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="individualLibrarianViewLibCardNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LibrarianLibraryCardNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="individualLibrarianViewIDNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LibrarianIDNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="individualLibrarianViewCheckoutsTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualLibrarianViewComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="individualCustomerViewExiProgramButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="individualLibrarianViewNameTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian Name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="individualLibrarianViewEmailTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian Email Address:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="individualLibrarianViewLibCardNumberTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian Library Card Number:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="individualLibrarianViewCheckoutsTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Books Librarian has checked out:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LibrarianNamePlaceholderTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian Name Placeholder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LibrarianEmailAddressPlaceholderTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian Email Address Placeholder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LibrarianLibraryCardNumberPlaceholderTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Library Card Number Placeholder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="individualCustomerViewBackButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="individualLibrarianViewIDNumberTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian ID Number:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="individualCustomerViewExiProgramButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exit Program"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LibrarianIDNumberPlaceholderTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Librarian ID Number Placeholder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="individualCustomerViewTxtLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Individual Librarian View"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="individualLibrarianViewComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>
