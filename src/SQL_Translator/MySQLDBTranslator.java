@@ -19,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Charles Brady
  *
- * Last updated 4/12
+ * Last updated 4/21
+ *
+ * This is the translator for all of the SQL code in the Library Management System.
  */
 public class MySQLDBTranslator {
 
@@ -27,16 +29,16 @@ public class MySQLDBTranslator {
     private PreparedStatement preparedstate;
     private final static String URL = "jdbc:mysql://localhost:3306"
             + "/library?autoReconnect=true&useSSL=false";
-    private final static String acct = "root";
-    private final static String pass = "Alexandria";
+    private final static String account = "root";
+    private final static String password = "Alexandria";
 
     public MySQLDBTranslator() throws Exception {
         try {
-            // This will load the MySQL driver, each DB has its own driver
+            // This will load the MySQL driver, each DB has its own driver.
             Class.forName("com.mysql.jdbc.Driver");
-            // Setup the connection with the DB
-            connection = DriverManager.getConnection(URL, acct, pass);
-            if (connection == null) {
+            // This sets up the connection with the DB.
+            this.connection = DriverManager.getConnection(this.URL, this.account, this.password);
+            if (this.connection == null) {
                 JOptionPane.showMessageDialog(null, "Cannot connect to database."
                         + " Program Exiting.");
                 System.exit(0);
@@ -48,30 +50,38 @@ public class MySQLDBTranslator {
         }
     }
 
-    //Add a book to the MySQL Database.
+    /**
+     * This method adds a book to the MySQL Database.
+     * @param _book
+     * @return
+     */
     public int addBooks(BooksModel _book) {
-        int res = 0;
+        int result = 0;
         String sql = "";
 
         try {
             sql = "INSERT INTO book(isbn, author, title, category, imagelink) "
                     + "VALUES(?,?,?,?,?)";
 
-            preparedstate = connection.prepareStatement(sql);
-            preparedstate.setString(1, _book.getISBN());
-            preparedstate.setString(2, _book.getAuthor());
-            preparedstate.setString(3, _book.getTitle());
-            preparedstate.setString(4, _book.getCategory());
-            preparedstate.setString(5, _book.getImageLink());
-            res = preparedstate.executeUpdate();
+            this.preparedstate = this.connection.prepareStatement(sql);
+            this.preparedstate.setString(1, _book.getISBN());
+            this.preparedstate.setString(2, _book.getAuthor());
+            this.preparedstate.setString(3, _book.getTitle());
+            this.preparedstate.setString(4, _book.getCategory());
+            this.preparedstate.setString(5, _book.getImageLink());
+            result = this.preparedstate.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return res;
+        return result;
     }
 
-    //Remove a book from the MySQL database.
+    /**
+     * Remove a book from the MySQL database.
+     * @param _isbn
+     * @return
+     */
     public int removeBooks(String _isbn) {
 
         int result = 0;
@@ -80,7 +90,7 @@ public class MySQLDBTranslator {
         try {
 
             sql = "DELETE FROM books WHERE isbn = " + _isbn;
-            result = preparedstate.executeUpdate(sql);
+            result = this.preparedstate.executeUpdate(sql);
         } catch (SQLException ex) {
             Logger.getLogger(MySQLDBTranslator.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -88,7 +98,14 @@ public class MySQLDBTranslator {
         return result;
     }
 
-    //Search for a book in the MySQL Database.
+    /**
+     * This searches for a book in the MySQL Database.
+     * @param _author
+     * @param _title
+     * @param _isbn
+     * @return
+     * @throws SQLException
+     */
     public Object[][] searchBooks(String _author, String _title, String _isbn) throws SQLException {
 
         String sql = "";
@@ -111,38 +128,44 @@ public class MySQLDBTranslator {
             i++;
         }
         return data;
-
     }
 
-    //helper method for searchBooks to ensure main method is not too long
+    /**
+     * This is a helper method for searchBooks to ensure the main method is not too long
+     * @param _author
+     * @param _title
+     * @param _isbn
+     * @param _sql
+     * @return
+     */
     public ResultSet searchBooksHelper(String _author, String _title, String _isbn,
             String _sql) {
         try {
             if (!_isbn.equals("")) {
                 _sql = "SELECT * FROM book WHERE isbn like ?";
-                preparedstate = connection.prepareStatement(_sql);
-                preparedstate.setString(1, "%" + _isbn + "%");
+                this.preparedstate = this.connection.prepareStatement(_sql);
+                this.preparedstate.setString(1, "%" + _isbn + "%");
             } else {
                 if (!_author.equals("") && !_title.equals("")) {
                     _sql = "SELECT * FROM book WHERE author like ?"
                             + " AND title like ?";
-                    preparedstate = connection.prepareStatement(_sql);
-                    preparedstate.setString(1, "%" + _author + "%");
-                    preparedstate.setString(2, "%" + _title + "%");
+                    this.preparedstate = this.connection.prepareStatement(_sql);
+                    this.preparedstate.setString(1, "%" + _author + "%");
+                    this.preparedstate.setString(2, "%" + _title + "%");
                 }
                 if (!_author.equals("")) {
                     _sql = "select * from book where author like ? ";
-                    preparedstate = connection.prepareStatement(_sql);
-                    preparedstate.setString(1, "%" + _author + "%");
+                    this.preparedstate = this.connection.prepareStatement(_sql);
+                    this.preparedstate.setString(1, "%" + _author + "%");
                     //   select * from book where author like '%Rowling%';
                 }
                 if (!_title.equals("")) {
                     _sql = "SELECT * FROM book WHERE title like ?";
-                    preparedstate = connection.prepareStatement(_sql);
-                    preparedstate.setString(1, "%" + _title + "%");
+                    this.preparedstate = connection.prepareStatement(_sql);
+                    this.preparedstate.setString(1, "%" + _title + "%");
                 }
             }
-            return preparedstate.executeQuery();
+            return this.preparedstate.executeQuery();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.exit(0);
@@ -150,7 +173,7 @@ public class MySQLDBTranslator {
         return null;
     }
 
-    //Check out a book for a user within the MySQL Database.
+    // This checks out a book for a user within the MySQL Database.
     public int checkoutBooks(String[] _isbn, String _id) {
         boolean result = false;
         String sql = "";
@@ -161,8 +184,8 @@ public class MySQLDBTranslator {
                 if (!_isbn[i].equals("")) {
                     sql = "INSERT INTO checkout (ID, ISBN) VALUES"
                             + "(" + _id + ", '" + _isbn[i] + "')";
-                    preparedstate = connection.prepareCall(sql);
-                    result = preparedstate.execute(sql);
+                    this.preparedstate = this.connection.prepareCall(sql);
+                    result = this.preparedstate.execute(sql);
                     cnt++;
                 }
             }
@@ -172,9 +195,14 @@ public class MySQLDBTranslator {
         return cnt;
     }
 
-    //Check in a Users checked out book within the MySQL Database.
+    /**
+     * This checks in a User's checked out book within the MySQL Database.
+     * @param _isbn
+     * @param _id
+     * @return
+     */
     public int checkInBooks(String[] _isbn, String _id) {
-        int res = 0;
+        int result = 0;
         String sql = "";
 
         try {
@@ -182,54 +210,63 @@ public class MySQLDBTranslator {
                 sql = "DELETE FROM checkout WHERE isbn = '"
                         + _isbn[i] + "' AND ID = " + _id;
             }
-            preparedstate = connection.prepareCall(sql);
-            //code to set date
-            res = preparedstate.executeUpdate(sql);
+            this.preparedstate = connection.prepareCall(sql);
+            result = this.preparedstate.executeUpdate(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return res;
+        return result;
     }
 
-    //Create new user for the MySQL Database
+
+    /**
+     * This creates a new library user for the MySQL Database.
+     * @param _user
+     * @return
+     */
     public int createAccount(UserModel _user) {
         int res = 0;
         String sql = "";
 
         try {
-            sql = "INSERT INTO users (UserID, PWD, Name, userType) "
-                    + "VALUES(?,?,?,?)";
-            preparedstate = connection.prepareStatement(sql);
-            preparedstate.setString(1, _user.getUserId());
-            preparedstate.setString(2, _user.getPassword());
-            preparedstate.setString(3, _user.getName());
-            preparedstate.setString(4, _user.getUserType());
-            res = preparedstate.executeUpdate();
+            sql = "INSERT INTO users (UserID, PWD, Name, userType, eMail) "
+                    + "VALUES(?,?,?,?,?)";
+            this.preparedstate = this.connection.prepareStatement(sql);
+            this.preparedstate.setString(1, _user.getUserId());
+            this.preparedstate.setString(2, _user.getPassword());
+            this.preparedstate.setString(3, _user.getName());
+            this.preparedstate.setString(4, _user.getUserType());
+            this.preparedstate.setString(5, _user.getEmail());
+            res = this.preparedstate.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return res;
     }
 
-    /*Checks within the MySQL database whether or not a user is a Librarian
-    or a Customer
+    /**
+     * This checks within the MySQL database whether or not a user is a
+     * Librarian or a Customer.
+     * @param _user
+     * @return
+     * @throws Exception
      */
     public String checkLogin(UserModel _user) throws Exception {
         String sql = "";
-        ResultSet rs = null;
+        ResultSet result = null;
         String type = "";
 
         try {
             sql = "SELECT userType FROM users WHERE UserID=? AND PWD=?";
-            preparedstate = connection.prepareStatement(sql);
+            this.preparedstate = this.connection.prepareStatement(sql);
 
-            preparedstate.setString(1, _user.getUserId());
-            preparedstate.setString(2, _user.getPassword());
+            this.preparedstate.setString(1, _user.getUserId());
+            this.preparedstate.setString(2, _user.getPassword());
 
-            rs = preparedstate.executeQuery();
+            result = this.preparedstate.executeQuery();
 
-            if (rs.next()) {
-                type = rs.getString(1);
+            if (result.next()) {
+                type = result.getString(1);
             }
 
         } catch (SQLException e) {
@@ -238,49 +275,83 @@ public class MySQLDBTranslator {
         return type;
     }
 
-    //Search for a user within the MySQL Database
+    /**
+     * This method searches for a user ID for the library card with the
+     * given user name.
+     * @param _name
+     * @return
+     */
+    public String searchUserID(String _name) {
+        String sql = "";
+        ResultSet result = null;
+        String id = "";
+        try {
+
+            sql = "SELECT ID from users where Name = '" + _name + "'";
+
+            this.preparedstate = this.connection.prepareStatement(sql);
+
+            result = this.preparedstate.executeQuery();
+
+            if (result.next()) {
+                id = result.getString(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
+    //This searches for a user within the MySQL Database.
     public UserModel searchUser(String _id) {
 
         String sql = "";
-        ResultSet rs;
+        ResultSet result;
 
-        UserModel u = new UserModel();
+        UserModel user = new UserModel();
 
-        u.setUserId(_id);
-
+        String name = "";
+        String eMail = "";
+        
         try {
 
-            sql = "SELECT Name, usertype, id FROM users WHERE UserId = "
-                    + "'" + _id + "'";
-            rs = preparedstate.executeQuery(sql);
+            sql = "SELECT Name, eMail FROM users WHERE ID = "
+                    + "'" + _id + "';";
+            this.preparedstate = this.connection.prepareStatement(sql);
+            result = this.preparedstate.executeQuery();
 
-            if (rs.next()) {
-                u.setName(rs.getString(1));
-                u.setUserType(rs.getString(2));
-                u.setId(rs.getInt(3));
+            if (result.next()) {
+                name = result.getString(1);
+                eMail = result.getString(2);
             }
+            user.setName(name);
+            user.setEmail(eMail);
+            user.setUserId(_id);
+            return user;
         } catch (SQLException ex) {
             Logger.getLogger(MySQLDBTranslator.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
 
-        return u;
+        return user;
+
     }
 
-    //Table model
+    //This is the Table model
     public static DefaultTableModel buildTableModel(ResultSet _resultSet)
             throws SQLException {
 
         ResultSetMetaData metaData = _resultSet.getMetaData();
 
-        //names of columns
+        //These are the names of the columns
         Vector<String> columnNames = new Vector<String>();
         int columnCount = metaData.getColumnCount();
         for (int column = 1; column <= columnCount; column++) {
             columnNames.add(metaData.getColumnName(column));
         }
 
-        //data of the table
+        //This is the data of the table
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         while (_resultSet.next()) {
             Vector<Object> vector = new Vector<Object>();

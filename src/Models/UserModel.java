@@ -1,9 +1,7 @@
 package Models;
 
 import Controllers.UserController;
-import Translators.MySQLDBTranslator;
-import Views.CustomerView;
-import Views.LibrarianView;
+import SQL_Translator.MySQLCaller;
 import Views.LibraryCardView;
 import Views.LoginView;
 import java.util.logging.Level;
@@ -13,9 +11,8 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson
  *
- * Last Updated 4/7
+ * Last Updated 4/20
  *
  * This is the model for the user class.
  */
@@ -25,40 +22,23 @@ public class UserModel {
     private static final String CUSTOMER = "customer";
 
     private String name;
-    private int id;
+    private String id;
     private String UserId;
     private String password;
     private String userType;
     private String email;
-    private String barcode;
 
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    // The getters of the variables
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    // The getters of the variables
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     public String getPassword() {
@@ -78,6 +58,14 @@ public class UserModel {
         this.name = _name;
     }
 
+    public void setEmail(String _email) {
+        this.email = _email;
+    }
+
+    public void setId(String _id) {
+        this.id = _id;
+    }
+
     public void setPassword(String _password) {
         this.password = _password;
     }
@@ -91,76 +79,86 @@ public class UserModel {
     }
 
 //================================================================
-    // If something is entered, the program will check to see if it exists in the database
+
+    /* If something is entered, the program will check to see if it exists in
+    the database. */
     public String checkLogin(String _username, String _password) {
         if (_username.equals("") || _password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Required fields not entered. Please try again.");
+            JOptionPane.showMessageDialog(null, "Required fields not entered. "
+                    + "Please try again.");
         } else {
             try {
                 UserModel user = new UserModel();
                 user.setUserId(_username);
                 user.setPassword(_password);
 
-                MySQLDBTranslator translator = new MySQLDBTranslator();
-                String result = translator.checkLogin(user);
+                MySQLCaller call = new MySQLCaller();
+                String result = call.checkLogin(user);
                 // if the user is a librarian, it will open the librarian view.
-                if (result == null ? LIBRARIAN == null : result.equals(LIBRARIAN)) {
-                    LibrarianView librarianView = new LibrarianView();
-                    librarianView.setVisible(true);
+                if (result == null ? LIBRARIAN == null
+                        : result.equals(LIBRARIAN)) {
+
                     return "librarian";
                     // if the user is a customer, it will open the customer view.
-                } else if (result == null ? CUSTOMER == null : result.equals(CUSTOMER)) {
-                    CustomerView customerView = new CustomerView();
-                    customerView.setVisible(true);
+                } else if (result == null ? CUSTOMER == null
+                        : result.equals(CUSTOMER)) {
+
                     return "customer";
-                    /* if the username and password is not in the database, it will ask the
-                * the user to try again
+                    /* if the username and password is not in the database,
+                    it will ask the user to try again.
                      */
                 } else {
-                    JOptionPane.showMessageDialog(null, " User does not exist. Please try again.");
+                    JOptionPane.showMessageDialog(null, " User does not exist."
+                            + " Please try again.");
                 }
             } catch (Exception ex) {
-                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginView.class.getName())
+                        .log(Level.SEVERE, null, ex);
             }
         }
         return "";
     }
 
-    //creates acocunt if all input is valid
-    public void checkRegister(UserModel _user, String _name, String _password,
-            String _id, String _Email) throws Exception {
+    //This creates an acocunt if all input is valid.
+    public void checkRegister(String _userType, String _name, String _password,
+            String _userID, String _email) throws Exception {
+
+        UserModel user = new UserModel();
+        UserController userController = new UserController();
 
         try {
             int result;
-            _user.setName(_name);
-            _user.setPassword(_password);
-            _user.setUserId(_id);
-            _user.setEmail(_Email);
+            user.setName(_name);
+            user.setPassword(_password);
+            user.setUserId(_userID);
+            user.setEmail(_email);
+            user.setUserType(_userType);
 
-            MySQLDBTranslator SQL = new MySQLDBTranslator();
-            result = SQL.createAccount(_user);
+            MySQLCaller SQL = new MySQLCaller();
+            result = SQL.createAccount(user);
 
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Account Created");
-                _user = SQL.searchUser(_id);
-                LibraryCardView libraryCard = new LibraryCardView(_user);
+                String idNumber = SQL.searchUserID(_name);
+                user.setId(idNumber);
+                userController.displayLibraryCard(user);
+                LibraryCardView libraryCard = new LibraryCardView(user);
                 libraryCard.setVisible(true);
+
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to create account");
             }
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
-
         }
-
     }
 
-    //Create new user account
+    //This creates a new user account.
     public int createAccount(UserModel _user) {
         int result = 0;
         try {
-            MySQLDBTranslator SQL = new MySQLDBTranslator();
+            MySQLCaller SQL = new MySQLCaller();
             result = SQL.createAccount(_user);
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE,
@@ -169,17 +167,17 @@ public class UserModel {
         return result;
     }
 
-    //Search for user in the database
+    //This searches for user in the database.
     public UserModel searchUser(String _id) {
-        UserModel searched = null;
+        UserModel placeholder = new UserModel();
         try {
-            MySQLDBTranslator SQL = new MySQLDBTranslator();
-            searched = SQL.searchUser(_id);
+            MySQLCaller SQL = new MySQLCaller();
+            placeholder = SQL.searchUser(_id);
+            return placeholder;
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-        return searched;
+        return placeholder;
     }
-
 }

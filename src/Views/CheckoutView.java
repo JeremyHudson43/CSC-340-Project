@@ -2,12 +2,13 @@ package Views;
 
 import java.awt.event.ActionListener;
 
+
 /**
  *
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/10
+ * Last Updated 4/7
  *
  * This is the view for librarians to check out a customers book
  */
@@ -19,13 +20,13 @@ public class CheckoutView extends javax.swing.JFrame {
     public CheckoutView() {
         initComponents();
     }
+    
+     public void checkOutListener(ActionListener listenForCheckout) {
 
-    public void checkOutListener(ActionListener listenForCheckout) {
+        CheckoutButton.addActionListener(listenForCheckout);
 
-        checkOutButtonCheckOutView.addActionListener(listenForCheckout);
     }
-
-    public String getUserID() {
+       public String getUserID() {
         return CustomerTextField.getText();
     }
 
@@ -58,13 +59,13 @@ public class CheckoutView extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         CustomerLabel = new javax.swing.JLabel();
         BookISBNLabel = new javax.swing.JLabel();
-        checkOutButtonCheckOutView = new javax.swing.JButton();
+        CheckoutButton = new javax.swing.JButton();
         CustomerTextField = new javax.swing.JTextField();
         isbnTextField1 = new javax.swing.JTextField();
         isbnTextField2 = new javax.swing.JTextField();
         isbnTextField3 = new javax.swing.JTextField();
         isbnTextField4 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        checkOutViewLabel = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -76,9 +77,9 @@ public class CheckoutView extends javax.swing.JFrame {
 
         BookISBNLabel.setText("Enter books by ISBN:");
 
-        checkOutButtonCheckOutView.setText("Check Out");
+        CheckoutButton.setText("Checkout");
 
-        jLabel1.setText("Check Out");
+        checkOutViewLabel.setText("Checkout View");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,7 +98,7 @@ public class CheckoutView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CustomerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(checkOutButtonCheckOutView)
+                                .addComponent(CheckoutButton)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(isbnTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
@@ -107,15 +108,15 @@ public class CheckoutView extends javax.swing.JFrame {
                                         .addComponent(isbnTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                                         .addComponent(isbnTextField4))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel1)))
+                        .addGap(180, 180, 180)
+                        .addComponent(checkOutViewLabel)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(checkOutViewLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CustomerLabel)
@@ -130,7 +131,7 @@ public class CheckoutView extends javax.swing.JFrame {
                     .addComponent(isbnTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isbnTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
-                .addComponent(checkOutButtonCheckOutView)
+                .addComponent(CheckoutButton)
                 .addGap(20, 20, 20))
         );
 
@@ -143,14 +144,14 @@ public class CheckoutView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookISBNLabel;
+    private javax.swing.JButton CheckoutButton;
     private javax.swing.JLabel CustomerLabel;
     private javax.swing.JTextField CustomerTextField;
-    private javax.swing.JButton checkOutButtonCheckOutView;
+    private javax.swing.JLabel checkOutViewLabel;
     private javax.swing.JTextField isbnTextField1;
     private javax.swing.JTextField isbnTextField2;
     private javax.swing.JTextField isbnTextField3;
     private javax.swing.JTextField isbnTextField4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

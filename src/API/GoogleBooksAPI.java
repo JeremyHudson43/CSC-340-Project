@@ -1,14 +1,9 @@
 package API;
 
-import Models.BooksModel;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,10 +17,9 @@ public class GoogleBooksAPI implements ApiConnector {
             + "volumes?q=";
 
     @Override
-    public String loadBookNameByISBN(String _ISBN) {
-        String response = getRequest("", "", _ISBN);
+    public String loadBookNameByISBN(String _isbn) {
+        String response = getRequest("", "", _isbn);
         return response;
-
     }
 
     @Override
@@ -33,28 +27,27 @@ public class GoogleBooksAPI implements ApiConnector {
 
         String response = getRequest(_author, _title, "");
         return response;
-
     }
 
-    //get request to the API using data from BookDatabaseView
-    public String getRequest(String _Author, String _Volume, String _ISBN) {
+    //This is a get request to the API using data from BookDatabaseView.
+    public String getRequest(String _author, String _volume, String _isbn) {
 
         try {
-            URL url = new URL(baseURL + _Volume + "+inauthor:" + _Author
+            URL url = new URL(baseURL + _volume + "+inauthor:" + _author
                     + "&key=" + apiKey);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
 
-            if (_ISBN.equals("")) {
+            if (_isbn.equals("")) {
 
                 String responseString = (connectionHelper(connection));
 
                 return responseString;
 
             } else {
-                URL ISBNurl = new URL(baseURL + _ISBN + "&key=" + apiKey);
+                URL ISBNurl = new URL(baseURL + _isbn + "&key=" + apiKey);
 
                 ISBNurl.openConnection();
                 HttpURLConnection ISBNconnection
@@ -74,7 +67,7 @@ public class GoogleBooksAPI implements ApiConnector {
         return null;
     }
 
-    //helper method to read data from API
+    //This is a helper method to read data from API.
     private static String connectionHelper(
             HttpURLConnection _connection) throws IOException, Exception {
 

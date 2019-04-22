@@ -1,14 +1,24 @@
 package Views;
 
+import Models.UserModel;
 import java.awt.event.ActionListener;
-
+import BarcodeTranslator.BarcodeTranslator;
+import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import net.sourceforge.barbecue.Barcode;
+import net.sourceforge.barbecue.BarcodeException;
+import net.sourceforge.barbecue.BarcodeImageHandler;
+import net.sourceforge.barbecue.output.OutputException;
 
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson 
+ * @author Jeremy Hudson
  *
- * Last Updated 4-8-2019
+ * Last Updated 4-21-2019
  *
  * This is the view for a customer to create and print out a library card
  *
@@ -17,17 +27,36 @@ public class LibraryCardView extends javax.swing.JFrame {
 
     /**
      * Creates new form LibraryCardView
-     * @param _u
+     *
+     * @param _user
      */
-    public LibraryCardView() {
-  //UserModel _u
+    public LibraryCardView(UserModel _user) throws OutputException {
+        try {
+            initComponents();
+            BarcodeTranslator translator = new BarcodeTranslator();
+            Barcode barcode = translator.createBarcode(_user.getId(), _user.getName());
+            BufferedImage image = BarcodeImageHandler.getImage(barcode);
+            BarCode.setIcon(new ImageIcon(image));
+            NameTextField.setText(_user.getName());
+        } catch (BarcodeException ex) {
+            Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-        public void printListener(ActionListener listenForPrint) {
 
-       printButtonLibCard.addActionListener(listenForPrint);
-
+    public JButton printButton(){
+        return printButton;
     }
+
+//    /**
+//     * Print the Library Card
+//     *
+//     * @param listenForPrint
+//     */
+//    public void printListener(ActionListener listenForPrint) {
+//
+//        printButtonLibCard.addActionListener(listenForPrint);
+//
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,13 +70,13 @@ public class LibraryCardView extends javax.swing.JFrame {
         BarCode = new javax.swing.JButton();
         LibraryCardLabel = new javax.swing.JLabel();
         NameTextField = new javax.swing.JTextField();
-        printButtonLibCard = new javax.swing.JButton();
+        printButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LibraryCardLabel.setText("Library Card");
 
-        printButtonLibCard.setText("Print");
+        printButton.setText("Print");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,18 +85,17 @@ public class LibraryCardView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(LibraryCardLabel))
+                        .addGap(180, 180, 180)
+                        .addComponent(printButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BarCode, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NameTextField))))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(printButtonLibCard)
-                .addGap(149, 149, 149))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NameTextField)
+                            .addComponent(BarCode, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(LibraryCardLabel)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,11 +103,11 @@ public class LibraryCardView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(LibraryCardLabel)
                 .addGap(18, 18, 18)
-                .addComponent(BarCode, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BarCode, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(printButtonLibCard)
+                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(printButton)
                 .addContainerGap())
         );
 
@@ -94,6 +122,6 @@ public class LibraryCardView extends javax.swing.JFrame {
     private javax.swing.JButton BarCode;
     private javax.swing.JLabel LibraryCardLabel;
     private javax.swing.JTextField NameTextField;
-    private javax.swing.JButton printButtonLibCard;
+    public javax.swing.JButton printButton;
     // End of variables declaration//GEN-END:variables
 }

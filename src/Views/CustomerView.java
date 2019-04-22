@@ -32,7 +32,7 @@ public class CustomerView extends javax.swing.JPanel {
         custBookSearchLbl = new javax.swing.JLabel();
         custViewLabel = new javax.swing.JLabel();
         showMyCheckoutsCustomerViewTxtLbl = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CheckoutBox = new javax.swing.JComboBox<>();
         custSearchDatabaseButton = new javax.swing.JButton();
         goToSelectedBookCustomerViewButton = new javax.swing.JButton();
 
@@ -42,7 +42,7 @@ public class CustomerView extends javax.swing.JPanel {
 
         showMyCheckoutsCustomerViewTxtLbl.setText("My checkouts:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CheckoutBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         custSearchDatabaseButton.setText("Search Database");
 
@@ -68,7 +68,7 @@ public class CustomerView extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(showMyCheckoutsCustomerViewTxtLbl)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(CheckoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(custBookSearchLbl)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -88,7 +88,7 @@ public class CustomerView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(showMyCheckoutsCustomerViewTxtLbl)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CheckoutBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(goToSelectedBookCustomerViewButton)
                 .addContainerGap())
@@ -107,11 +107,11 @@ public class CustomerView extends javax.swing.JPanel {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CheckoutBox;
     private javax.swing.JLabel custBookSearchLbl;
     private javax.swing.JButton custSearchDatabaseButton;
     private javax.swing.JLabel custViewLabel;
     private javax.swing.JButton goToSelectedBookCustomerViewButton;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel showMyCheckoutsCustomerViewTxtLbl;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,9 +14,6 @@ import javax.swing.JButton;
  */
 public class LoginView extends javax.swing.JFrame {
 
-    private static final String librarian = "librarian";
-    private static final String customer = "customer";
-    
     /**
      * Creates new form CustomerLogin
      */
@@ -24,7 +21,6 @@ public class LoginView extends javax.swing.JFrame {
         initComponents();
         this.pack();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,18 +101,21 @@ public class LoginView extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public String username(){
-       return Username_txtfield.getText();
+    public String username() {
+        return Username_txtfield.getText();
     }
-     public String password(){
-       return Password_txtField.getText();
+
+    public String password() {
+        return String.valueOf(Password_txtField.getPassword());
     }
-     public JButton loginButton() {
-         return loginButton;
-     }
-      public JButton registerButton() {
-         return registerButton;
-     }
+
+    public JButton loginButton() {
+        return loginButton;
+    }
+
+    public JButton registerButton() {
+        return registerButton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginLbl;

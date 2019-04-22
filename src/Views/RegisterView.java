@@ -7,7 +7,7 @@ import javax.swing.JButton;
  *
  * @author Charles Brady
  *
- * Last Updated 3/13
+ * Last Updated 4/14
  */
 public class RegisterView extends javax.swing.JFrame {
 
@@ -19,17 +19,11 @@ public class RegisterView extends javax.swing.JFrame {
     // This will open up a registration form while also obtaining the type of user
     public RegisterView() {
         initComponents();
-
-//         String _userType        
-//         user = new UserModel();
-//        user.setUserType(_userType);
-//        
-//        userType(user);
     }
-
-    public UserModel userType(UserModel _userType) {
-        return _userType;
-    }
+//
+//    public UserModel userType(UserModel _userType) {
+//        return _userType;
+//    }
 
     public JButton registerButton() {
         return registerButton;
@@ -44,7 +38,8 @@ public class RegisterView extends javax.swing.JFrame {
     }
 
     public String getUserPassword() {
-        return PasswordTextField.getText();
+        char[] password = PasswordTextField.getPassword();
+        return String.valueOf(password);
     }
 
     public String getUserEmail() {

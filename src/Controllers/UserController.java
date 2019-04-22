@@ -1,63 +1,40 @@
 package Controllers;
 
+import Models.Printer;
 import Models.UserModel;
-import Views.CustomerView;
-import Views.LibrarianView;
-import Views.LibraryManagementGUI;
+import Views.LibraryCardView;
 import Views.LoginView;
 import Views.RegisterView;
-import java.sql.SQLException;
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sourceforge.barbecue.output.OutputException;
 
 /**
  *
- * @author Charles Brady
+ * @author Charles Bradcy
  * @author Jeremy Hudson
  *
  * Last updated 4/5
  */
-public class UserController extends ParentController {
+public class UserController {
 
-    private UserModel userModel;
-    private RegisterView registerView;
-    private LoginView loginView;
+    private final UserModel userModel = new UserModel();
+    private RegisterView registerView = new RegisterView();
+    private LoginView loginView = new LoginView();
 
-    public UserController(LibrarianView librarianView,
-            CustomerView customerView,
-            LibraryManagementGUI libraryManagement,
-            UserModel userModel,
-            LoginView loginView,
-            RegisterView registerView
-    ) {
-
-        super(librarianView, customerView, libraryManagement);
-
-        this.userModel = userModel;
-        this.registerView = registerView;
-        this.loginView = loginView;
-        this.libraryManagement = libraryManagement;
-
-    }
-
-    //adds listenres to main login and register buttons
-    public void initUserController() {
-
-        libraryManagement.addLoginListener(e -> displayLogin());
-        libraryManagement.addRegisterListener(e -> displayRegister());
-        //librarianView.customerSearchListener(e -> displayBookDB());
-
-    }
-
-    //opens register view and registers user if info is valid
-    public void displayRegister() {
-        registerView.setVisible(true);
-        registerView.registerButton().addActionListener(e -> {
+    //This opens the register view and registers a user if their info is valid.
+    public void displayRegister(String _userType) {
+        this.registerView.setVisible(true);
+        this.registerView.registerButton().addActionListener(e -> {
             try {
-                checkRegister(registerView.userType(userModel),
+                checkRegister(_userType,
                         registerView.getName(), registerView.getUserID(),
                         registerView.getUserPassword(),
                         registerView.getUserEmail());
+
             } catch (Exception ex) {
                 Logger.getLogger(UserController.class.getName())
                         .log(Level.SEVERE, null, ex);
@@ -65,36 +42,54 @@ public class UserController extends ParentController {
         });
     }
 
-    //displays login view and logs the relevant user type in
+    //This displays the login view and logs the relevant user type in.
     public void displayLogin() {
-        loginView.setVisible(true);
-        loginView.loginButton().addActionListener(e -> {
-            try {
-                checkLogin(loginView.username(), loginView.password());
-            } catch (SQLException ex) {
-                Logger.getLogger(UserController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        });
+        this.loginView.setVisible(true);
+        this.loginView.loginButton().addActionListener(e
+                -> checkLogin(loginView.username(), loginView.password()));
     }
 
-    //checks for customer or librarian
-    public void checkLogin(String username, String password) throws SQLException {
+    public void displayLibraryCard(UserModel _user) throws OutputException {
+        LibraryCardView libraryCardView = new LibraryCardView(_user);
+        libraryCardView.setVisible(true);
+        libraryCardView.printButton().addActionListener(e
+                -> printCard(libraryCardView));
 
-        String userType = userModel.checkLogin(username, password);
+    }
+
+    //This checks for customer or librarian user type.
+    public void checkLogin(String _username, String _password) {
+
+        LibrarianController librarianController = new LibrarianController();
+        CustomerController customerController = new CustomerController();
+
+        String userType = userModel.checkLogin(_username, _password);
         if (userType.equals("customer")) {
-            customerView.setVisible(true);
+            customerController.initCustomerController();
+
         } else if (userType.equals("librarian")) {
-            librarianView.setVisible(true);
-
+            librarianController.initLibrarianController();
         }
-
     }
 
-    //helper method for register view
-    public void checkRegister(UserModel user, String name, String userID,
-            String password, String email) throws Exception {
-        userModel.checkRegister(user, name, password, userID, email);
+    //This is a helper method for the register view.
+    public void checkRegister(String _userType, String _name, String _userID,
+            String _password, String _email) throws Exception {
+
+        userModel.checkRegister(_userType, _name, _password, _userID, _email);
     }
 
+    public void printCard(LibraryCardView _libraryCardView) {
+        PrinterJob job = PrinterJob.getPrinterJob();
+        PageFormat format = job.defaultPage();
+        job.setPrintable(new Printer(_libraryCardView, 0.75));
+        if (job.printDialog()) {
+            try {
+                job.print();
+                _libraryCardView.dispose();
+            } catch (PrinterException ex) {
+                Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }

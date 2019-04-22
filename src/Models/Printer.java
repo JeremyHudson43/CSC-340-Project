@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 import java.awt.Component;
@@ -23,7 +18,7 @@ public class Printer implements Printable {
     }
 
     @Override
-    public int print(Graphics _graphics, PageFormat _format, int _page_index) 
+    public int print(Graphics _graphics, PageFormat _format, int _page_index)
             throws PrinterException {
         if (_page_index > 0) {
             return Printable.NO_SUCH_PAGE;

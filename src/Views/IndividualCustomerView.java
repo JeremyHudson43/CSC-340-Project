@@ -1,9 +1,13 @@
-
 package Views;
+
+import Models.BooksModel;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ * @author Charles Brady
+ *
+ * Last updated 4/16
  */
 public class IndividualCustomerView extends javax.swing.JPanel {
 
@@ -13,6 +17,22 @@ public class IndividualCustomerView extends javax.swing.JPanel {
     public IndividualCustomerView() {
         initComponents();
     }
+
+    public void setCustomerName(String _customerName) {
+        this.namePlaceholderTxtLbl.setText(_customerName);
+    }
+
+    public void setCustomerEmail(String _customerEmail) {
+        this.emailAddressPlaceholderTxtLbl.setText(_customerEmail);
+    }
+
+    public void setCustomerID(String _customerID) {
+        this.customerIDNumberPlaceholderTxtLbl.setText(_customerID);
+    }
+
+//    public void setCheckoutBook(BooksModel _book){
+//        this.individualCustomerViewComboBox.
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,11 +48,9 @@ public class IndividualCustomerView extends javax.swing.JPanel {
         individualCustomerViewTxtLbl = new javax.swing.JLabel();
         individualCustomerViewNameTxtLbl = new javax.swing.JLabel();
         individualCustomerViewEmailTxtLbl = new javax.swing.JLabel();
-        individualCustomerViewLibCardNumberTxtLbl = new javax.swing.JLabel();
         individualCustomerViewCheckoutsTxtLbl = new javax.swing.JLabel();
         namePlaceholderTxtLbl = new javax.swing.JLabel();
         emailAddressPlaceholderTxtLbl = new javax.swing.JLabel();
-        libraryCardNumberPlaceholderTxtLbl = new javax.swing.JLabel();
         individualCustomerViewIDNumberTxtLbl = new javax.swing.JLabel();
         customerIDNumberPlaceholderTxtLbl = new javax.swing.JLabel();
         individualCustomerViewComboBox = new javax.swing.JComboBox<>();
@@ -47,15 +65,11 @@ public class IndividualCustomerView extends javax.swing.JPanel {
 
         individualCustomerViewEmailTxtLbl.setText("Customer Email Address:");
 
-        individualCustomerViewLibCardNumberTxtLbl.setText("Customer Library Card Number:");
-
         individualCustomerViewCheckoutsTxtLbl.setText("Books Customer has checked out:");
 
         namePlaceholderTxtLbl.setText("Customer Name Placeholder");
 
         emailAddressPlaceholderTxtLbl.setText("Customer Email Address Placeholder");
-
-        libraryCardNumberPlaceholderTxtLbl.setText("Library Card Number Placeholder");
 
         individualCustomerViewIDNumberTxtLbl.setText("Customer ID Number:");
 
@@ -77,14 +91,12 @@ public class IndividualCustomerView extends javax.swing.JPanel {
                         .addComponent(individualCustomerViewTxtLbl))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(individualCustomerViewLibCardNumberTxtLbl)
                             .addComponent(individualCustomerViewEmailTxtLbl)
                             .addComponent(individualCustomerViewNameTxtLbl))
-                        .addGap(28, 28, 28)
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(namePlaceholderTxtLbl)
-                            .addComponent(emailAddressPlaceholderTxtLbl)
-                            .addComponent(libraryCardNumberPlaceholderTxtLbl)))
+                            .addComponent(emailAddressPlaceholderTxtLbl)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(individualCustomerViewCheckoutsTxtLbl)
@@ -110,11 +122,7 @@ public class IndividualCustomerView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(individualCustomerViewEmailTxtLbl)
                     .addComponent(emailAddressPlaceholderTxtLbl))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(individualCustomerViewLibCardNumberTxtLbl)
-                    .addComponent(libraryCardNumberPlaceholderTxtLbl))
-                .addGap(41, 41, 41)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(individualCustomerViewIDNumberTxtLbl)
                     .addComponent(customerIDNumberPlaceholderTxtLbl))
@@ -122,9 +130,9 @@ public class IndividualCustomerView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(individualCustomerViewCheckoutsTxtLbl)
                     .addComponent(individualCustomerViewComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
                 .addComponent(individualCustomerViewExiProgramButton)
-                .addGap(21, 21, 21))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,10 +146,8 @@ public class IndividualCustomerView extends javax.swing.JPanel {
     private javax.swing.JLabel individualCustomerViewEmailTxtLbl;
     private javax.swing.JButton individualCustomerViewExiProgramButton;
     private javax.swing.JLabel individualCustomerViewIDNumberTxtLbl;
-    private javax.swing.JLabel individualCustomerViewLibCardNumberTxtLbl;
     private javax.swing.JLabel individualCustomerViewNameTxtLbl;
     private javax.swing.JLabel individualCustomerViewTxtLbl;
-    private javax.swing.JLabel libraryCardNumberPlaceholderTxtLbl;
     private javax.swing.JLabel namePlaceholderTxtLbl;
     // End of variables declaration//GEN-END:variables
 }

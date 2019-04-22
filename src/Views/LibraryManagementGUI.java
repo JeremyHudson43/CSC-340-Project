@@ -1,9 +1,7 @@
 package Views;
 
-import Controllers.BooksController;
-import Controllers.UserController;
-import Models.BooksModel;
-import Models.UserModel;
+import Controllers.ParentController;
+
 import java.awt.event.ActionListener;
 
 /**
@@ -11,7 +9,7 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last updated 4/12
+ * Last updated 4/20
  */
 public class LibraryManagementGUI extends javax.swing.JFrame {
 
@@ -103,9 +101,9 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
     }
 
-    public void addRegisterListener(ActionListener listenForLogin) {
+    public void addRegisterListener(ActionListener listenForRegister) {
 
-        registerButton.addActionListener(listenForLogin);
+        registerButton.addActionListener(listenForRegister);
 
     }
 
@@ -114,32 +112,9 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws Exception {
 
-        LibraryManagementGUI libManage = new LibraryManagementGUI();
+        ParentController parentController = new ParentController();
+        parentController.initParentController();
 
-        UserModel userModel = new UserModel();
-        LoginView loginView = new LoginView();
-        RegisterView registerView = new RegisterView();
-
-        BooksModel bookModel = new BooksModel();
-        LibrarianView librarianView = new LibrarianView();
-        CustomerView customerView = new CustomerView();
-        BookDatabaseView bookDBview = new BookDatabaseView();
-        AddBookView addBookView = new AddBookView();
-        CheckoutView checkOutView = new CheckoutView();
-        CheckinView checkInView = new CheckinView();
-
-        UserController userController = new UserController(librarianView, customerView,
-                libManage, userModel, loginView, registerView);
-
-        userController.initUserController();
-
-        BooksController bookController = new BooksController(librarianView,
-                customerView, libManage, bookModel, bookDBview,
-                addBookView, checkOutView, checkInView);
-
-        bookController.initBookController();
-
-        libManage.setVisible(true);
     }
 
 

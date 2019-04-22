@@ -10,28 +10,45 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 
 /**
  *
- * @author Charles Brady
+ * @author DELL6420
  */
 public class IndividualBookView extends javax.swing.JPanel {
 
     /**
      * Creates new form IndividualBookView
      */
-    public IndividualBookView(String[] _bookinfo) throws MalformedURLException, IOException {
+    public IndividualBookView() {
         initComponents();
 
-//        String _author, String _title, String _category, 
-//            String _isbn, String _imageLink
-          IndividualBookVewNamePlaceholderTxtLbl.setText(_bookinfo[0]);
-          IndividualBookVewAuthorPlaceholderTxtLbl.setText(_bookinfo[1]);
-          IndividualBookVewISBNPlaceholderTxtLbl.setText(_bookinfo[2]);
-          IndividualBookVewCategoryPlaceholderTxtLbl.setText(_bookinfo[3]);
-          BufferedImage img = ImageIO.read(new URL(_bookinfo[4]));
-          imagePlaceholderLbl.setText("");
-          imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
+    }
+
+    public void setIndividualBookVewAuthorPlaceholderTxtLbl(String IndividualBookVewAuthorPlaceholderTxtLbl) {
+        this.IndividualBookVewAuthorPlaceholderTxtLbl.setText(IndividualBookVewAuthorPlaceholderTxtLbl);
+    }
+
+    public void setIndividualBookVewCategoryPlaceholderTxtLbl(String IndividualBookVewCategoryPlaceholderTxtLbl) {
+        this.IndividualBookVewCategoryPlaceholderTxtLbl.setText(IndividualBookVewCategoryPlaceholderTxtLbl);
+    }
+
+    public void setIndividualBookVewISBNPlaceholderTxtLbl(String IndividualBookVewISBNPlaceholderTxtLbl) {
+        this.IndividualBookVewISBNPlaceholderTxtLbl.setText(IndividualBookVewISBNPlaceholderTxtLbl);
+    }
+
+    public void setIndividualBookVewNamePlaceholderTxtLbl(String IndividualBookVewNamePlaceholderTxtLbl) {
+        this.IndividualBookVewNamePlaceholderTxtLbl.setText(IndividualBookVewNamePlaceholderTxtLbl);
+    }
+
+    public void setImagePlaceholderLbl(String _imageLink)
+            throws MalformedURLException, IOException {
+                imagePlaceholderLbl.setText("");
+        BufferedImage img = ImageIO.read(new URL(_imageLink));
+        imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
+        
+        this.imagePlaceholderLbl = imagePlaceholderLbl;
     }
 
     /**

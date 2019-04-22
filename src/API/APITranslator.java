@@ -5,7 +5,7 @@ package API;
  *
  * @author Jeremy Hudson
  *
- * Last updated 4/5
+ * Last Updated 4/17
  */
 public class APITranslator implements ApiConnector {
 

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/6
+ * Last Updated 4/20
  *
  * This class allows the librarian to search the book database and to check the
  * books they have checked out, in addition to searching for and creating new
@@ -23,10 +23,17 @@ public class LibrarianView extends javax.swing.JFrame {
     }
 
     public void databaseListener(ActionListener listenForDatabase) {
+
         openDatabaseButton.addActionListener(listenForDatabase);
+
+    }
+
+    public String getCustomerSearchTextField() {
+        return CustomerSearchTextField.getText();
     }
 
     public void customerSearchListener(ActionListener listenForCustomerSearch) {
+
         customerSearchButton.addActionListener(listenForCustomerSearch);
     }
 
@@ -34,12 +41,8 @@ public class LibrarianView extends javax.swing.JFrame {
         addBookButton.addActionListener(listenForAddBook);
     }
 
-    public void addLibrarianListener(ActionListener listenForAddLibrarian) {
+    public void librarianAddListener(ActionListener listenForAddLibrarian) {
         addLibrarianButton.addActionListener(listenForAddLibrarian);
-    }
-
-    public void librarianSearchListener(ActionListener listenForAddLibrarian) {
-        customerSearchButton.addActionListener(listenForAddLibrarian);
     }
 
     public void checkInListener(ActionListener listenForCheckIn) {
@@ -147,9 +150,8 @@ public class LibrarianView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(customerSearchButton)
                                     .addComponent(GoToSelectedBookButton)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(checkInButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(checkOutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(checkInButton)
+                            .addComponent(checkOutButton))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

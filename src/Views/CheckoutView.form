@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
@@ -55,7 +55,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="CustomerTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="checkOutButtonCheckOutView" min="-2" max="-2" attributes="0"/>
+                              <Component id="CheckoutButton" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="isbnTextField1" pref="120" max="32767" attributes="0"/>
@@ -71,8 +71,8 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="checkOutViewLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -83,7 +83,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="checkOutViewLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustomerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -101,7 +101,7 @@
                   <Component id="isbnTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="checkOutButtonCheckOutView" min="-2" max="-2" attributes="0"/>
+              <Component id="CheckoutButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -118,9 +118,9 @@
         <Property name="text" type="java.lang.String" value="Enter books by ISBN:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="checkOutButtonCheckOutView">
+    <Component class="javax.swing.JButton" name="CheckoutButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Check Out"/>
+        <Property name="text" type="java.lang.String" value="Checkout"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CustomerTextField">
@@ -133,9 +133,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="isbnTextField4">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="checkOutViewLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Check Out"/>
+        <Property name="text" type="java.lang.String" value="Checkout View"/>
       </Properties>
     </Component>
   </SubComponents>

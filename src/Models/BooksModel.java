@@ -3,11 +3,13 @@ package Models;
 import API.APITranslator;
 import API.ApiConnector;
 import Controllers.BooksController;
-import Translators.MySQLDBTranslator;
+import SQL_Translator.MySQLCaller;
 import Views.BookDatabaseView;
 import Views.CheckoutView;
-import Views.IndividualBookView;
-import java.awt.BorderLayout;
+import Views.LibraryCardView;
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -24,15 +26,14 @@ import org.json.JSONObject;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/5
+ * Last Updated 4/17
  *
  * This is the model for the books class.
  */
 public class BooksModel {
 
+    MySQLCaller sqlCaller = new MySQLCaller();
     protected final static ApiConnector myAPI = new APITranslator();
-
-    MySQLDBTranslator SQL;
 
     private String author;
     private String title;
@@ -80,45 +81,42 @@ public class BooksModel {
         this.imageLink = _imageLink;
     }
 
-    //===================================================================================================
+    //======================================================================
+    //creates table from given author, title and ISBN
+    public JTable createTable(String _author, String _title, String _isbn) {
 
-    public void bookDBMethod(String _author, String _title, String _isbn) throws SQLException {
         try {
-            String[] columns = {"ISBN", "Title", "Author", "Category", "ImageLink"};
-            Object[][] data = null;
-            data = searchBook(_author, _title, _isbn);
+            BooksController bookController = new BooksController();
+            String[] columns = {"ISBN", "Title", "Author", "Category",
+                "ImageLink"};
+            Object[][] data = searchBook(_author, _title, _isbn);
             JTable table = new JTable(data, columns);
 
             table.addMouseListener(new java.awt.event.MouseAdapter() {
 
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
+
                     try {
-                        mouseClick(table);
+                        bookController.getInfoAboutBook(table);
                     } catch (IOException ex) {
-                        Logger.getLogger(BooksController.class.getName())
-                                .log(Level.SEVERE, null, ex);
+                        Logger.getLogger(BooksModel.class.getName()).log(Level.SEVERE, null, ex);
                     }
+
                 }
             });
-
-            JFrame frame = new JFrame();
             JScrollPane scrollPane = new JScrollPane(table);
-
-            frame.getContentPane().setLayout(new BorderLayout());
-            frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-            frame.setSize(500, 600);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-
-        } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+            return table;
+        } catch (SQLException ex) {
+            Logger.getLogger(BooksModel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
-    //helper method for BookDB method
-    public void mouseClick(JTable _table) throws IOException {
+//helper method for BookDB method
+    public String[] parseTable(JTable _table) throws IOException {
 
-        TableModel model = (TableModel) _table.getModel();
+        TableModel model = _table.getModel();
+        String[] bookInfo = new String[5];
 
         String author = "";
         String title = "";
@@ -130,102 +128,33 @@ public class BooksModel {
         int selectedRowIndex = _table.getSelectedRow();
         if (model.getValueAt(selectedRowIndex, 0) != null) {
             isbn = model.getValueAt(selectedRowIndex, 0).toString();
+            bookInfo[0] = isbn;
         }
         if (model.getValueAt(selectedRowIndex, 1) != null) {
             title = model.getValueAt(selectedRowIndex, 1).toString();
+            bookInfo[1] = title;
         }
         if (model.getValueAt(selectedRowIndex, 2) != null) {
             author = model.getValueAt(selectedRowIndex, 2).toString();
+            bookInfo[2] = author;
         }
         if (model.getValueAt(selectedRowIndex, 3) != null) {
             category = model.getValueAt(selectedRowIndex, 3).toString();
+            bookInfo[3] = category;
         }
         if (model.getValueAt(selectedRowIndex, 4) != null) {
             imagelink = model.getValueAt(selectedRowIndex, 4).toString();
+            bookInfo[4] = imagelink;
         }
 
-        JFrame frame = new JFrame();
+        return bookInfo;
 
-        IndividualBookView bookView
-                = new IndividualBookView(author, title, category, isbn, imagelink);
-        frame.add(BorderLayout.CENTER, bookView);
-        frame.pack();
-        frame.setVisible(true);
-
-        bookView.setVisible(true);
-    }
-
-    /*method that creates the individual book view instance with all passed arguments
-     */
-    public void individualBookViewMethod(String _author,
-            String _title, String _category, String _isbn,
-            String _imageLink) throws IOException {
-
-        IndividualBookView IndividaulBV = new IndividualBookView(_author, _title, _category, _isbn, _imageLink);
-
-        IndividaulBV.setVisible(true);
-    }
-
-    // Checkout books for a specific customer
-    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
-
-        int id = Integer.valueOf(_userID);
-
-        try {
-            MySQLDBTranslator translator = new MySQLDBTranslator();
-            translator.checkoutBooks(_isbn, id);
-
-        } catch (Exception ex) {
-            Logger.getLogger(CheckoutView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public void checkInBooksByISBN(String[] _isbn, String _userID) {
-
-        int id = Integer.valueOf(_userID);
-
-        try {
-            MySQLDBTranslator translator = new MySQLDBTranslator();
-            translator.checkInBooks(_isbn, id);
-
-        } catch (Exception ex) {
-            Logger.getLogger(CheckoutView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public BooksModel() throws Exception {
-        super();
-        SQL = new MySQLDBTranslator();
-    }
-
-    //Add a book to the database.
-    public int addBook(BooksModel _b) {
-        int res = SQL.addBooks(_b);
-        return res;
-    }
-
-    //Remove a book from the database.
-    public int removeBook(BooksModel _b) {
-        int res = SQL.removeBooks(_b.getISBN());
-        return res;
-    }
-
-    //Search for a book in the database.
-    public Object[][] searchBook(String _author, String _title, String _isbn)
-            throws SQLException {
-        Object[][] data = null;
-        data = SQL.searchBooks(_author, _title, _isbn);
-        return data;
     }
 
     //Create a new book
     public static BooksModel buildBook(String _author, String _title,
-            String _category, String _isbn, String _imageLink) throws Exception {
-
+            String _category, String _isbn, String _imageLink)
+            throws Exception {
         BooksModel b = new BooksModel();
         b.setAuthor(_author);
         b.setTitle(_title);
@@ -235,57 +164,39 @@ public class BooksModel {
         return b;
     }
 
-    public void loadBookByISBN(String _isbn) throws Exception {
-        BooksModel book = new BooksModel();
-        book.setISBN(_isbn);
-        String bookData = book.myAPI.loadBookNameByISBN(_isbn);
-        parseBook(bookData);
+    //Search for a book in the database.
+    public Object[][] searchBook(String _author, String _title, String _isbn)
+            throws SQLException {
+        Object[][] data = sqlCaller.searchBooks(_author, _title, _isbn);
+        return data;
     }
 
-    public void loadBookNameByAuthorAndTitle(String _author,
-            String _title) throws Exception {
-        BooksModel book = new BooksModel();
-        String bookData = book.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-        parseBook(bookData);
-    }
-
-    public void parseBook(String _responseString) {
+    // Checkout books for a specific customer
+    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
 
         try {
+            MySQLCaller caller = new MySQLCaller();
+            caller.checkoutBooks(_isbn, _userID);
 
-            JSONObject root = new JSONObject(_responseString);
-            JSONArray books = root.getJSONArray("items");
-
-            for (int i = 0; i < books.length(); i++) {
-                JSONObject book = books.getJSONObject(i);
-
-                JSONObject info = book.getJSONObject("volumeInfo");
-                String bookTitle = info.getString("title");
-
-                JSONArray authors = info.getJSONArray("authors");
-
-                String bookAuthor = authors.getString(0);
-                JSONObject imageLinks = info.getJSONObject("imageLinks");
-                String bookImageLink = imageLinks.getString("smallThumbnail");
-
-                String bookISBN = generateNumber();
-
-                BooksModel bookObject
-                        = buildBook(bookAuthor, bookTitle, "", bookISBN, bookImageLink);
-
-                SQL.addBooks(bookObject);
-            }
-        } catch (Exception e) {
-
+        } catch (Exception ex) {
+            Logger.getLogger(CheckoutView.class
+                    .getName())
+                    .log(Level.SEVERE, null, ex);
         }
+
     }
 
-    public static String generateNumber() {
-        String ISBN = "978-";
-        for (int i = 0; i < 10; i++) {
-            ISBN += (int) (Math.random() * 9 + 1);
-        }
-        return ISBN;
-    }
+    public void checkInBooksByISBN(String[] _isbn, String _userID) {
 
+        try {
+            MySQLCaller caller = new MySQLCaller();
+            caller.checkinBooks(_isbn, _userID);
+
+        } catch (Exception ex) {
+            Logger.getLogger(CheckoutView.class
+                    .getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
