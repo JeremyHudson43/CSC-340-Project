@@ -1,5 +1,6 @@
 package Views;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -21,7 +22,6 @@ public class LoginView extends javax.swing.JFrame {
         initComponents();
         this.pack();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +39,6 @@ public class LoginView extends javax.swing.JFrame {
         Password_label = new javax.swing.JLabel();
         Password_txtField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
-        registerButton = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -52,8 +51,6 @@ public class LoginView extends javax.swing.JFrame {
         Password_label.setText("Password");
 
         loginButton.setText("Login");
-
-        registerButton.setText("Register");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,8 +69,7 @@ public class LoginView extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(Username_txtfield, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(registerButton)
-                        .addGap(113, 113, 113)
+                        .addGap(186, 186, 186)
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -95,25 +91,26 @@ public class LoginView extends javax.swing.JFrame {
                     .addComponent(Password_label)
                     .addComponent(Password_txtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginButton)
-                    .addComponent(registerButton))
+                .addComponent(loginButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public String username(){
-       return Username_txtfield.getText();
+    public String username() {
+        return Username_txtfield.getText();
     }
-     public String password(){
-       return Password_txtField.getText();
+
+    public String password() {
+        return Password_txtField.getText();
     }
-     public JButton loginButton() {
-         return loginButton;
-     }
-      public JButton registerButton() {
-         return registerButton;
-     }
+
+    public void loginListener(ActionListener listenForLogin) {
+
+        loginButton.addActionListener(listenForLogin);
+
+    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginLbl;
@@ -123,7 +120,6 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JTextField Username_txtfield;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
 
 }

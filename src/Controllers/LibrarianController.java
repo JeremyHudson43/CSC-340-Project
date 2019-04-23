@@ -34,6 +34,8 @@ public class LibrarianController extends BooksController {
         this.librarianView.customerSearchListener(e -> customerDisplay());
         this.librarianView.checkInListener(e -> displayCheckInView());
         this.librarianView.checkOutListener(e -> displayCheckOutView());
+        
+        //this.librarianView.populateComboBox(_bookName);
 
     }
 

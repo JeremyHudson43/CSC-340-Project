@@ -2,6 +2,7 @@ package Views;
 
 
 import Models.UserModel;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 
@@ -22,20 +23,13 @@ public class RegisterView extends javax.swing.JFrame {
     public RegisterView() {
         initComponents();
         
-//         String _userType        
-//         user = new UserModel();
-//        user.setUserType(_userType);
-//        
-//        userType(user);
 
     }
-    
-    public UserModel userType(UserModel _userType) {
-        return _userType;
-    }
 
-    public JButton registerButton () {
-        return registerButton;
+    public void registerListener(ActionListener listenForRegister) {
+
+        registerButton.addActionListener(listenForRegister);
+
     }
     
     public String getName() {

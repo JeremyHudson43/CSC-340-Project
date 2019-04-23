@@ -2,8 +2,6 @@ package Models;
 
 import Controllers.UserController;
 import SQL_Translator.MySQLCaller;
-import SQL_Translator.MySQLDBTranslator;
-import Views.LibraryCardView;
 import Views.LoginView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class UserModel {
     
-        private static final String librarian = "librarian";
-    private static final String customer = "customer";
+        private static final String LIBRARIAN = "librarian";
+    private static final String CUSTOMER = "customer";
 
 
     private String name;
@@ -90,35 +88,34 @@ public class UserModel {
     }
 
 //================================================================
-    
+
      /* If something is entered, the program will check to see if it exists in
     the database. */
     public String checkLogin(String _username, String _password) {
-          if (_username.equals("") || _password.equals("")) {
+        if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. "
                     + "Please try again.");
-        } 
-        else {
+        } else {
             try {
                 UserModel user = new UserModel();
                 user.setUserId(_username);
                 user.setPassword(_password);
 
-                MySQLDBTranslator translator = new MySQLDBTranslator();
-                String result = translator.checkLogin(user);
+                MySQLCaller call = new MySQLCaller();
+                String result = call.checkLogin(user);
                 // if the user is a librarian, it will open the librarian view.
-                if (result == null ? librarian == null 
-                        : result.equals(librarian)) {
+                if (result == null ? LIBRARIAN == null
+                        : result.equals(LIBRARIAN)) {
 
                     return "librarian";
-                   // if the user is a customer, it will open the customer view.
-                } else if (result == null ? customer == null : 
-                        result.equals(customer)) {
+                    // if the user is a customer, it will open the customer view.
+                } else if (result == null ? CUSTOMER == null
+                        : result.equals(CUSTOMER)) {
 
                     return "customer";
-                /* if the username and password is not in the database, 
+                    /* if the username and password is not in the database,
                     it will ask the user to try again.
-                */
+                     */
                 } else {
                     JOptionPane.showMessageDialog(null, " User does not exist."
                             + " Please try again.");
@@ -127,8 +124,8 @@ public class UserModel {
                 Logger.getLogger(LoginView.class.getName())
                         .log(Level.SEVERE, null, ex);
             }
-    }
-          return "";
+        }
+        return "";
     }
 
     //This creates an acocunt if all input is valid.

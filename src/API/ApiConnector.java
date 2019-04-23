@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public interface ApiConnector {
     
     
-     public String loadBookNameByISBN(String _ISBN);
+     public String[] loadBookNameByISBN(String _ISBN);
 
-    public String loadBookNameByAuthorAndTitle(String _author, String _title);
+    public String[] loadBookNameByAuthorAndTitle(String _author, String _title);
 
 }
 

@@ -57,6 +57,10 @@ public class LibrarianView extends javax.swing.JFrame {
     public void goToBookListener(ActionListener listenForGoToBook) {
         GoToSelectedBookButton.addActionListener(listenForGoToBook);
     }
+    
+    public void populateComboBox(String _bookName) {
+        this.librarianViewCheckoutComboBox.addItem(_bookName);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
