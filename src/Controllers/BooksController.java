@@ -71,13 +71,13 @@ public class BooksController {
         JTable table = bookModel.createTable(author, title, ISBN);
         JScrollPane scrollPane = new JScrollPane(table);
 
-        bookScrollView.getContentPane().setLayout(new BorderLayout());
-        bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
-        bookScrollView.setSize(500, 600);
-        bookScrollView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        bookScrollView.setVisible(true);
+        this.bookScrollView.getContentPane().setLayout(new BorderLayout());
+        this.bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        this.bookScrollView.setSize(500, 600);
+        this.bookScrollView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.bookScrollView.setVisible(true);
 
-        bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
+        this.bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
     }
 
@@ -87,7 +87,7 @@ public class BooksController {
      */
     void getInfoAboutBook(JTable _table) {
         try {
-            String[] bookInfo = bookModel.parseTable(_table);
+            String[] bookInfo = this.bookModel.parseTable(_table);
 
             this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[2]);
             this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[3]);
@@ -97,7 +97,7 @@ public class BooksController {
 
             JFrame frame = new JFrame();
 
-            frame.add(BorderLayout.CENTER, individualBookView);
+            frame.add(BorderLayout.CENTER, this.individualBookView);
             frame.pack();
             frame.setVisible(true);
 

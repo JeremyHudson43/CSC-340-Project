@@ -5,7 +5,7 @@ import Models.UserModel;
 import Views.AddBookView;
 import Views.CheckinView;
 import Views.CheckoutView;
-import Views.IndividualCustomerView;
+import Views.IndividualUserView;
 import Views.LibrarianView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,16 +22,16 @@ public class LibrarianController extends BooksController {
     private CheckinView checkInView = new CheckinView();
     private AddBookView addBookView = new AddBookView();
     private CheckoutView checkoutView = new CheckoutView();
-    private IndividualCustomerView individualCustomerView = new IndividualCustomerView();
+    private IndividualUserView individualUserView = new IndividualUserView();
 
     //This tells the librarian view buttons what method to call when pressed
     public void initLibrarianController() {
-        librarianView.setVisible(true);
+        this.librarianView.setVisible(true);
 
         this.librarianView.databaseListener(e -> displayBookDB());
         this.librarianView.bookAddListener(e -> displayAddBookView());
         this.librarianView.librarianAddListener(e -> userController.displayRegister("librarian"));
-        this.librarianView.customerSearchListener(e -> customerDisplay());
+        this.librarianView.userSearchListener(e -> userDisplay());
         this.librarianView.checkInListener(e -> displayCheckInView());
         this.librarianView.checkOutListener(e -> displayCheckOutView());
         
@@ -116,24 +116,24 @@ public class LibrarianController extends BooksController {
         String ISBN = this.addBookView.getISBN();
 
         if (ISBN.equals("")) {
-            librarianModel.loadBookNameByAuthorAndTitle(author, title);
+            this.librarianModel.loadBookNameByAuthorAndTitle(author, title);
         } else {
-            librarianModel.loadBookByISBN(ISBN);
+            this.librarianModel.loadBookByISBN(ISBN);
         }
     }
 
     //This displays individual customer information.
-    public void customerDisplay() {
+    public void userDisplay() {
 
         UserModel placeholder = new UserModel();
 
-        placeholder = this.userModel.searchUser(this.librarianView.getCustomerSearchTextField());
+        placeholder = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
 
-        this.individualCustomerView.setCustomerName(placeholder.getName());
-        this.individualCustomerView.setCustomerEmail(placeholder.getEmail());
-        this.individualCustomerView.setCustomerID(placeholder.getUserId());
-
-        this.individualCustomerView.setVisible(true);
+        this.individualUserView.setUsersName(placeholder.getName());
+        this.individualUserView.setUserEmail(placeholder.getEmail());
+        this.individualUserView.setUserID(placeholder.getUserId());
+        this.individualUserView.setUserType(placeholder.getUserType());
+        this.individualUserView.setVisible(true);
 
     }
 }

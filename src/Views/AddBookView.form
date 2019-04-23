@@ -38,7 +38,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ISBNtxtfieldAddBookView" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="isbnTxtfieldAddBookView" min="-2" pref="105" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
@@ -70,7 +70,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ISBNtxtfieldAddBookView" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="isbnTxtfieldAddBookView" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -111,7 +111,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="bookTextFieldAddBook">
     </Component>
-    <Component class="javax.swing.JTextField" name="ISBNtxtfieldAddBookView">
+    <Component class="javax.swing.JTextField" name="isbnTxtfieldAddBookView">
     </Component>
     <Component class="javax.swing.JLabel" name="addBookISBNLbl">
       <Properties>

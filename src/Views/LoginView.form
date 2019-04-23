@@ -36,12 +36,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="Password_label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="Password_txtField" max="32767" attributes="0"/>
+                          <Component id="passwordTxtField" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="Username_label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="Username_txtfield" pref="126" max="32767" attributes="0"/>
+                          <Component id="usernameTxtfield" pref="126" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -66,12 +66,12 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Username_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Username_txtfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="usernameTxtfield" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Password_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Password_txtField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordTxtField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="15" max="32767" attributes="0"/>
               <Component id="loginButton" min="-2" max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="Username_txtfield">
+    <Component class="javax.swing.JTextField" name="usernameTxtfield">
     </Component>
     <Component class="javax.swing.JLabel" name="LoginLbl">
       <Properties>
@@ -98,7 +98,7 @@
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="Password_txtField">
+    <Component class="javax.swing.JPasswordField" name="passwordTxtField">
     </Component>
     <Component class="javax.swing.JButton" name="loginButton">
       <Properties>

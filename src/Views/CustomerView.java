@@ -100,13 +100,13 @@ public class CustomerView extends javax.swing.JPanel {
 
     public void databaseListener(ActionListener listenForDatabase){
 
-        custSearchDatabaseButton.addActionListener(listenForDatabase);
+        this.custSearchDatabaseButton.addActionListener(listenForDatabase);
        
     }
     
        public void goToBookListener(ActionListener listenForGoToBook){
 
-        custSearchDatabaseButton.addActionListener(listenForGoToBook);
+        this.custSearchDatabaseButton.addActionListener(listenForGoToBook);
        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

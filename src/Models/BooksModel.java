@@ -24,12 +24,12 @@ public class BooksModel {
 
     private String author;
     private String title;
-    private String ISBN;
+    private String isbn;
     private String category;
     private String imageLink;
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(String _author) {
@@ -37,7 +37,7 @@ public class BooksModel {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String _title) {
@@ -45,15 +45,15 @@ public class BooksModel {
     }
 
     public String getISBN() {
-        return ISBN;
+        return this.isbn;
     }
 
     public void setISBN(String _ISBN) {
-        this.ISBN = _ISBN;
+        this.isbn = _ISBN;
     }
 
     public String getCategory() {
-        return category;
+        return this.category;
     }
 
     public void setCategory(String _category) {
@@ -61,7 +61,7 @@ public class BooksModel {
     }
 
     public String getImageLink() {
-        return imageLink;
+        return this.imageLink;
     }
 
     public void setImageLink(String _imageLink) {
@@ -69,7 +69,7 @@ public class BooksModel {
     }
     //======================================================================
 
-    //creates table from given author, title and ISBN
+    //creates table from given author, title and isbn
     public JTable createTable(String _author, String _title, String _isbn) throws SQLException {
         String[] columns = {"ISBN", "Title", "Author", "Category",
             "ImageLink"};
@@ -135,7 +135,7 @@ public class BooksModel {
     //Search for a book in the database.
     public Object[][] searchBook(String _author, String _title, String _isbn)
             throws SQLException {
-        Object[][] data = sqlCaller.searchBooks(_author, _title, _isbn);
+        Object[][] data = this.sqlCaller.searchBooks(_author, _title, _isbn);
         return data;
     }
 

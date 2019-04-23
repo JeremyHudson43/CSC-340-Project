@@ -27,39 +27,27 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="NameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="IDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="PasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="EmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="PasswordLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="PasswordTextField" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="NameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="IDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="RegisterLabel" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="NameTextField" pref="134" max="32767" attributes="0"/>
-                                      <Component id="IDTextField" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="EmailLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="EmailTextField" pref="135" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="emailTextField" max="32767" attributes="0"/>
+                          <Component id="passwordTextField" max="32767" attributes="0"/>
+                          <Component id="RegisterLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="nameTextField" pref="134" max="32767" attributes="0"/>
+                          <Component id="idTextField" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                       <Component id="registerButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,26 +59,26 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="IDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="IDTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PasswordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="PasswordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="EmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="EmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Component id="registerButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,7 +99,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="IDLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ID:"/>
+        <Property name="text" type="java.lang.String" value="Username:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="PasswordLabel">
@@ -124,13 +112,13 @@
         <Property name="text" type="java.lang.String" value="Email:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NameTextField">
+    <Component class="javax.swing.JTextField" name="nameTextField">
     </Component>
-    <Component class="javax.swing.JTextField" name="IDTextField">
+    <Component class="javax.swing.JTextField" name="idTextField">
     </Component>
-    <Component class="javax.swing.JTextField" name="EmailTextField">
+    <Component class="javax.swing.JTextField" name="emailTextField">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="PasswordTextField">
+    <Component class="javax.swing.JPasswordField" name="passwordTextField">
     </Component>
     <Component class="javax.swing.JButton" name="registerButton">
       <Properties>

@@ -30,7 +30,7 @@ public class Printer implements Printable {
         }
 
         // get the bounds of the component
-        Dimension dim = comp.getSize();
+        Dimension dim = this.comp.getSize();
         double cHeight = dim.getHeight();
         double cWidth = dim.getWidth();
 
@@ -48,8 +48,8 @@ public class Printer implements Printable {
         Graphics2D g2 = (Graphics2D) _graphics;
         g2.translate(pXStart, pYStart);
 //        g2.scale(xRatio, yRatio);
-        g2.scale(scale, scale);
-        comp.paint(g2);
+        g2.scale(this.scale, this.scale);
+        this.comp.paint(g2);
 
         return Printable.PAGE_EXISTS;
     }

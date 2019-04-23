@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
-import javax.swing.JLabel;
 
 /**
  *
@@ -27,30 +26,28 @@ public class IndividualBookView extends javax.swing.JPanel {
     }
 
     public void setIndividualBookVewAuthorPlaceholderTxtLbl(String IndividualBookVewAuthorPlaceholderTxtLbl) {
-        this.IndividualBookVewAuthorPlaceholderTxtLbl.setText(IndividualBookVewAuthorPlaceholderTxtLbl);
+        this.individualBookVewAuthorPlaceholderTxtLbl.setText(IndividualBookVewAuthorPlaceholderTxtLbl);
     }
 
     public void setIndividualBookVewCategoryPlaceholderTxtLbl(String IndividualBookVewCategoryPlaceholderTxtLbl) {
-        this.IndividualBookVewCategoryPlaceholderTxtLbl.setText(IndividualBookVewCategoryPlaceholderTxtLbl);
+        this.individualBookVewCategoryPlaceholderTxtLbl.setText(IndividualBookVewCategoryPlaceholderTxtLbl);
     }
 
     public void setIndividualBookVewISBNPlaceholderTxtLbl(String IndividualBookVewISBNPlaceholderTxtLbl) {
-        this.IndividualBookVewISBNPlaceholderTxtLbl.setText(IndividualBookVewISBNPlaceholderTxtLbl);
+        this.individualBookVewISBNPlaceholderTxtLbl.setText(IndividualBookVewISBNPlaceholderTxtLbl);
     }
 
     public void setIndividualBookVewNamePlaceholderTxtLbl(String IndividualBookVewNamePlaceholderTxtLbl) {
-        this.IndividualBookVewNamePlaceholderTxtLbl.setText(IndividualBookVewNamePlaceholderTxtLbl);
+        this.individualBookVewNamePlaceholderTxtLbl.setText(IndividualBookVewNamePlaceholderTxtLbl);
     }
 
     public void setImagePlaceholderLbl(String _imageLink)
             throws MalformedURLException, IOException {
-        imagePlaceholderLbl.setText("");
+        this.imagePlaceholderLbl.setText("");
         if (!_imageLink.equals("")) {
             BufferedImage img = ImageIO.read(new URL(_imageLink));
 
-            imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
-
-            this.imagePlaceholderLbl = imagePlaceholderLbl;
+            this.imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
         }
     }
 
@@ -70,10 +67,10 @@ public class IndividualBookView extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         IndividualBookVewISBNTxtLbl = new javax.swing.JLabel();
-        IndividualBookVewNamePlaceholderTxtLbl = new javax.swing.JLabel();
-        IndividualBookVewAuthorPlaceholderTxtLbl = new javax.swing.JLabel();
-        IndividualBookVewCategoryPlaceholderTxtLbl = new javax.swing.JLabel();
-        IndividualBookVewISBNPlaceholderTxtLbl = new javax.swing.JLabel();
+        individualBookVewNamePlaceholderTxtLbl = new javax.swing.JLabel();
+        individualBookVewAuthorPlaceholderTxtLbl = new javax.swing.JLabel();
+        individualBookVewCategoryPlaceholderTxtLbl = new javax.swing.JLabel();
+        individualBookVewISBNPlaceholderTxtLbl = new javax.swing.JLabel();
         IndividualBookViewBookNameTxtLbl = new javax.swing.JLabel();
         IndividualBookViewExitButton = new javax.swing.JButton();
         checkedOutTxtLbl = new javax.swing.JLabel();
@@ -106,13 +103,13 @@ public class IndividualBookView extends javax.swing.JPanel {
 
         IndividualBookVewISBNTxtLbl.setText("Book ISBN:");
 
-        IndividualBookVewNamePlaceholderTxtLbl.setText("Book Name Placeholder");
+        individualBookVewNamePlaceholderTxtLbl.setText("Book Name Placeholder");
 
-        IndividualBookVewAuthorPlaceholderTxtLbl.setText("Book Author Placeholder");
+        individualBookVewAuthorPlaceholderTxtLbl.setText("Book Author Placeholder");
 
-        IndividualBookVewCategoryPlaceholderTxtLbl.setText("Book Category Placeholder");
+        individualBookVewCategoryPlaceholderTxtLbl.setText("Book Category Placeholder");
 
-        IndividualBookVewISBNPlaceholderTxtLbl.setText("Book ISBN Placeholder");
+        individualBookVewISBNPlaceholderTxtLbl.setText("Book ISBN Placeholder");
 
         IndividualBookViewBookNameTxtLbl.setText("Book Name:");
 
@@ -146,11 +143,11 @@ public class IndividualBookView extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IndividualBookVewAuthorPlaceholderTxtLbl)
-                            .addComponent(IndividualBookVewCategoryPlaceholderTxtLbl)
-                            .addComponent(IndividualBookVewISBNPlaceholderTxtLbl)
+                            .addComponent(individualBookVewAuthorPlaceholderTxtLbl)
+                            .addComponent(individualBookVewCategoryPlaceholderTxtLbl)
+                            .addComponent(individualBookVewISBNPlaceholderTxtLbl)
                             .addComponent(bookCheckedOutPlaceHolderTxtLbl)
-                            .addComponent(IndividualBookVewNamePlaceholderTxtLbl))))
+                            .addComponent(individualBookVewNamePlaceholderTxtLbl))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,19 +158,19 @@ public class IndividualBookView extends javax.swing.JPanel {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IndividualBookViewBookNameTxtLbl)
-                    .addComponent(IndividualBookVewNamePlaceholderTxtLbl))
+                    .addComponent(individualBookVewNamePlaceholderTxtLbl))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(IndividualBookVewAuthorPlaceholderTxtLbl))
+                    .addComponent(individualBookVewAuthorPlaceholderTxtLbl))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(IndividualBookVewCategoryPlaceholderTxtLbl))
+                    .addComponent(individualBookVewCategoryPlaceholderTxtLbl))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IndividualBookVewISBNTxtLbl)
-                    .addComponent(IndividualBookVewISBNPlaceholderTxtLbl))
+                    .addComponent(individualBookVewISBNPlaceholderTxtLbl))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkedOutTxtLbl)
@@ -188,16 +185,16 @@ public class IndividualBookView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IndividualBookVewAuthorPlaceholderTxtLbl;
-    private javax.swing.JLabel IndividualBookVewCategoryPlaceholderTxtLbl;
-    private javax.swing.JLabel IndividualBookVewISBNPlaceholderTxtLbl;
     private javax.swing.JLabel IndividualBookVewISBNTxtLbl;
-    private javax.swing.JLabel IndividualBookVewNamePlaceholderTxtLbl;
     private javax.swing.JLabel IndividualBookViewBookNameTxtLbl;
     private javax.swing.JButton IndividualBookViewExitButton;
     private javax.swing.JLabel bookCheckedOutPlaceHolderTxtLbl;
     private javax.swing.JLabel checkedOutTxtLbl;
     private javax.swing.JLabel imagePlaceholderLbl;
+    private javax.swing.JLabel individualBookVewAuthorPlaceholderTxtLbl;
+    private javax.swing.JLabel individualBookVewCategoryPlaceholderTxtLbl;
+    private javax.swing.JLabel individualBookVewISBNPlaceholderTxtLbl;
+    private javax.swing.JLabel individualBookVewNamePlaceholderTxtLbl;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

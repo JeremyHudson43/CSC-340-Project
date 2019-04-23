@@ -113,20 +113,20 @@ public class BookDatabaseView extends javax.swing.JFrame {
 
      public void searchDBListener(ActionListener listenForSearch) {
 
-        searchLocalDatabaseButton.addActionListener(listenForSearch);
+        this.searchLocalDatabaseButton.addActionListener(listenForSearch);
 
     }
 
     public String getAuthorName() {
-        return searchAuthorNoLoginTxtFld2.getText();
+        return this.searchAuthorNoLoginTxtFld2.getText();
     }
     
       public String getBookTitle() {
-        return searchTitleNoLoginTxtFld2.getText();
+        return this.searchTitleNoLoginTxtFld2.getText();
     }
       
        public String getISBN() {
-        return searchISBNNoLoginTxtFld2.getText();
+        return this.searchISBNNoLoginTxtFld2.getText();
     }
 
     /**

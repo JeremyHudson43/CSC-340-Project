@@ -20,27 +20,27 @@ public class CheckinView extends javax.swing.JFrame {
     }
 
     public void checkinListener(ActionListener listenForCheckin){
-        checkInButton.addActionListener(listenForCheckin);
+        this.checkInButton.addActionListener(listenForCheckin);
     }
 
      public String getUserID() {
-        return CustomerTextField.getText();
+        return this.userTextField.getText();
     }
 
     public String getISBN1() {
-        return isbnTextField1.getText();
+        return this.isbnTextField1.getText();
     }
 
     public String getISBN2() {
-        return isbnTextField2.getText();
+        return this.isbnTextField2.getText();
     }
 
     public String getISBN3() {
-        return isbnTextField3.getText();
+        return this.isbnTextField3.getText();
     }
 
     public String getISBN4() {
-        return isbnTextField4.getText();
+        return this.isbnTextField4.getText();
     }
 
     /**
@@ -57,7 +57,7 @@ public class CheckinView extends javax.swing.JFrame {
         CustomerLabel = new javax.swing.JLabel();
         BookISBNLabel = new javax.swing.JLabel();
         checkInButton = new javax.swing.JButton();
-        CustomerTextField = new javax.swing.JTextField();
+        userTextField = new javax.swing.JTextField();
         isbnTextField1 = new javax.swing.JTextField();
         isbnTextField2 = new javax.swing.JTextField();
         isbnTextField3 = new javax.swing.JTextField();
@@ -93,7 +93,7 @@ public class CheckinView extends javax.swing.JFrame {
                             .addComponent(BookISBNLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CustomerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(checkInButton)
                                 .addGroup(layout.createSequentialGroup()
@@ -117,7 +117,7 @@ public class CheckinView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CustomerLabel)
-                    .addComponent(CustomerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BookISBNLabel)
@@ -142,7 +142,6 @@ public class CheckinView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookISBNLabel;
     private javax.swing.JLabel CustomerLabel;
-    private javax.swing.JTextField CustomerTextField;
     public javax.swing.JButton checkInButton;
     private javax.swing.JTextField isbnTextField1;
     private javax.swing.JTextField isbnTextField2;
@@ -151,5 +150,6 @@ public class CheckinView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }

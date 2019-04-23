@@ -38,8 +38,8 @@ public class UserController {
         this.registerView.setVisible(true);
         this.registerView.registerListener((e -> {
             try {
-                checkRegister(_usertype, registerView.getName(), registerView.getUserID(), 
-                        registerView.getUserPassword(), registerView.getUserEmail());
+                checkRegister(_usertype, this.registerView.getName(), this.registerView.getUserID(), 
+                        this.registerView.getUserPassword(), this.registerView.getUserEmail());
 
             } catch (Exception ex) {
                 Logger.getLogger(UserController.class.getName())
@@ -52,12 +52,12 @@ public class UserController {
     public void displayLogin() {
         
         this.loginView.setVisible(true);
-        this.loginView.loginListener(e -> checkLogin(loginView.username(), loginView.password()));
+        this.loginView.loginListener(e -> checkLogin(this.loginView.username(), this.loginView.password()));
     }
 
     public void displayLibraryCard(String _username, String _password) {
-        libraryCardView.setVisible(true);
-        libraryCardView.printListener(e -> {
+        this.libraryCardView.setVisible(true);
+        this.libraryCardView.printListener(e -> {
             try {
                 printCard(_username, _password);
             } catch (OutputException ex) {
@@ -73,8 +73,8 @@ public class UserController {
             BarcodeTranslator translator = new BarcodeTranslator();
             Barcode barcode = translator.createBarcode(_userID, _name );
             BufferedImage image = BarcodeImageHandler.getImage(barcode);
-            libraryCardView.setBarCode(new ImageIcon(image));
-            libraryCardView.setNameField(_name);
+            this.libraryCardView.setBarCode(new ImageIcon(image));
+            this.libraryCardView.setNameField(_name);
         } catch (BarcodeException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -87,7 +87,7 @@ public class UserController {
         LibrarianController librarianController = new LibrarianController();
         CustomerController customerController = new CustomerController();
 
-        String userType = userModel.checkLogin(_username, _password);
+        String userType = this.userModel.checkLogin(_username, _password);
         if (userType.equals("customer")) {
             customerController.initCustomerController();
 
@@ -102,7 +102,7 @@ public class UserController {
     public void checkRegister(String _usertype, String _name, String _userID,
             String _password, String _email) throws Exception {
         
-        userModel.checkRegister(_usertype, _name, _password, _userID, _email);
+        this.userModel.checkRegister(_usertype, _name, _password, _userID, _email);
         displayLibraryCard(_userID, _name);
     }
 

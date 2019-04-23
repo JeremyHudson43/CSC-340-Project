@@ -16,16 +16,16 @@ public class BarcodeTranslator {
     private Barcode barcode;
 
     public Barcode createBarcode(String code, String label) throws BarcodeException {
-        barcode = BarcodeFactory.createCode128A(code);
-        barcode.setLabel(label);
-        barcode.setBarHeight(40);
-        barcode.setBarWidth(2);
-        barcode.setResolution(600);
-        barcode.setDrawingText(true);
-        return barcode;
+        this.barcode = BarcodeFactory.createCode128A(code);
+        this.barcode.setLabel(label);
+        this.barcode.setBarHeight(40);
+        this.barcode.setBarWidth(2);
+        this.barcode.setResolution(600);
+        this.barcode.setDrawingText(true);
+        return this.barcode;
     }
 
     public Barcode getBarcode(){
-        return barcode;
+        return this.barcode;
     }
 }

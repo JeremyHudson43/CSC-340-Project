@@ -30,9 +30,9 @@ public class LibraryCardView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BarCode = new javax.swing.JButton();
+        barCode = new javax.swing.JButton();
         LibraryCardLabel = new javax.swing.JLabel();
-        NameTextField = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
         printButtonLibCard = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,8 +53,8 @@ public class LibraryCardView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BarCode, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NameTextField))))
+                            .addComponent(barCode, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameTextField))))
                 .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -67,9 +67,9 @@ public class LibraryCardView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(LibraryCardLabel)
                 .addGap(18, 18, 18)
-                .addComponent(BarCode, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                .addComponent(barCode, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(printButtonLibCard)
                 .addContainerGap())
@@ -80,15 +80,15 @@ public class LibraryCardView extends javax.swing.JFrame {
 
        public void printListener(ActionListener listenForPrint) {
 
-       printButtonLibCard.addActionListener(listenForPrint);
+        this.printButtonLibCard.addActionListener(listenForPrint);
 
     }
         public void setNameField(String _name) {
-            this.NameTextField.setText(_name);
+            this.nameTextField.setText(_name);
         }
         
          public void setBarCode(ImageIcon _image) {
-            this.BarCode.setIcon(_image);
+            this.barCode.setIcon(_image);
         }
     /**
      * @param args the command line arguments
@@ -127,9 +127,9 @@ public class LibraryCardView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BarCode;
     private javax.swing.JLabel LibraryCardLabel;
-    private javax.swing.JTextField NameTextField;
+    private javax.swing.JButton barCode;
+    private javax.swing.JTextField nameTextField;
     private javax.swing.JButton printButtonLibCard;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,11 +46,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="IndividualBookVewAuthorPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="IndividualBookVewCategoryPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="IndividualBookVewISBNPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualBookVewAuthorPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualBookVewCategoryPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualBookVewISBNPlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
                           <Component id="bookCheckedOutPlaceHolderTxtLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="IndividualBookVewNamePlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualBookVewNamePlaceholderTxtLbl" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -66,22 +66,22 @@
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="IndividualBookViewBookNameTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="IndividualBookVewNamePlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualBookVewNamePlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="IndividualBookVewAuthorPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualBookVewAuthorPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="IndividualBookVewCategoryPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualBookVewCategoryPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="IndividualBookVewISBNTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="IndividualBookVewISBNPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualBookVewISBNPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -146,22 +146,22 @@
         <Property name="text" type="java.lang.String" value="Book ISBN:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="IndividualBookVewNamePlaceholderTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualBookVewNamePlaceholderTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Book Name Placeholder"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="IndividualBookVewAuthorPlaceholderTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualBookVewAuthorPlaceholderTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Book Author Placeholder"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="IndividualBookVewCategoryPlaceholderTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualBookVewCategoryPlaceholderTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Book Category Placeholder"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="IndividualBookVewISBNPlaceholderTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualBookVewISBNPlaceholderTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Book ISBN Placeholder"/>
       </Properties>

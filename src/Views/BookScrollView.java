@@ -59,7 +59,7 @@ public class BookScrollView extends javax.swing.JFrame {
     
     public void bookSelectionListener(ActionListener listenForSelection) {
 
-        selectBookButton.addActionListener(listenForSelection);
+        this.selectBookButton.addActionListener(listenForSelection);
 
     }
           

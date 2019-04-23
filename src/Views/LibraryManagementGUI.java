@@ -102,13 +102,13 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
    public void addLoginListener(ActionListener listenForLogin){
 
-        loginButton.addActionListener(listenForLogin);
+         this.loginButton.addActionListener(listenForLogin);
 
          
     }
    public void addRegisterListener(ActionListener listenForLogin){
 
-        registerButton.addActionListener(listenForLogin);
+         this.registerButton.addActionListener(listenForLogin);
 
          
     }

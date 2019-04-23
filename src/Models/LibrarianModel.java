@@ -16,7 +16,7 @@ public class LibrarianModel extends BooksModel {
     public void checkOutBooksByISBN(String[] _isbn, String _userID) {
 
         try {
-            sqlCaller.checkoutBooks(_isbn, _userID);
+            this.sqlCaller.checkoutBooks(_isbn, _userID);
 
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
@@ -29,7 +29,7 @@ public class LibrarianModel extends BooksModel {
     public void checkInBooksByISBN(String[] _isbn, String _userID) {
 
         try {
-            sqlCaller.checkinBooks(_isbn, _userID);
+            this.sqlCaller.checkinBooks(_isbn, _userID);
 
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
@@ -40,19 +40,19 @@ public class LibrarianModel extends BooksModel {
 
     //Add a book to the database.
     public void addBook(BooksModel _b) {
-        sqlCaller.addBooks(_b);
+        this.sqlCaller.addBooks(_b);
     }
 
     //Remove a book from the database.
     public int removeBook(BooksModel _b) {
-        int res = sqlCaller.removeBooks(_b.getISBN());
+        int res = this.sqlCaller.removeBooks(_b.getISBN());
         return res;
     }
 
     //This searches the API by ISBN.
     public void loadBookByISBN(String _isbn) throws Exception {
 
-        String bookData[] = myAPI.loadBookNameByISBN(_isbn);
+        String bookData[] = this.myAPI.loadBookNameByISBN(_isbn);
         
 
         BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");

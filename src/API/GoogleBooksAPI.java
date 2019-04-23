@@ -36,8 +36,8 @@ public class GoogleBooksAPI implements ApiConnector {
     public String[] getRequest(String _author, String _volume, String _isbn) {
 
         try {
-            URL url = new URL(baseURL + _volume + "+inauthor:" + _author
-                    + "&key=" + apiKey);
+            URL url = new URL(this.baseURL + _volume + "+inauthor:" + _author
+                    + "&key=" + this.apiKey);
             
             HttpURLConnection connection = (HttpURLConnection) 
                     url.openConnection();
@@ -52,11 +52,11 @@ public class GoogleBooksAPI implements ApiConnector {
                 
                 
             } else {
-                URL ISBNurl = new URL(baseURL + _isbn + "&key=" + apiKey);
+                URL isbnURL = new URL(this.baseURL + _isbn + "&key=" + this.apiKey);
                 
-                ISBNurl.openConnection();
+                isbnURL.openConnection();
                 HttpURLConnection ISBNconnection
-                        = (HttpURLConnection) ISBNurl.openConnection();
+                        = (HttpURLConnection) isbnURL.openConnection();
                 
                 String responseString[] = (connectionHelper(ISBNconnection));
                 
@@ -125,9 +125,7 @@ public class GoogleBooksAPI implements ApiConnector {
                 return bookData;
             
              }
-      
-
-    
+     
 
     //This generates a random ISBN.
     public static String generateNumber() {
