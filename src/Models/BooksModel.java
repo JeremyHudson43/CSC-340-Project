@@ -1,7 +1,5 @@
 package Models;
 
-import API.APITranslator;
-import API.ApiConnector;
 import SQL_Translator.MySQLCaller;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,7 +18,6 @@ import javax.swing.table.TableModel;
 public class BooksModel {
 
     MySQLCaller sqlCaller = new MySQLCaller();
-    protected final static ApiConnector myAPI = new APITranslator();
 
     private String author;
     private String title;

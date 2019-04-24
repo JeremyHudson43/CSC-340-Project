@@ -1,5 +1,7 @@
 package Models;
 
+import API.APITranslator;
+import API.ApiConnector;
 import Views.CheckoutView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +13,8 @@ import java.util.logging.Logger;
    
  */
 public class LibrarianModel extends BooksModel {
+
+    protected final static ApiConnector myAPI = new APITranslator();
 
     //This checks out a book and links the book to a user.
     public void checkOutBooksByISBN(String[] _isbn, String _userID) {
@@ -53,7 +57,6 @@ public class LibrarianModel extends BooksModel {
     public void loadBookByISBN(String _isbn) throws Exception {
 
         String bookData[] = this.myAPI.loadBookNameByISBN(_isbn);
-        
 
         BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
         addBook(book);
@@ -61,7 +64,7 @@ public class LibrarianModel extends BooksModel {
 
     //This searches the API by book title and or author.
     public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
-        String bookData[] = myAPI.loadBookNameByAuthorAndTitle(_author, _title);
+        String bookData[] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
         BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
 
         addBook(book);
