@@ -95,7 +95,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         BookSearchLabel.setText("Book Search:");
 
-        CustomerSearchLabel.setText("Customer Search (ID):");
+        CustomerSearchLabel.setText("User Search (ID):");
 
         AddBookLabel.setText("Add Book to Library");
 
@@ -111,7 +111,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         openDatabaseButton.setText("Open Database");
 
-        userSearchButton.setText("Search Customer");
+        userSearchButton.setText("Search User");
 
         addBookButton.setText("Add Book");
 
@@ -157,7 +157,7 @@ public class LibrarianView extends javax.swing.JFrame {
                                     .addComponent(goToSelectedBookButton)))
                             .addComponent(checkInButton)
                             .addComponent(checkOutButton))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

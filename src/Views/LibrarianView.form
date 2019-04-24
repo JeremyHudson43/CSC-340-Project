@@ -61,7 +61,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -125,7 +125,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="CustomerSearchLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Search (ID):"/>
+        <Property name="text" type="java.lang.String" value="User Search (ID):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="AddBookLabel">
@@ -177,7 +177,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="userSearchButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Search Customer"/>
+        <Property name="text" type="java.lang.String" value="Search User"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="addBookButton">
