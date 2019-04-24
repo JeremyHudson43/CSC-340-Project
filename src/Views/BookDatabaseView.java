@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ * 
+ * Last updated 4-10-2019
  */
 public class BookDatabaseView extends javax.swing.JFrame {
 

@@ -7,7 +7,9 @@ package Views;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ * 
+ * Last Updated 4-24-2019
  */
 public class IndividualUserView extends javax.swing.JFrame {
 

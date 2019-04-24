@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson
+ *
+ * Last Updated 4-24-2019
  */
 public class LibraryManagementGUI extends javax.swing.JFrame {
 

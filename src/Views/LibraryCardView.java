@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author DELL6420
+ * @author Charles Brady
  */
 public class LibraryCardView extends javax.swing.JFrame {
 

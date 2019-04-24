@@ -56,20 +56,28 @@ public class LibrarianModel extends BooksModel {
     //This searches the API by ISBN.
     public void loadBookByISBN(String _isbn) throws Exception {
 
-        String bookData[] = this.myAPI.loadBookNameByISBN(_isbn);
+        String bookData[][] = this.myAPI.loadBookNameByISBN(_isbn);
 
-        BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
-        addBook(book);
+        for (int i = 0; i < bookData.length; i++) {
+
+            BooksModel book = buildBook(bookData[i][1], bookData[i][0], "", bookData[i][2], "");
+            addBook(book);
+
+        }
     }
 
     //This searches the API by book title and or author.
     public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
 
-        String bookData[] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
+        String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
 
-        BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
-        addBook(book);
+        
+        for (int i = 0; i < bookData.length; i++) {
 
+            BooksModel book = buildBook(bookData[i][1], bookData[i][0], "", bookData[i][2], "");
+            addBook(book);
+
+        }
     }
 
 }
