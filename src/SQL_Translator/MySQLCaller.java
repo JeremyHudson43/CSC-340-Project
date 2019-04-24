@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package SQL_Translator;
 
 import Models.BooksModel;
@@ -8,11 +13,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Charles Brady
+ * @author Chip Brady
  *
- * Last updated 4/21
- *
- * This is the caller for the MySQL translator.
+ * Last updated 4/12
  */
 public class MySQLCaller {
 
@@ -26,34 +29,14 @@ public class MySQLCaller {
         }
     }
 
-    /**
-     * This method calls the addBooks method in the MySQL translator.
-     *
-     * @param _book
-     * @return
-     */
     public int addBooks(BooksModel _book) {
         return translator.addBooks(_book);
     }
 
-    /**
-     * This method calls the removeBooks method in the MySQL translator.
-     *
-     * @param _isbn
-     * @return
-     */
     public int removeBooks(String _isbn) {
         return translator.removeBooks(_isbn);
     }
 
-    /**
-     * This method calls the searchBooks method in the MySQL translator.
-     *
-     * @param _author
-     * @param _title
-     * @param _isbn
-     * @return
-     */
     public Object[][] searchBooks(String _author, String _title, String _isbn) {
         try {
             return translator.searchBooks(_author, _title, _isbn);
@@ -63,44 +46,22 @@ public class MySQLCaller {
         return null;
     }
 
-    /**
-     * This calls the checkoutBooks method in the MySQL translator.
-     *
-     * @param _bookISBN
-     * @param _id
-     * @return
-     */
+    public void searchBooksHelper(String _author, String _title, String _isbn) {
+        translator.searchBooksHelper(_author, _title, _isbn, _isbn);
+    }
+
     public int checkoutBooks(String[] _bookISBN, String _id) {
         return translator.checkoutBooks(_bookISBN, _id);
     }
 
-    /**
-     * This calls the checkinBooks method in the MySQL translator.
-     *
-     * @param _bookISBN
-     * @param _id
-     * @return
-     */
     public int checkinBooks(String[] _bookISBN, String _id) {
         return translator.checkInBooks(_bookISBN, _id);
     }
 
-    /**
-     * This calls the createAccount method in the MySQL translator.
-     *
-     * @param _user
-     * @return
-     */
     public int createAccount(UserModel _user) {
         return translator.createAccount(_user);
     }
 
-    /**
-     * This calls the checkLogin method in the MySQL translator.
-     *
-     * @param _user
-     * @return
-     */
     public String checkLogin(UserModel _user) {
         try {
             return translator.checkLogin(_user);
@@ -110,22 +71,6 @@ public class MySQLCaller {
         return null;
     }
 
-    /**
-     * This calls the searchUserID in the MySQL translator.
-     *
-     * @param _name
-     * @return
-     */
-    public String searchUserID(String _name) {
-        return translator.searchUserID(_name);
-    }
-
-    /**
-     * This calls the searchUser method in the MySQL translator.
-     *
-     * @param _id
-     * @return
-     */
     public UserModel searchUser(String _id) {
         return translator.searchUser(_id);
     }
