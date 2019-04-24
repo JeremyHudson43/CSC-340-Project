@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 /* @author Jeremy Hudson
    @author Charles Brady
    Last updated 4-22-2019
-   
+
  */
 public class LibrarianModel extends BooksModel {
 
@@ -64,9 +64,9 @@ public class LibrarianModel extends BooksModel {
 
     //This searches the API by book title and or author.
     public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
-        
+
         String bookData[] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-   
+
         BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
         addBook(book);
 

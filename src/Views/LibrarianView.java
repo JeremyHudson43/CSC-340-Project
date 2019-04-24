@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
  */
 public class LibrarianView extends javax.swing.JFrame {
 
-
     /**
      * Creates new form NewJFrame
      */
@@ -25,39 +24,39 @@ public class LibrarianView extends javax.swing.JFrame {
 
     public void databaseListener(ActionListener listenForDatabase) {
 
-         this.openDatabaseButton.addActionListener(listenForDatabase);
+        this.openDatabaseButton.addActionListener(listenForDatabase);
 
     }
-    
+
     public String getUserSearchTextField() {
-        return  this.userSearchTextField.getText();
+        return this.userSearchTextField.getText();
     }
 
     public void userSearchListener(ActionListener listenForCustomerSearch) {
 
-         this.userSearchButton.addActionListener(listenForCustomerSearch);
+        this.userSearchButton.addActionListener(listenForCustomerSearch);
     }
 
     public void bookAddListener(ActionListener listenForAddBook) {
-         this.addBookButton.addActionListener(listenForAddBook);
+        this.addBookButton.addActionListener(listenForAddBook);
     }
 
     public void librarianAddListener(ActionListener listenForAddLibrarian) {
-         this.addLibrarianButton.addActionListener(listenForAddLibrarian);
+        this.addLibrarianButton.addActionListener(listenForAddLibrarian);
     }
 
     public void checkInListener(ActionListener listenForCheckIn) {
-         this.checkInButton.addActionListener(listenForCheckIn);
+        this.checkInButton.addActionListener(listenForCheckIn);
     }
 
     public void checkOutListener(ActionListener listenForCheckOut) {
-         this.checkOutButton.addActionListener(listenForCheckOut);
+        this.checkOutButton.addActionListener(listenForCheckOut);
     }
 
     public void goToBookListener(ActionListener listenForGoToBook) {
-         this.goToSelectedBookButton.addActionListener(listenForGoToBook);
+        this.goToSelectedBookButton.addActionListener(listenForGoToBook);
     }
-    
+
     public void populateComboBox(String _bookName) {
         this.librarianViewCheckoutComboBox.addItem(_bookName);
     }

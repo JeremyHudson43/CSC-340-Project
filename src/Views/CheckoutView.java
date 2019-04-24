@@ -2,7 +2,6 @@ package Views;
 
 import java.awt.event.ActionListener;
 
-
 /**
  *
  * @author Charles Brady
@@ -20,13 +19,14 @@ public class CheckoutView extends javax.swing.JFrame {
     public CheckoutView() {
         initComponents();
     }
-    
-     public void checkOutListener(ActionListener listenForCheckout) {
+
+    public void checkOutListener(ActionListener listenForCheckout) {
 
         this.CheckoutButton.addActionListener(listenForCheckout);
 
     }
-       public String getUserID() {
+
+    public String getUserID() {
         return this.userTextField.getText();
     }
 

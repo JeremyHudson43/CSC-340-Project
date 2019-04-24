@@ -19,7 +19,7 @@ public class AddBookView extends javax.swing.JFrame {
         initComponents();
     }
 
-       public void addBookListener(ActionListener listenForAddBook) {
+    public void addBookListener(ActionListener listenForAddBook) {
 
         this.searchButtonAddBookView.addActionListener(listenForAddBook);
 

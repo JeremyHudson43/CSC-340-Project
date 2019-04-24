@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /* @author Jeremy Hudson
    Last updated 4-22-2019
-   
+
  */
 public class LibrarianController extends BooksController {
 
@@ -34,12 +34,11 @@ public class LibrarianController extends BooksController {
         this.librarianView.userSearchListener(e -> userDisplay());
         this.librarianView.checkInListener(e -> displayCheckInView());
         this.librarianView.checkOutListener(e -> displayCheckOutView());
-        
-        //this.librarianView.populateComboBox(_bookName);
 
+        //this.librarianView.populateComboBox(_bookName);
     }
 
-    /*This gets the userID and ISBNs from checkoutView and contacts the model to 
+    /*This gets the userID and ISBNs from checkoutView and contacts the model to
     checkout the books in the database
      */
     private void checkOut() {
@@ -94,7 +93,7 @@ public class LibrarianController extends BooksController {
         });
     }
 
-    //This displays the add book view. 
+    //This displays the add book view.
     public void displayAddBookView() {
         this.addBookView.setVisible(true);
         this.addBookView.addBookListener(e -> {

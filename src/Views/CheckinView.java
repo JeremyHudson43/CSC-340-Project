@@ -19,11 +19,11 @@ public class CheckinView extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void checkinListener(ActionListener listenForCheckin){
+    public void checkinListener(ActionListener listenForCheckin) {
         this.checkInButton.addActionListener(listenForCheckin);
     }
 
-     public String getUserID() {
+    public String getUserID() {
         return this.userTextField.getText();
     }
 

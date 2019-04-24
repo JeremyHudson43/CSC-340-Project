@@ -1,10 +1,8 @@
 package Views;
 
-
 import Models.UserModel;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-
 
 /**
  *
@@ -22,7 +20,6 @@ public class RegisterView extends javax.swing.JFrame {
     // This will open up a registration form while also obtaining the type of user
     public RegisterView() {
         initComponents();
-        
 
     }
 
@@ -31,21 +28,21 @@ public class RegisterView extends javax.swing.JFrame {
         this.registerButton.addActionListener(listenForRegister);
 
     }
-    
+
     public String getName() {
-        return  this.nameTextField.getText();
+        return this.nameTextField.getText();
     }
-    
+
     public String getUserID() {
-        return  this.idTextField.getText();
+        return this.idTextField.getText();
     }
-    
+
     public String getUserPassword() {
-        return  this.passwordTextField.getText();
+        return this.passwordTextField.getText();
     }
-    
+
     public String getUserEmail() {
-        return  this.emailTextField.getText();
+        return this.emailTextField.getText();
     }
 
     /**

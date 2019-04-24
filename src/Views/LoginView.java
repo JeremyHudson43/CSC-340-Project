@@ -97,19 +97,18 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public String username() {
-        return  this.usernameTxtfield.getText();
+        return this.usernameTxtfield.getText();
     }
 
     public String password() {
-        return  this.passwordTxtField.getText();
+        return this.passwordTxtField.getText();
     }
 
     public void loginListener(ActionListener listenForLogin) {
 
-         this.loginButton.addActionListener(listenForLogin);
+        this.loginButton.addActionListener(listenForLogin);
 
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

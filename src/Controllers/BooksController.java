@@ -34,12 +34,10 @@ public class BooksController {
     private IndividualBookView individualBookView = new IndividualBookView();
     BookScrollView bookScrollView = new BookScrollView();
 
-    /*This gets the userID and ISBNs from checkinView and contacts the model to 
+    /*This gets the userID and ISBNs from checkinView and contacts the model to
     checkout the books in the database.
      */
-    //This displays the book DB view. 
-    
-
+    //This displays the book DB view.
     public void displayBookDB() {
 
         this.bookDBView.setVisible(true);
@@ -50,9 +48,9 @@ public class BooksController {
     // This searches the local SQL database for book matching author/title/ISBN.
     public void searchLocalDB() {
 
-            String author = this.bookDBView.getAuthorName();
-            String title = this.bookDBView.getBookTitle();
-            String ISBN = this.bookDBView.getISBN();
+        String author = this.bookDBView.getAuthorName();
+        String title = this.bookDBView.getBookTitle();
+        String ISBN = this.bookDBView.getISBN();
 
         try {
             getIndividualBookViewTable(author, title, ISBN);
@@ -60,7 +58,6 @@ public class BooksController {
             Logger.getLogger(BooksController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-
 
     }
 

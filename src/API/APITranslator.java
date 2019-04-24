@@ -1,4 +1,3 @@
-
 package API;
 
 /**
@@ -16,8 +15,7 @@ public class APITranslator implements ApiConnector {
 
     @Override
     public String[] loadBookNameByAuthorAndTitle(String _author, String _title) {
-        return APITranslator.thisApi.loadBookNameByAuthorAndTitle( _author, _title);
+        return APITranslator.thisApi.loadBookNameByAuthorAndTitle(_author, _title);
     }
 
 }
-

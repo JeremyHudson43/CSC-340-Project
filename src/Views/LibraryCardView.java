@@ -78,18 +78,20 @@ public class LibraryCardView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-       public void printListener(ActionListener listenForPrint) {
+    public void printListener(ActionListener listenForPrint) {
 
         this.printButtonLibCard.addActionListener(listenForPrint);
 
     }
-        public void setNameField(String _name) {
-            this.nameTextField.setText(_name);
-        }
-        
-         public void setBarCode(ImageIcon _image) {
-            this.barCode.setIcon(_image);
-        }
+
+    public void setNameField(String _name) {
+        this.nameTextField.setText(_name);
+    }
+
+    public void setBarCode(ImageIcon _image) {
+        this.barCode.setIcon(_image);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -97,7 +99,7 @@ public class LibraryCardView extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

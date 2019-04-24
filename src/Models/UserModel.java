@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class UserModel {
 
-
     private static final String LIBRARIAN = "librarian";
     private static final String CUSTOMER = "customer";
 
@@ -177,6 +176,3 @@ public class UserModel {
         return placeholder;
     }
 }
-
-    
-

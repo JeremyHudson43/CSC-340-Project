@@ -14,16 +14,17 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 
 public class Printer implements Printable {
+
     final Component comp;
     final Double scale;
 
-    public Printer(Component comp, Double scale){
+    public Printer(Component comp, Double scale) {
         this.comp = comp;
         this.scale = scale;
     }
 
     @Override
-    public int print(Graphics _graphics, PageFormat _format, int _page_index) 
+    public int print(Graphics _graphics, PageFormat _format, int _page_index)
             throws PrinterException {
         if (_page_index > 0) {
             return Printable.NO_SUCH_PAGE;
@@ -43,7 +44,6 @@ public class Printer implements Printable {
 
         double xRatio = pWidth / cWidth;
         double yRatio = pHeight / cHeight;
-
 
         Graphics2D g2 = (Graphics2D) _graphics;
         g2.translate(pXStart, pYStart);
