@@ -32,7 +32,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="CustomerSearchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="userSearchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="BookSearchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="AddBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="AddLibrarianLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -77,7 +77,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CustomerSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="userSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="userSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -123,7 +123,7 @@
         <Property name="text" type="java.lang.String" value="Book Search:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="CustomerSearchLabel">
+    <Component class="javax.swing.JLabel" name="userSearchLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="User Search (ID):"/>
       </Properties>

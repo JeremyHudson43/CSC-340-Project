@@ -73,7 +73,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         LibrarianLabel = new javax.swing.JLabel();
         BookSearchLabel = new javax.swing.JLabel();
-        CustomerSearchLabel = new javax.swing.JLabel();
+        userSearchLabel = new javax.swing.JLabel();
         AddBookLabel = new javax.swing.JLabel();
         AddLibrarianLabel = new javax.swing.JLabel();
         CheckInLabel = new javax.swing.JLabel();
@@ -95,7 +95,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         BookSearchLabel.setText("Book Search:");
 
-        CustomerSearchLabel.setText("User Search (ID):");
+        userSearchLabel.setText("User Search (ID):");
 
         AddBookLabel.setText("Add Book to Library");
 
@@ -135,7 +135,7 @@ public class LibrarianView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CustomerSearchLabel)
+                            .addComponent(userSearchLabel)
                             .addComponent(BookSearchLabel)
                             .addComponent(AddBookLabel)
                             .addComponent(AddLibrarianLabel)
@@ -170,7 +170,7 @@ public class LibrarianView extends javax.swing.JFrame {
                     .addComponent(openDatabaseButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CustomerSearchLabel)
+                    .addComponent(userSearchLabel)
                     .addComponent(userSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userSearchButton))
                 .addGap(18, 18, 18)
@@ -210,7 +210,6 @@ public class LibrarianView extends javax.swing.JFrame {
     private javax.swing.JLabel BookSearchLabel;
     private javax.swing.JLabel CheckInLabel;
     private javax.swing.JLabel CheckOutLabel;
-    private javax.swing.JLabel CustomerSearchLabel;
     private javax.swing.JLabel LibrarianLabel;
     private javax.swing.JButton addBookButton;
     private javax.swing.JButton addLibrarianButton;
@@ -221,6 +220,7 @@ public class LibrarianView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> librarianViewCheckoutComboBox;
     private javax.swing.JButton openDatabaseButton;
     private javax.swing.JButton userSearchButton;
+    private javax.swing.JLabel userSearchLabel;
     private javax.swing.JTextField userSearchTextField;
     // End of variables declaration//GEN-END:variables
 }
