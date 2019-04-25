@@ -1,4 +1,3 @@
-
 package SQL_Translator;
 
 import Models.BooksModel;

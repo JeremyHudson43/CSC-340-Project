@@ -8,19 +8,17 @@ import java.awt.event.ActionListener;
  *
  * Last Updated 4/10
  *
- * This is the view for librarians to check out a customers book
+ * This is the view for librarians to check out a customers book by ISBN
  */
 public class CheckinView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CheckoutView
-     */
+
     public CheckinView() {
         initComponents();
     }
 
-    public void checkinListener(ActionListener listenForCheckin) {
-        this.checkInButton.addActionListener(listenForCheckin);
+    public void checkinListener(ActionListener _listenForCheckin) {
+        this.checkInButton.addActionListener(_listenForCheckin);
     }
 
     public String getUserID() {

@@ -3,7 +3,6 @@ package Controllers;
 import Models.BooksModel;
 import Models.UserModel;
 import Views.BookDatabaseView;
-import Views.BookDatabaseView;
 import Views.BookScrollView;
 import Views.IndividualBookView;
 
@@ -34,9 +33,6 @@ public class BooksController {
     private IndividualBookView individualBookView = new IndividualBookView();
     BookScrollView bookScrollView = new BookScrollView();
 
-    /*This gets the userID and ISBNs from checkinView and contacts the model to
-    checkout the books in the database.
-     */
     //This displays the book DB view.
     public void displayBookDB() {
 
@@ -77,8 +73,7 @@ public class BooksController {
         this.bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
     }
-
-
+    
     /*This displays individual book info after an item has been clicked in
     the scroll plane.
      */
@@ -91,12 +86,6 @@ public class BooksController {
             this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[0]);
             this.individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[1]);
             this.individualBookView.setImagePlaceholderLbl(bookInfo[4]);
-
-            JFrame frame = new JFrame();
-
-            frame.add(BorderLayout.CENTER, this.individualBookView);
-            frame.pack();
-            frame.setVisible(true);
 
             this.individualBookView.setVisible(true);
         } catch (IOException ex) {

@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
  * @author Jeremy Hudson
  *
  * Last Updated 4-24-2019
+ * 
+ *  This class adds a listener to the register and login button and initiates 
+ * the parent controller that the rest of program starts from
  */
 public class LibraryManagementGUI extends javax.swing.JFrame {
 
@@ -100,9 +103,9 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
     }
 
-    public void addRegisterListener(ActionListener listenForLogin) {
+    public void addRegisterListener(ActionListener _listenForRegister) {
 
-        this.registerButton.addActionListener(listenForLogin);
+        this.registerButton.addActionListener(_listenForRegister);
 
     }
 

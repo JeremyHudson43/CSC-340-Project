@@ -11,7 +11,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /* @author Jeremy Hudson
+
    Last updated 4-22-2019
+    
+   This class routes the logic for book checkouts, book checkins, addBooks and 
+   individual user display to the LibrarianModel. In addition it displays the 
+   checkout, checkin, addbooks and individual user display views themselves, 
+
 
  */
 public class LibrarianController extends BooksController {
@@ -124,14 +130,14 @@ public class LibrarianController extends BooksController {
     //This displays individual customer information.
     public void userDisplay() {
 
-        UserModel placeholder = new UserModel();
+        UserModel user = new UserModel();
 
-        placeholder = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
+        user = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
 
-        this.individualUserView.setUsersName(placeholder.getName());
-        this.individualUserView.setUserEmail(placeholder.getEmail());
-        this.individualUserView.setUserID(placeholder.getUserId());
-        this.individualUserView.setUserType(placeholder.getUserType());
+        this.individualUserView.setUsersName(user.getName());
+        this.individualUserView.setUserEmail(user.getEmail());
+        this.individualUserView.setUserID(user.getUserId());
+        this.individualUserView.setUserType(user.getUserType());
         this.individualUserView.setVisible(true);
 
     }

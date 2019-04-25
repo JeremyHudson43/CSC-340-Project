@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import java.awt.event.ActionListener;
@@ -13,6 +8,9 @@ import java.awt.event.ActionListener;
  * @author Jeremy Hudson
  * 
  * Last updated 4-22-2019
+ * 
+ * This class adds a listener to the select book button after the JFrame
+ * in the view is passed a scrollView of books to select from 
  */
 public class BookScrollView extends javax.swing.JFrame {
 
@@ -58,9 +56,9 @@ public class BookScrollView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void bookSelectionListener(ActionListener listenForSelection) {
+    public void bookSelectionListener(ActionListener _listenForSelection) {
 
-        this.selectBookButton.addActionListener(listenForSelection);
+        this.selectBookButton.addActionListener(_listenForSelection);
 
     }
 

@@ -164,15 +164,15 @@ public class UserModel {
 
     //This searches for user in the database.
     public UserModel searchUser(String _id) {
-        UserModel placeholder = new UserModel();
+        UserModel user = new UserModel();
         try {
             MySQLCaller SQL = new MySQLCaller();
-            placeholder = SQL.searchUser(_id);
-            return placeholder;
+            user = SQL.searchUser(_id);
+            return user;
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-        return placeholder;
+        return user;
     }
 }

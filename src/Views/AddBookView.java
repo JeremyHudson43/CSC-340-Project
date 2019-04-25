@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson Last Updated 4/5
+ * @author Jeremy Hudson Last Updated 4-25-2019
  *
  *
- * This is the view for the librarian to add a book to the database
+ * This adds a listener to the add book button and returns the ISBN, author,
+ * book title. This class is called by the LibrarianController that uses it to
+ * add books via the Google Books API.
  */
 public class AddBookView extends javax.swing.JFrame {
 
@@ -19,9 +21,9 @@ public class AddBookView extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void addBookListener(ActionListener listenForAddBook) {
+    public void addBookListener(ActionListener _listenForAddBook) {
 
-        this.searchButtonAddBookView.addActionListener(listenForAddBook);
+        this.searchButtonAddBookView.addActionListener(_listenForAddBook);
 
     }
 

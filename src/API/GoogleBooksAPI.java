@@ -5,11 +5,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+/**
+ *
+ * @author Jeremy Hudson
+ *
+ * Last updated 4-25-2019
+ * 
+ * This class contacts the Google Books API to receive information from either
+ * an ISBN search or an author/title search. It receives a response string 
+ * and parses the information using JSONobjects, then returns the information.
+ * 
+ * It uses a loop to gather data from the API in a 2d array in the following 
+ * fashion 2dArray[book][detail of book] 
+ */
 
 public class GoogleBooksAPI implements ApiConnector {
 
@@ -75,13 +88,10 @@ public class GoogleBooksAPI implements ApiConnector {
 
         try (
                 BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()))) {
-
             String responseString = "";
-
             String str;
             while ((str = in.readLine()) != null) {
                 responseString += str + "\n";
-
             }
             bookData = parseBookFromAPI(responseString);
             return bookData;
@@ -92,13 +102,12 @@ public class GoogleBooksAPI implements ApiConnector {
     //This parses the book title, author, and imagelink from the API.
     public static String[][] parseBookFromAPI(String _responseString) {
 
-             JSONObject root = new JSONObject(_responseString);
+        JSONObject root = new JSONObject(_responseString);
         JSONArray books = root.getJSONArray("items");
-        
+
         String[] individualBookData = new String[3];
         String[][] totalBookData = new String[10][3];
 
-   
         for (int i = 0; i < books.length(); i++) {
 
             String bookImageLink = "";
@@ -119,15 +128,16 @@ public class GoogleBooksAPI implements ApiConnector {
             individualBookData[0] = bookTitle;
             individualBookData[1] = bookAuthor;
             individualBookData[2] = bookISBN;
-            
+
             for (int j = 0; j < individualBookData.length; j++) {
-            totalBookData[i][j] = individualBookData[j];
+                totalBookData[i][j] = individualBookData[j];
             }
 
         }
         return totalBookData;
     }
-        //This generates a random ISBN.
+
+    //This generates a random ISBN.
     public static String generateNumber() {
         String ISBN = "978-";
         for (int i = 0; i < 10; i++) {

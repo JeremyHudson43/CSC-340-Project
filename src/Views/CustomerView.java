@@ -3,19 +3,16 @@ package Views;
 import java.awt.event.ActionListener;
 
 /**
+ *
  * @author Jeremy Hudson
- * @author Charles Brady
- *
- * Last updated 4/5
- *
- * This class is the view that the customer will see. This allows the customer
- * to search the book database and to check the books they have checked out
+ * 
+ * Last modified 4-25-2019
+ * 
+ *  This class adds a listener to the button that will open the database search
+ *  view 
  */
-public class CustomerView extends javax.swing.JPanel {
+public class CustomerView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CustomerView
-     */
     public CustomerView() {
         initComponents();
     }
@@ -29,14 +26,14 @@ public class CustomerView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        custBookSearchLbl = new javax.swing.JLabel();
         custViewLabel = new javax.swing.JLabel();
         showMyCheckoutsCustomerViewTxtLbl = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         custSearchDatabaseButton = new javax.swing.JButton();
         goToSelectedBookCustomerViewButton = new javax.swing.JButton();
+        custBookSearchLbl = new javax.swing.JLabel();
 
-        custBookSearchLbl.setText("Search book database:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         custViewLabel.setText("Customer View");
 
@@ -48,8 +45,10 @@ public class CustomerView extends javax.swing.JPanel {
 
         goToSelectedBookCustomerViewButton.setText("Go to Selected Checkout");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        custBookSearchLbl.setText("Search book database:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -93,19 +92,57 @@ public class CustomerView extends javax.swing.JPanel {
                 .addComponent(goToSelectedBookCustomerViewButton)
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void databaseListener(ActionListener listenForDatabase) {
+      public void databaseListener(ActionListener _listenForDatabase) {
 
-        this.custSearchDatabaseButton.addActionListener(listenForDatabase);
-
-    }
-
-    public void goToBookListener(ActionListener listenForGoToBook) {
-
-        this.custSearchDatabaseButton.addActionListener(listenForGoToBook);
+        this.custSearchDatabaseButton.addActionListener(_listenForDatabase);
 
     }
+
+    public void goToBookListener(ActionListener _listenForGoToBook) {
+
+        this.custSearchDatabaseButton.addActionListener(_listenForGoToBook);
+
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CustomerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CustomerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CustomerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CustomerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CustomerView().setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel custBookSearchLbl;
     private javax.swing.JButton custSearchDatabaseButton;

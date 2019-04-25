@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 /**
@@ -10,12 +5,13 @@ package Views;
  * @author Jeremy Hudson
  * 
  * Last Updated 4-24-2019
+ * 
+ * This class simply displays the info for an individual user after being
+ * passed data from the LibrarianController
  */
 public class IndividualUserView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IndividualCustomerView2
-     */
+    
     public IndividualUserView() {
         initComponents();
     }

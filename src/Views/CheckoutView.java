@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/7
+ * Last Updated 4-25-2019
  *
- * This is the view for librarians to check out a customers book
+ * This is the view for librarians to check out a customers book by ISBN
  */
 public class CheckoutView extends javax.swing.JFrame {
 
@@ -20,9 +20,9 @@ public class CheckoutView extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void checkOutListener(ActionListener listenForCheckout) {
+    public void checkOutListener(ActionListener _listenForCheckout) {
 
-        this.CheckoutButton.addActionListener(listenForCheckout);
+        this.CheckoutButton.addActionListener(_listenForCheckout);
 
     }
 

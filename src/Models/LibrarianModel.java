@@ -9,7 +9,12 @@ import java.util.logging.Logger;
 
 /* @author Jeremy Hudson
    @author Charles Brady
+
    Last updated 4-22-2019
+
+   This class provides the logic that allows a librarian to checkout books by 
+   ISBN, checkin books by ISBN, add a book to the SQL database and to contact
+   the API with an ISBN or by author/title to add a book to the local database.
 
  */
 public class LibrarianModel extends BooksModel {
@@ -70,7 +75,6 @@ public class LibrarianModel extends BooksModel {
     public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
 
         String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-
         
         for (int i = 0; i < bookData.length; i++) {
 

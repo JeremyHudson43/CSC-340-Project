@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import java.awt.event.ActionListener;
@@ -12,6 +7,9 @@ import java.awt.event.ActionListener;
  * @author Jeremy Hudson
  * 
  * Last updated 4-10-2019
+ * 
+ * This class adds listeners to the searchDB button, and returns author
+ * name, ISBN and book title. This class is called in the BooksController.
  */
 public class BookDatabaseView extends javax.swing.JFrame {
 
@@ -113,9 +111,9 @@ public class BookDatabaseView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void searchDBListener(ActionListener listenForSearch) {
+    public void searchDBListener(ActionListener _listenForSearch) {
 
-        this.searchLocalDatabaseButton.addActionListener(listenForSearch);
+        this.searchLocalDatabaseButton.addActionListener(_listenForSearch);
 
     }
 

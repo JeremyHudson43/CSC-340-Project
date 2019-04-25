@@ -7,11 +7,11 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/6
+ * Last Updated 4-25-2019
  *
- * This class allows the librarian to search the book database and to check the
- * books they have checked out, in addition to searching for and creating new
- * customers
+ * This class adds listeners to buttons that allow the librarian to search the 
+ * book database, search for a particular user, add a book from the API,
+ * add a librarian to the database, and check in and out books 
  */
 public class LibrarianView extends javax.swing.JFrame {
 
@@ -22,9 +22,9 @@ public class LibrarianView extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void databaseListener(ActionListener listenForDatabase) {
+    public void databaseListener(ActionListener _listenForDatabase) {
 
-        this.openDatabaseButton.addActionListener(listenForDatabase);
+        this.openDatabaseButton.addActionListener(_listenForDatabase);
 
     }
 
@@ -32,29 +32,29 @@ public class LibrarianView extends javax.swing.JFrame {
         return this.userSearchTextField.getText();
     }
 
-    public void userSearchListener(ActionListener listenForCustomerSearch) {
+    public void userSearchListener(ActionListener _listenForCustomerSearch) {
 
-        this.userSearchButton.addActionListener(listenForCustomerSearch);
+        this.userSearchButton.addActionListener(_listenForCustomerSearch);
     }
 
-    public void bookAddListener(ActionListener listenForAddBook) {
-        this.addBookButton.addActionListener(listenForAddBook);
+    public void bookAddListener(ActionListener _listenForAddBook) {
+        this.addBookButton.addActionListener(_listenForAddBook);
     }
 
-    public void librarianAddListener(ActionListener listenForAddLibrarian) {
-        this.addLibrarianButton.addActionListener(listenForAddLibrarian);
+    public void librarianAddListener(ActionListener _listenForAddLibrarian) {
+        this.addLibrarianButton.addActionListener(_listenForAddLibrarian);
     }
 
-    public void checkInListener(ActionListener listenForCheckIn) {
-        this.checkInButton.addActionListener(listenForCheckIn);
+    public void checkInListener(ActionListener _listenForCheckIn) {
+        this.checkInButton.addActionListener(_listenForCheckIn);
     }
 
-    public void checkOutListener(ActionListener listenForCheckOut) {
-        this.checkOutButton.addActionListener(listenForCheckOut);
+    public void checkOutListener(ActionListener _listenForCheckOut) {
+        this.checkOutButton.addActionListener(_listenForCheckOut);
     }
 
-    public void goToBookListener(ActionListener listenForGoToBook) {
-        this.goToSelectedBookButton.addActionListener(listenForGoToBook);
+    public void goToBookListener(ActionListener _listenForGoToBook) {
+        this.goToSelectedBookButton.addActionListener(_listenForGoToBook);
     }
 
     public void populateComboBox(String _bookName) {

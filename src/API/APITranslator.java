@@ -2,7 +2,11 @@ package API;
 
 /**
  *
- * @author DELL6420
+ * @author Jeremy Hudson 
+ * Last updated 4-19-2019
+ * 
+ * This class returns the two dimensional array of book data from the API
+ * class
  */
 public class APITranslator implements ApiConnector {
 

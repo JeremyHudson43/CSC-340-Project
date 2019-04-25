@@ -1,31 +1,25 @@
 package Views;
 
-import Models.UserModel;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 /**
  *
  * @author Charles Brady
  *
  * Last Updated 3/13
+ * This class adds a listener to the register button and returns user info
+ * to the UserController
  */
 public class RegisterView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegisterView
-     */
-    UserModel user;
-
-    // This will open up a registration form while also obtaining the type of user
     public RegisterView() {
         initComponents();
 
     }
 
-    public void registerListener(ActionListener listenForRegister) {
+    public void registerListener(ActionListener _listenForRegister) {
 
-        this.registerButton.addActionListener(listenForRegister);
+        this.registerButton.addActionListener(_listenForRegister);
 
     }
 

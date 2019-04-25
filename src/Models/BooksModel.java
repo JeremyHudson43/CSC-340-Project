@@ -13,7 +13,10 @@ import javax.swing.table.TableModel;
  *
  * Last Updated 4/5
  *
- * This is the model for the books class.
+ * This class creates all necessary book variables, and contains the logic to
+ * create a JTable with book information from the local SQL database, in 
+ * in addition to contacting the SQL translator to search the local database
+ * for books. 
  */
 public class BooksModel {
 

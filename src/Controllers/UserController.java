@@ -20,6 +20,10 @@ import net.sourceforge.barbecue.output.OutputException;
  * @author Jeremy Hudson
  *
  * Last updated 4-22-2019
+ * 
+ * This class routes the logic to display the registerView for a certain
+ * user type, display the login view, display the library card view, and 
+ * check the validity of a user login or registration to the UserModel. 
  */
 public class UserController {
 
@@ -30,10 +34,6 @@ public class UserController {
 
     //This opens the register view and registers a user if their info is valid.
     public void displayRegister(String _usertype) {
-        String name = registerView.getName();
-        String userId = registerView.getUserID();
-        String password = registerView.getUserPassword();
-        String userEmail = registerView.getUserEmail();
 
         this.registerView.setVisible(true);
         this.registerView.registerListener((e -> {
@@ -52,7 +52,7 @@ public class UserController {
     public void displayLogin() {
 
         this.loginView.setVisible(true);
-        this.loginView.loginListener(e -> checkLogin(this.loginView.username(), this.loginView.password()));
+        this.loginView.loginListener(e -> checkLogin(this.loginView.getUsername(), this.loginView.getPassword()));
     }
 
     public void displayLibraryCard(String _username, String _password) {
@@ -84,14 +84,13 @@ public class UserController {
     //This checks for customer or librarian user type.
     public void checkLogin(String _username, String _password) {
 
-        LibrarianController librarianController = new LibrarianController();
-        CustomerController customerController = new CustomerController();
-
         String userType = this.userModel.checkLogin(_username, _password);
         if (userType.equals("customer")) {
+            CustomerController customerController = new CustomerController();
             customerController.initCustomerController();
 
         } else if (userType.equals("librarian")) {
+            LibrarianController librarianController = new LibrarianController();
             librarianController.initLibrarianController();
 
         }
