@@ -2,7 +2,6 @@ package Models;
 
 import Controllers.UserController;
 import SQL_Translator.MySQLCaller;
-import Views.LibraryCardView;
 import Views.LoginView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,41 +11,42 @@ import javax.swing.JOptionPane;
  *
  * @author Charles Brady
  *
- * Last Updated 4/20
+ * Last Updated 3/7
  *
  * This is the model for the user class.
  */
 public class UserModel {
+
 
     private static final String LIBRARIAN = "librarian";
     private static final String CUSTOMER = "customer";
 
     private String name;
     private String id;
-    private String UserId;
+    private String userId;
     private String password;
     private String userType;
     private String email;
 
     // The getters of the variables
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public String getUserId() {
-        return UserId;
+        return this.userId;
     }
 
     public String getUserType() {
@@ -71,7 +71,7 @@ public class UserModel {
     }
 
     public void setUserId(String _UserId) {
-        this.UserId = _UserId;
+        this.userId = _UserId;
     }
 
     public void setUserType(String _userType) {
@@ -95,13 +95,13 @@ public class UserModel {
                 MySQLCaller call = new MySQLCaller();
                 String result = call.checkLogin(user);
                 // if the user is a librarian, it will open the librarian view.
-                if (result == null ? LIBRARIAN == null
-                        : result.equals(LIBRARIAN)) {
+                if (result == null ? this.LIBRARIAN == null
+                        : result.equals(this.LIBRARIAN)) {
 
                     return "librarian";
                     // if the user is a customer, it will open the customer view.
-                } else if (result == null ? CUSTOMER == null
-                        : result.equals(CUSTOMER)) {
+                } else if (result == null ? this.CUSTOMER == null
+                        : result.equals(this.CUSTOMER)) {
 
                     return "customer";
                     /* if the username and password is not in the database,
@@ -124,7 +124,6 @@ public class UserModel {
             String _userID, String _email) throws Exception {
 
         UserModel user = new UserModel();
-        UserController userController = new UserController();
 
         try {
             int result;
@@ -141,9 +140,6 @@ public class UserModel {
                 JOptionPane.showMessageDialog(null, "Account Created");
                 String idNumber = SQL.searchUserID(_name);
                 user.setId(idNumber);
-                userController.displayLibraryCard(user);
-                LibraryCardView libraryCard = new LibraryCardView(user);
-                libraryCard.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to create account");
@@ -181,3 +177,6 @@ public class UserModel {
         return placeholder;
     }
 }
+
+    
+

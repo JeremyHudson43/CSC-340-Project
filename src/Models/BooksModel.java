@@ -1,48 +1,32 @@
 package Models;
 
-import API.APITranslator;
-import API.ApiConnector;
-import Controllers.BooksController;
 import SQL_Translator.MySQLCaller;
-import Views.BookDatabaseView;
-import Views.CheckoutView;
-import Views.LibraryCardView;
-import java.awt.print.PageFormat;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 /**
  *
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/17
+ * Last Updated 4/5
  *
  * This is the model for the books class.
  */
 public class BooksModel {
 
     MySQLCaller sqlCaller = new MySQLCaller();
-    protected final static ApiConnector myAPI = new APITranslator();
 
     private String author;
     private String title;
-    private String ISBN;
+    private String isbn;
     private String category;
     private String imageLink;
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(String _author) {
@@ -50,7 +34,7 @@ public class BooksModel {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String _title) {
@@ -58,15 +42,15 @@ public class BooksModel {
     }
 
     public String getISBN() {
-        return ISBN;
+        return this.isbn;
     }
 
     public void setISBN(String _ISBN) {
-        this.ISBN = _ISBN;
+        this.isbn = _ISBN;
     }
 
     public String getCategory() {
-        return category;
+        return this.category;
     }
 
     public void setCategory(String _category) {
@@ -74,45 +58,26 @@ public class BooksModel {
     }
 
     public String getImageLink() {
-        return imageLink;
+        return this.imageLink;
     }
 
     public void setImageLink(String _imageLink) {
         this.imageLink = _imageLink;
     }
-
     //======================================================================
-    //creates table from given author, title and ISBN
-    public JTable createTable(String _author, String _title, String _isbn) {
 
-        try {
-            BooksController bookController = new BooksController();
-            String[] columns = {"ISBN", "Title", "Author", "Category",
-                "ImageLink"};
-            Object[][] data = searchBook(_author, _title, _isbn);
-            JTable table = new JTable(data, columns);
+    //creates table from given author, title and isbn
+    public JTable createTable(String _author, String _title, String _isbn) throws SQLException {
+        String[] columns = {"ISBN", "Title", "Author", "Category",
+            "ImageLink"};
+        Object[][] data = searchBook(_author, _title, _isbn);
+        JTable table = new JTable(data, columns);
 
-            table.addMouseListener(new java.awt.event.MouseAdapter() {
+        return table;
 
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-
-                    try {
-                        bookController.getInfoAboutBook(table);
-                    } catch (IOException ex) {
-                        Logger.getLogger(BooksModel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-            });
-            JScrollPane scrollPane = new JScrollPane(table);
-            return table;
-        } catch (SQLException ex) {
-            Logger.getLogger(BooksModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
-//helper method for BookDB method
+    //helper method for BookDB method
     public String[] parseTable(JTable _table) throws IOException {
 
         TableModel model = _table.getModel();
@@ -167,36 +132,8 @@ public class BooksModel {
     //Search for a book in the database.
     public Object[][] searchBook(String _author, String _title, String _isbn)
             throws SQLException {
-        Object[][] data = sqlCaller.searchBooks(_author, _title, _isbn);
+        Object[][] data = this.sqlCaller.searchBooks(_author, _title, _isbn);
         return data;
     }
 
-    // Checkout books for a specific customer
-    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
-
-        try {
-            MySQLCaller caller = new MySQLCaller();
-            caller.checkoutBooks(_isbn, _userID);
-
-        } catch (Exception ex) {
-            Logger.getLogger(CheckoutView.class
-                    .getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public void checkInBooksByISBN(String[] _isbn, String _userID) {
-
-        try {
-            MySQLCaller caller = new MySQLCaller();
-            caller.checkinBooks(_isbn, _userID);
-
-        } catch (Exception ex) {
-            Logger.getLogger(CheckoutView.class
-                    .getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-
-    }
 }

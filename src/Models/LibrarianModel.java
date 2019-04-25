@@ -1,18 +1,26 @@
 package Models;
 
+import API.APITranslator;
+import API.ApiConnector;
 import Views.CheckoutView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+
+/* @author Jeremy Hudson
+   @author Charles Brady
+   Last updated 4-22-2019
+   
+ */
 public class LibrarianModel extends BooksModel {
 
-    //placeholder method for checkout logic
+    protected final static ApiConnector myAPI = new APITranslator();
+
+    //This checks out a book and links the book to a user.
     public void checkOutBooksByISBN(String[] _isbn, String _userID) {
 
         try {
-            sqlCaller.checkoutBooks(_isbn, _userID);
+            this.sqlCaller.checkoutBooks(_isbn, _userID);
 
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
@@ -21,10 +29,11 @@ public class LibrarianModel extends BooksModel {
 
     }
 
+    //This checks in a book and removes it from the user's account.
     public void checkInBooksByISBN(String[] _isbn, String _userID) {
 
         try {
-            sqlCaller.checkinBooks(_isbn, _userID);
+            this.sqlCaller.checkinBooks(_isbn, _userID);
 
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
@@ -34,59 +43,33 @@ public class LibrarianModel extends BooksModel {
     }
 
     //Add a book to the database.
-    public int addBook(BooksModel _b) {
-        int res = sqlCaller.addBooks(_b);
-        return res;
+    public void addBook(BooksModel _b) {
+        this.sqlCaller.addBooks(_b);
     }
 
     //Remove a book from the database.
     public int removeBook(BooksModel _b) {
-        int res = sqlCaller.removeBooks(_b.getISBN());
+        int res = this.sqlCaller.removeBooks(_b.getISBN());
         return res;
     }
 
+    //This searches the API by ISBN.
     public void loadBookByISBN(String _isbn) throws Exception {
-        BooksModel book = new BooksModel();
-        book.setISBN(_isbn);
-        String bookData = book.myAPI.loadBookNameByISBN(_isbn);
-        parseBookFromAPI(bookData);
+
+        String bookData[] = this.myAPI.loadBookNameByISBN(_isbn);
+
+        BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
+        addBook(book);
     }
 
-    public void loadBookNameByAuthorAndTitle(String _author,
-            String _title) throws Exception {
-        BooksModel book = new BooksModel();
-        String bookData = book.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-        parseBookFromAPI(bookData);
+    //This searches the API by book title and or author.
+    public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
+        
+        String bookData[] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
+   
+        BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
+        addBook(book);
+
     }
 
-    public void parseBookFromAPI(String _responseString) {
-
-        try {
-
-            JSONObject root = new JSONObject(_responseString);
-            JSONArray books = root.getJSONArray("items");
-
-            for (int i = 0; i < books.length(); i++) {
-                JSONObject book = books.getJSONObject(i);
-
-                JSONObject info = book.getJSONObject("volumeInfo");
-                String bookTitle = info.getString("title");
-
-                JSONArray authors = info.getJSONArray("authors");
-
-                String bookAuthor = authors.getString(0);
-                JSONObject imageLinks = info.getJSONObject("imageLinks");
-                String bookImageLink = imageLinks.getString("smallThumbnail");
-
-                JSONObject ISBN = info.getJSONObject("isbn");
-                String bookISBN = ISBN.toString();
-                BooksModel bookObject
-                        = buildBook(bookAuthor, bookTitle, "", bookISBN, bookImageLink);
-
-                sqlCaller.addBooks(bookObject);
-            }
-        } catch (Exception e) {
-
-        }
-    }
 }

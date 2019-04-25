@@ -12,7 +12,10 @@ import net.sourceforge.barbecue.Barcode;
  * This is the controller for the bar code of the library card.
  */
 public class BarcodeController {
-
+   
     private Barcode barcode;
-    
+
+    public Barcode getBarcode() {
+        return this.barcode;
+    }
 }

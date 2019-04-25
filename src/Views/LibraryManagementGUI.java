@@ -1,25 +1,30 @@
+
 package Views;
 
 import Controllers.ParentController;
 
 import java.awt.event.ActionListener;
 
+
 /**
  *
- * @author Charles Brady
- * @author Jeremy Hudson
- *
- * Last updated 4/20
+ * @author DELL6420
  */
 public class LibraryManagementGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form LibraryManagementGUI2
      */
-    public LibraryManagementGUI() {
-        initComponents();
+          
 
+    
+       public LibraryManagementGUI() {
+        initComponents();
+        
     }
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,27 +100,31 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitProgramButtonActionPerformed
 
-    public void addLoginListener(ActionListener listenForLogin) {
+   public void addLoginListener(ActionListener listenForLogin){
 
-        loginButton.addActionListener(listenForLogin);
+         this.loginButton.addActionListener(listenForLogin);
 
+         
+    }
+   public void addRegisterListener(ActionListener listenForLogin){
+
+         this.registerButton.addActionListener(listenForLogin);
+
+         
     }
 
-    public void addRegisterListener(ActionListener listenForRegister) {
-
-        registerButton.addActionListener(listenForRegister);
-
-    }
-
+      
     /**
      * @param args the command line arguments
      */
+        
     public static void main(String args[]) throws Exception {
+        
+            ParentController parentController = new ParentController();
+            parentController.initParentController();
 
-        ParentController parentController = new ParentController();
-        parentController.initParentController();
+            }
 
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

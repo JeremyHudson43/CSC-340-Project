@@ -21,20 +21,20 @@ public class AddBookView extends javax.swing.JFrame {
 
        public void addBookListener(ActionListener listenForAddBook) {
 
-        searchButtonAddBookView.addActionListener(listenForAddBook);
+        this.searchButtonAddBookView.addActionListener(listenForAddBook);
 
     }
 
     public String getISBN() {
-        return ISBNtxtfieldAddBookView.getText();
+        return this.isbnTxtfieldAddBookView.getText();
     }
 
     public String getAuthor() {
-        return authorTextFieldAddBook.getText();
+        return this.authorTextFieldAddBook.getText();
     }
 
     public String getBookTitle() {
-        return bookTextFieldAddBook.getText();
+        return this.bookTextFieldAddBook.getText();
     }
 
     /**
@@ -51,7 +51,7 @@ public class AddBookView extends javax.swing.JFrame {
         authorTextFieldAddBook = new javax.swing.JTextField();
         bookNameAddBookView = new javax.swing.JLabel();
         bookTextFieldAddBook = new javax.swing.JTextField();
-        ISBNtxtfieldAddBookView = new javax.swing.JTextField();
+        isbnTxtfieldAddBookView = new javax.swing.JTextField();
         addBookISBNLbl = new javax.swing.JLabel();
         getAllMatchingResultsAddBookViewLbl = new javax.swing.JLabel();
         searchButtonAddBookView = new javax.swing.JButton();
@@ -87,7 +87,7 @@ public class AddBookView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ISBNtxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(isbnTxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -111,7 +111,7 @@ public class AddBookView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(ISBNtxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(isbnTxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(authorLabelAddBook)
@@ -133,13 +133,13 @@ public class AddBookView extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ISBNtxtfieldAddBookView;
     private javax.swing.JLabel addBookISBNLbl;
     private javax.swing.JLabel authorLabelAddBook;
     private javax.swing.JTextField authorTextFieldAddBook;
     private javax.swing.JLabel bookNameAddBookView;
     private javax.swing.JTextField bookTextFieldAddBook;
     private javax.swing.JLabel getAllMatchingResultsAddBookViewLbl;
+    private javax.swing.JTextField isbnTxtfieldAddBookView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton searchButtonAddBookView;
     // End of variables declaration//GEN-END:variables

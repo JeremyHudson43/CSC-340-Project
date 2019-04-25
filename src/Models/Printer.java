@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Models;
 
 import java.awt.Component;
@@ -18,14 +23,14 @@ public class Printer implements Printable {
     }
 
     @Override
-    public int print(Graphics _graphics, PageFormat _format, int _page_index)
+    public int print(Graphics _graphics, PageFormat _format, int _page_index) 
             throws PrinterException {
         if (_page_index > 0) {
             return Printable.NO_SUCH_PAGE;
         }
 
         // get the bounds of the component
-        Dimension dim = comp.getSize();
+        Dimension dim = this.comp.getSize();
         double cHeight = dim.getHeight();
         double cWidth = dim.getWidth();
 
@@ -43,8 +48,8 @@ public class Printer implements Printable {
         Graphics2D g2 = (Graphics2D) _graphics;
         g2.translate(pXStart, pYStart);
 //        g2.scale(xRatio, yRatio);
-        g2.scale(scale, scale);
-        comp.paint(g2);
+        g2.scale(this.scale, this.scale);
+        this.comp.paint(g2);
 
         return Printable.PAGE_EXISTS;
     }

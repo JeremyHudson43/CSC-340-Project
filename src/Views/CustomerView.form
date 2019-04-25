@@ -34,7 +34,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="showMyCheckoutsCustomerViewTxtLbl" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="CheckoutBox" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="jComboBox1" min="-2" pref="141" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="custBookSearchLbl" min="-2" max="-2" attributes="0"/>
@@ -64,7 +64,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="showMyCheckoutsCustomerViewTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CheckoutBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="157" max="32767" attributes="0"/>
               <Component id="goToSelectedBookCustomerViewButton" min="-2" max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
         <Property name="text" type="java.lang.String" value="My checkouts:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="CheckoutBox">
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">

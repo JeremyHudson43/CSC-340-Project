@@ -23,39 +23,49 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="individualCustomerViewExiProgramButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="individualCustomerViewBackButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="individualCustomerViewTxtLbl" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="individualCustomerViewExiProgramButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="individualCustomerViewBackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="individualUserViewTxtLbl" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="individualUserViewEmailTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="individualUserViewNameTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="namePlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailAddressPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="individualUserViewIDNumberTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="UserTypeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="individualUserViewUserTypePlaceholderLbl" min="-2" max="-2" attributes="0"/>
+                                  <Component id="customerIDNumberPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="individualCustomerViewEmailTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="individualCustomerViewNameTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="namePlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailAddressPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="individualCustomerViewCheckoutsTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="individualCustomerViewIDNumberTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="individualCustomerViewCheckoutsTxtLbl" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="customerIDNumberPlaceholderTxtLbl" alignment="0" max="32767" attributes="0"/>
-                          <Component id="individualCustomerViewComboBox" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="individualCustomerViewComboBox" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,44 +75,49 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="individualCustomerViewBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="individualCustomerViewTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualUserViewTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="individualCustomerViewNameTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualUserViewNameTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="namePlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="individualCustomerViewEmailTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualUserViewEmailTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emailAddressPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="individualCustomerViewIDNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualUserViewIDNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="customerIDNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="UserTypeLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="individualUserViewUserTypePlaceholderLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="individualCustomerViewCheckoutsTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="individualCustomerViewComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
               <Component id="individualCustomerViewExiProgramButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="individualCustomerViewIDNumberTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualUserViewIDNumberTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer ID Number:"/>
+        <Property name="text" type="java.lang.String" value="User ID Number:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="customerIDNumberPlaceholderTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer ID Number Placeholder"/>
+        <Property name="text" type="java.lang.String" value="User ID Number Placeholder"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="individualCustomerViewComboBox">
@@ -130,34 +145,44 @@
         <Property name="text" type="java.lang.String" value="Exit Program"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="individualCustomerViewTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualUserViewTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Individual Customer View"/>
+        <Property name="text" type="java.lang.String" value="Individual User View"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="individualCustomerViewNameTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualUserViewNameTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Name:"/>
+        <Property name="text" type="java.lang.String" value="User&apos;s Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="individualCustomerViewEmailTxtLbl">
+    <Component class="javax.swing.JLabel" name="individualUserViewEmailTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Email Address:"/>
+        <Property name="text" type="java.lang.String" value="User Email Address:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="individualCustomerViewCheckoutsTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Books Customer has checked out:"/>
+        <Property name="text" type="java.lang.String" value="Books User has checked out:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="namePlaceholderTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Name Placeholder"/>
+        <Property name="text" type="java.lang.String" value="User Name Placeholder"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="emailAddressPlaceholderTxtLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Email Address Placeholder"/>
+        <Property name="text" type="java.lang.String" value="User Email Address Placeholder"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="UserTypeLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="User Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="individualUserViewUserTypePlaceholderLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="User Type Placeholder"/>
       </Properties>
     </Component>
   </SubComponents>

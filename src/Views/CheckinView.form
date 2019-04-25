@@ -53,7 +53,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="CustomerTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                          <Component id="userTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="checkInButton" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -87,7 +87,7 @@
               <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustomerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CustomerTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -126,7 +126,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="CustomerTextField">
+    <Component class="javax.swing.JTextField" name="userTextField">
     </Component>
     <Component class="javax.swing.JTextField" name="isbnTextField1">
     </Component>

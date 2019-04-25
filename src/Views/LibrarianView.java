@@ -7,13 +7,14 @@ import java.awt.event.ActionListener;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/20
+ * Last Updated 4/6
  *
  * This class allows the librarian to search the book database and to check the
  * books they have checked out, in addition to searching for and creating new
  * customers
  */
 public class LibrarianView extends javax.swing.JFrame {
+
 
     /**
      * Creates new form NewJFrame
@@ -24,37 +25,41 @@ public class LibrarianView extends javax.swing.JFrame {
 
     public void databaseListener(ActionListener listenForDatabase) {
 
-        openDatabaseButton.addActionListener(listenForDatabase);
+         this.openDatabaseButton.addActionListener(listenForDatabase);
 
     }
-
-    public String getCustomerSearchTextField() {
-        return CustomerSearchTextField.getText();
+    
+    public String getUserSearchTextField() {
+        return  this.userSearchTextField.getText();
     }
 
-    public void customerSearchListener(ActionListener listenForCustomerSearch) {
+    public void userSearchListener(ActionListener listenForCustomerSearch) {
 
-        customerSearchButton.addActionListener(listenForCustomerSearch);
+         this.userSearchButton.addActionListener(listenForCustomerSearch);
     }
 
     public void bookAddListener(ActionListener listenForAddBook) {
-        addBookButton.addActionListener(listenForAddBook);
+         this.addBookButton.addActionListener(listenForAddBook);
     }
 
     public void librarianAddListener(ActionListener listenForAddLibrarian) {
-        addLibrarianButton.addActionListener(listenForAddLibrarian);
+         this.addLibrarianButton.addActionListener(listenForAddLibrarian);
     }
 
     public void checkInListener(ActionListener listenForCheckIn) {
-        checkInButton.addActionListener(listenForCheckIn);
+         this.checkInButton.addActionListener(listenForCheckIn);
     }
 
     public void checkOutListener(ActionListener listenForCheckOut) {
-        checkOutButton.addActionListener(listenForCheckOut);
+         this.checkOutButton.addActionListener(listenForCheckOut);
     }
 
     public void goToBookListener(ActionListener listenForGoToBook) {
-        GoToSelectedBookButton.addActionListener(listenForGoToBook);
+         this.goToSelectedBookButton.addActionListener(listenForGoToBook);
+    }
+    
+    public void populateComboBox(String _bookName) {
+        this.librarianViewCheckoutComboBox.addItem(_bookName);
     }
 
     /**
@@ -68,21 +73,21 @@ public class LibrarianView extends javax.swing.JFrame {
 
         LibrarianLabel = new javax.swing.JLabel();
         BookSearchLabel = new javax.swing.JLabel();
-        CustomerSearchLabel = new javax.swing.JLabel();
+        userSearchLabel = new javax.swing.JLabel();
         AddBookLabel = new javax.swing.JLabel();
         AddLibrarianLabel = new javax.swing.JLabel();
         CheckInLabel = new javax.swing.JLabel();
         CheckOutLabel = new javax.swing.JLabel();
-        CustomerSearchTextField = new javax.swing.JTextField();
+        userSearchTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         librarianViewCheckoutComboBox = new javax.swing.JComboBox<>();
         openDatabaseButton = new javax.swing.JButton();
-        customerSearchButton = new javax.swing.JButton();
+        userSearchButton = new javax.swing.JButton();
         addBookButton = new javax.swing.JButton();
         addLibrarianButton = new javax.swing.JButton();
         checkInButton = new javax.swing.JButton();
         checkOutButton = new javax.swing.JButton();
-        GoToSelectedBookButton = new javax.swing.JButton();
+        goToSelectedBookButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,7 +95,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         BookSearchLabel.setText("Book Search:");
 
-        CustomerSearchLabel.setText("Customer Search (ID):");
+        userSearchLabel.setText("User Search (ID):");
 
         AddBookLabel.setText("Add Book to Library");
 
@@ -106,7 +111,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         openDatabaseButton.setText("Open Database");
 
-        customerSearchButton.setText("Search Customer");
+        userSearchButton.setText("Search User");
 
         addBookButton.setText("Add Book");
 
@@ -116,7 +121,7 @@ public class LibrarianView extends javax.swing.JFrame {
 
         checkOutButton.setText("Check out Book");
 
-        GoToSelectedBookButton.setText("Go To Selected Book");
+        goToSelectedBookButton.setText("Go To Selected Book");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,7 +135,7 @@ public class LibrarianView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CustomerSearchLabel)
+                            .addComponent(userSearchLabel)
                             .addComponent(BookSearchLabel)
                             .addComponent(AddBookLabel)
                             .addComponent(AddLibrarianLabel)
@@ -144,15 +149,15 @@ public class LibrarianView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(addLibrarianButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                     .addComponent(addBookButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CustomerSearchTextField)
+                                    .addComponent(userSearchTextField)
                                     .addComponent(librarianViewCheckoutComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(customerSearchButton)
-                                    .addComponent(GoToSelectedBookButton)))
+                                    .addComponent(userSearchButton)
+                                    .addComponent(goToSelectedBookButton)))
                             .addComponent(checkInButton)
                             .addComponent(checkOutButton))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,9 +170,9 @@ public class LibrarianView extends javax.swing.JFrame {
                     .addComponent(openDatabaseButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CustomerSearchLabel)
-                    .addComponent(CustomerSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerSearchButton))
+                    .addComponent(userSearchLabel)
+                    .addComponent(userSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userSearchButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddBookLabel)
@@ -188,7 +193,7 @@ public class LibrarianView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(librarianViewCheckoutComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GoToSelectedBookButton))
+                    .addComponent(goToSelectedBookButton))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -205,17 +210,17 @@ public class LibrarianView extends javax.swing.JFrame {
     private javax.swing.JLabel BookSearchLabel;
     private javax.swing.JLabel CheckInLabel;
     private javax.swing.JLabel CheckOutLabel;
-    private javax.swing.JLabel CustomerSearchLabel;
-    private javax.swing.JTextField CustomerSearchTextField;
-    private javax.swing.JButton GoToSelectedBookButton;
     private javax.swing.JLabel LibrarianLabel;
     private javax.swing.JButton addBookButton;
     private javax.swing.JButton addLibrarianButton;
     private javax.swing.JButton checkInButton;
     private javax.swing.JButton checkOutButton;
-    private javax.swing.JButton customerSearchButton;
+    private javax.swing.JButton goToSelectedBookButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> librarianViewCheckoutComboBox;
     private javax.swing.JButton openDatabaseButton;
+    private javax.swing.JButton userSearchButton;
+    private javax.swing.JLabel userSearchLabel;
+    private javax.swing.JTextField userSearchTextField;
     // End of variables declaration//GEN-END:variables
 }

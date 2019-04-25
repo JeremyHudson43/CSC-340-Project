@@ -5,85 +5,53 @@ import Models.UserModel;
 import Views.AddBookView;
 import Views.CheckinView;
 import Views.CheckoutView;
-import Views.IndividualCustomerView;
+import Views.IndividualUserView;
 import Views.LibrarianView;
-import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 
-
-/**
- *
- * @author Jeremy Hudson
- *
- * @author Charles Brady
- *
- * This is the controller for the actions of a librarian type user.
- *
- * Last Updated 4/21
+/* @author Jeremy Hudson
+   Last updated 4-22-2019
+   
  */
 public class LibrarianController extends BooksController {
 
-    private UserController userControl = new UserController();
     private LibrarianView librarianView = new LibrarianView();
     private LibrarianModel librarianModel = new LibrarianModel();
+    private UserController userController = new UserController();
     private CheckinView checkInView = new CheckinView();
     private AddBookView addBookView = new AddBookView();
     private CheckoutView checkoutView = new CheckoutView();
-    ;
-    private IndividualCustomerView individualCustomerView = new IndividualCustomerView();
+    private IndividualUserView individualUserView = new IndividualUserView();
 
+    //This tells the librarian view buttons what method to call when pressed
     public void initLibrarianController() {
-        librarianView.setVisible(true);
+        this.librarianView.setVisible(true);
 
         this.librarianView.databaseListener(e -> displayBookDB());
         this.librarianView.bookAddListener(e -> displayAddBookView());
-        this.librarianView.librarianAddListener(e -> userControl.displayRegister("librarian"));
-        this.librarianView.customerSearchListener(e -> customerDisplay());
+        this.librarianView.librarianAddListener(e -> userController.displayRegister("librarian"));
+        this.librarianView.userSearchListener(e -> userDisplay());
         this.librarianView.checkInListener(e -> displayCheckInView());
         this.librarianView.checkOutListener(e -> displayCheckOutView());
+        
+        //this.librarianView.populateComboBox(_bookName);
 
     }
 
-    /*This gets the userID and ISBNs from checkoutView and contacts the model to
+    /*This gets the userID and ISBNs from checkoutView and contacts the model to 
     checkout the books in the database
      */
     private void checkOut() {
-        String userID = checkoutView.getUserID();
-        String isbn1 = checkoutView.getISBN1();
-        String isbn2 = checkoutView.getISBN2();
-        String isbn3 = checkoutView.getISBN2();
-        String isbn4 = checkoutView.getISBN2();
+        String userID = this.checkoutView.getUserID();
+        String isbn1 = this.checkoutView.getISBN1();
+        String isbn2 = this.checkoutView.getISBN2();
+        String isbn3 = this.checkoutView.getISBN2();
+        String isbn4 = this.checkoutView.getISBN2();
 
         String[] isbn = {isbn1, isbn2, isbn3, isbn4};
 
-        librarianModel.checkOutBooksByISBN(isbn, userID);
-
-    }
-
-    //This displays the checkout view.
-    private void displayCheckOutView() {
-        this.checkoutView.setVisible(true);
-        this.checkoutView.checkOutListener(e -> {
-            try {
-                checkOut();
-            } catch (Exception ex) {
-                Logger.getLogger(BooksController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        });
-    }
-
-    private void checkIn() {
-        String userID = checkInView.getUserID();
-        String isbn1 = checkInView.getISBN1();
-        String isbn2 = checkInView.getISBN2();
-        String isbn3 = checkInView.getISBN2();
-        String isbn4 = checkInView.getISBN2();
-
-        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
-        librarianModel.checkInBooksByISBN(isbn, userID);
+        this.librarianModel.checkOutBooksByISBN(isbn, userID);
 
     }
 
@@ -100,7 +68,33 @@ public class LibrarianController extends BooksController {
         });
     }
 
-    //This displays the add book view.
+    //This checks book back into the database from the librarian model.
+    private void checkIn() {
+        String userID = this.checkInView.getUserID();
+        String isbn1 = this.checkInView.getISBN1();
+        String isbn2 = this.checkInView.getISBN2();
+        String isbn3 = this.checkInView.getISBN2();
+        String isbn4 = this.checkInView.getISBN2();
+
+        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
+        this.librarianModel.checkInBooksByISBN(isbn, userID);
+
+    }
+
+    //This displays the checkout view.
+    private void displayCheckOutView() {
+        this.checkoutView.setVisible(true);
+        this.checkoutView.checkOutListener(e -> {
+            try {
+                checkOut();
+            } catch (Exception ex) {
+                Logger.getLogger(BooksController.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    //This displays the add book view. 
     public void displayAddBookView() {
         this.addBookView.setVisible(true);
         this.addBookView.addBookListener(e -> {
@@ -117,33 +111,29 @@ public class LibrarianController extends BooksController {
     //This gets book info from the API by title and author or by ISBN.
     private void addBooks() throws Exception {
 
-        String author = addBookView.getAuthor();
-        String title = addBookView.getTitle();
-        String ISBN = addBookView.getISBN();
+        String author = this.addBookView.getAuthor();
+        String title = this.addBookView.getTitle();
+        String ISBN = this.addBookView.getISBN();
 
         if (ISBN.equals("")) {
-            librarianModel.loadBookNameByAuthorAndTitle(author, title);
+            this.librarianModel.loadBookNameByAuthorAndTitle(author, title);
         } else {
-            librarianModel.loadBookByISBN(ISBN);
+            this.librarianModel.loadBookByISBN(ISBN);
         }
     }
 
-    //displays individual customer information
-    public void customerDisplay() {
+    //This displays individual customer information.
+    public void userDisplay() {
 
         UserModel placeholder = new UserModel();
 
-        placeholder = userModel.searchUser(librarianView.getCustomerSearchTextField());
+        placeholder = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
 
-        individualCustomerView.setCustomerName(placeholder.getName());
-        individualCustomerView.setCustomerEmail(placeholder.getEmail());
-        individualCustomerView.setCustomerID(placeholder.getId());
-
-        JFrame frame = new JFrame();
-        frame.add(BorderLayout.CENTER, individualCustomerView);
-        frame.pack();
-        frame.setVisible(true);
-        individualCustomerView.setVisible(true);
+        this.individualUserView.setUsersName(placeholder.getName());
+        this.individualUserView.setUserEmail(placeholder.getEmail());
+        this.individualUserView.setUserID(placeholder.getUserId());
+        this.individualUserView.setUserType(placeholder.getUserType());
+        this.individualUserView.setVisible(true);
 
     }
 }
