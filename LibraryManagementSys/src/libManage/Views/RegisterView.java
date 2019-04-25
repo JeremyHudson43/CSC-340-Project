@@ -1,10 +1,10 @@
 package Views;
 
-import Database.MySQLDBTranslator;
-import Models.User;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
+import Models.UserModel;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 
 /**
  *
@@ -17,13 +17,35 @@ public class RegisterView extends javax.swing.JFrame {
     /**
      * Creates new form RegisterView
      */
-    User user;
+    UserModel user;
 
     // This will open up a registration form while also obtaining the type of user
-    public RegisterView(String _userType) {
+    public RegisterView() {
         initComponents();
-        user = new User();
-        user.setUserType(_userType);
+        
+
+    }
+
+    public void registerListener(ActionListener listenForRegister) {
+
+        this.registerButton.addActionListener(listenForRegister);
+
+    }
+    
+    public String getName() {
+        return  this.nameTextField.getText();
+    }
+    
+    public String getUserID() {
+        return  this.idTextField.getText();
+    }
+    
+    public String getUserPassword() {
+        return  this.passwordTextField.getText();
+    }
+    
+    public String getUserEmail() {
+        return  this.emailTextField.getText();
     }
 
     /**
@@ -40,11 +62,11 @@ public class RegisterView extends javax.swing.JFrame {
         IDLabel = new javax.swing.JLabel();
         PasswordLabel = new javax.swing.JLabel();
         EmailLabel = new javax.swing.JLabel();
-        NameTextField = new javax.swing.JTextField();
-        IDTextField = new javax.swing.JTextField();
-        EmailTextField = new javax.swing.JTextField();
-        RegisterButton = new javax.swing.JButton();
-        PasswordTextField = new javax.swing.JPasswordField();
+        nameTextField = new javax.swing.JTextField();
+        idTextField = new javax.swing.JTextField();
+        emailTextField = new javax.swing.JTextField();
+        passwordTextField = new javax.swing.JPasswordField();
+        registerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,47 +75,38 @@ public class RegisterView extends javax.swing.JFrame {
 
         NameLabel.setText("Name:");
 
-        IDLabel.setText("ID:");
+        IDLabel.setText("Username:");
 
         PasswordLabel.setText("Password:");
 
         EmailLabel.setText("Email:");
 
-        RegisterButton.setText("Register");
-        RegisterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterButtonActionPerformed(evt);
-            }
-        });
+        registerButton.setText("Register");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PasswordLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(PasswordTextField))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(NameLabel)
-                            .addComponent(IDLabel))
+                            .addComponent(IDLabel)
+                            .addComponent(PasswordLabel)
+                            .addComponent(EmailLabel))
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(emailTextField)
+                            .addComponent(passwordTextField)
                             .addComponent(RegisterLabel)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(NameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                .addComponent(IDTextField))))
+                            .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(idTextField)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(EmailLabel)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegisterButton)
-                            .addComponent(EmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGap(97, 97, 97)
+                        .addComponent(registerButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,60 +116,26 @@ public class RegisterView extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameLabel)
-                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDLabel)
-                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordLabel)
-                    .addComponent(PasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmailLabel)
-                    .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(RegisterButton)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(registerButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    //This method adds a new user to the database
-    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        try {
-            MySQLDBTranslator translator = new MySQLDBTranslator();
-
-            int result = 0;
-            String Name = NameTextField.getText();
-            String id = IDTextField.getText();
-            String password = new String(PasswordTextField.getPassword());
-            String Email = EmailTextField.getText();
-
-            if (Name == null || id == null || password == null || Email == null) {
-                JOptionPane.showMessageDialog(null, "All fields are required. Please try again.");
-            } else {
-                user.setName(Name);
-                user.setPassword(password);
-                user.setUserId(id);
-                user.setEmail(Email);
-                result = translator.createAccount(user);
-                if (result > 0) {
-                    JOptionPane.showMessageDialog(null, "Account Created");
-                    user = translator.searchUser(id);
-                    LibraryCardView lc = new LibraryCardView(user);
-                    lc.setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Unabel to create account");
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_RegisterButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,14 +143,14 @@ public class RegisterView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel EmailLabel;
-    private javax.swing.JTextField EmailTextField;
     private javax.swing.JLabel IDLabel;
-    private javax.swing.JTextField IDTextField;
     private javax.swing.JLabel NameLabel;
-    private javax.swing.JTextField NameTextField;
     private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JPasswordField PasswordTextField;
-    private javax.swing.JButton RegisterButton;
     private javax.swing.JLabel RegisterLabel;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JPasswordField passwordTextField;
+    private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
 }

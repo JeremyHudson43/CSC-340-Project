@@ -32,27 +32,36 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="CustomerSearchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="userSearchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="BookSearchLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="AddBookLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="AddLibrarianLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="CheckInLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="CheckOutLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="CustomerSearchTextField" max="32767" attributes="0"/>
-                          <Component id="CheckOutButton" max="32767" attributes="0"/>
-                          <Component id="OpenDatabaseButton" alignment="1" max="32767" attributes="0"/>
-                          <Component id="AddBookButton" max="32767" attributes="0"/>
-                          <Component id="AddLibrarianButton" max="32767" attributes="0"/>
-                          <Component id="CheckInButton" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="openDatabaseButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="addLibrarianButton" alignment="0" pref="107" max="32767" attributes="0"/>
+                                  <Component id="addBookButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="userSearchTextField" max="32767" attributes="0"/>
+                                  <Component id="librarianViewCheckoutComboBox" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="userSearchButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="goToSelectedBookButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="checkInButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkOutButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CustomerSearchButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="44" max="32767" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,35 +73,41 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BookSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="OpenDatabaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="openDatabaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CustomerSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CustomerSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CustomerSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userSearchLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userSearchTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="AddBookLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="AddBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="AddLibrarianLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="AddLibrarianButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addLibrarianButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CheckInLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CheckInButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkInButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CheckOutLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CheckOutButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkOutButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="librarianViewCheckoutComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="goToSelectedBookButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,9 +123,9 @@
         <Property name="text" type="java.lang.String" value="Book Search:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="CustomerSearchLabel">
+    <Component class="javax.swing.JLabel" name="userSearchLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Search (ID):"/>
+        <Property name="text" type="java.lang.String" value="User Search (ID):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="AddBookLabel">
@@ -133,51 +148,61 @@
         <Property name="text" type="java.lang.String" value="Check Out:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="CustomerSearchTextField">
+    <Component class="javax.swing.JTextField" name="userSearchTextField">
     </Component>
-    <Component class="javax.swing.JButton" name="CheckOutButton">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Check Out"/>
+        <Property name="text" type="java.lang.String" value="My Check Outs:"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckOutButtonActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="OpenDatabaseButton">
+    <Component class="javax.swing.JComboBox" name="librarianViewCheckoutComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="openDatabaseButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Open Database"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpenDatabaseButtonActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="CustomerSearchButton">
+    <Component class="javax.swing.JButton" name="userSearchButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Customer Search"/>
+        <Property name="text" type="java.lang.String" value="Search User"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CustomerSearchButtonActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AddBookButton">
+    <Component class="javax.swing.JButton" name="addBookButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Book"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddBookButtonActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AddLibrarianButton">
+    <Component class="javax.swing.JButton" name="addLibrarianButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Librarian"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddLibrarianButtonActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="CheckInButton">
+    <Component class="javax.swing.JButton" name="checkInButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Check In"/>
+        <Property name="text" type="java.lang.String" value="Check in Book"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="checkOutButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Check out Book"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="goToSelectedBookButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Go To Selected Book"/>
       </Properties>
     </Component>
   </SubComponents>

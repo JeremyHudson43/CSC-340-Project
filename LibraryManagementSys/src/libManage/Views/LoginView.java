@@ -1,13 +1,7 @@
 package Views;
 
-import Views.RegisterView;
-import Views.LibrarianView;
-import Views.CustomerView;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import Models.User;
-import Database.MySQLDBTranslator;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
@@ -20,9 +14,6 @@ import Database.MySQLDBTranslator;
  * Last updated 3/5
  */
 public class LoginView extends javax.swing.JFrame {
-
-    private static final String librarian = "librarian";
-    private static final String customer = "customer";
 
     /**
      * Creates new form CustomerLogin
@@ -41,43 +32,25 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Username_txtfield = new javax.swing.JTextField();
-        Login_button = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        usernameTxtfield = new javax.swing.JTextField();
         LoginLbl = new javax.swing.JLabel();
-        custLoginExitButton = new javax.swing.JButton();
         Username_label = new javax.swing.JLabel();
         Password_label = new javax.swing.JLabel();
-        Password_txtField = new javax.swing.JPasswordField();
-        Register_Button = new javax.swing.JToggleButton();
+        passwordTxtField = new javax.swing.JPasswordField();
+        loginButton = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Login_button.setText("Login");
-        Login_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Login_buttonActionPerformed(evt);
-            }
-        });
-
         LoginLbl.setText("Login");
-
-        custLoginExitButton.setText("Exit Program");
-        custLoginExitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                custLoginExitButtonActionPerformed(evt);
-            }
-        });
 
         Username_label.setText("Username");
 
         Password_label.setText("Password");
 
-        Register_Button.setText("Register");
-        Register_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Register_ButtonActionPerformed(evt);
-            }
-        });
+        loginButton.setText("Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,22 +58,20 @@ public class LoginView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Password_label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(passwordTxtField))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(Username_label)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(usernameTxtfield, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Password_label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Password_txtField))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Username_label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Username_txtfield))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(custLoginExitButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(Register_Button)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Login_button)
-                .addGap(19, 19, 19))
+                        .addGap(186, 186, 186)
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(138, 138, 138)
                 .addComponent(LoginLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,84 +85,41 @@ public class LoginView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Username_label)
-                    .addComponent(Username_txtfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameTxtfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Password_label)
-                    .addComponent(Password_txtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(custLoginExitButton)
-                    .addComponent(Login_button)
-                    .addComponent(Register_Button))
+                    .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(loginButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login_buttonActionPerformed
+    public String username() {
+        return  this.usernameTxtfield.getText();
+    }
 
-        String username = Username_txtfield.getText();
-        String password = new String(Password_txtField.getPassword());
+    public String password() {
+        return  this.passwordTxtField.getText();
+    }
 
-        /* If nothing is entered into the textfield, it will display a message and ask the user
-        * to enter the information again.
-         */
-        if (username.equals("") || password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Required fields not entered. Please try again.");
-        } // If something is entered, the program will check to see if it exists in the database
-        else {
-            try {
-                User user = new User();
-                user.setUserId(username);
-                user.setPassword(password);
+    public void loginListener(ActionListener listenForLogin) {
 
-                MySQLDBTranslator translator = new MySQLDBTranslator();
-                String result = translator.CheckLogin(user);
-                // if the user is a librarian, it will open the librarian view.
-                if (result == null ? librarian == null : result.equals(librarian)) {
-                    LibrarianView lv = new LibrarianView();
-                    lv.setVisible(true);
-                    this.dispose();
-                    // if the user is a customer, it will open the customer view.
-                } else if (result == null ? customer == null : result.equals(customer)) {
-                    CustomerView customerView = new CustomerView();
-                    customerView.setVisible(true);
-                    this.dispose();
-                /* if the username and password is not in the database, it will ask the
-                * the user to try again
-                */
-                } else {
-                    JOptionPane.showMessageDialog(null, " User does not exist. Please try again.");
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_Login_buttonActionPerformed
+         this.loginButton.addActionListener(listenForLogin);
 
-    // Exit the program and shut off the system
-    private void custLoginExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custLoginExitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_custLoginExitButtonActionPerformed
+    }
 
-    /*This will open the registration screen so the user can sign up.
-    * The usertype is set to customer because only librarians can register other librarians
-     */
-    private void Register_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Register_ButtonActionPerformed
-        RegisterView registerView = new RegisterView(customer);
-        registerView.setVisible(true);
-    }//GEN-LAST:event_Register_ButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginLbl;
-    private javax.swing.JButton Login_button;
     private javax.swing.JLabel Password_label;
-    private javax.swing.JPasswordField Password_txtField;
-    private javax.swing.JToggleButton Register_Button;
     private javax.swing.JLabel Username_label;
-    private javax.swing.JTextField Username_txtfield;
-    private javax.swing.JButton custLoginExitButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField passwordTxtField;
+    private javax.swing.JTextField usernameTxtfield;
     // End of variables declaration//GEN-END:variables
 
 }

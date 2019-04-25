@@ -1,26 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Views;
 
-import Controllers.BooksController;
-import java.io.*;
+import java.awt.event.ActionListener;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import Models.ManageBookInfo;
-
-/*
-Jeremy Hudson
-Charles Brady
-*
-* This class is used to access the database of books
-*
-*
-Last updated 2-23-2019
+/**
+ *
+ * @author DELL6420
  */
-public class BookDatabaseView extends javax.swing.JPanel {
+public class BookDatabaseView extends javax.swing.JFrame {
 
     /**
-     * Creates new form BookDatabaseView
+     * Creates new form BookDBView
      */
     public BookDatabaseView() {
         initComponents();
@@ -35,207 +29,149 @@ public class BookDatabaseView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jButton2 = new javax.swing.JButton();
-        LibManageSys = new javax.swing.JPanel();
-        exitProgramButton = new javax.swing.JButton();
-        searchDatabaseNoLogin = new javax.swing.JLabel();
-        searchAuthorNoLoginTxtFld = new javax.swing.JTextField();
-        searchLocalDatabaseNoLoginButton = new javax.swing.JButton();
-        searchTitleNoLoginTxtFld = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        bookResultsList = new javax.swing.JList<>();
-        bookSearchResultsTxtLbl = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        removeFromCheckoutButton = new javax.swing.JButton();
-        checkOutBooksButton = new javax.swing.JButton();
-        searchAPIForBooks = new javax.swing.JButton();
-        searchISBNNoLoginTxtFld = new javax.swing.JTextField();
+        searchLocalDatabaseButton = new javax.swing.JButton();
+        LibManageSys2 = new javax.swing.JPanel();
+        searchDatabaseNoLogin2 = new javax.swing.JLabel();
+        searchAuthorNoLoginTxtFld2 = new javax.swing.JTextField();
+        searchTitleNoLoginTxtFld2 = new javax.swing.JTextField();
+        searchISBNNoLoginTxtFld2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
-        jMenu1.setText("jMenu1");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton2.setText("jButton2");
+        searchLocalDatabaseButton.setText("Search Database");
 
-        LibManageSys.setBorder(javax.swing.BorderFactory.createTitledBorder("Library Management System"));
+        LibManageSys2.setBorder(javax.swing.BorderFactory.createTitledBorder("Library Management System"));
 
-        exitProgramButton.setText("Exit Program");
-        exitProgramButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitProgramButtonActionPerformed(evt);
-            }
-        });
+        searchDatabaseNoLogin2.setText("Search database ");
 
-        searchDatabaseNoLogin.setText("Search database ");
+        searchAuthorNoLoginTxtFld2.setText("Author Name");
 
-        searchLocalDatabaseNoLoginButton.setText("Search Local Database");
-        searchLocalDatabaseNoLoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchLocalDatabaseNoLoginButtonActionPerformed(evt);
-            }
-        });
+        searchTitleNoLoginTxtFld2.setText("Title of Book");
 
-        bookResultsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(bookResultsList);
+        jLabel3.setText("Search by ISBN");
 
-        bookSearchResultsTxtLbl.setText("Results");
-
-        jButton1.setText("Add to checkout list");
-
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
-
-        removeFromCheckoutButton.setText("Remove from checkout list");
-
-        checkOutBooksButton.setText("Checkout selected books");
-
-        searchAPIForBooks.setText("Search API");
-        searchAPIForBooks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchAPIForBooksActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout LibManageSysLayout = new javax.swing.GroupLayout(LibManageSys);
-        LibManageSys.setLayout(LibManageSysLayout);
-        LibManageSysLayout.setHorizontalGroup(
-            LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LibManageSysLayout.createSequentialGroup()
+        javax.swing.GroupLayout LibManageSys2Layout = new javax.swing.GroupLayout(LibManageSys2);
+        LibManageSys2.setLayout(LibManageSys2Layout);
+        LibManageSys2Layout.setHorizontalGroup(
+            LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LibManageSys2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addComponent(exitProgramButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchDatabaseNoLogin)
-                            .addComponent(bookSearchResultsTxtLbl))
+                .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LibManageSys2Layout.createSequentialGroup()
+                        .addComponent(searchDatabaseNoLogin2)
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(searchISBNNoLoginTxtFld, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchAuthorNoLoginTxtFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(searchTitleNoLoginTxtFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LibManageSys2Layout.createSequentialGroup()
+                        .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(searchAuthorNoLoginTxtFld2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(searchTitleNoLoginTxtFld2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LibManageSysLayout.createSequentialGroup()
-                                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(removeFromCheckoutButton)
-                                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jButton1)))
-                                .addGap(26, 26, 26)
-                                .addComponent(jScrollPane2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LibManageSysLayout.createSequentialGroup()
-                                .addGap(0, 171, Short.MAX_VALUE)
-                                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(checkOutBooksButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(searchLocalDatabaseNoLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(searchAPIForBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(41, 41, 41))))
+                        .addComponent(searchISBNNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 45, Short.MAX_VALUE))))
         );
-        LibManageSysLayout.setVerticalGroup(
-            LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LibManageSysLayout.createSequentialGroup()
-                .addComponent(searchDatabaseNoLogin)
+        LibManageSys2Layout.setVerticalGroup(
+            LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LibManageSys2Layout.createSequentialGroup()
+                .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchDatabaseNoLogin2)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchAuthorNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchAPIForBooks))
+                .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchAuthorNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchISBNNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchTitleNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchLocalDatabaseNoLoginButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchISBNNoLoginTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(bookSearchResultsTxtLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(LibManageSysLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(14, 14, 14)
-                        .addComponent(removeFromCheckoutButton))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(LibManageSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitProgramButton)
-                    .addComponent(checkOutBooksButton))
-                .addGap(24, 24, 24))
+                .addComponent(searchTitleNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LibManageSys, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LibManageSys2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(searchLocalDatabaseButton)))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(LibManageSys, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(LibManageSys2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addComponent(searchLocalDatabaseButton)
+                .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitProgramButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProgramButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitProgramButtonActionPerformed
+     public void searchDBListener(ActionListener listenForSearch) {
 
-    private void searchLocalDatabaseNoLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchLocalDatabaseNoLoginButtonActionPerformed
+        this.searchLocalDatabaseButton.addActionListener(listenForSearch);
+
+    }
+
+    public String getAuthorName() {
+        return this.searchAuthorNoLoginTxtFld2.getText();
+    }
+    
+      public String getBookTitle() {
+        return this.searchTitleNoLoginTxtFld2.getText();
+    }
+      
+       public String getISBN() {
+        return this.searchISBNNoLoginTxtFld2.getText();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try {
-            BooksController bc = new BooksController();
-            bc.SearchBook(searchAuthorNoLoginTxtFld.getText(),
-                    searchTitleNoLoginTxtFld.getText(),
-                    searchISBNNoLoginTxtFld.getText());
-        } catch (Exception ex) {
-            Logger.getLogger(BookDatabaseView.class.getName()).log(Level.SEVERE, null, ex);
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_searchLocalDatabaseNoLoginButtonActionPerformed
+        //</editor-fold>
+        //</editor-fold>
 
-    private void searchAPIForBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAPIForBooksActionPerformed
-        ManageBookInfo MBI = new ManageBookInfo();
-        try {
-            MBI.getRequest(searchAuthorNoLoginTxtFld.getText(),
-                    searchTitleNoLoginTxtFld.getText());
-        } catch (IOException ex) {
-            Logger.getLogger(BookDatabaseView.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-            }//GEN-LAST:event_searchAPIForBooksActionPerformed
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new BookDatabaseView().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel LibManageSys;
-    private javax.swing.JList<String> bookResultsList;
-    private javax.swing.JLabel bookSearchResultsTxtLbl;
-    private javax.swing.JButton checkOutBooksButton;
-    private javax.swing.JButton exitProgramButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton removeFromCheckoutButton;
-    private javax.swing.JButton searchAPIForBooks;
-    private javax.swing.JTextField searchAuthorNoLoginTxtFld;
-    private javax.swing.JLabel searchDatabaseNoLogin;
-    private javax.swing.JTextField searchISBNNoLoginTxtFld;
-    private javax.swing.JButton searchLocalDatabaseNoLoginButton;
-    private javax.swing.JTextField searchTitleNoLoginTxtFld;
+    private javax.swing.JPanel LibManageSys2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField searchAuthorNoLoginTxtFld2;
+    private javax.swing.JLabel searchDatabaseNoLogin2;
+    private javax.swing.JTextField searchISBNNoLoginTxtFld2;
+    private javax.swing.JButton searchLocalDatabaseButton;
+    private javax.swing.JTextField searchTitleNoLoginTxtFld2;
     // End of variables declaration//GEN-END:variables
-
 }

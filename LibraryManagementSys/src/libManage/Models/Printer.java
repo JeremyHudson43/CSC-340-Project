@@ -23,33 +23,33 @@ public class Printer implements Printable {
     }
 
     @Override
-    public int print(Graphics g, PageFormat format, int page_index) 
+    public int print(Graphics _graphics, PageFormat _format, int _page_index) 
             throws PrinterException {
-        if (page_index > 0) {
+        if (_page_index > 0) {
             return Printable.NO_SUCH_PAGE;
         }
 
         // get the bounds of the component
-        Dimension dim = comp.getSize();
+        Dimension dim = this.comp.getSize();
         double cHeight = dim.getHeight();
         double cWidth = dim.getWidth();
 
         // get the bounds of the printable area
-        double pHeight = format.getImageableHeight();
-        double pWidth = format.getImageableWidth();
+        double pHeight = _format.getImageableHeight();
+        double pWidth = _format.getImageableWidth();
 
-        double pXStart = format.getImageableX();
-        double pYStart = format.getImageableY();
+        double pXStart = _format.getImageableX();
+        double pYStart = _format.getImageableY();
 
         double xRatio = pWidth / cWidth;
         double yRatio = pHeight / cHeight;
 
 
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) _graphics;
         g2.translate(pXStart, pYStart);
 //        g2.scale(xRatio, yRatio);
-        g2.scale(scale, scale);
-        comp.paint(g2);
+        g2.scale(this.scale, this.scale);
+        this.comp.paint(g2);
 
         return Printable.PAGE_EXISTS;
     }
