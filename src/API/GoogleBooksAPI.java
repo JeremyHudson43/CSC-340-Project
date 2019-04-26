@@ -15,15 +15,14 @@ import org.json.JSONObject;
  * @author Jeremy Hudson
  *
  * Last updated 4-25-2019
- * 
+ *
  * This class contacts the Google Books API to receive information from either
- * an ISBN search or an author/title search. It receives a response string 
- * and parses the information using JSONobjects, then returns the information.
- * 
- * It uses a loop to gather data from the API in a 2d array in the following 
- * fashion 2dArray[book][detail of book] 
+ * an ISBN search or an author/title search. It receives a response string and
+ * parses the information using JSONobjects, then returns the information.
+ *
+ * It uses a loop to gather data from the API in a 2d array in the following
+ * fashion 2dArray[book][detail of book]
  */
-
 public class GoogleBooksAPI implements ApiConnector {
 
     private static final String apiKey
@@ -92,14 +91,17 @@ public class GoogleBooksAPI implements ApiConnector {
             String str;
             while ((str = in.readLine()) != null) {
                 responseString += str + "\n";
+
             }
             bookData = parseBookFromAPI(responseString);
-            return bookData;
-        }
 
+        } catch (Exception e) {
+            System.out.println("Enter only one word please");
+        }
+        return bookData;
     }
 
-    //This parses the book title, author, and imagelink from the API.
+//This parses the book title, author, and imagelink from the API.
     public static String[][] parseBookFromAPI(String _responseString) {
 
         JSONObject root = new JSONObject(_responseString);
@@ -122,11 +124,11 @@ public class GoogleBooksAPI implements ApiConnector {
             String bookAuthor = authors.getString(0);
 
             try {
-            JSONObject imageLinks = info.getJSONObject("imageLinks");
-            bookImageLink = imageLinks.getString("smallThumbnail");
-            }catch(org.json.JSONException exception) {
+                JSONObject imageLinks = info.getJSONObject("imageLinks");
+                bookImageLink = imageLinks.getString("smallThumbnail");
+            } catch (org.json.JSONException exception) {
                 System.out.println("Warning: At least one imagelink was not found");
-            }            
+            }
             String bookISBN = generateNumber();
 
             individualBookData[0] = bookTitle;
