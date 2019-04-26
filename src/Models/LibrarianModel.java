@@ -65,7 +65,7 @@ public class LibrarianModel extends BooksModel {
 
         for (int i = 0; i < bookData.length; i++) {
 
-            BooksModel book = buildBook(bookData[i][1], bookData[i][0], "", bookData[i][2], "");
+            BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3]);
             addBook(book);
 
         }
@@ -78,7 +78,7 @@ public class LibrarianModel extends BooksModel {
         
         for (int i = 0; i < bookData.length; i++) {
 
-            BooksModel book = buildBook(bookData[i][1], bookData[i][0], "", bookData[i][2], "");
+            BooksModel book = buildBook(bookData[i][1], bookData[i][0],  bookData[i][2], bookData[i][3]);
             addBook(book);
 
         }

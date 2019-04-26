@@ -105,8 +105,8 @@ public class GoogleBooksAPI implements ApiConnector {
         JSONObject root = new JSONObject(_responseString);
         JSONArray books = root.getJSONArray("items");
 
-        String[] individualBookData = new String[3];
-        String[][] totalBookData = new String[10][3];
+        String[] individualBookData = new String[4];
+        String[][] totalBookData = new String[10][4];
 
         for (int i = 0; i < books.length(); i++) {
 
@@ -121,13 +121,18 @@ public class GoogleBooksAPI implements ApiConnector {
 
             String bookAuthor = authors.getString(0);
 
-            //JSONObject imageLinks = info.getJSONObject("imageLinks");
-            //ookImageLink = imageLinks.getString("smallThumbnail");
+            try {
+            JSONObject imageLinks = info.getJSONObject("imageLinks");
+            bookImageLink = imageLinks.getString("smallThumbnail");
+            }catch(org.json.JSONException exception) {
+                System.out.println("Warning: At least one imagelink was not found");
+            }            
             String bookISBN = generateNumber();
 
             individualBookData[0] = bookTitle;
             individualBookData[1] = bookAuthor;
             individualBookData[2] = bookISBN;
+            individualBookData[3] = bookImageLink;
 
             for (int j = 0; j < individualBookData.length; j++) {
                 totalBookData[i][j] = individualBookData[j];

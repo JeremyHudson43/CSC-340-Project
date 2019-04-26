@@ -10,7 +10,7 @@ import net.sourceforge.barbecue.BarcodeFactory;
  *
  * Last updated 3/16
  *
- * This is the controller for the bar code of the library card.
+ * This is the translator for the bar code of the library card.
  */
 public class BarcodeTranslator {
     private Barcode barcode;

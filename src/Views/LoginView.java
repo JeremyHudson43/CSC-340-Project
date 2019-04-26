@@ -100,7 +100,6 @@ public class LoginView extends javax.swing.JFrame {
     public void loginListener(ActionListener _listenForLogin) {
 
         this.loginButton.addActionListener(_listenForLogin);
-
     }
 
 

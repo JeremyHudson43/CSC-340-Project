@@ -13,7 +13,9 @@ import javax.swing.JOptionPane;
  *
  * Last Updated 3/7
  *
- * This is the model for the user class.
+ * This model contains the variables for users and contains the logic that
+ * verifies a customer or librarian against the SQL database for logins and 
+ * registrations, in addition to searching for a user and creating a new user.
  */
 public class UserModel {
 

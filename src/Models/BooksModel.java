@@ -121,12 +121,11 @@ public class BooksModel {
 
     //Create a new book
     public static BooksModel buildBook(String _author, String _title,
-            String _category, String _isbn, String _imageLink)
+             String _isbn, String _imageLink)
             throws Exception {
         BooksModel b = new BooksModel();
         b.setAuthor(_author);
         b.setTitle(_title);
-        b.setCategory(_category);
         b.setISBN(_isbn);
         b.setImageLink(_imageLink);
         return b;

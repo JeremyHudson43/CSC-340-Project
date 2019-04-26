@@ -6,9 +6,8 @@ import java.awt.event.ActionListener;
  *
  * @author Charles Brady
  *
- * Last Updated 3/13
- * This class adds a listener to the register button and returns user info
- * to the UserController
+ * Last Updated 3/13 This class adds a listener to the register button and
+ * returns user info to the UserController
  */
 public class RegisterView extends javax.swing.JFrame {
 
@@ -18,9 +17,7 @@ public class RegisterView extends javax.swing.JFrame {
     }
 
     public void registerListener(ActionListener _listenForRegister) {
-
         this.registerButton.addActionListener(_listenForRegister);
-
     }
 
     public String getName() {

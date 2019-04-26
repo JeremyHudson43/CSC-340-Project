@@ -23,7 +23,9 @@ import javax.swing.JTable;
  *
  * Last Updated 4/13
  *
- * This is the controller for the books class
+ * This controller routes the logic to search the local database using the 
+ * book database view, and gets a JTable from the books model and loads it 
+ * into a JFrame to display the individualBookView
  */
 public class BooksController {
 

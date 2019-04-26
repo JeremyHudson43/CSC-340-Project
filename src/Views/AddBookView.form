@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -32,25 +36,32 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="addBookISBNLbl" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="145" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="getAllMatchingResultsAddBookViewLbl" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="isbnTxtfieldAddBookView" min="-2" pref="105" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="isbnTxtfieldAddBookView" min="-2" pref="105" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="singleWordWarningLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="bookNameAddBookView" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="bookTextFieldAddBook" min="-2" pref="105" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="authorLabelAddBook" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="authorTextFieldAddBook" min="-2" pref="105" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="authorTextFieldAddBook" alignment="1" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="bookTextFieldAddBook" alignment="1" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -68,10 +79,6 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="isbnTxtfieldAddBookView" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="authorLabelAddBook" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -82,10 +89,19 @@
                           <Component id="bookNameAddBookView" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bookTextFieldAddBook" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Component id="searchButtonAddBookView" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="isbnTxtfieldAddBookView" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="singleWordWarningLbl" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
-              <Component id="searchButtonAddBookView" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -99,14 +115,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="authorLabelAddBook">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Author:"/>
+        <Property name="text" type="java.lang.String" value="Author Name:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="authorTextFieldAddBook">
     </Component>
     <Component class="javax.swing.JLabel" name="bookNameAddBookView">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Book Name:"/>
+        <Property name="text" type="java.lang.String" value="Book Title:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="bookTextFieldAddBook">
@@ -120,12 +136,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="getAllMatchingResultsAddBookViewLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add all matching results by author/ book name"/>
+        <Property name="text" type="java.lang.String" value="Add all matching results by author/ book title"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="searchButtonAddBookView">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Book(s) to Local Database"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="singleWordWarningLbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="For author name or book title, please input only a single word. "/>
       </Properties>
     </Component>
   </SubComponents>
