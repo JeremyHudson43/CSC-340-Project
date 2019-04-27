@@ -116,16 +116,16 @@ public class MySQLDBTranslator {
         resultset.last();
         int row = resultset.getRow();
         resultset.first();
-        int i = 0;
+
         Object[][] data = new Object[row][5];
 
-        while (resultset.next()) {
+        for (int i = 0; i < row; i++) {
             data[i][0] = resultset.getString(1);
             data[i][1] = resultset.getString(2);
             data[i][2] = resultset.getString(3);
             data[i][3] = resultset.getString(4);
             data[i][4] = resultset.getString(5);
-            i++;
+            resultset.next();
         }
         return data;
     }
@@ -182,8 +182,8 @@ public class MySQLDBTranslator {
         try {
             for (int i = 0; i < 4; i++) {
                 if (!_isbn[i].equals("")) {
-                    sql = "INSERT INTO checkout (ID, ISBN) VALUES"
-                            + "(" + _id + ", '" + _isbn[i] + "')";
+                    sql = "INSERT INTO checkout (ID, ISBN, status) VALUES"
+                            + "('" + _id + "', '" + _isbn[i] + "', 'Checked Out');";
                     this.preparedstate = this.connection.prepareCall(sql);
                     result = this.preparedstate.execute(sql);
                     cnt++;
@@ -207,11 +207,13 @@ public class MySQLDBTranslator {
 
         try {
             for (int i = 0; i < 4; i++) {
-                sql = "DELETE FROM checkout WHERE isbn = '"
-                        + _isbn[i] + "' AND ID = " + _id;
+
+                  sql = "UPDATE checkout SET status = 'Check In' WHERE isbn = '"
+                          + _isbn[i] + "' AND ID = '" + _id + "';";
+            this.preparedstate = this.connection.prepareCall(sql);
+            result = this.preparedstate.executeUpdate();
             }
-            this.preparedstate = connection.prepareCall(sql);
-            result = this.preparedstate.executeUpdate(sql);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

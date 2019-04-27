@@ -3,6 +3,7 @@ package Controllers;
 import BarcodeTranslator.BarcodeTranslator;
 import Models.Printer;
 import Models.UserModel;
+import SQL_Translator.MySQLCaller;
 import Views.LibraryCardView;
 import Views.LoginView;
 import Views.RegisterView;
@@ -42,15 +43,15 @@ public class UserController {
      */
     public void displayRegister(String _usertype) {
 
-        String name = this.registerView.getName();
-        String userId = this.registerView.getUserID();
-        String password = this.registerView.getUserPassword();
-        String userEmail = this.registerView.getUserEmail();
-
         this.registerView.setVisible(true);
         this.registerView.registerListener((e -> {
 
             try {
+
+                String name = this.registerView.getName();
+                String userId = this.registerView.getUserID();
+                String password = this.registerView.getUserPassword();
+                String userEmail = this.registerView.getUserEmail();
 
                 checkRegister(_usertype, name, userId, password, userEmail);
 
@@ -81,15 +82,12 @@ public class UserController {
      * @param _username
      * @param _password
      */
-    public void displayLibraryCard(String _username, String _password) {
+    public void displayLibraryCard(String _id, String _name) {
 
         this.libraryCardView.setVisible(true);
         try {
-
-            this.printCard(_username, _password);
-
+            this.printCard(_id, _name);
         } catch (OutputException ex) {
-
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.libraryCardView.printListener(e -> {

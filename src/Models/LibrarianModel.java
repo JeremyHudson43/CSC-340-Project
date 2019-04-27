@@ -6,17 +6,21 @@ import Views.CheckoutView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-/* @author Jeremy Hudson
-   @author Charles Brady
-   Last updated 4-22-2019
-   
+/**
+ * @author Jeremy Hudson
+ * @author Charles Brady
+ * Last updated 4-22-2019
  */
 public class LibrarianModel extends BooksModel {
 
     protected final static ApiConnector myAPI = new APITranslator();
 
-    //This checks out a book and links the book to a user.
+    /**
+     * This method checks out a book and links it to the user.
+     *
+     * @param _isbn
+     * @param _userID
+     */
     public void checkOutBooksByISBN(String[] _isbn, String _userID) {
 
         try {
@@ -29,7 +33,12 @@ public class LibrarianModel extends BooksModel {
 
     }
 
-    //This checks in a book and removes it from the user's account.
+    /**
+     * This checks in a book and changes the status checked in user's account.
+     *
+     * @param _isbn
+     * @param _userID
+     */
     public void checkInBooksByISBN(String[] _isbn, String _userID) {
 
         try {
@@ -42,18 +51,33 @@ public class LibrarianModel extends BooksModel {
 
     }
 
-    //Add a book to the database.
+    /**
+     * This method add a book to the database.
+     *
+     * @param _b
+     */
     public void addBook(BooksModel _b) {
+
         this.sqlCaller.addBooks(_b);
     }
 
-    //Remove a book from the database.
+    /**
+     * This method removes a book from the database.
+     *
+     * @param _b
+     * @return
+     */
     public int removeBook(BooksModel _b) {
-        int res = this.sqlCaller.removeBooks(_b.getISBN());
-        return res;
+        int result = this.sqlCaller.removeBooks(_b.getISBN());
+        return result;
     }
 
-    //This searches the API by ISBN.
+    /**
+     * This method loads the information of the book by ISBN.
+     *
+     * @param _isbn
+     * @throws Exception
+     */
     public void loadBookByISBN(String _isbn) throws Exception {
 
         String bookData[] = this.myAPI.loadBookNameByISBN(_isbn);
@@ -62,11 +86,17 @@ public class LibrarianModel extends BooksModel {
         addBook(book);
     }
 
-    //This searches the API by book title and or author.
+    /**
+     * This method searches the API for a book by the title and/or author.
+     *
+     * @param _author
+     * @param _title
+     * @throws Exception
+     */
     public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
-        
+
         String bookData[] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-   
+
         BooksModel book = buildBook(bookData[1], bookData[0], "", bookData[2], "");
         addBook(book);
 

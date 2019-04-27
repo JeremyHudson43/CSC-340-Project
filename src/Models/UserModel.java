@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class UserModel {
 
-
     private static final String LIBRARIAN = "librarian";
     private static final String CUSTOMER = "customer";
 
@@ -79,10 +78,12 @@ public class UserModel {
     }
 
 //================================================================
-
-    /* If something is entered, the program will check to see if it exists in
-    the database. */
+    /**
+     * If something is entered, the program will check to see if it exists in
+     * the database.
+     */
     public String checkLogin(String _username, String _password) {
+
         if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. "
                     + "Please try again.");
@@ -119,7 +120,16 @@ public class UserModel {
         return "";
     }
 
-    //This creates an acocunt if all input is valid.
+    /**
+     * This method creates an account if all of the input is valid.
+     *
+     * @param _userType
+     * @param _name
+     * @param _password
+     * @param _userID
+     * @param _email
+     * @throws Exception
+     */
     public void checkRegister(String _userType, String _name, String _password,
             String _userID, String _email) throws Exception {
 
@@ -150,8 +160,14 @@ public class UserModel {
         }
     }
 
-    //This creates a new user account.
-    public int createAccount(UserModel _user) {
+    /**
+     * This method creates a new user account.
+     *
+     * @param _user
+     * @return
+     */
+    public static int createAccount(UserModel _user) {
+
         int result = 0;
         try {
             MySQLCaller SQL = new MySQLCaller();
@@ -163,8 +179,14 @@ public class UserModel {
         return result;
     }
 
-    //This searches for user in the database.
+    /**
+     * This method searches for a user in the database.
+     *
+     * @param _id
+     * @return
+     */
     public UserModel searchUser(String _id) {
+
         UserModel placeholder = new UserModel();
         try {
             MySQLCaller SQL = new MySQLCaller();
@@ -176,7 +198,5 @@ public class UserModel {
         }
         return placeholder;
     }
+
 }
-
-    
-

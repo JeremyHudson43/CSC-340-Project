@@ -7,11 +7,10 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 /**
- *
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last Updated 4/5
+ * Last Updated 4/24
  *
  * This is the model for the books class.
  */
@@ -66,18 +65,33 @@ public class BooksModel {
     }
     //======================================================================
 
-    //creates table from given author, title and isbn
+    /**
+     * This method creates a table from a given author, title, and ISBN.
+     *
+     * @param _author
+     * @param _title
+     * @param _isbn
+     * @return
+     * @throws SQLException
+     */
     public JTable createTable(String _author, String _title, String _isbn) throws SQLException {
+
         String[] columns = {"ISBN", "Title", "Author", "Category",
             "ImageLink"};
-        Object[][] data = searchBook(_author, _title, _isbn);
+        Object[][] data = this.searchBook(_author, _title, _isbn);
         JTable table = new JTable(data, columns);
 
         return table;
 
     }
 
-    //helper method for BookDB method
+    /**
+     * This is a helper method for the BookDB method
+     *
+     * @param _table
+     * @return
+     * @throws IOException
+     */
     public String[] parseTable(JTable _table) throws IOException {
 
         TableModel model = _table.getModel();
@@ -89,7 +103,9 @@ public class BooksModel {
         String isbn = "";
         String imagelink = "";
 
-        // get the selected row index
+        /**
+         * get the selected row index
+         */
         int selectedRowIndex = _table.getSelectedRow();
         if (model.getValueAt(selectedRowIndex, 0) != null) {
             isbn = model.getValueAt(selectedRowIndex, 0).toString();
@@ -116,10 +132,20 @@ public class BooksModel {
 
     }
 
-    //Create a new book
+    /**
+     * This method creates a new book.
+     *
+     * @param _author
+     * @param _title
+     * @param _category
+     * @param _isbn
+     * @param _imageLink
+     * @return
+     * @throws Exception
+     */
     public static BooksModel buildBook(String _author, String _title,
-            String _category, String _isbn, String _imageLink)
-            throws Exception {
+            String _category, String _isbn, String _imageLink) throws Exception {
+
         BooksModel b = new BooksModel();
         b.setAuthor(_author);
         b.setTitle(_title);
@@ -127,13 +153,16 @@ public class BooksModel {
         b.setISBN(_isbn);
         b.setImageLink(_imageLink);
         return b;
+
     }
 
     //Search for a book in the database.
     public Object[][] searchBook(String _author, String _title, String _isbn)
             throws SQLException {
+
         Object[][] data = this.sqlCaller.searchBooks(_author, _title, _isbn);
         return data;
+
     }
 
 }
