@@ -5,11 +5,11 @@ import API.ApiConnector;
 import Views.CheckoutView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author Jeremy Hudson
- * @author Charles Brady
- * Last updated 4-22-2019
+ * @author Charles Brady Last updated 4-22-2019
  */
 public class LibrarianModel extends BooksModel {
 
@@ -22,10 +22,15 @@ public class LibrarianModel extends BooksModel {
      * @param _userID
      */
     public void checkOutBooksByISBN(String[] _isbn, String _userID) {
-
+        int result = 0;
         try {
-            this.sqlCaller.checkoutBooks(_isbn, _userID);
+            result = this.sqlCaller.checkoutBooks(_isbn, _userID);
+            if (result > 0) {
+                JOptionPane.showMessageDialog(null, "Book(s) checked out");
 
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to checkout");
+            }
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -40,9 +45,15 @@ public class LibrarianModel extends BooksModel {
      * @param _userID
      */
     public void checkInBooksByISBN(String[] _isbn, String _userID) {
-
+        int result = 0;
         try {
-            this.sqlCaller.checkinBooks(_isbn, _userID);
+            result = this.sqlCaller.checkinBooks(_isbn, _userID);
+            if (result > 0) {
+                JOptionPane.showMessageDialog(null, "Book(s) checked in");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to checkin");
+            }
 
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
@@ -57,8 +68,14 @@ public class LibrarianModel extends BooksModel {
      * @param _b
      */
     public void addBook(BooksModel _b) {
+        int result = 0;
+        result = this.sqlCaller.addBooks(_b);
+        if (result > 0) {
+            JOptionPane.showMessageDialog(null, "Book(s) added to database");
 
-        this.sqlCaller.addBooks(_b);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Book may not be in API");
+        }
     }
 
     /**
@@ -67,9 +84,14 @@ public class LibrarianModel extends BooksModel {
      * @param _b
      * @return
      */
-    public int removeBook(BooksModel _b) {
+    public void removeBook(BooksModel _b) {
         int result = this.sqlCaller.removeBooks(_b.getISBN());
-        return result;
+        if (result > 0) {
+            JOptionPane.showMessageDialog(null, "Book(s) removed to database");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Book may not be in database");
+        }
     }
 
     /**
