@@ -18,6 +18,7 @@ public class LibraryManagementGUIController extends UserController {
      */
     public void initLibraryManagementGUIController() {
         this.libraryManagement.setVisible(true);
+        this.libraryManagement.setDefaultCloseOperation(this.libraryManagement.DISPOSE_ON_CLOSE);
         this.libraryManagement.addLoginListener(e -> displayLogin());
         this.libraryManagement.addRegisterListener(e -> displayRegister("customer"));
     }

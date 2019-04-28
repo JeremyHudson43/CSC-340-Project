@@ -41,11 +41,9 @@ public class IndividualBookView extends javax.swing.JFrame {
         individualBookVewISBNPlaceholderTxtLbl = new javax.swing.JLabel();
         IndividualBookViewBookNameTxtLbl = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        imagePlaceholderLbl = new javax.swing.JLabel();
-        checkedOutTxtLbl = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        bookCheckedOutPlaceHolderTxtLbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        imagePlaceholderLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,39 +61,27 @@ public class IndividualBookView extends javax.swing.JFrame {
 
         IndividualBookViewBookNameTxtLbl.setText("Book Name:");
 
-        imagePlaceholderLbl.setText("Image Placeholder ");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(imagePlaceholderLbl)
-                .addGap(199, 199, 199))
+            .addGap(0, 290, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(imagePlaceholderLbl)
-                .addGap(0, 169, Short.MAX_VALUE))
+            .addGap(0, 183, Short.MAX_VALUE)
         );
-
-        checkedOutTxtLbl.setText("Checked out:");
 
         jLabel10.setText("Individual Book View");
 
-        bookCheckedOutPlaceHolderTxtLbl.setText("Book Checked Out Placholder");
-
         jLabel2.setText("Book Author:");
+
+        imagePlaceholderLbl.setText("Image Placeholder ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +91,6 @@ public class IndividualBookView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(IndividualBookViewBookNameTxtLbl)
-                            .addComponent(checkedOutTxtLbl)
                             .addComponent(IndividualBookVewISBNTxtLbl)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
@@ -114,9 +99,14 @@ public class IndividualBookView extends javax.swing.JFrame {
                             .addComponent(individualBookVewAuthorPlaceholderTxtLbl)
                             .addComponent(individualBookVewCategoryPlaceholderTxtLbl)
                             .addComponent(individualBookVewISBNPlaceholderTxtLbl)
-                            .addComponent(bookCheckedOutPlaceHolderTxtLbl)
                             .addComponent(individualBookVewNamePlaceholderTxtLbl))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagePlaceholderLbl)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,11 +129,9 @@ public class IndividualBookView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IndividualBookVewISBNTxtLbl)
                     .addComponent(individualBookVewISBNPlaceholderTxtLbl))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkedOutTxtLbl)
-                    .addComponent(bookCheckedOutPlaceHolderTxtLbl))
-                .addGap(42, 42, 42)
+                .addGap(65, 65, 65)
+                .addComponent(imagePlaceholderLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -216,8 +204,6 @@ public class IndividualBookView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IndividualBookVewISBNTxtLbl;
     private javax.swing.JLabel IndividualBookViewBookNameTxtLbl;
-    private javax.swing.JLabel bookCheckedOutPlaceHolderTxtLbl;
-    private javax.swing.JLabel checkedOutTxtLbl;
     private javax.swing.JLabel imagePlaceholderLbl;
     private javax.swing.JLabel individualBookVewAuthorPlaceholderTxtLbl;
     private javax.swing.JLabel individualBookVewCategoryPlaceholderTxtLbl;

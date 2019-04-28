@@ -20,10 +20,10 @@ import net.sourceforge.barbecue.output.OutputException;
  * @author Jeremy Hudson
  *
  * Last updated 4-22-2019
- * 
- * This class routes the logic to display the registerView for a certain
- * user type, display the login view, display the library card view, and 
- * check the validity of a user login or registration to the UserModel. 
+ *
+ * This class routes the logic to display the registerView for a certain user
+ * type, display the login view, display the library card view, and check the
+ * validity of a user login or registration to the UserModel.
  */
 public class UserController {
 
@@ -36,6 +36,7 @@ public class UserController {
     public void displayRegister(String _usertype) {
 
         this.registerView.setVisible(true);
+        this.registerView.setDefaultCloseOperation(this.registerView.DISPOSE_ON_CLOSE);
         this.registerView.registerListener((e -> {
             try {
                 checkRegister(_usertype, this.registerView.getName(), this.registerView.getUserID(),
@@ -52,11 +53,14 @@ public class UserController {
     public void displayLogin() {
 
         this.loginView.setVisible(true);
+        this.loginView.setDefaultCloseOperation(this.loginView.DISPOSE_ON_CLOSE);
         this.loginView.loginListener(e -> checkLogin(this.loginView.getUsername(), this.loginView.getPassword()));
     }
 
     public void displayLibraryCard(String _username, String _password) {
         this.libraryCardView.setVisible(true);
+        this.libraryCardView.setDefaultCloseOperation(this.libraryCardView.DISPOSE_ON_CLOSE);
+
         this.libraryCardView.printListener(e -> {
             try {
                 printCard(_username, _password);

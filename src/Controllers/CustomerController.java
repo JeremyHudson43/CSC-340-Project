@@ -15,6 +15,7 @@ public class CustomerController extends BooksController {
 
     public void initCustomerController() {
 
+        this.customerView.setDefaultCloseOperation(this.customerView.DISPOSE_ON_CLOSE);
         this.customerView.setVisible(true);
         this.customerView.databaseListener(e -> displayBookDB());
     }

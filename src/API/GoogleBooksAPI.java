@@ -110,17 +110,22 @@ public class GoogleBooksAPI implements ApiConnector {
         String[] individualBookData = new String[4];
         String[][] totalBookData = new String[10][4];
 
+        totalBookData = parseBookFromAPIHelper(individualBookData, books, totalBookData);
+
+        return totalBookData;
+    }
+
+    /*This is a helper method for the parseBook method to ensure length
+    requirements 
+    */
+    public static String[][] parseBookFromAPIHelper(String[] individualBookData, JSONArray books, String[][] totalBookData) {
         for (int i = 0; i < books.length(); i++) {
 
             String bookImageLink = "";
-
             JSONObject book = books.getJSONObject(i);
-
             JSONObject info = book.getJSONObject("volumeInfo");
             String bookTitle = info.getString("title");
-
             JSONArray authors = info.getJSONArray("authors");
-
             String bookAuthor = authors.getString(0);
 
             try {
@@ -146,7 +151,7 @@ public class GoogleBooksAPI implements ApiConnector {
 
     //This generates a random ISBN.
     public static String generateNumber() {
-        String ISBN = "978-";
+        String ISBN = "978";
         for (int i = 0; i < 10; i++) {
             ISBN += (int) (Math.random() * 9 + 1);
         }

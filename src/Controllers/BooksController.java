@@ -23,9 +23,9 @@ import javax.swing.JTable;
  *
  * Last Updated 4/13
  *
- * This controller routes the logic to search the local database using the 
- * book database view, and gets a JTable from the books model and loads it 
- * into a JFrame to display the individualBookView
+ * This controller routes the logic to search the local database using the book
+ * database view, and gets a JTable from the books model and loads it into a
+ * JFrame to display the individualBookView
  */
 public class BooksController {
 
@@ -39,6 +39,8 @@ public class BooksController {
     public void displayBookDB() {
 
         this.bookDBView.setVisible(true);
+        this.bookDBView.setDefaultCloseOperation(this.bookDBView.DISPOSE_ON_CLOSE);
+
         this.bookDBView.searchDBListener(e -> searchLocalDB());
 
     }
@@ -69,13 +71,13 @@ public class BooksController {
         this.bookScrollView.getContentPane().setLayout(new BorderLayout());
         this.bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
         this.bookScrollView.setSize(500, 600);
-        this.bookScrollView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.bookScrollView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.bookScrollView.setVisible(true);
 
         this.bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
     }
-    
+
     /*This displays individual book info after an item has been clicked in
     the scroll plane.
      */
@@ -83,6 +85,7 @@ public class BooksController {
         try {
             String[] bookInfo = this.bookModel.parseTable(_table);
 
+            this.individualBookView.setDefaultCloseOperation(this.individualBookView.DISPOSE_ON_CLOSE);
             this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[2]);
             this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[3]);
             this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[0]);
