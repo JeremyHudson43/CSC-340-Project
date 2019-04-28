@@ -130,10 +130,11 @@ public class UserModel {
      * @param _email
      * @throws Exception
      */
-    public void checkRegister(String _userType, String _name, String _password,
+    public String checkRegister(String _userType, String _name, String _password,
             String _userID, String _email) throws Exception {
 
         UserModel user = new UserModel();
+        String idNumber = null;
 
         try {
             int result;
@@ -148,16 +149,18 @@ public class UserModel {
 
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Account Created");
-                String idNumber = SQL.searchUserID(_name);
+                idNumber = SQL.searchUserID(_name);
                 user.setId(idNumber);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to create account");
             }
+
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
+        return idNumber;
     }
 
     /**

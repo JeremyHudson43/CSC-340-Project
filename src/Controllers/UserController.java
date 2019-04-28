@@ -3,7 +3,6 @@ package Controllers;
 import BarcodeTranslator.BarcodeTranslator;
 import Models.Printer;
 import Models.UserModel;
-import SQL_Translator.MySQLCaller;
 import Views.LibraryCardView;
 import Views.LoginView;
 import Views.RegisterView;
@@ -79,7 +78,7 @@ public class UserController {
      * This method displays the library card view with the username and password
      * given.
      *
-     * @param _username
+     * @param _id
      * @param _password
      */
     public void displayLibraryCard(String _id, String _name) {
@@ -110,15 +109,15 @@ public class UserController {
     /**
      * This method prints the library card for the user.
      *
-     * @param _userID
+     * @param _id
      * @param _name
      * @throws OutputException
      */
-    public void printCard(String _userID, String _name) throws OutputException {
+    public void printCard(String _id, String _name) throws OutputException {
 
         try {
             BarcodeTranslator translator = new BarcodeTranslator();
-            Barcode barcode = translator.createBarcode(_userID, _name);
+            Barcode barcode = translator.createBarcode(_id, _name);
             BufferedImage image = BarcodeImageHandler.getImage(barcode);
             this.libraryCardView.setBarCode(new ImageIcon(image));
             this.libraryCardView.setNameField(_name);
@@ -160,9 +159,11 @@ public class UserController {
      */
     public void checkRegister(String _usertype, String _name, String _userID,
             String _password, String _email) throws Exception {
-
-        this.userModel.checkRegister(_usertype, _name, _password, _userID, _email);
-        displayLibraryCard(_userID, _name);
+        String idNum = null;
+        idNum = this.userModel.checkRegister(_usertype, _name, _password, _userID, _email);
+        if (idNum != null) {
+            displayLibraryCard(idNum, _name);
+        }
     }
 
     /**

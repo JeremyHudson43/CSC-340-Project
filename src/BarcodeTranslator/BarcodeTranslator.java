@@ -10,22 +10,35 @@ import net.sourceforge.barbecue.BarcodeFactory;
  *
  * Last updated 3/16
  *
- * This is the controller for the bar code of the library card.
+ * This is the translator for the bar code used for the library card.
  */
 public class BarcodeTranslator {
+
     private Barcode barcode;
 
-    public Barcode createBarcode(String code, String label) throws BarcodeException {
-        this.barcode = BarcodeFactory.createCode128A(code);
-        this.barcode.setLabel(label);
+    /**
+     * This creates a bar code for the library card
+     * @param _code
+     * @param _label
+     * @return
+     * @throws BarcodeException
+     */
+    public Barcode createBarcode(String _code, String _label) throws BarcodeException {
+
+        this.barcode = BarcodeFactory.createCode128A(_code);
+        this.barcode.setLabel(_label);
         this.barcode.setBarHeight(40);
         this.barcode.setBarWidth(2);
         this.barcode.setResolution(600);
         this.barcode.setDrawingText(true);
         return this.barcode;
+
     }
 
-    public Barcode getBarcode(){
+    public Barcode getBarcode() {
+
         return this.barcode;
+
     }
+
 }

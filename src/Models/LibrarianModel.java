@@ -48,13 +48,7 @@ public class LibrarianModel extends BooksModel {
         int result = 0;
         try {
             result = this.sqlCaller.checkinBooks(_isbn, _userID);
-            if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Book(s) checked in");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to checkin");
-            }
-
+            JOptionPane.showMessageDialog(null, "Book(s) checked in");
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);

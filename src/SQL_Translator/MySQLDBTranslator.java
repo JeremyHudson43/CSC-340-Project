@@ -21,7 +21,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * Last updated 4/21
  *
- * This is the translator for all of the SQL code in the Library Management System.
+ * This is the translator for all of the SQL code in the Library Management
+ * System.
  */
 public class MySQLDBTranslator {
 
@@ -52,6 +53,7 @@ public class MySQLDBTranslator {
 
     /**
      * This method adds a book to the MySQL Database.
+     *
      * @param _book
      * @return
      */
@@ -79,6 +81,7 @@ public class MySQLDBTranslator {
 
     /**
      * Remove a book from the MySQL database.
+     *
      * @param _isbn
      * @return
      */
@@ -100,6 +103,7 @@ public class MySQLDBTranslator {
 
     /**
      * This searches for a book in the MySQL Database.
+     *
      * @param _author
      * @param _title
      * @param _isbn
@@ -131,7 +135,9 @@ public class MySQLDBTranslator {
     }
 
     /**
-     * This is a helper method for searchBooks to ensure the main method is not too long
+     * This is a helper method for searchBooks to ensure the main method is not
+     * too long
+     *
      * @param _author
      * @param _title
      * @param _isbn
@@ -197,6 +203,7 @@ public class MySQLDBTranslator {
 
     /**
      * This checks in a User's checked out book within the MySQL Database.
+     *
      * @param _isbn
      * @param _id
      * @return
@@ -208,10 +215,10 @@ public class MySQLDBTranslator {
         try {
             for (int i = 0; i < 4; i++) {
 
-                  sql = "UPDATE checkout SET status = 'Check In' WHERE isbn = '"
-                          + _isbn[i] + "' AND ID = '" + _id + "';";
-            this.preparedstate = this.connection.prepareCall(sql);
-            result = this.preparedstate.executeUpdate();
+                sql = "UPDATE checkout SET status = 'Check In' WHERE isbn = '"
+                        + _isbn[i] + "' AND ID = '" + _id + "';";
+                this.preparedstate = this.connection.prepareCall(sql);
+                result = this.preparedstate.executeUpdate();
             }
 
         } catch (SQLException e) {
@@ -220,14 +227,14 @@ public class MySQLDBTranslator {
         return result;
     }
 
-
     /**
      * This creates a new library user for the MySQL Database.
+     *
      * @param _user
      * @return
      */
     public int createAccount(UserModel _user) {
-        int res = 0;
+        int result = 0;
         String sql = "";
 
         try {
@@ -239,16 +246,17 @@ public class MySQLDBTranslator {
             this.preparedstate.setString(3, _user.getName());
             this.preparedstate.setString(4, _user.getUserType());
             this.preparedstate.setString(5, _user.getEmail());
-            res = this.preparedstate.executeUpdate();
+            result = this.preparedstate.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return res;
+        return result;
     }
 
     /**
      * This checks within the MySQL database whether or not a user is a
      * Librarian or a Customer.
+     *
      * @param _user
      * @return
      * @throws Exception
@@ -278,8 +286,9 @@ public class MySQLDBTranslator {
     }
 
     /**
-     * This method searches for a user ID for the library card with the
-     * given user name.
+     * This method searches for a user ID for the library card with the given
+     * user name.
+     *
      * @param _name
      * @return
      */
@@ -315,7 +324,7 @@ public class MySQLDBTranslator {
 
         String name = "";
         String eMail = "";
-        
+
         try {
 
             sql = "SELECT Name, eMail FROM users WHERE ID = "

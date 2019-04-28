@@ -87,7 +87,7 @@ public class BooksController {
         this.bookScrollView.getContentPane().setLayout(new BorderLayout());
         this.bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
         this.bookScrollView.setSize(500, 600);
-        this.bookScrollView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.bookScrollView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.bookScrollView.setVisible(true);
 
         this.bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
