@@ -8,16 +8,38 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 
+/**
+ *
+ * @author Charles Brady
+ *
+ * This is the model used to print out the library card.
+ *
+ */
 public class Printer implements Printable {
 
     final Component comp;
     final Double scale;
 
+    /**
+     * The controller for the printer
+     *
+     * @param comp
+     * @param scale
+     */
     public Printer(Component comp, Double scale) {
         this.comp = comp;
         this.scale = scale;
     }
 
+    /**
+     * Method for printing the library card.
+     *
+     * @param _graphics
+     * @param _format
+     * @param _page_index
+     * @return
+     * @throws PrinterException
+     */
     @Override
     public int print(Graphics _graphics, PageFormat _format, int _page_index)
             throws PrinterException {
@@ -42,7 +64,6 @@ public class Printer implements Printable {
 
         Graphics2D g2 = (Graphics2D) _graphics;
         g2.translate(pXStart, pYStart);
-//        g2.scale(xRatio, yRatio);
         g2.scale(this.scale, this.scale);
         this.comp.paint(g2);
 
