@@ -98,15 +98,11 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_exitProgramButtonActionPerformed
 
     public void addLoginListener(ActionListener listenForLogin) {
-
         this.loginButton.addActionListener(listenForLogin);
-
     }
 
     public void addRegisterListener(ActionListener _listenForRegister) {
-
         this.registerButton.addActionListener(_listenForRegister);
-
     }
 
     /**

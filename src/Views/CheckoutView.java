@@ -21,9 +21,7 @@ public class CheckoutView extends javax.swing.JFrame {
     }
 
     public void checkOutListener(ActionListener _listenForCheckout) {
-
         this.CheckoutButton.addActionListener(_listenForCheckout);
-
     }
 
     public String getUserID() {

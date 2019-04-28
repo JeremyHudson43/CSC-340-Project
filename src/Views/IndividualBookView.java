@@ -9,11 +9,11 @@ import javax.imageio.ImageIO;
 /**
  *
  * @author Jeremy Hudson
- * 
+ *
  * Last updated 4-25-2019
- * 
- * This class simply displays the info for an individual book after being
- * passed data from the BooksController
+ *
+ * This class simply displays the info for an individual book after being passed
+ * data from the BooksController
  */
 public class IndividualBookView extends javax.swing.JFrame {
 
@@ -138,7 +138,7 @@ public class IndividualBookView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-  public void setIndividualBookVewAuthorPlaceholderTxtLbl(String _IndividualBookVewAuthorPlaceholderTxtLbl) {
+    public void setIndividualBookVewAuthorPlaceholderTxtLbl(String _IndividualBookVewAuthorPlaceholderTxtLbl) {
         this.individualBookVewAuthorPlaceholderTxtLbl.setText(_IndividualBookVewAuthorPlaceholderTxtLbl);
     }
 
@@ -154,8 +154,7 @@ public class IndividualBookView extends javax.swing.JFrame {
         this.individualBookVewNamePlaceholderTxtLbl.setText(_IndividualBookVewNamePlaceholderTxtLbl);
     }
 
-    public void setImagePlaceholderLbl(String _imageLink)
-            throws MalformedURLException, IOException {
+    public void setImagePlaceholderLbl(String _imageLink) throws MalformedURLException, IOException {
         this.imagePlaceholderLbl.setText("");
         if (!_imageLink.equals("")) {
             BufferedImage img = ImageIO.read(new URL(_imageLink));
@@ -163,8 +162,7 @@ public class IndividualBookView extends javax.swing.JFrame {
             this.imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */

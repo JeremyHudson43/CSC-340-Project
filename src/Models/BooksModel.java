@@ -14,9 +14,9 @@ import javax.swing.table.TableModel;
  * Last Updated 4/5
  *
  * This class creates all necessary book variables, and contains the logic to
- * create a JTable with book information from the local SQL database, in 
- * in addition to contacting the SQL translator to search the local database
- * for books. 
+ * create a JTable with book information from the local SQL database, in in
+ * addition to contacting the SQL translator to search the local database for
+ * books.
  */
 public class BooksModel {
 
@@ -32,36 +32,36 @@ public class BooksModel {
         return this.author;
     }
 
-    public void setAuthor(String _author) {
-        this.author = _author;
-    }
-
     public String getTitle() {
         return this.title;
-    }
-
-    public void setTitle(String _title) {
-        this.title = _title;
     }
 
     public String getISBN() {
         return this.isbn;
     }
 
-    public void setISBN(String _ISBN) {
-        this.isbn = _ISBN;
-    }
-
     public String getCategory() {
         return this.category;
     }
 
-    public void setCategory(String _category) {
-        this.category = _category;
-    }
-
     public String getImageLink() {
         return this.imageLink;
+    }
+
+    public void setAuthor(String _author) {
+        this.author = _author;
+    }
+
+    public void setTitle(String _title) {
+        this.title = _title;
+    }
+
+    public void setISBN(String _ISBN) {
+        this.isbn = _ISBN;
+    }
+
+    public void setCategory(String _category) {
+        this.category = _category;
     }
 
     public void setImageLink(String _imageLink) {
@@ -121,7 +121,7 @@ public class BooksModel {
 
     //Create a new book
     public static BooksModel buildBook(String _author, String _title,
-             String _isbn, String _imageLink)
+            String _isbn, String _imageLink)
             throws Exception {
         BooksModel b = new BooksModel();
         b.setAuthor(_author);

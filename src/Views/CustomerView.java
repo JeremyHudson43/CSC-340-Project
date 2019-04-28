@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 /**
  *
  * @author Jeremy Hudson
- * 
+ *
  * Last modified 4-25-2019
- * 
- *  This class adds a listener to the button that will open the database search
- *  view 
+ *
+ * This class adds a listener to the button that will open the database search
+ * view
  */
 public class CustomerView extends javax.swing.JFrame {
 
@@ -69,17 +69,14 @@ public class CustomerView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-      public void databaseListener(ActionListener _listenForDatabase) {
-
+    public void databaseListener(ActionListener _listenForDatabase) {
         this.custSearchDatabaseButton.addActionListener(_listenForDatabase);
-
     }
 
     public void goToBookListener(ActionListener _listenForGoToBook) {
-
         this.custSearchDatabaseButton.addActionListener(_listenForGoToBook);
-
     }
+
     /**
      * @param args the command line arguments
      */

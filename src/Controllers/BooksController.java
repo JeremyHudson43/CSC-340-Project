@@ -36,10 +36,8 @@ public class BooksController {
 
     //This displays the book DB view.
     public void displayBookDB() {
-
         this.bookDBView.setVisible(true);
         this.bookDBView.searchDBListener(e -> searchLocalDB());
-
     }
 
     // This searches the local SQL database for book matching author/title/ISBN.
@@ -55,31 +53,11 @@ public class BooksController {
             Logger.getLogger(BooksController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-
     }
-
-    //This creates a table from book model info and displays it in a scrollPane.
-    private void getIndividualBookViewTable(String author, String title,
-            String ISBN) throws SQLException {
-
-        JTable table = bookModel.createTable(author, title, ISBN);
-        JScrollPane scrollPane = new JScrollPane(table);
-        BookScrollView bookScrollView = new BookScrollView();
-
-        bookScrollView.getContentPane().setLayout(new BorderLayout());
-        bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
-        bookScrollView.setSize(500, 600);
-        bookScrollView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        bookScrollView.setVisible(true);
-
-        bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
-
-    }
-
     /*This displays individual book info after an item has been clicked in
     the scroll plane.
      */
-    void getInfoAboutBook(JTable _table) {
+    private void getInfoAboutBook(JTable _table) {
         try {
             String[] bookInfo = this.bookModel.parseTable(_table);
 
@@ -93,6 +71,23 @@ public class BooksController {
         } catch (IOException ex) {
             Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+
+    //This creates a table from book model info and displays it in a scrollPane.
+    private void getIndividualBookViewTable(String author, String title,
+            String ISBN) throws SQLException {
+
+        JTable table = bookModel.createTable(author, title, ISBN);
+        JScrollPane scrollPane = new JScrollPane(table);
+        BookScrollView bookScrollView = new BookScrollView();
+
+        bookScrollView.getContentPane().setLayout(new BorderLayout());
+        bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        bookScrollView.setVisible(true);
+
+        bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
+
     }
 
 }

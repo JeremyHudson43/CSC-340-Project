@@ -23,9 +23,7 @@ public class LibrarianView extends javax.swing.JFrame {
     }
 
     public void databaseListener(ActionListener _listenForDatabase) {
-
         this.openDatabaseButton.addActionListener(_listenForDatabase);
-
     }
 
     public String getUserSearchTextField() {
@@ -33,7 +31,6 @@ public class LibrarianView extends javax.swing.JFrame {
     }
 
     public void userSearchListener(ActionListener _listenForCustomerSearch) {
-
         this.userSearchButton.addActionListener(_listenForCustomerSearch);
     }
 
@@ -169,7 +166,7 @@ public class LibrarianView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckOutLabel)
                     .addComponent(checkOutButton))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();

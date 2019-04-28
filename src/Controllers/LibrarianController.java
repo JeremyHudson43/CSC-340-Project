@@ -102,7 +102,7 @@ public class LibrarianController extends BooksController {
     }
 
     //This displays the add book view.
-    public void displayAddBookView() {
+    private void displayAddBookView() {
         this.addBookView.setVisible(true);
         this.addBookView.addBookListener(e -> {
             try {
@@ -131,7 +131,7 @@ public class LibrarianController extends BooksController {
     }
 
     //This displays individual customer information.
-    public void userDisplay() {
+    private void userDisplay() {
 
         this.user = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
 

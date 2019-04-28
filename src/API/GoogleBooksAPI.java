@@ -25,19 +25,18 @@ import org.json.JSONObject;
  */
 public class GoogleBooksAPI implements ApiConnector {
 
-    private static final String apiKey
-            = "AIzaSyDPvUouD8UQzYc2bWylpp07l3M0uNLfcQQ";
-    private static final String baseURL
-            = "https://www.googleapis.com/books/v1/"
-            + "volumes?q=";
+    private static final String apiKey = "AIzaSyDPvUouD8UQzYc2bWylpp07l3M0uNLfcQQ";
+    private static final String baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     @Override
+    //This returns a 2d array of books based upon only the ISBN.
     public String[][] loadBookNameByISBN(String _isbn) {
         String response[][] = getRequest("", "", _isbn);
         return response;
     }
 
     @Override
+    //This returns a 2d array of books based upon either the author, title, or both
     public String[][] loadBookNameByAuthorAndTitle(String _author, String _title) {
 
         String response[][] = getRequest(_author, _title, "");
@@ -52,46 +51,37 @@ public class GoogleBooksAPI implements ApiConnector {
                     + "&key=" + this.apiKey);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
             connection.setRequestMethod("GET");
 
             if (_isbn.equals("")) {
 
                 String responseString[][] = (connectionHelper(connection));
-
                 return responseString;
-
             } else {
                 URL isbnURL = new URL(this.baseURL + _isbn + "&key=" + this.apiKey);
 
                 isbnURL.openConnection();
-                HttpURLConnection ISBNconnection
-                        = (HttpURLConnection) isbnURL.openConnection();
+                HttpURLConnection ISBNconnection = (HttpURLConnection) isbnURL.openConnection();
 
                 String responseString[][] = (connectionHelper(ISBNconnection));
-
                 return responseString;
-
             }
         } catch (Exception ex) {
-            Logger.getLogger(GoogleBooksAPI.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(GoogleBooksAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return null;
     }
 
-    //This is a helper method to read data from API.
+    //This is a helper method to read the response string from the API.
     private static String[][] connectionHelper(HttpURLConnection _connection) throws IOException, Exception {
         String[][] bookData = new String[3][10];
 
         try (
-                BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()))) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()))) {
             String responseString = "";
             String str;
             while ((str = in.readLine()) != null) {
                 responseString += str + "\n";
-
             }
             bookData = parseBookFromAPI(responseString);
 
@@ -101,7 +91,7 @@ public class GoogleBooksAPI implements ApiConnector {
         return bookData;
     }
 
-//This parses the book title, author, and imagelink from the API.
+    //This parses the book title, author, and imagelink from the API.
     public static String[][] parseBookFromAPI(String _responseString) {
 
         JSONObject root = new JSONObject(_responseString);
@@ -115,9 +105,9 @@ public class GoogleBooksAPI implements ApiConnector {
         return totalBookData;
     }
 
-    /*This is a helper method for the parseBook method to ensure length
-    requirements 
-    */
+    /*This is a helper method for the parseBook method to ensure that the
+    parseBook method is not longer than 30 lines.
+     */
     public static String[][] parseBookFromAPIHelper(String[] individualBookData, JSONArray books, String[][] totalBookData) {
         for (int i = 0; i < books.length(); i++) {
 

@@ -11,7 +11,7 @@ import Views.CustomerView;
  */
 public class CustomerController extends BooksController {
 
-    CustomerView customerView = new CustomerView();
+    private CustomerView customerView = new CustomerView();
 
     public void initCustomerController() {
 

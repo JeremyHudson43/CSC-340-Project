@@ -112,9 +112,7 @@ public class BookDatabaseView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void searchDBListener(ActionListener _listenForSearch) {
-
         this.searchLocalDatabaseButton.addActionListener(_listenForSearch);
-
     }
 
     public String getAuthorName() {

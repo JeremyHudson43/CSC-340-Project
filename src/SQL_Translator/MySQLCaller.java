@@ -11,6 +11,9 @@ import java.util.logging.Logger;
  * @author Chip Brady
  *
  * Last updated 4/12
+ * 
+ * This class simply returns what the MySQL translator gives for a certain input
+ * to it's caller.
  */
 public class MySQLCaller {
 

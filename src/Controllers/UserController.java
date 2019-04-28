@@ -1,13 +1,18 @@
 package Controllers;
 
 import BarcodeTranslator.BarcodeTranslator;
+import Models.PrinterModel;
 import Models.UserModel;
 import Views.LibraryCardView;
 import Views.LoginView;
 import Views.RegisterView;
 import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.print.Printer;
 import javax.swing.ImageIcon;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
@@ -26,6 +31,9 @@ import net.sourceforge.barbecue.output.OutputException;
  * validity of a user login or registration to the UserModel.
  */
 public class UserController {
+
+    private static final String LIBRARIAN = "librarian";
+    private static final String CUSTOMER = "customer";
 
     private final UserModel userModel = new UserModel();
     private RegisterView registerView = new RegisterView();
@@ -50,24 +58,36 @@ public class UserController {
 
     //This displays the login view and logs the relevant user type in.
     public void displayLogin() {
-
         this.loginView.setVisible(true);
         this.loginView.loginListener(e -> checkLogin(this.loginView.getUsername(), this.loginView.getPassword()));
     }
 
-    public void displayLibraryCard(String _username, String _password) {
+    /*This opens the library card view and prints the barcode when the print
+    button is clicked
+     */
+    public void displayLibraryCard(String _id, String _name) {
         this.libraryCardView.setVisible(true);
-
+        try {
+            this.printCard(_id, _name);
+        } catch (OutputException ex) {
+            Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.libraryCardView.printListener(e -> {
-            try {
-                printCard(_username, _password);
-            } catch (OutputException ex) {
-                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+
+            PrinterJob job = PrinterJob.getPrinterJob();
+            job.setPrintable(new PrinterModel(this.libraryCardView, 0.75));
+            if (job.printDialog()) {
+
+                try {
+                    job.print();
+                } catch (PrinterException ex) {
+                    Logger.getLogger(LibraryCardView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
-
     }
 
+    //This prints out a bardcode with user information to the library card view.
     public void printCard(String _userID, String _name) throws OutputException {
 
         try {
@@ -79,7 +99,6 @@ public class UserController {
         } catch (BarcodeException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     //This checks for customer or librarian user type.
@@ -89,13 +108,10 @@ public class UserController {
         if (userType.equals("customer")) {
             CustomerController customerController = new CustomerController();
             customerController.initCustomerController();
-
         } else if (userType.equals("librarian")) {
             LibrarianController librarianController = new LibrarianController();
             librarianController.initLibrarianController();
-
         }
-
     }
 
     //This is a helper method for the register view.
@@ -105,5 +121,67 @@ public class UserController {
         this.userModel.checkRegister(_usertype, _name, _password, _userID, _email);
         displayLibraryCard(_userID, _name);
     }
+
+//    public void testCase() {
+//        UserModel testUser1 = new UserModel();
+//        UserModel testUser2 = new UserModel();
+//        UserModel testUser3 = new UserModel();
+//        UserModel testUser4 = new UserModel();
+//
+//        int test1 = 0;
+//        int test2 = 0;
+//        int test3 = 0;
+//        int test4 = 0;
+//
+//        testUser1.setName("Michael");
+//        testUser1.setId("23456789");
+//        testUser1.setPassword("angelo");
+//        testUser1.setUserType(CUSTOMER);
+//
+//        testUser2.setName("2343");
+//        testUser2.setId("11122233");
+//        testUser2.setPassword("324");
+//        testUser2.setUserType(CUSTOMER);
+//
+//        testUser3.setName("Billy");
+//        testUser3.setId("4");
+//        testUser3.setPassword("sink");
+//        testUser3.setUserType(LIBRARIAN);
+//
+//        testUser4.setName("");
+//        testUser4.setId("");
+//        testUser4.setPassword("");
+//        testUser4.setUserType("");
+//
+//        test1 = UserModel.createAccount(testUser1);
+//        test2 = UserModel.createAccount(testUser2);
+//        test3 = UserModel.createAccount(testUser3);
+//        test4 = UserModel.createAccount(testUser4);
+//
+//        if (test1 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//        if (test2 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//        if (test3 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//        if (test4 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//    }
 
 }

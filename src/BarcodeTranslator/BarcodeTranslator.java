@@ -15,9 +15,9 @@ import net.sourceforge.barbecue.BarcodeFactory;
 public class BarcodeTranslator {
     private Barcode barcode;
 
-    public Barcode createBarcode(String code, String label) throws BarcodeException {
-        this.barcode = BarcodeFactory.createCode128A(code);
-        this.barcode.setLabel(label);
+    public Barcode createBarcode(String _code, String _label) throws BarcodeException {
+        this.barcode = BarcodeFactory.createCode128A(_code);
+        this.barcode.setLabel(_label);
         this.barcode.setBarHeight(40);
         this.barcode.setBarWidth(2);
         this.barcode.setResolution(600);

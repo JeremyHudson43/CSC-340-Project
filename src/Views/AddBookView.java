@@ -22,9 +22,7 @@ public class AddBookView extends javax.swing.JFrame {
     }
 
     public void addBookListener(ActionListener _listenForAddBook) {
-
         this.searchButtonAddBookView.addActionListener(_listenForAddBook);
-
     }
 
     public String getISBN() {

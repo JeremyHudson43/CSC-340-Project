@@ -72,9 +72,7 @@ public class LibraryCardView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void printListener(ActionListener _listenForPrint) {
-
         this.printButtonLibCard.addActionListener(_listenForPrint);
-
     }
 
     public void setNameField(String _name) {
