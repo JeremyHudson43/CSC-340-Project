@@ -56,7 +56,7 @@ public class RegisterView extends javax.swing.JFrame {
         passwordTextField = new javax.swing.JPasswordField();
         registerButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         RegisterLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         RegisterLabel.setText("Register");

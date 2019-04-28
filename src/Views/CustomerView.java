@@ -30,7 +30,7 @@ public class CustomerView extends javax.swing.JFrame {
         custSearchDatabaseButton = new javax.swing.JButton();
         custBookSearchLbl = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         custViewLabel.setText("Customer View");
 

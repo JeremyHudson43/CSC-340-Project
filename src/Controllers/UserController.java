@@ -36,7 +36,6 @@ public class UserController {
     public void displayRegister(String _usertype) {
 
         this.registerView.setVisible(true);
-        this.registerView.setDefaultCloseOperation(this.registerView.DISPOSE_ON_CLOSE);
         this.registerView.registerListener((e -> {
             try {
                 checkRegister(_usertype, this.registerView.getName(), this.registerView.getUserID(),
@@ -53,13 +52,11 @@ public class UserController {
     public void displayLogin() {
 
         this.loginView.setVisible(true);
-        this.loginView.setDefaultCloseOperation(this.loginView.DISPOSE_ON_CLOSE);
         this.loginView.loginListener(e -> checkLogin(this.loginView.getUsername(), this.loginView.getPassword()));
     }
 
     public void displayLibraryCard(String _username, String _password) {
         this.libraryCardView.setVisible(true);
-        this.libraryCardView.setDefaultCloseOperation(this.libraryCardView.DISPOSE_ON_CLOSE);
 
         this.libraryCardView.printListener(e -> {
             try {

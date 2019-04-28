@@ -27,37 +27,25 @@ public class IndividualUserView extends javax.swing.JFrame {
 
         individualUserViewIDNumberTxtLbl = new javax.swing.JLabel();
         customerIDNumberPlaceholderTxtLbl = new javax.swing.JLabel();
-        individualCustomerViewComboBox = new javax.swing.JComboBox<>();
-        individualCustomerViewBackButton = new javax.swing.JButton();
-        individualCustomerViewExiProgramButton = new javax.swing.JButton();
         individualUserViewTxtLbl = new javax.swing.JLabel();
         individualUserViewNameTxtLbl = new javax.swing.JLabel();
         individualUserViewEmailTxtLbl = new javax.swing.JLabel();
-        individualCustomerViewCheckoutsTxtLbl = new javax.swing.JLabel();
         namePlaceholderTxtLbl = new javax.swing.JLabel();
         emailAddressPlaceholderTxtLbl = new javax.swing.JLabel();
         UserTypeLbl = new javax.swing.JLabel();
         individualUserViewUserTypePlaceholderLbl = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         individualUserViewIDNumberTxtLbl.setText("User ID Number:");
 
         customerIDNumberPlaceholderTxtLbl.setText("User ID Number Placeholder");
-
-        individualCustomerViewComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        individualCustomerViewBackButton.setText("Back");
-
-        individualCustomerViewExiProgramButton.setText("Exit Program");
 
         individualUserViewTxtLbl.setText("Individual User View");
 
         individualUserViewNameTxtLbl.setText("User's Name:");
 
         individualUserViewEmailTxtLbl.setText("User Email Address:");
-
-        individualCustomerViewCheckoutsTxtLbl.setText("Books User has checked out:");
 
         namePlaceholderTxtLbl.setText("User Name Placeholder");
 
@@ -75,43 +63,32 @@ public class IndividualUserView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(individualCustomerViewExiProgramButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(individualCustomerViewBackButton)
-                                .addGap(47, 47, 47)
-                                .addComponent(individualUserViewTxtLbl))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(individualUserViewEmailTxtLbl)
-                                    .addComponent(individualUserViewNameTxtLbl))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(namePlaceholderTxtLbl)
-                                    .addComponent(emailAddressPlaceholderTxtLbl)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(individualUserViewIDNumberTxtLbl)
-                                    .addComponent(UserTypeLbl))
-                                .addGap(76, 76, 76)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(individualUserViewUserTypePlaceholderLbl)
-                                    .addComponent(customerIDNumberPlaceholderTxtLbl))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(102, 102, 102)
+                        .addComponent(individualUserViewTxtLbl))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(individualCustomerViewCheckoutsTxtLbl)
-                        .addGap(18, 18, 18)
-                        .addComponent(individualCustomerViewComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(individualUserViewEmailTxtLbl)
+                            .addComponent(individualUserViewNameTxtLbl))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namePlaceholderTxtLbl)
+                            .addComponent(emailAddressPlaceholderTxtLbl)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(individualUserViewIDNumberTxtLbl)
+                            .addComponent(UserTypeLbl))
+                        .addGap(76, 76, 76)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(individualUserViewUserTypePlaceholderLbl)
+                            .addComponent(customerIDNumberPlaceholderTxtLbl))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(individualCustomerViewBackButton)
-                    .addComponent(individualUserViewTxtLbl))
-                .addGap(31, 31, 31)
+                .addComponent(individualUserViewTxtLbl)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(individualUserViewNameTxtLbl)
                     .addComponent(namePlaceholderTxtLbl))
@@ -127,13 +104,7 @@ public class IndividualUserView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UserTypeLbl)
                     .addComponent(individualUserViewUserTypePlaceholderLbl))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(individualCustomerViewCheckoutsTxtLbl)
-                    .addComponent(individualCustomerViewComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(individualCustomerViewExiProgramButton)
-                .addGap(19, 19, 19))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -197,10 +168,6 @@ public class IndividualUserView extends javax.swing.JFrame {
     private javax.swing.JLabel UserTypeLbl;
     private javax.swing.JLabel customerIDNumberPlaceholderTxtLbl;
     private javax.swing.JLabel emailAddressPlaceholderTxtLbl;
-    private javax.swing.JButton individualCustomerViewBackButton;
-    private javax.swing.JLabel individualCustomerViewCheckoutsTxtLbl;
-    private javax.swing.JComboBox<String> individualCustomerViewComboBox;
-    private javax.swing.JButton individualCustomerViewExiProgramButton;
     private javax.swing.JLabel individualUserViewEmailTxtLbl;
     private javax.swing.JLabel individualUserViewIDNumberTxtLbl;
     private javax.swing.JLabel individualUserViewNameTxtLbl;

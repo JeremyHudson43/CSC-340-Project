@@ -33,14 +33,11 @@ public class BooksController {
     UserModel userModel = new UserModel();
     private BookDatabaseView bookDBView = new BookDatabaseView();
     private IndividualBookView individualBookView = new IndividualBookView();
-    BookScrollView bookScrollView = new BookScrollView();
 
     //This displays the book DB view.
     public void displayBookDB() {
 
         this.bookDBView.setVisible(true);
-        this.bookDBView.setDefaultCloseOperation(this.bookDBView.DISPOSE_ON_CLOSE);
-
         this.bookDBView.searchDBListener(e -> searchLocalDB());
 
     }
@@ -67,14 +64,15 @@ public class BooksController {
 
         JTable table = bookModel.createTable(author, title, ISBN);
         JScrollPane scrollPane = new JScrollPane(table);
+        BookScrollView bookScrollView = new BookScrollView();
 
-        this.bookScrollView.getContentPane().setLayout(new BorderLayout());
-        this.bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
-        this.bookScrollView.setSize(500, 600);
-        this.bookScrollView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.bookScrollView.setVisible(true);
+        bookScrollView.getContentPane().setLayout(new BorderLayout());
+        bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        bookScrollView.setSize(500, 600);
+        bookScrollView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        bookScrollView.setVisible(true);
 
-        this.bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
+        bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
     }
 
@@ -85,7 +83,6 @@ public class BooksController {
         try {
             String[] bookInfo = this.bookModel.parseTable(_table);
 
-            this.individualBookView.setDefaultCloseOperation(this.individualBookView.DISPOSE_ON_CLOSE);
             this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[2]);
             this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[3]);
             this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[0]);

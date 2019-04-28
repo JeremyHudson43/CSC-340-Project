@@ -34,7 +34,6 @@ public class LibrarianController extends BooksController {
     //This tells the librarian view buttons what method to call when pressed
     public void initLibrarianController() {
         this.librarianView.setVisible(true);
-        this.librarianView.setDefaultCloseOperation(this.librarianView.DISPOSE_ON_CLOSE);
 
         this.librarianView.databaseListener(e -> displayBookDB());
         this.librarianView.bookAddListener(e -> displayAddBookView());
@@ -65,7 +64,6 @@ public class LibrarianController extends BooksController {
     //This displays the checkin view.
     private void displayCheckInView() {
         this.checkInView.setVisible(true);
-        this.checkInView.setDefaultCloseOperation(this.checkInView.DISPOSE_ON_CLOSE);
 
         this.checkInView.checkinListener(e -> {
             try {
@@ -93,8 +91,6 @@ public class LibrarianController extends BooksController {
     //This displays the checkout view.
     private void displayCheckOutView() {
         this.checkoutView.setVisible(true);
-        this.checkoutView.setDefaultCloseOperation(this.checkoutView.DISPOSE_ON_CLOSE);
-
         this.checkoutView.checkOutListener(e -> {
             try {
                 checkOut();
@@ -108,8 +104,6 @@ public class LibrarianController extends BooksController {
     //This displays the add book view.
     public void displayAddBookView() {
         this.addBookView.setVisible(true);
-        this.addBookView.setDefaultCloseOperation(this.addBookView.DISPOSE_ON_CLOSE);
-
         this.addBookView.addBookListener(e -> {
             try {
                 addBooks();
@@ -140,8 +134,6 @@ public class LibrarianController extends BooksController {
     public void userDisplay() {
 
         this.user = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
-
-        this.individualUserView.setDefaultCloseOperation(this.individualUserView.DISPOSE_ON_CLOSE);
 
         this.individualUserView.setUsersName(user.getName());
         this.individualUserView.setUserEmail(user.getEmail());

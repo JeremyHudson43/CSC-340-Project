@@ -37,7 +37,7 @@ public class BookDatabaseView extends javax.swing.JFrame {
         searchISBNNoLoginTxtFld2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         searchLocalDatabaseButton.setText("Search Database");
 

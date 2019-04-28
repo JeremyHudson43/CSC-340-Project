@@ -79,7 +79,7 @@ public class LibrarianView extends javax.swing.JFrame {
         checkInButton = new javax.swing.JButton();
         checkOutButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         LibrarianLabel.setText("Librarian");
 
@@ -136,9 +136,8 @@ public class LibrarianView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(userSearchButton))
                             .addComponent(checkInButton)
-                            .addComponent(checkOutButton))
-                        .addGap(40, 40, 40)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                            .addComponent(checkOutButton))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
