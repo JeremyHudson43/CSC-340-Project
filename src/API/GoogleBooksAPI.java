@@ -74,7 +74,7 @@ public class GoogleBooksAPI implements ApiConnector {
 
     //This is a helper method to read the response string from the API.
     private static String[][] connectionHelper(HttpURLConnection _connection) throws IOException, Exception {
-        String[][] bookData = new String[3][10];
+        String[][] bookData = new String[10][4];
 
         try (
             BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()))) {
