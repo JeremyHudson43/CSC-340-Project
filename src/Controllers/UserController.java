@@ -44,16 +44,8 @@ public class UserController {
     public void displayRegister(String _usertype) {
 
         this.registerView.setVisible(true);
-        this.registerView.registerListener((e -> {
-            try {
-                checkRegister(_usertype, this.registerView.getName(), this.registerView.getUserID(),
-                        this.registerView.getUserPassword(), this.registerView.getUserEmail());
-
-            } catch (Exception ex) {
-                Logger.getLogger(UserController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        }));
+        this.registerView.registerListener(e -> checkRegister(_usertype, this.registerView.getName(), 
+                this.registerView.getUserID(), this.registerView.getUserPassword(), this.registerView.getUserEmail()));
     }
 
     //This displays the login view and logs the relevant user type in.
@@ -116,7 +108,7 @@ public class UserController {
 
     //This is a helper method for the register view.
     public void checkRegister(String _usertype, String _name, String _userID,
-            String _password, String _email) throws Exception {
+            String _password, String _email) {
 
         this.userModel.checkRegister(_usertype, _name, _password, _userID, _email);
         displayLibraryCard(_userID, _name);
@@ -183,5 +175,4 @@ public class UserController {
 //        }
 //
 //    }
-
 }

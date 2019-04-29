@@ -73,7 +73,7 @@ public class GoogleBooksAPI implements ApiConnector {
     }
 
     //This is a helper method to read the response string from the API.
-    private static String[][] connectionHelper(HttpURLConnection _connection) throws IOException, Exception {
+    private static String[][] connectionHelper(HttpURLConnection _connection)  {
         String[][] bookData = new String[10][4];
 
         try (
@@ -106,7 +106,7 @@ public class GoogleBooksAPI implements ApiConnector {
     }
 
     /*This is a helper method for the parseBook method to ensure that the
-    parseBook method is not longer than 30 lines.
+    parseBookFromAPI method is not longer than 30 lines.
      */
     public static String[][] parseBookFromAPIHelper(String[] individualBookData, JSONArray books, String[][] totalBookData) {
         for (int i = 0; i < books.length(); i++) {

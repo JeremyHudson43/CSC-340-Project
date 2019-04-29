@@ -109,29 +109,35 @@ public class MySQLDBTranslator {
      * @return
      * @throws SQLException
      */
-    public Object[][] searchBooks(String _author, String _title, String _isbn) throws SQLException {
+    public Object[][] searchBooks(String _author, String _title, String _isbn)  {
 
-        String sql = "";
-        ResultSet resultset;
-
-        resultset = searchBooksHelper(_author, _title, _isbn, sql);
-
-        resultset.last();
-        int row = resultset.getRow();
-        resultset.first();
-
-        Object[][] data = new Object[row][5];
-
-        for (int i = 0; i < row; i++) {
-            data[i][0] = resultset.getString(1);
-            data[i][1] = resultset.getString(2);
-            data[i][2] = resultset.getString(3);
-            data[i][3] = resultset.getString(4);
-            data[i][4] = resultset.getString(5);
-            resultset.next();
+        try {
+            String sql = "";
+            ResultSet resultset;
+            
+            resultset = searchBooksHelper(_author, _title, _isbn, sql);
+            
+            resultset.last();
+            int row = resultset.getRow();
+            resultset.first();
+            
+            Object[][] data = new Object[row][5];
+            
+            for (int i = 0; i < row; i++) {
+                data[i][0] = resultset.getString(1);
+                data[i][1] = resultset.getString(2);
+                data[i][2] = resultset.getString(3);
+                data[i][3] = resultset.getString(4);
+                data[i][4] = resultset.getString(5);
+                resultset.next();
+            }
+            return data;
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return data;
+        return null;
     }
+
 
     /**
      * This is a helper method for searchBooks to ensure the main method is not
@@ -257,7 +263,7 @@ public class MySQLDBTranslator {
      * @return
      * @throws Exception
      */
-    public String checkLogin(UserModel _user) throws Exception {
+    public String checkLogin(UserModel _user)  {
         String sql = "";
         ResultSet result = null;
         String type = "";
@@ -344,29 +350,32 @@ public class MySQLDBTranslator {
     }
 
     //This is the Table model
-    public static DefaultTableModel buildTableModel(ResultSet _resultSet)
-            throws SQLException {
+    public static DefaultTableModel buildTableModel(ResultSet _resultSet) {
 
-        ResultSetMetaData metaData = _resultSet.getMetaData();
-
-        //These are the names of the columns
-        Vector<String> columnNames = new Vector<String>();
-        int columnCount = metaData.getColumnCount();
-        for (int column = 1; column <= columnCount; column++) {
-            columnNames.add(metaData.getColumnName(column));
-        }
-
-        //This is the data of the table
-        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
-        while (_resultSet.next()) {
-            Vector<Object> vector = new Vector<Object>();
-            for (int columnIndex = 1; columnIndex <= columnCount;
-                    columnIndex++) {
-                vector.add(_resultSet.getObject(columnIndex));
+        try {
+            ResultSetMetaData metaData = _resultSet.getMetaData();
+            
+            //These are the names of the columns
+            Vector<String> columnNames = new Vector<String>();
+            int columnCount = metaData.getColumnCount();
+            for (int column = 1; column <= columnCount; column++) {
+                columnNames.add(metaData.getColumnName(column));
             }
-            data.add(vector);
-        }
-        return new DefaultTableModel(data, columnNames);
 
+            //This is the data of the table
+            Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+            while (_resultSet.next()) {
+                Vector<Object> vector = new Vector<Object>();
+                for (int columnIndex = 1; columnIndex <= columnCount;
+                        columnIndex++) {
+                    vector.add(_resultSet.getObject(columnIndex));
+                }
+                data.add(vector);
+            }
+            return new DefaultTableModel(data, columnNames);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

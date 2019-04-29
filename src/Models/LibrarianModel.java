@@ -101,13 +101,17 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @throws Exception
      */
-     public void loadBookByISBN(String _isbn) throws Exception {
+     public void loadBookByISBN(String _isbn)  {
 
         String bookData[][] = this.myAPI.loadBookNameByISBN(_isbn);
 
         for (int i = 0; i < bookData.length; i++) {
-            BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3]);
-            addBook(book);
+            try {
+                BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3]);
+                addBook(book);
+            } catch (Exception ex) {
+                Logger.getLogger(LibrarianModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
      }
 
@@ -119,13 +123,17 @@ public class LibrarianModel extends BooksModel {
      * @throws Exception
      */
    //This searches the API by book title and or author.
-    public void loadBookNameByAuthorAndTitle(String _author, String _title) throws Exception {
+    public void loadBookNameByAuthorAndTitle(String _author, String _title) {
 
         String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
         
         for (int i = 0; i < bookData.length; i++) {
-            BooksModel book = buildBook(bookData[i][1], bookData[i][0],  bookData[i][2], bookData[i][3]);
-            addBook(book);
+            try {
+                BooksModel book = buildBook(bookData[i][1], bookData[i][0],  bookData[i][2], bookData[i][3]);
+                addBook(book);
+            } catch (Exception ex) {
+                Logger.getLogger(LibrarianModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

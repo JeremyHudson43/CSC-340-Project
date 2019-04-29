@@ -17,8 +17,6 @@ import java.util.logging.Logger;
    This class routes the logic for book checkouts, book checkins, addBooks and 
    individual user display to the LibrarianModel. In addition it displays the 
    checkout, checkin, addbooks and individual user display views themselves, 
-
-
  */
 public class LibrarianController extends BooksController {
 
@@ -41,8 +39,6 @@ public class LibrarianController extends BooksController {
         this.librarianView.userSearchListener(e -> userDisplay());
         this.librarianView.checkInListener(e -> displayCheckInView());
         this.librarianView.checkOutListener(e -> displayCheckOutView());
-
-        //this.librarianView.populateComboBox(_bookName);
     }
 
     /*This gets the userID and ISBNs from checkoutView and contacts the model to
@@ -64,15 +60,7 @@ public class LibrarianController extends BooksController {
     //This displays the checkin view.
     private void displayCheckInView() {
         this.checkInView.setVisible(true);
-
-        this.checkInView.checkinListener(e -> {
-            try {
-                checkIn();
-            } catch (Exception ex) {
-                Logger.getLogger(BooksController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        });
+        this.checkInView.checkinListener(e -> checkIn());
     }
 
     //This checks book back into the database from the librarian model.
@@ -91,43 +79,31 @@ public class LibrarianController extends BooksController {
     //This displays the checkout view.
     private void displayCheckOutView() {
         this.checkoutView.setVisible(true);
-        this.checkoutView.checkOutListener(e -> {
-            try {
-                checkOut();
-            } catch (Exception ex) {
-                Logger.getLogger(BooksController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        });
+        this.checkoutView.checkOutListener(e -> checkOut());
     }
 
     //This displays the add book view.
     private void displayAddBookView() {
         this.addBookView.setVisible(true);
-        this.addBookView.addBookListener(e -> {
-            try {
-                addBooks();
-            } catch (Exception ex) {
-                Logger.getLogger(BooksController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        });
-
+        this.addBookView.addBookListener(e -> addBooks());
     }
 
     //This gets book info from the API by title and author or by ISBN.
-    private void addBooks() throws Exception {
-
+    private void addBooks() {
         String author = this.addBookView.getAuthor();
         String title = this.addBookView.getTitle();
         String ISBN = this.addBookView.getISBN();
 
-        if (ISBN.equals("")) {
-            this.librarianModel.loadBookNameByAuthorAndTitle(author, title);
-        } else {
-            this.librarianModel.loadBookByISBN(ISBN);
-        }
+        try {
+            if (ISBN.equals("")) {
+                this.librarianModel.loadBookNameByAuthorAndTitle(author, title);
 
+            } else {
+                this.librarianModel.loadBookByISBN(ISBN);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LibrarianController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     //This displays individual customer information.
