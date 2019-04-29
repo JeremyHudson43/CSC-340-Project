@@ -120,7 +120,7 @@ public class UserModel {
         return "";
     }
 
-    //This creates an acocunt if all input is valid.
+    //This verifies if all input is valid for registration.
     public void checkRegister(String _userType, String _name, String _password,
             String _userID, String _email) throws Exception {
 
