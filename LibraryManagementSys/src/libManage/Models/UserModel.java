@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class UserModel {
 
-
     private static final String LIBRARIAN = "librarian";
     private static final String CUSTOMER = "customer";
 
@@ -79,10 +78,12 @@ public class UserModel {
     }
 
 //================================================================
-
-    /* If something is entered, the program will check to see if it exists in
-    the database. */
+    /**
+     * If something is entered, the program will check to see if it exists in
+     * the database.
+     */
     public String checkLogin(String _username, String _password) {
+
         if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. "
                     + "Please try again.");
@@ -119,11 +120,21 @@ public class UserModel {
         return "";
     }
 
-    //This creates an acocunt if all input is valid.
-    public void checkRegister(String _userType, String _name, String _password,
+    /**
+     * This method creates an account if all of the input is valid.
+     *
+     * @param _userType
+     * @param _name
+     * @param _password
+     * @param _userID
+     * @param _email
+     * @throws Exception
+     */
+    public String checkRegister(String _userType, String _name, String _password,
             String _userID, String _email) throws Exception {
 
         UserModel user = new UserModel();
+        String idNumber = null;
 
         try {
             int result;
@@ -138,20 +149,28 @@ public class UserModel {
 
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Account Created");
-                String idNumber = SQL.searchUserID(_name);
+                idNumber = SQL.searchUserID(_name);
                 user.setId(idNumber);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to create account");
             }
+
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
+        return idNumber;
     }
 
-    //This creates a new user account.
-    public int createAccount(UserModel _user) {
+    /**
+     * This method creates a new user account.
+     *
+     * @param _user
+     * @return
+     */
+    public static int createAccount(UserModel _user) {
+
         int result = 0;
         try {
             MySQLCaller SQL = new MySQLCaller();
@@ -163,8 +182,14 @@ public class UserModel {
         return result;
     }
 
-    //This searches for user in the database.
+    /**
+     * This method searches for a user in the database.
+     *
+     * @param _id
+     * @return
+     */
     public UserModel searchUser(String _id) {
+
         UserModel placeholder = new UserModel();
         try {
             MySQLCaller SQL = new MySQLCaller();
@@ -176,7 +201,5 @@ public class UserModel {
         }
         return placeholder;
     }
+
 }
-
-    
-

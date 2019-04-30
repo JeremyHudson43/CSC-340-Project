@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import java.awt.event.ActionListener;
@@ -10,15 +5,22 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author DELL6420
+ * @author Charles Brady
+ * @author Jeremy Hudson
+ *
+ * Last Updated 4-25-2019
+ *
+ * This is the view for the library card.
  */
 public class LibraryCardView extends javax.swing.JFrame {
 
     /**
-     * Creates new form LibraryCardView2
+     * Creates new form LibraryCardView
      */
     public LibraryCardView() {
+
         initComponents();
+
     }
 
     /**
@@ -37,6 +39,8 @@ public class LibraryCardView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        barCode.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
         LibraryCardLabel.setText("Library Card");
 
         printButtonLibCard.setText("Print");
@@ -48,18 +52,17 @@ public class LibraryCardView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(LibraryCardLabel))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(barCode, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameTextField))))
-                .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(printButtonLibCard)
-                .addGap(149, 149, 149))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameTextField)
+                            .addComponent(barCode, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(printButtonLibCard))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(LibraryCardLabel)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,9 +71,9 @@ public class LibraryCardView extends javax.swing.JFrame {
                 .addComponent(LibraryCardLabel)
                 .addGap(18, 18, 18)
                 .addComponent(barCode, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(printButtonLibCard)
                 .addContainerGap())
         );
@@ -78,52 +81,23 @@ public class LibraryCardView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-       public void printListener(ActionListener listenForPrint) {
+    public void printListener(ActionListener listenForPrint) {
 
         this.printButtonLibCard.addActionListener(listenForPrint);
 
     }
-        public void setNameField(String _name) {
-            this.nameTextField.setText(_name);
-        }
-        
-         public void setBarCode(ImageIcon _image) {
-            this.barCode.setIcon(_image);
-        }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LibraryCardView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LibraryCardView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LibraryCardView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LibraryCardView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LibraryCardView().setVisible(true);
-            }
-        });
+    public void setNameField(String _name) {
+
+        this.nameTextField.setText(_name);
+
+    }
+
+    public void setBarCode(ImageIcon _image) {
+
+        this.barCode.setIcon(_image);
+        this.pack();
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

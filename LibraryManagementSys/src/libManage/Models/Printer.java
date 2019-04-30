@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 import java.awt.Component;
@@ -13,17 +8,40 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 
+/**
+ *
+ * @author Charles Brady
+ *
+ * This is the model used to print out the library card.
+ *
+ */
 public class Printer implements Printable {
+
     final Component comp;
     final Double scale;
 
-    public Printer(Component comp, Double scale){
+    /**
+     * The controller for the printer
+     *
+     * @param comp
+     * @param scale
+     */
+    public Printer(Component comp, Double scale) {
         this.comp = comp;
         this.scale = scale;
     }
 
+    /**
+     * Method for printing the library card.
+     *
+     * @param _graphics
+     * @param _format
+     * @param _page_index
+     * @return
+     * @throws PrinterException
+     */
     @Override
-    public int print(Graphics _graphics, PageFormat _format, int _page_index) 
+    public int print(Graphics _graphics, PageFormat _format, int _page_index)
             throws PrinterException {
         if (_page_index > 0) {
             return Printable.NO_SUCH_PAGE;
@@ -44,10 +62,8 @@ public class Printer implements Printable {
         double xRatio = pWidth / cWidth;
         double yRatio = pHeight / cHeight;
 
-
         Graphics2D g2 = (Graphics2D) _graphics;
         g2.translate(pXStart, pYStart);
-//        g2.scale(xRatio, yRatio);
         g2.scale(this.scale, this.scale);
         this.comp.paint(g2);
 

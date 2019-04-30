@@ -3,7 +3,6 @@ package Controllers;
 import Models.BooksModel;
 import Models.UserModel;
 import Views.BookDatabaseView;
-import Views.BookDatabaseView;
 import Views.BookScrollView;
 import Views.IndividualBookView;
 
@@ -34,12 +33,12 @@ public class BooksController {
     private IndividualBookView individualBookView = new IndividualBookView();
     BookScrollView bookScrollView = new BookScrollView();
 
-    /*This gets the userID and ISBNs from checkinView and contacts the model to 
+    /*This gets the userID and ISBNs from checkinView and contacts the model to
     checkout the books in the database.
      */
-    //This displays the book DB view. 
-    
-
+    /**
+     * This method displays the book database view.
+     */
     public void displayBookDB() {
 
         this.bookDBView.setVisible(true);
@@ -47,24 +46,38 @@ public class BooksController {
 
     }
 
-    // This searches the local SQL database for book matching author/title/ISBN.
+    /**
+     * This method searches the local SQL database for book matching the author,
+     * title, and/or ISBN.
+     */
     public void searchLocalDB() {
 
-            String author = this.bookDBView.getAuthorName();
-            String title = this.bookDBView.getBookTitle();
-            String ISBN = this.bookDBView.getISBN();
+        String author = this.bookDBView.getAuthorName();
+        String title = this.bookDBView.getBookTitle();
+        String ISBN = this.bookDBView.getISBN();
 
         try {
+
             getIndividualBookViewTable(author, title, ISBN);
+
         } catch (SQLException ex) {
+
             Logger.getLogger(BooksController.class.getName())
                     .log(Level.SEVERE, null, ex);
-        }
 
+        }
 
     }
 
-    //This creates a table from book model info and displays it in a scrollPane.
+    /**
+     * This method creates a table form the book model and displays the
+     * information in a scroll pane.
+     *
+     * @param author
+     * @param title
+     * @param ISBN
+     * @throws SQLException
+     */
     private void getIndividualBookViewTable(String author, String title,
             String ISBN) throws SQLException {
 
@@ -74,18 +87,21 @@ public class BooksController {
         this.bookScrollView.getContentPane().setLayout(new BorderLayout());
         this.bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
         this.bookScrollView.setSize(500, 600);
-        this.bookScrollView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.bookScrollView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.bookScrollView.setVisible(true);
 
         this.bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
     }
 
-
-    /*This displays individual book info after an item has been clicked in
-    the scroll plane.
+    /**
+     * This displays individual book info after an item has been clicked in the
+     * scroll plane.
+     *
+     * @param _table
      */
     void getInfoAboutBook(JTable _table) {
+
         try {
             String[] bookInfo = this.bookModel.parseTable(_table);
 
@@ -102,9 +118,13 @@ public class BooksController {
             frame.setVisible(true);
 
             this.individualBookView.setVisible(true);
+
         } catch (IOException ex) {
+
             Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
+
         }
+
     }
 
 }
