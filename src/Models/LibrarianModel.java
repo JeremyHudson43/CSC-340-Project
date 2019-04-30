@@ -108,10 +108,8 @@ public class LibrarianModel extends BooksModel {
      */
     public void loadBookNameByAuthorAndTitle(String _author, String _title) {
         
-        String authorWithSpaces = _author.replaceAll("\\s{1,}","+");
-        String titleWithSpaces = _title.replaceAll("\\s{1,}","+");
-        
-        String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(authorWithSpaces, titleWithSpaces);
+
+        String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
         
         for (int i = 0; i < bookData.length; i++) {
             try {

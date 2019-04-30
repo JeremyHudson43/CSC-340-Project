@@ -48,7 +48,10 @@ public class GoogleBooksAPI implements ApiConnector {
     @Override
     public String[][] loadBookNameByAuthorAndTitle(String _author, String _title) {
 
-        String response[][] = getRequest(_author, _title, "");
+        String authorWithSpaces = _author.replaceAll("\\s{1,}", "+");
+        String titleWithSpaces = _title.replaceAll("\\s{1,}", "+");
+
+        String response[][] = getRequest(authorWithSpaces, titleWithSpaces, "");
         return response;
     }
 
@@ -93,7 +96,7 @@ public class GoogleBooksAPI implements ApiConnector {
     private static String[][] connectionHelper(HttpURLConnection _connection) {
         String[][] bookData = new String[0][0];
         try {
-           BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()));
             String responseString = "";
             String str;
             while ((str = in.readLine()) != null) {
