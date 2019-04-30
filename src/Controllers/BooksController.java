@@ -60,9 +60,12 @@ public class BooksController {
                     .log(Level.SEVERE, null, ex);
         }
     }
-    /**This displays individual book info after an item has been clicked in
-    the scroll plane.
-     */
+    
+    /**This displays individual book info after an item has been clicked in the scroll plane.
+    * 
+    * 
+    * 
+    */
     private void getInfoAboutBook(JTable _table) {
         try {
             String[] bookInfo = this.bookModel.parseTable(_table);
@@ -84,8 +87,7 @@ public class BooksController {
     *
     *
     */
-    private void getIndividualBookViewTable(String author, String title,
-            String ISBN) throws SQLException {
+    private void getIndividualBookViewTable(String author, String title, String ISBN) throws SQLException {
 
         JTable table = bookModel.createTable(author, title, ISBN);
         JScrollPane scrollPane = new JScrollPane(table);

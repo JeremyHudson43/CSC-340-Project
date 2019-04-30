@@ -40,15 +40,10 @@
                       <Component id="getAllMatchingResultsAddBookViewLbl" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="isbnTxtfieldAddBookView" min="-2" pref="105" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="singleWordWarningLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="isbnTxtfieldAddBookView" min="-2" pref="105" max="-2" attributes="0"/>
+                      <EmptySpace pref="176" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="bookNameAddBookView" min="-2" max="-2" attributes="0"/>
@@ -97,8 +92,6 @@
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="isbnTxtfieldAddBookView" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="singleWordWarningLbl" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -142,11 +135,6 @@
     <Component class="javax.swing.JButton" name="searchButtonAddBookView">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Book(s) to Local Database"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="singleWordWarningLbl">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="For author name or book title, please input only a single word. "/>
       </Properties>
     </Component>
   </SubComponents>

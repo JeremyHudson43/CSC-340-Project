@@ -156,11 +156,13 @@ public class IndividualBookView extends javax.swing.JFrame {
 
     public void setImagePlaceholderLbl(String _imageLink) throws MalformedURLException, IOException {
         this.imagePlaceholderLbl.setText("");
-        if (!_imageLink.equals("")) {
+        try {
             BufferedImage img = ImageIO.read(new URL(_imageLink));
-
             this.imagePlaceholderLbl.setIcon(new javax.swing.ImageIcon(img));
+        } catch (Exception e) {
+
         }
+
     }
 
     /**

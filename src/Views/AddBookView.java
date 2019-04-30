@@ -56,7 +56,6 @@ public class AddBookView extends javax.swing.JFrame {
         addBookISBNLbl = new javax.swing.JLabel();
         getAllMatchingResultsAddBookViewLbl = new javax.swing.JLabel();
         searchButtonAddBookView = new javax.swing.JButton();
-        singleWordWarningLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,8 +70,6 @@ public class AddBookView extends javax.swing.JFrame {
         getAllMatchingResultsAddBookViewLbl.setText("Add all matching results by author/ book title");
 
         searchButtonAddBookView.setText("Add Book(s) to Local Database");
-
-        singleWordWarningLbl.setText("For author name or book title, please input only a single word. ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,13 +86,10 @@ public class AddBookView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(getAllMatchingResultsAddBookViewLbl))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(isbnTxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(singleWordWarningLbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(isbnTxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bookNameAddBookView)
@@ -131,8 +125,6 @@ public class AddBookView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(isbnTxtfieldAddBookView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(singleWordWarningLbl)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -155,6 +147,5 @@ public class AddBookView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton searchButtonAddBookView;
-    private javax.swing.JLabel singleWordWarningLbl;
     // End of variables declaration//GEN-END:variables
 }
