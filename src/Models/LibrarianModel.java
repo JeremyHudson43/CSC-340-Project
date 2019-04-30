@@ -106,7 +106,6 @@ public class LibrarianModel extends BooksModel {
      * @param _title
      * @throws Exception
      */
-   //This searches the API by book title and or author.
     public void loadBookNameByAuthorAndTitle(String _author, String _title) {
         
         String authorWithSpaces = _author.replaceAll("\\s{1,}","+");
