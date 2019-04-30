@@ -40,22 +40,32 @@ public class UserController {
     private LoginView loginView = new LoginView();
     LibraryCardView libraryCardView = new LibraryCardView();
 
-    //This opens the register view and registers a user if their info is valid.
+    /* This opens the register view and registers a user if their info is valid.
+     *
+     *
+     *
+     */
     public void displayRegister(String _usertype) {
 
         this.registerView.setVisible(true);
-        this.registerView.registerListener(e -> checkRegister(_usertype, this.registerView.getName(), 
+        this.registerView.registerListener(e -> checkRegister(_usertype, this.registerView.getName(),
                 this.registerView.getUserID(), this.registerView.getUserPassword(), this.registerView.getUserEmail()));
     }
 
-    //This displays the login view and logs the relevant user type in.
+    /** This displays the login view and logs the relevant user type in.
+    *
+    *
+    *
+     */
     public void displayLogin() {
         this.loginView.setVisible(true);
         this.loginView.loginListener(e -> checkLogin(this.loginView.getUsername(), this.loginView.getPassword()));
     }
 
-    /*This opens the library card view and prints the barcode when the print
-    button is clicked
+    /** This opens the library card view and prints the barcode when the print button is clicked
+     *   
+     * 
+     * 
      */
     public void displayLibraryCard(String _id, String _name) {
         this.libraryCardView.setVisible(true);
@@ -79,7 +89,10 @@ public class UserController {
         });
     }
 
-    //This prints out a bardcode with user information to the library card view.
+    /** This prints out a bardcode with user information to the library card view.
+    *
+    *
+    */
     public void printCard(String _userID, String _name) throws OutputException {
 
         try {
@@ -93,7 +106,10 @@ public class UserController {
         }
     }
 
-    //This checks for customer or librarian user type.
+    /** This checks for customer or librarian user type.
+    *
+    *
+    */
     public void checkLogin(String _username, String _password) {
 
         String userType = this.userModel.checkLogin(_username, _password);
@@ -106,7 +122,10 @@ public class UserController {
         }
     }
 
-    //This is a helper method for the register view.
+    /** This is a helper method for the register view.
+    *
+    *
+    */
     public void checkRegister(String _usertype, String _name, String _userID,
             String _password, String _email) {
 

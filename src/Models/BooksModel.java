@@ -69,7 +69,11 @@ public class BooksModel {
     }
     //======================================================================
 
-    //creates table from given author, title and isbn
+    /* This method returns a table from the given author, title and isbn.
+     * 
+     * 
+     * 
+     */
     public JTable createTable(String _author, String _title, String _isbn) throws SQLException {
         String[] columns = {"ISBN", "Title", "Author", "Category",
             "ImageLink"};
@@ -80,7 +84,10 @@ public class BooksModel {
 
     }
 
-    //helper method for BookDB method
+    /* This method parses the table to get relevant book info.
+     * 
+     * 
+     */
     public String[] parseTable(JTable _table) throws IOException {
 
         TableModel model = _table.getModel();
@@ -119,7 +126,11 @@ public class BooksModel {
 
     }
 
-    //Create a new book
+    /* This method creates a new book object and sets all relevant variables.
+     * 
+     * 
+     * 
+     */
     public static BooksModel buildBook(String _author, String _title,
             String _isbn, String _imageLink)
             throws Exception {
@@ -131,7 +142,11 @@ public class BooksModel {
         return b;
     }
 
-    //Search for a book in the database.
+    /* This method Searches for a book in the database.
+     * 
+     * 
+     * 
+     */
     public Object[][] searchBook(String _author, String _title, String _isbn)
             throws SQLException {
         Object[][] data = this.sqlCaller.searchBooks(_author, _title, _isbn);

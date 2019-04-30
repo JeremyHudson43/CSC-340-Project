@@ -32,12 +32,6 @@ public class LibrarianModel extends BooksModel {
         int result = 0;
         try {
             result = this.sqlCaller.checkoutBooks(_isbn, _userID);
-            if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Book(s) checked out");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to checkout");
-            }
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -71,12 +65,7 @@ public class LibrarianModel extends BooksModel {
     public void addBook(BooksModel _b) {
         int result = 0;
         result = this.sqlCaller.addBooks(_b);
-        if (result > 0) {
-            JOptionPane.showMessageDialog(null, "Book(s) added to database");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: Book may not be in API");
-        }
+ 
     }
 
     /**
@@ -87,12 +76,7 @@ public class LibrarianModel extends BooksModel {
      */
     public void removeBook(BooksModel _b) {
         int result = this.sqlCaller.removeBooks(_b.getISBN());
-        if (result > 0) {
-            JOptionPane.showMessageDialog(null, "Book(s) removed to database");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: Book may not be in database");
-        }
+ 
     }
 
     /**

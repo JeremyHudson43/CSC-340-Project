@@ -15,7 +15,9 @@ public class LibraryManagementGUIController extends UserController {
 
     /*This tells login and register buttons what method to call after
     they are pressed.
-     */
+    *
+    *
+    */
     public void initLibraryManagementGUIController() {
         this.libraryManagement.setVisible(true);
         this.libraryManagement.addLoginListener(e -> displayLogin());

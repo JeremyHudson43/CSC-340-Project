@@ -29,21 +29,30 @@ public class GoogleBooksAPI implements ApiConnector {
     private static final String baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
     @Override
-    //This returns a 2d array of books based upon only the ISBN.
+    /**This returns a 2d array of books based upon only the ISBN.
+    *
+    *
+    */
     public String[][] loadBookNameByISBN(String _isbn) {
         String response[][] = getRequest("", "", _isbn);
         return response;
     }
 
     @Override
-    //This returns a 2d array of books based upon either the author, title, or both
+    /**This returns a 2d array of books based upon either the author, title, or both
+    *
+    *
+    */
     public String[][] loadBookNameByAuthorAndTitle(String _author, String _title) {
 
         String response[][] = getRequest(_author, _title, "");
         return response;
     }
 
-    //This is a get request to the API using data from BookDatabaseView.
+    /**This is a get request to the API using data from BookDatabaseView.
+    *
+    *
+    */
     public String[][] getRequest(String _author, String _volume, String _isbn) {
 
         try {
@@ -72,9 +81,12 @@ public class GoogleBooksAPI implements ApiConnector {
         return null;
     }
 
-    //This is a helper method to read the response string from the API.
+    /**This is a helper method to read the response string from the API.
+    *
+    *
+    */
     private static String[][] connectionHelper(HttpURLConnection _connection)  {
-        String[][] bookData = new String[10][4];
+        String[][] bookData = new String[0][0];
 
         try (
             BufferedReader in = new BufferedReader(new InputStreamReader(_connection.getInputStream()))) {
@@ -91,7 +103,10 @@ public class GoogleBooksAPI implements ApiConnector {
         return bookData;
     }
 
-    //This parses the book title, author, and imagelink from the API.
+    /**This parses the book title, author, and imagelink from the API.
+    *
+    *
+    */
     public static String[][] parseBookFromAPI(String _responseString) {
 
         JSONObject root = new JSONObject(_responseString);
@@ -105,14 +120,15 @@ public class GoogleBooksAPI implements ApiConnector {
         return totalBookData;
     }
 
-    /*This is a helper method for the parseBook method to ensure that the
-    parseBookFromAPI method is not longer than 30 lines.
+    /**This is a helper method for the parseBook method to ensure that the parseBookFromAPI method is not longer than 30 lines.
+     *
+     *
      */
-    public static String[][] parseBookFromAPIHelper(String[] individualBookData, JSONArray books, String[][] totalBookData) {
-        for (int i = 0; i < books.length(); i++) {
+    public static String[][] parseBookFromAPIHelper(String[] _individualBookData, JSONArray _books, String[][] _totalBookData) {
+        for (int i = 0; i < _books.length(); i++) {
 
             String bookImageLink = "";
-            JSONObject book = books.getJSONObject(i);
+            JSONObject book = _books.getJSONObject(i);
             JSONObject info = book.getJSONObject("volumeInfo");
             String bookTitle = info.getString("title");
             JSONArray authors = info.getJSONArray("authors");
@@ -126,20 +142,23 @@ public class GoogleBooksAPI implements ApiConnector {
             }
             String bookISBN = generateNumber();
 
-            individualBookData[0] = bookTitle;
-            individualBookData[1] = bookAuthor;
-            individualBookData[2] = bookISBN;
-            individualBookData[3] = bookImageLink;
+            _individualBookData[0] = bookTitle;
+            _individualBookData[1] = bookAuthor;
+            _individualBookData[2] = bookISBN;
+            _individualBookData[3] = bookImageLink;
 
-            for (int j = 0; j < individualBookData.length; j++) {
-                totalBookData[i][j] = individualBookData[j];
+            for (int j = 0; j < _individualBookData.length; j++) {
+                _totalBookData[i][j] = _individualBookData[j];
             }
 
         }
-        return totalBookData;
+        return _totalBookData;
     }
 
-    //This generates a random ISBN.
+    /**This generates a random ISBN.
+    *
+    *
+    */
     public static String generateNumber() {
         String ISBN = "978";
         for (int i = 0; i < 10; i++) {

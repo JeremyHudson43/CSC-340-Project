@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * Last Updated 3/7
  *
  * This model contains the variables for users and contains the logic that
- * verifies a customer or librarian against the SQL database for logins and 
+ * verifies a customer or librarian against the SQL database for logins and
  * registrations, in addition to searching for a user and creating a new user.
  */
 public class UserModel {
@@ -29,7 +29,12 @@ public class UserModel {
     private String userType;
     private String email;
 
-    // The getters of the variables
+    /**
+     * These are the variable getters.
+     *
+     *
+     *
+     */
     public String getName() {
         return this.name;
     }
@@ -54,7 +59,11 @@ public class UserModel {
         return userType;
     }
 
-// The setters of the variables
+    /** These are the setters of the variables.
+     * 
+     * 
+     * 
+     */
     public void setName(String _name) {
         this.name = _name;
     }
@@ -81,8 +90,11 @@ public class UserModel {
 
 //================================================================
 
-    /* If something is entered, the program will check to see if it exists in
-    the database. */
+    /** If something is entered, the program will check to see if it exists in the database. 
+     * 
+     * 
+     * 
+     */
     public String checkLogin(String _username, String _password) {
         if (_username.equals("") || _password.equals("")) {
             JOptionPane.showMessageDialog(null, "Required fields not entered. "
@@ -120,9 +132,13 @@ public class UserModel {
         return "";
     }
 
-    //This verifies if all input is valid for registration.
+    /** This verifies if all input is valid for registration.
+     * 
+     * 
+     * 
+     */
     public void checkRegister(String _userType, String _name, String _password,
-            String _userID, String _email)  {
+            String _userID, String _email) {
 
         UserModel user = new UserModel();
 
@@ -151,7 +167,10 @@ public class UserModel {
         }
     }
 
-    //This creates a new user account.
+    /** This creates a new user account.
+    *
+    *
+    */
     public int createAccount(UserModel _user) {
         int result = 0;
         try {
@@ -164,7 +183,10 @@ public class UserModel {
         return result;
     }
 
-    //This searches for user in the database.
+    /** This searches for user in the database.     * 
+     * 
+     * 
+     */
     public UserModel searchUser(String _id) {
         UserModel user = new UserModel();
         try {

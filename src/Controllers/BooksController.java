@@ -29,18 +29,24 @@ import javax.swing.JTable;
  */
 public class BooksController {
 
-    BooksModel bookModel = new BooksModel();
+    private BooksModel bookModel = new BooksModel();
     UserModel userModel = new UserModel();
     private BookDatabaseView bookDBView = new BookDatabaseView();
     private IndividualBookView individualBookView = new IndividualBookView();
 
-    //This displays the book DB view.
+    /** This displays the book DB view.
+    *
+    *
+    */
     public void displayBookDB() {
         this.bookDBView.setVisible(true);
         this.bookDBView.searchDBListener(e -> searchLocalDB());
     }
 
-    // This searches the local SQL database for book matching author/title/ISBN.
+    /** This searches the local SQL database for book matching author/title/ISBN.
+    *
+    *
+    */
     public void searchLocalDB() {
 
         String author = this.bookDBView.getAuthorName();
@@ -54,7 +60,7 @@ public class BooksController {
                     .log(Level.SEVERE, null, ex);
         }
     }
-    /*This displays individual book info after an item has been clicked in
+    /**This displays individual book info after an item has been clicked in
     the scroll plane.
      */
     private void getInfoAboutBook(JTable _table) {
@@ -74,7 +80,10 @@ public class BooksController {
     }
 
 
-    //This creates a table from book model info and displays it in a scrollPane.
+    /** This creates a table from book model info and displays it in a scrollPane.
+    *
+    *
+    */
     private void getIndividualBookViewTable(String author, String title,
             String ISBN) throws SQLException {
 
