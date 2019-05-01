@@ -7,16 +7,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
-/* @author Jeremy Hudson
-   @author Charles Brady
-
-   Last updated 4-22-2019
-
-   This class provides the logic that allows a librarian to checkout books by 
-   ISBN, checkin books by ISBN, add a book to the SQL database and to contact
-   the API with an ISBN or by author/title to add a book to the local database.
-
+/**
+ * @author Jeremy Hudson
+ * @author Charles Brady
+ *
+ * Last updated 4-22-2019
+ *
+ * This class provides the logic that allows a librarian to checkout books by
+ * ISBN, check-in books by ISBN, add a book to the SQL database and to contact
+ * the API with an ISBN or by author/title to add a book to the local database.
+ *
  */
 public class LibrarianModel extends BooksModel {
 
@@ -65,7 +65,7 @@ public class LibrarianModel extends BooksModel {
     public void addBook(BooksModel _b) {
         int result = 0;
         result = this.sqlCaller.addBooks(_b);
- 
+
     }
 
     /**
@@ -76,7 +76,7 @@ public class LibrarianModel extends BooksModel {
      */
     public void removeBook(BooksModel _b) {
         int result = this.sqlCaller.removeBooks(_b.getISBN());
- 
+
     }
 
     /**
@@ -85,7 +85,7 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @throws Exception
      */
-     public void loadBookByISBN(String _isbn)  {
+    public void loadBookByISBN(String _isbn) {
 
         String bookData[][] = this.myAPI.loadBookNameByISBN(_isbn);
 
@@ -97,7 +97,7 @@ public class LibrarianModel extends BooksModel {
                 Logger.getLogger(LibrarianModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-     }
+    }
 
     /**
      * This method searches the API for a book by the title and/or author.
@@ -107,13 +107,12 @@ public class LibrarianModel extends BooksModel {
      * @throws Exception
      */
     public void loadBookNameByAuthorAndTitle(String _author, String _title) {
-        
 
         String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
-        
+
         for (int i = 0; i < bookData.length; i++) {
             try {
-                BooksModel book = buildBook(bookData[i][1], bookData[i][0],  bookData[i][2], bookData[i][3]);
+                BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3]);
                 addBook(book);
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianModel.class.getName()).log(Level.SEVERE, null, ex);

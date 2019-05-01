@@ -47,12 +47,12 @@ public class PrinterModel implements Printable {
             return Printable.NO_SUCH_PAGE;
         }
 
-        // get the bounds of the component
+        // This gets the bounds of the component.
         Dimension dim = this.comp.getSize();
         double cHeight = dim.getHeight();
         double cWidth = dim.getWidth();
 
-        // get the bounds of the printable area
+        // This gets the bounds of the printable area.
         double pHeight = _format.getImageableHeight();
         double pWidth = _format.getImageableWidth();
 

@@ -10,13 +10,14 @@ import Views.LibrarianView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/* @author Jeremy Hudson
-
-   Last updated 4-22-2019
-    
-   This class routes the logic for book checkouts, book checkins, addBooks and 
-   individual user display to the LibrarianModel. In addition it displays the 
-   checkout, checkin, addbooks and individual user display views themselves, 
+/**
+ * @author Jeremy Hudson
+ *
+ * Last updated 4-22-2019
+ *
+ * This class routes the logic for book checkouts, book check-ins, addBooks and
+ * individual user display to the LibrarianModel. In addition it displays the
+ * checkout, check-in, addBooks and individualUserDisplay views themselves,
  */
 public class LibrarianController extends BooksController {
 
@@ -41,11 +42,12 @@ public class LibrarianController extends BooksController {
         this.librarianView.checkOutListener(e -> displayCheckOutView());
     }
 
-    /**This gets the userID and ISBNs from checkoutView and contacts the model to
-    checkout the books in the database
-    * 
-    * 
-    */
+    /**
+     * This gets the userID and ISBNs from checkoutView and contacts the model
+     * to checkout the books in the database
+     *
+     *
+     */
     private void checkOut() {
         String userID = this.checkoutView.getUserID();
         String isbn1 = this.checkoutView.getISBN1();
@@ -59,19 +61,21 @@ public class LibrarianController extends BooksController {
 
     }
 
-    /**This displays the checkin view.
-    *
-    *
-    */
+    /**
+     * This displays the checkin view.
+     *
+     *
+     */
     private void displayCheckInView() {
         this.checkInView.setVisible(true);
         this.checkInView.checkinListener(e -> checkIn());
     }
 
-    /** This checks book back into the database from the librarian model.
-    *
-    *
-    */
+    /**
+     * This checks book back into the database from the librarian model.
+     *
+     *
+     */
     private void checkIn() {
         String userID = this.checkInView.getUserID();
         String isbn1 = this.checkInView.getISBN1();
@@ -84,16 +88,18 @@ public class LibrarianController extends BooksController {
 
     }
 
-    /** This displays the checkout view.
-    *
-    *
+    /**
+     * This displays the checkout view.
+     *
+     *
      */
     private void displayCheckOutView() {
         this.checkoutView.setVisible(true);
         this.checkoutView.checkOutListener(e -> checkOut());
     }
 
-    /** This displays the add book view.
+    /**
+     * This displays the add book view.
      *
      *
      *
@@ -103,10 +109,11 @@ public class LibrarianController extends BooksController {
         this.addBookView.addBookListener(e -> addBooks());
     }
 
-    /** This gets book info from the API by title and author or by ISBN.
-    *
-    *
-    */
+    /**
+     * This gets book info from the API by title and author or by ISBN.
+     *
+     *
+     */
     private void addBooks() {
         String author = this.addBookView.getAuthor();
         String title = this.addBookView.getTitle();
@@ -124,10 +131,11 @@ public class LibrarianController extends BooksController {
         }
     }
 
-    /** This displays individual customer information.
-    *
-    *
-    */
+    /**
+     * This displays individual customer information.
+     *
+     *
+     */
     private void userDisplay() {
 
         this.user = this.userModel.searchUser(this.librarianView.getUserSearchTextField());

@@ -14,7 +14,7 @@ import org.json.JSONObject;
  *
  * @author Jeremy Hudson
  *
- * Last updated 4-25-2019
+ * Last updated 4-30-2019
  *
  * This class contacts the Google Books API to receive information from either
  * an ISBN search or an author/title search. It receives a response string and
@@ -40,14 +40,14 @@ public class GoogleBooksAPI implements ApiConnector {
     }
 
     /**
-     * This returns a 2d array of books based upon either the author, title, or
-     * both
+     * This returns a 2d array of books based upon either the author, title, or both.
      *
      *
      */
     @Override
     public String[][] loadBookNameByAuthorAndTitle(String _author, String _title) {
 
+        //If the author or title string contains a space, replace it with a plus for API formatting.
         String authorWithSpaces = _author.replaceAll("\\s{1,}", "+");
         String titleWithSpaces = _title.replaceAll("\\s{1,}", "+");
 
@@ -60,7 +60,7 @@ public class GoogleBooksAPI implements ApiConnector {
      *
      *
      */
-    public String[][] getRequest(String _author, String _volume, String _isbn) {
+    private String[][] getRequest(String _author, String _volume, String _isbn) {
 
         try {
             URL url = new URL(this.baseURL + _volume + "+inauthor:" + _author
@@ -70,9 +70,9 @@ public class GoogleBooksAPI implements ApiConnector {
             connection.setRequestMethod("GET");
 
             if (_isbn.equals("")) {
-
                 String responseString[][] = (connectionHelper(connection));
                 return responseString;
+                
             } else {
                 URL isbnURL = new URL(this.baseURL + _isbn + "&key=" + this.apiKey);
 
@@ -112,11 +112,11 @@ public class GoogleBooksAPI implements ApiConnector {
     }
 
     /**
-     * This parses the book title, author, and imagelink from the API.
+     * This parses the book title, author, and image link from the API.
      *
      *
      */
-    public static String[][] parseBookFromAPI(String _responseString) {
+    private static String[][] parseBookFromAPI(String _responseString) {
 
         JSONObject root = new JSONObject(_responseString);
         JSONArray books = root.getJSONArray("items");
@@ -130,12 +130,11 @@ public class GoogleBooksAPI implements ApiConnector {
     }
 
     /**
-     * This is a helper method for the parseBook method to ensure that the
-     * parseBookFromAPI method is not longer than 30 lines.
+     * This is a helper method for the parseBook method to ensure that the parseBookFromAPI method is not longer than 30 lines.
      *
      *
      */
-    public static String[][] parseBookFromAPIHelper(String[] _individualBookData, JSONArray _books, String[][] _totalBookData) {
+    private static String[][] parseBookFromAPIHelper(String[] _individualBookData, JSONArray _books, String[][] _totalBookData) {
         for (int i = 0; i < _books.length(); i++) {
 
             String bookImageLink = "";
@@ -151,7 +150,7 @@ public class GoogleBooksAPI implements ApiConnector {
             } catch (org.json.JSONException exception) {
                 System.out.println("Warning: At least one imagelink was not found");
             }
-            String bookISBN = generateNumber();
+            String bookISBN = generateISBN();
 
             _individualBookData[0] = bookTitle;
             _individualBookData[1] = bookAuthor;
@@ -171,7 +170,7 @@ public class GoogleBooksAPI implements ApiConnector {
      *
      *
      */
-    public static String generateNumber() {
+    private static String generateISBN() {
         String ISBN = "978";
         for (int i = 0; i < 10; i++) {
             ISBN += (int) (Math.random() * 9 + 1);

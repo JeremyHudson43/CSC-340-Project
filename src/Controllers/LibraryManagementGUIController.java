@@ -2,19 +2,18 @@ package Controllers;
 
 import Views.LibraryManagementGUI;
 
-/* @author Jeremy Hudson
-   Last updated 4-22-2019
-
-   This class sets the main login window to visible and calls the
-   displayLogin method in the UserController if the login button is clicked
-   and registers a new custuomer if the register button is clicked 
+/**
+ * @author Jeremy Hudson Last updated 4-29-2019
+ *
+ * This class sets the main login window to visible and calls the displayLogin
+ * method in the UserController if the login button is clicked and registers a
+ * new customer if the register button is clicked
  */
 public class LibraryManagementGUIController extends UserController {
 
     private LibraryManagementGUI libraryManagement = new LibraryManagementGUI();
 
-    /*This tells login and register buttons what method to call after
-    they are pressed.
+    /*This tells login and register buttons what method to call after they are pressed.
     *
     *
     */

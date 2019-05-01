@@ -7,12 +7,10 @@ import Views.LibraryCardView;
 import Views.LoginView;
 import Views.RegisterView;
 import java.awt.image.BufferedImage;
-import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.print.Printer;
 import javax.swing.ImageIcon;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeException;
@@ -35,40 +33,43 @@ public class UserController {
     private static final String LIBRARIAN = "librarian";
     private static final String CUSTOMER = "customer";
 
-    private final UserModel userModel = new UserModel();
-    private RegisterView registerView = new RegisterView();
-    private LoginView loginView = new LoginView();
-    LibraryCardView libraryCardView = new LibraryCardView();
+    private LibraryCardView libraryCardView = new LibraryCardView();
 
-    /* This opens the register view and registers a user if their info is valid.
+    /** This opens the register view and registers a user if their info is valid.
      *
      *
      *
      */
     public void displayRegister(String _usertype) {
 
-        this.registerView.setVisible(true);
-        this.registerView.registerListener(e -> checkRegister(_usertype, this.registerView.getName(),
-                this.registerView.getUserID(), this.registerView.getUserPassword(), this.registerView.getUserEmail()));
+        RegisterView registerView = new RegisterView();
+
+        registerView.setVisible(true);
+        registerView.registerListener(e -> checkRegister(_usertype, registerView.getName(),
+                registerView.getUserID(), registerView.getUserPassword(), registerView.getUserEmail()));
     }
 
-    /** This displays the login view and logs the relevant user type in.
-    *
-    *
-    *
+    /**
+     * This displays the login view and logs the relevant user type in.
+     *
+     *
+     *
      */
     public void displayLogin() {
-        this.loginView.setVisible(true);
-        this.loginView.loginListener(e -> checkLogin(this.loginView.getUsername(), this.loginView.getPassword()));
+        LoginView loginView = new LoginView();
+
+        loginView.setVisible(true);
+        loginView.loginListener(e -> checkLogin(loginView.getUsername(), loginView.getPassword()));
     }
 
-    /** This opens the library card view and prints the barcode when the print button is clicked
-     *   
-     * 
-     * 
+    /**
+     * This opens the library card view and prints the barcode when the print button is clicked.
+     *
+     *
+     *
      */
     public void displayLibraryCard(String _id, String _name) {
-        this.libraryCardView.setVisible(true);
+        this. libraryCardView.setVisible(true);
         try {
             this.printCard(_id, _name);
         } catch (OutputException ex) {
@@ -89,10 +90,11 @@ public class UserController {
         });
     }
 
-    /** This prints out a bardcode with user information to the library card view.
-    *
-    *
-    */
+    /**
+     * This prints out a bar code with user information to the library card view.
+     *
+     *
+     */
     public void printCard(String _userID, String _name) throws OutputException {
 
         try {
@@ -106,13 +108,15 @@ public class UserController {
         }
     }
 
-    /** This checks for customer or librarian user type.
-    *
-    *
-    */
+    /**
+     * This checks for customer or librarian user type.
+     *
+     *
+     */
     public void checkLogin(String _username, String _password) {
 
-        String userType = this.userModel.checkLogin(_username, _password);
+        UserModel userModel = new UserModel();
+        String userType = userModel.checkLogin(_username, _password);
         if (userType.equals("customer")) {
             CustomerController customerController = new CustomerController();
             customerController.initCustomerController();
@@ -122,14 +126,17 @@ public class UserController {
         }
     }
 
-    /** This is a helper method for the register view.
-    *
-    *
-    */
+    /**
+     * This is a helper method for the register view.
+     *
+     *
+     */
     public void checkRegister(String _usertype, String _name, String _userID,
             String _password, String _email) {
 
-        this.userModel.checkRegister(_usertype, _name, _password, _userID, _email);
+        UserModel userModel = new UserModel();
+
+        userModel.checkRegister(_usertype, _name, _password, _userID, _email);
         displayLibraryCard(_userID, _name);
     }
 
