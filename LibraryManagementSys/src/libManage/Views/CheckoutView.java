@@ -1,6 +1,9 @@
 package Views;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +19,6 @@ public class CheckoutView extends javax.swing.JFrame {
     /**
      * Creates new form CheckoutView
      */
-
     public CheckoutView() {
         initComponents();
     }
@@ -31,14 +33,21 @@ public class CheckoutView extends javax.swing.JFrame {
         return this.userTextField.getText();
     }
 
-    public String[] getISBN() {
-        String[] isbn = null;
+    public List<String> getISBN() {
 
-        isbn[1] = this.isbnTextField1.getText();
-        isbn[2] = this.isbnTextField2.getText();
-        isbn[3] = this.isbnTextField3.getText();
-        isbn[4] = this.isbnTextField4.getText();
+        List<String> isbn = new ArrayList<>();
 
+        try {
+            isbn.add(this.isbnTextField1.getText());
+            isbn.add(this.isbnTextField2.getText());
+            isbn.add(this.isbnTextField3.getText());
+            isbn.add(this.isbnTextField4.getText());
+
+        } catch (Exception e) {
+
+        }
+
+        JOptionPane.showMessageDialog(null, "Book(s) checked out");
         return isbn;
     }
 

@@ -1,6 +1,7 @@
 package Views;
 
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,21 +20,25 @@ public class AddBookView extends javax.swing.JFrame {
         initComponents();
     }
 
-       public void addBookListener(ActionListener listenForAddBook) {
+    public void addBookListener(ActionListener listenForAddBook) {
 
         this.searchButtonAddBookView.addActionListener(listenForAddBook);
+        //JOptionPane.showMessageDialog(null, "Book(s) added to database");
 
     }
 
     public String getISBN() {
+
         return this.isbnTxtfieldAddBookView.getText();
     }
 
     public String getAuthor() {
+
         return this.authorTextFieldAddBook.getText();
     }
 
     public String getBookTitle() {
+
         return this.bookTextFieldAddBook.getText();
     }
 
