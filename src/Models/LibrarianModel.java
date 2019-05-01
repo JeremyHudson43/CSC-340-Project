@@ -69,17 +69,6 @@ public class LibrarianModel extends BooksModel {
     }
 
     /**
-     * This method removes a book from the database.
-     *
-     * @param _b
-     * @return
-     */
-    public void removeBook(BooksModel _b) {
-        int result = this.sqlCaller.removeBooks(_b.getISBN());
-
-    }
-
-    /**
      * This method loads the information of the book by ISBN.
      *
      * @param _isbn

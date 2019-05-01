@@ -78,28 +78,7 @@ public class MySQLDBTranslator {
         }
         return result;
     }
-
-    /**
-     * Remove a book from the MySQL database.
-     *
-     * @param _isbn
-     * @return
-     */
-    public int removeBooks(String _isbn) {
-
-        int result = 0;
-        String sql = "";
-
-        try {
-            sql = "DELETE FROM books WHERE isbn = " + _isbn;
-            result = this.preparedstate.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQLDBTranslator.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-
+ 
     /**
      * This searches for a book in the MySQL Database.
      *
@@ -188,7 +167,7 @@ public class MySQLDBTranslator {
         int cnt = 0;
 
         try {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < _isbn.length; i++) {
                 if (!_isbn[i].equals("")) {
                     sql = "INSERT INTO checkout (ID, ISBN, status) VALUES"
                             + "('" + _id + "', '" + _isbn[i] + "', 'Checked Out');";
@@ -215,7 +194,7 @@ public class MySQLDBTranslator {
         String sql = "";
 
         try {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < _isbn.length; i++) {
 
                 sql = "UPDATE checkout SET status = 'Check In' WHERE isbn = '"
                         + _isbn[i] + "' AND ID = '" + _id + "';";

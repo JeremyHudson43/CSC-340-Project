@@ -31,62 +31,59 @@ public class BooksController {
 
     private BooksModel bookModel = new BooksModel();
     UserModel userModel = new UserModel();
-    private BookDatabaseView bookDBView = new BookDatabaseView();
-    private IndividualBookView individualBookView = new IndividualBookView();
 
-    /** This displays the book DB view.
-    *
-    *
-    */
-    public void displayBookDB() {
-        this.bookDBView.setVisible(true);
-        this.bookDBView.searchDBListener(e -> searchLocalDB());
+    /**
+     * This displays the book DB view and listens for the search button.
+     *
+     *
+     */
+    public void displayAndSearchBookDB() {
+
+        BookDatabaseView bookDBView = new BookDatabaseView();
+        bookDBView.setVisible(true);
+        
+        bookDBView.searchDBListener(e -> {
+            try {
+                getIndividualBookViewTable(bookDBView.getAuthorName(), bookDBView.getBookTitle(), bookDBView.getISBN());
+            } catch (SQLException ex) {
+                Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
     }
 
-    /** This searches the local SQL database for book matching author/title/ISBN.
-    *
-    *
-    */
-    public void searchLocalDB() {
 
-        String author = this.bookDBView.getAuthorName();
-        String title = this.bookDBView.getBookTitle();
-        String ISBN = this.bookDBView.getISBN();
-
-        try {
-            getIndividualBookViewTable(author, title, ISBN);
-        } catch (SQLException ex) {
-            Logger.getLogger(BooksController.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    /**This displays individual book info after an item has been clicked in the scroll plane.
-    * 
-    * 
-    * 
-    */
+    /**
+     * This displays individual book info after an item has been clicked in the
+     * scroll plane.
+     *
+     *
+     *
+     */
     private void getInfoAboutBook(JTable _table) {
         try {
+            IndividualBookView individualBookView = new IndividualBookView();
+
             String[] bookInfo = this.bookModel.parseTable(_table);
 
-            this.individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[2]);
-            this.individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[3]);
-            this.individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[0]);
-            this.individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[1]);
-            this.individualBookView.setImagePlaceholderLbl(bookInfo[4]);
+            individualBookView.setIndividualBookVewAuthorPlaceholderTxtLbl(bookInfo[2]);
+            individualBookView.setIndividualBookVewCategoryPlaceholderTxtLbl(bookInfo[3]);
+            individualBookView.setIndividualBookVewISBNPlaceholderTxtLbl(bookInfo[0]);
+            individualBookView.setIndividualBookVewNamePlaceholderTxtLbl(bookInfo[1]);
+            individualBookView.setImagePlaceholderLbl(bookInfo[4]);
 
-            this.individualBookView.setVisible(true);
+            individualBookView.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-
-    /** This creates a table from book model info and displays it in a scrollPane.
-    *
-    *
-    */
+    /**
+     * This creates a table from book model info and displays it in a
+     * scrollPane.
+     *
+     *
+     */
     private void getIndividualBookViewTable(String author, String title, String ISBN) throws SQLException {
 
         JTable table = bookModel.createTable(author, title, ISBN);

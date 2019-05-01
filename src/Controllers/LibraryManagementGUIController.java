@@ -13,7 +13,7 @@ public class LibraryManagementGUIController extends UserController {
 
     private LibraryManagementGUI libraryManagement = new LibraryManagementGUI();
 
-    /*This tells login and register buttons what method to call after they are pressed.
+    /**This tells login and register buttons what method to call after they are pressed.
     *
     *
     */

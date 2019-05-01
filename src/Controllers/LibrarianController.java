@@ -30,11 +30,16 @@ public class LibrarianController extends BooksController {
     private CheckoutView checkoutView = new CheckoutView();
     private IndividualUserView individualUserView = new IndividualUserView();
 
-    //This tells the librarian view buttons what method to call when pressed
+    /**
+     * This tells the librarian view buttons what method to call when pressed.
+     *
+     *
+     *
+     */
     public void initLibrarianController() {
         this.librarianView.setVisible(true);
 
-        this.librarianView.databaseListener(e -> displayBookDB());
+        this.librarianView.databaseListener(e -> displayAndSearchBookDB());
         this.librarianView.bookAddListener(e -> displayAddBookView());
         this.librarianView.librarianAddListener(e -> userController.displayRegister("librarian"));
         this.librarianView.userSearchListener(e -> userDisplay());
@@ -43,26 +48,21 @@ public class LibrarianController extends BooksController {
     }
 
     /**
-     * This gets the userID and ISBNs from checkoutView and contacts the model
-     * to checkout the books in the database
+     * This gets the userID and ISBNs from checkoutView and contacts the mode to
+     * checkout the books in the database
      *
      *
      */
     private void checkOut() {
         String userID = this.checkoutView.getUserID();
-        String isbn1 = this.checkoutView.getISBN1();
-        String isbn2 = this.checkoutView.getISBN2();
-        String isbn3 = this.checkoutView.getISBN2();
-        String isbn4 = this.checkoutView.getISBN2();
-
-        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
+        String isbn[] = this.checkoutView.getISBN();
 
         this.librarianModel.checkOutBooksByISBN(isbn, userID);
 
     }
 
     /**
-     * This displays the checkin view.
+     * This displays the check-in view.
      *
      *
      */
@@ -78,12 +78,8 @@ public class LibrarianController extends BooksController {
      */
     private void checkIn() {
         String userID = this.checkInView.getUserID();
-        String isbn1 = this.checkInView.getISBN1();
-        String isbn2 = this.checkInView.getISBN2();
-        String isbn3 = this.checkInView.getISBN2();
-        String isbn4 = this.checkInView.getISBN2();
+        String isbn[] = this.checkoutView.getISBN();
 
-        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
         this.librarianModel.checkInBooksByISBN(isbn, userID);
 
     }

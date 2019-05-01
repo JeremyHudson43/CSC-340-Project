@@ -38,16 +38,6 @@ public class MySQLCaller {
     }
 
     /**
-     * This method calls the removeBooks method in the MySQL translator.
-     *
-     * @param _isbn
-     * @return
-     */
-    public int removeBooks(String _isbn) {
-        return this.translator.removeBooks(_isbn);
-    }
-
-    /**
      * This method calls the searchBooks method in the MySQL translator.
      *
      * @param _author
@@ -99,7 +89,7 @@ public class MySQLCaller {
      * @return
      */
     public String checkLogin(UserModel _user) {
-            return this.translator.checkLogin(_user);
+        return this.translator.checkLogin(_user);
 
     }
 

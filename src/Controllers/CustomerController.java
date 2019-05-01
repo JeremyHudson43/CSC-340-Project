@@ -15,7 +15,7 @@ public class CustomerController extends BooksController {
     public void initCustomerController() {
 
         this.customerView.setVisible(true);
-        this.customerView.databaseListener(e -> displayBookDB());
+        this.customerView.databaseListener(e -> displayAndSearchBookDB());
     }
 
 }

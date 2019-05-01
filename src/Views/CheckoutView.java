@@ -28,20 +28,18 @@ public class CheckoutView extends javax.swing.JFrame {
         return this.userTextField.getText();
     }
 
-    public String getISBN1() {
-        return this.isbnTextField1.getText();
-    }
+    public String[] getISBN() {
+        String[] isbn = new String[3];
 
-    public String getISBN2() {
-        return this.isbnTextField2.getText();
-    }
+        try {
+            isbn[0] = this.isbnTextField1.getText();
+            isbn[1] = this.isbnTextField2.getText();
+            isbn[2] = this.isbnTextField3.getText();
+            isbn[3] = this.isbnTextField4.getText();
+        } catch (Exception e) {
 
-    public String getISBN3() {
-        return this.isbnTextField3.getText();
-    }
-
-    public String getISBN4() {
-        return this.isbnTextField4.getText();
+        }
+        return isbn;
     }
 
     /**
