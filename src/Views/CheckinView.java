@@ -1,6 +1,8 @@
 package Views;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -30,15 +32,19 @@ public class CheckinView extends javax.swing.JFrame {
         return this.userTextField.getText();
     }
 
-    public String[] getISBN() {
+    public List<String> getISBN() {
 
-        String[] isbn = null;
+        List<String> isbn = new ArrayList<>();
 
-        isbn[1] = this.isbnTextField1.getText();
-        isbn[2] = this.isbnTextField2.getText();
-        isbn[3] = this.isbnTextField3.getText();
-        isbn[4] = this.isbnTextField4.getText();
+        try {
+            isbn.add(this.isbnTextField1.getText());
+            isbn.add(this.isbnTextField2.getText());
+            isbn.add(this.isbnTextField3.getText());
+            isbn.add(this.isbnTextField4.getText());
 
+        } catch (Exception e) {
+
+        }
         return isbn;
     }
 

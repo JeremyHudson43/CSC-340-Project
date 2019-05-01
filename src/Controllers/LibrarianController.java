@@ -9,6 +9,8 @@ import Views.IndividualUserView;
 import Views.LibrarianView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * @author Chip Brady
@@ -67,7 +69,7 @@ public class LibrarianController extends BooksController {
     private void checkOut() {
 
         String userID = this.checkoutView.getUserID();
-        String isbn[] = this.checkoutView.getISBN();
+        List<String> isbn = this.checkoutView.getISBN();
 
         this.librarianModel.checkOutBooksByISBN(isbn, userID);
 
@@ -98,7 +100,7 @@ public class LibrarianController extends BooksController {
     private void checkIn() {
 
         String userID = this.checkInView.getUserID();
-        String[] isbn = this.checkInView.getISBN();
+        List<String> isbn = this.checkInView.getISBN();
 
         this.librarianModel.checkInBooksByISBN(isbn, userID);
     }

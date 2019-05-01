@@ -6,6 +6,8 @@ import Views.CheckoutView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jeremy Hudson
@@ -22,7 +24,7 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @param _userID
      */
-    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
+    public void checkOutBooksByISBN(List<String> _isbn, String _userID) {
         int result = 0;
         try {
             result = this.sqlCaller.checkoutBooks(_isbn, _userID);
@@ -45,7 +47,7 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @param _userID
      */
-    public void checkInBooksByISBN(String[] _isbn, String _userID) {
+    public void checkInBooksByISBN(List<String> _isbn, String _userID) {
         int result = 0;
         try {
             result = this.sqlCaller.checkinBooks(_isbn, _userID);
