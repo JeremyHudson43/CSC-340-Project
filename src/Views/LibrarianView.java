@@ -28,7 +28,7 @@ public class LibrarianView extends javax.swing.JFrame {
          this.openDatabaseButton.addActionListener(listenForDatabase);
 
     }
-    
+
     public String getUserSearchTextField() {
         return  this.userSearchTextField.getText();
     }
@@ -57,7 +57,7 @@ public class LibrarianView extends javax.swing.JFrame {
     public void goToBookListener(ActionListener listenForGoToBook) {
          this.goToSelectedBookButton.addActionListener(listenForGoToBook);
     }
-    
+
     public void populateComboBox(String _bookName) {
         this.librarianViewCheckoutComboBox.addItem(_bookName);
     }

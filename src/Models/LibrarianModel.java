@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
  * @author Jeremy Hudson
- * @author Charles Brady Last updated 4-22-2019
+ * @author Charles Brady
+ * Last updated 5-1-2019
  */
 public class LibrarianModel extends BooksModel {
 
@@ -69,22 +70,6 @@ public class LibrarianModel extends BooksModel {
 
         } else {
             JOptionPane.showMessageDialog(null, "Error: Book may not be in API");
-        }
-    }
-
-    /**
-     * This method removes a book from the database.
-     *
-     * @param _b
-     * @return
-     */
-    public void removeBook(BooksModel _b) {
-        int result = this.sqlCaller.removeBooks(_b.getISBN());
-        if (result > 0) {
-            JOptionPane.showMessageDialog(null, "Book(s) removed to database");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: Book may not be in database");
         }
     }
 

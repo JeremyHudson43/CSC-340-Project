@@ -16,31 +16,30 @@ public class CheckinView extends javax.swing.JFrame {
      * Creates new form CheckoutView
      */
     public CheckinView() {
+
         initComponents();
     }
 
-    public void checkinListener(ActionListener listenForCheckin){
+    public void checkinListener(ActionListener listenForCheckin) {
+
         this.checkInButton.addActionListener(listenForCheckin);
     }
 
-     public String getUserID() {
+    public String getUserID() {
+
         return this.userTextField.getText();
     }
 
-    public String getISBN1() {
-        return this.isbnTextField1.getText();
-    }
+    public String[] getISBN() {
 
-    public String getISBN2() {
-        return this.isbnTextField2.getText();
-    }
+        String[] isbn = null;
 
-    public String getISBN3() {
-        return this.isbnTextField3.getText();
-    }
+        isbn[1] = this.isbnTextField1.getText();
+        isbn[2] = this.isbnTextField2.getText();
+        isbn[3] = this.isbnTextField3.getText();
+        isbn[4] = this.isbnTextField4.getText();
 
-    public String getISBN4() {
-        return this.isbnTextField4.getText();
+        return isbn;
     }
 
     /**
@@ -75,6 +74,30 @@ public class CheckinView extends javax.swing.JFrame {
         BookISBNLabel.setText("Enter books by ISBN:");
 
         checkInButton.setText("Check In");
+
+        userTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userTextFieldActionPerformed(evt);
+            }
+        });
+
+        isbnTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isbnTextField1ActionPerformed(evt);
+            }
+        });
+
+        isbnTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isbnTextField2ActionPerformed(evt);
+            }
+        });
+
+        isbnTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isbnTextField3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Check In");
 
@@ -134,6 +157,22 @@ public class CheckinView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void isbnTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbnTextField1ActionPerformed
+        isbnTextField2.requestFocus();
+    }//GEN-LAST:event_isbnTextField1ActionPerformed
+
+    private void isbnTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbnTextField2ActionPerformed
+        isbnTextField3.requestFocus();
+    }//GEN-LAST:event_isbnTextField2ActionPerformed
+
+    private void isbnTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isbnTextField3ActionPerformed
+        isbnTextField4.requestFocus();
+    }//GEN-LAST:event_isbnTextField3ActionPerformed
+
+    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
+        isbnTextField1.requestFocus();
+    }//GEN-LAST:event_userTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

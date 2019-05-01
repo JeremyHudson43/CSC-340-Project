@@ -2,6 +2,7 @@ package SQL_Translator;
 
 import Models.BooksModel;
 import Models.UserModel;
+import static java.lang.reflect.Array.getLength;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -59,7 +60,7 @@ public class MySQLDBTranslator {
      */
     public int addBooks(BooksModel _book) {
         int result = 0;
-        String sql = "";
+        String sql;
 
         try {
             sql = "INSERT INTO book(isbn, author, title, category, imagelink) "
@@ -80,28 +81,6 @@ public class MySQLDBTranslator {
     }
 
     /**
-     * Remove a book from the MySQL database.
-     *
-     * @param _isbn
-     * @return
-     */
-    public int removeBooks(String _isbn) {
-
-        int result = 0;
-        String sql = "";
-
-        try {
-
-            sql = "DELETE FROM books WHERE isbn = " + _isbn;
-            result = this.preparedstate.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQLDBTranslator.class.getName())
-                    .log(Level.SEVERE, null, ex);
-        }
-        return result;
-    }
-
-    /**
      * This searches for a book in the MySQL Database.
      *
      * @param _author
@@ -112,6 +91,7 @@ public class MySQLDBTranslator {
      */
     public Object[][] searchBooks(String _author, String _title, String _isbn) throws SQLException {
 
+        int column = 5;
         String sql = "";
         ResultSet resultset;
 
@@ -121,15 +101,15 @@ public class MySQLDBTranslator {
         int row = resultset.getRow();
         resultset.first();
 
-        Object[][] data = new Object[row][5];
+        Object[][] data = new Object[row][column];
 
         for (int i = 0; i < row; i++) {
-            data[i][0] = resultset.getString(1);
-            data[i][1] = resultset.getString(2);
-            data[i][2] = resultset.getString(3);
-            data[i][3] = resultset.getString(4);
-            data[i][4] = resultset.getString(5);
-            resultset.next();
+
+            for (int j = 0; j < column; j++) {
+
+                data[i][j] = resultset.getString(j);
+                resultset.next();
+            }
         }
         return data;
     }
@@ -146,48 +126,69 @@ public class MySQLDBTranslator {
      */
     public ResultSet searchBooksHelper(String _author, String _title, String _isbn,
             String _sql) {
+
         try {
+
             if (!_isbn.equals("")) {
+
                 _sql = "SELECT * FROM book WHERE isbn like ?";
                 this.preparedstate = this.connection.prepareStatement(_sql);
                 this.preparedstate.setString(1, "%" + _isbn + "%");
             } else {
+
                 if (!_author.equals("") && !_title.equals("")) {
+
                     _sql = "SELECT * FROM book WHERE author like ?"
                             + " AND title like ?";
                     this.preparedstate = this.connection.prepareStatement(_sql);
                     this.preparedstate.setString(1, "%" + _author + "%");
                     this.preparedstate.setString(2, "%" + _title + "%");
                 }
+
                 if (!_author.equals("")) {
+
                     _sql = "select * from book where author like ? ";
                     this.preparedstate = this.connection.prepareStatement(_sql);
                     this.preparedstate.setString(1, "%" + _author + "%");
-                    //   select * from book where author like '%Rowling%';
                 }
+
                 if (!_title.equals("")) {
+
                     _sql = "SELECT * FROM book WHERE title like ?";
                     this.preparedstate = connection.prepareStatement(_sql);
                     this.preparedstate.setString(1, "%" + _title + "%");
                 }
             }
+
             return this.preparedstate.executeQuery();
+
         } catch (SQLException ex) {
+
             System.out.println(ex.getMessage());
             System.exit(0);
         }
         return null;
     }
 
-    // This checks out a book for a user within the MySQL Database.
+    /**
+     * This checks out a book for a user within the MySQL Database.
+     * @param _isbn
+     * @param _id
+     * @return
+     */
     public int checkoutBooks(String[] _isbn, String _id) {
+
         boolean result = false;
         String sql = "";
         int cnt = 0;
+        int length = getLength(_isbn);
 
         try {
-            for (int i = 0; i < 4; i++) {
+
+            for (int i = 0; i < length; i++) {
+
                 if (!_isbn[i].equals("")) {
+
                     sql = "INSERT INTO checkout (ID, ISBN, status) VALUES"
                             + "('" + _id + "', '" + _isbn[i] + "', 'Checked Out');";
                     this.preparedstate = this.connection.prepareCall(sql);
@@ -196,6 +197,7 @@ public class MySQLDBTranslator {
                 }
             }
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return cnt;
@@ -209,11 +211,14 @@ public class MySQLDBTranslator {
      * @return
      */
     public int checkInBooks(String[] _isbn, String _id) {
+
         int result = 0;
         String sql = "";
+        int length = getLength(_isbn);
 
         try {
-            for (int i = 0; i < 4; i++) {
+
+            for (int i = 0; i < length; i++) {
 
                 sql = "UPDATE checkout SET status = 'Check In' WHERE isbn = '"
                         + _isbn[i] + "' AND ID = '" + _id + "';";
@@ -222,6 +227,7 @@ public class MySQLDBTranslator {
             }
 
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return result;
@@ -234,10 +240,12 @@ public class MySQLDBTranslator {
      * @return
      */
     public int createAccount(UserModel _user) {
+
         int result = 0;
         String sql = "";
 
         try {
+
             sql = "INSERT INTO users (UserID, PWD, Name, userType, eMail) "
                     + "VALUES(?,?,?,?,?)";
             this.preparedstate = this.connection.prepareStatement(sql);
@@ -248,6 +256,7 @@ public class MySQLDBTranslator {
             this.preparedstate.setString(5, _user.getEmail());
             result = this.preparedstate.executeUpdate();
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return result;
@@ -262,11 +271,13 @@ public class MySQLDBTranslator {
      * @throws Exception
      */
     public String checkLogin(UserModel _user) throws Exception {
+
         String sql = "";
         ResultSet result = null;
         String type = "";
 
         try {
+
             sql = "SELECT userType FROM users WHERE UserID=? AND PWD=?";
             this.preparedstate = this.connection.prepareStatement(sql);
 
@@ -276,10 +287,12 @@ public class MySQLDBTranslator {
             result = this.preparedstate.executeQuery();
 
             if (result.next()) {
+
                 type = result.getString(1);
             }
 
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return type;
@@ -293,6 +306,7 @@ public class MySQLDBTranslator {
      * @return
      */
     public String searchUserID(String _name) {
+
         String sql = "";
         ResultSet result = null;
         String id = "";
@@ -305,10 +319,12 @@ public class MySQLDBTranslator {
             result = this.preparedstate.executeQuery();
 
             if (result.next()) {
+
                 id = result.getString(1);
             }
 
         } catch (SQLException ex) {
+
             Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
@@ -333,6 +349,7 @@ public class MySQLDBTranslator {
             result = this.preparedstate.executeQuery();
 
             if (result.next()) {
+
                 name = result.getString(1);
                 eMail = result.getString(2);
             }
@@ -341,6 +358,7 @@ public class MySQLDBTranslator {
             user.setUserId(_id);
             return user;
         } catch (SQLException ex) {
+
             Logger.getLogger(MySQLDBTranslator.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
@@ -359,15 +377,18 @@ public class MySQLDBTranslator {
         Vector<String> columnNames = new Vector<String>();
         int columnCount = metaData.getColumnCount();
         for (int column = 1; column <= columnCount; column++) {
+
             columnNames.add(metaData.getColumnName(column));
         }
 
         //This is the data of the table
         Vector<Vector<Object>> data = new Vector<Vector<Object>>();
         while (_resultSet.next()) {
+
             Vector<Object> vector = new Vector<Object>();
             for (int columnIndex = 1; columnIndex <= columnCount;
                     columnIndex++) {
+
                 vector.add(_resultSet.getObject(columnIndex));
             }
             data.add(vector);

@@ -40,7 +40,25 @@ public class LibrarianController extends BooksController {
         this.librarianView.checkInListener(e -> displayCheckInView());
         this.librarianView.checkOutListener(e -> displayCheckOutView());
         //this.librarianView.populateComboBox(_bookName);
+    }
 
+    /**
+     * This method displays the checkout view.
+     */
+    private void displayCheckOutView() {
+
+        this.checkoutView.setVisible(true);
+        this.checkoutView.checkOutListener(e -> {
+
+            try {
+
+                checkOut();
+            } catch (Exception ex) {
+
+                Logger.getLogger(BooksController.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+        });
     }
 
     /* This gets the userID and ISBNs from checkoutView and contacts the model to
@@ -49,12 +67,7 @@ public class LibrarianController extends BooksController {
     private void checkOut() {
 
         String userID = this.checkoutView.getUserID();
-        String isbn1 = this.checkoutView.getISBN1();
-        String isbn2 = this.checkoutView.getISBN2();
-        String isbn3 = this.checkoutView.getISBN2();
-        String isbn4 = this.checkoutView.getISBN2();
-
-        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
+        String isbn[] = this.checkoutView.getISBN();
 
         this.librarianModel.checkOutBooksByISBN(isbn, userID);
 
@@ -67,9 +80,12 @@ public class LibrarianController extends BooksController {
 
         this.checkInView.setVisible(true);
         this.checkInView.checkinListener(e -> {
+
             try {
+
                 this.checkIn();
             } catch (Exception ex) {
+
                 Logger.getLogger(BooksController.class.getName())
                         .log(Level.SEVERE, null, ex);
             }
@@ -82,36 +98,9 @@ public class LibrarianController extends BooksController {
     private void checkIn() {
 
         String userID = this.checkInView.getUserID();
-        String isbn1 = this.checkInView.getISBN1();
-        String isbn2 = this.checkInView.getISBN2();
-        String isbn3 = this.checkInView.getISBN2();
-        String isbn4 = this.checkInView.getISBN2();
+        String[] isbn = this.checkInView.getISBN();
 
-        String[] isbn = {isbn1, isbn2, isbn3, isbn4};
         this.librarianModel.checkInBooksByISBN(isbn, userID);
-
-    }
-
-    /**
-     * This method displays the checkout view.
-     */
-    private void displayCheckOutView() {
-
-        this.checkoutView.setVisible(true);
-        this.checkoutView.checkOutListener(e -> {
-            try {
-
-                checkOut();
-
-            } catch (Exception ex) {
-
-                Logger.getLogger(BooksController.class.getName())
-                        .log(Level.SEVERE, null, ex);
-
-            }
-
-        });
-
     }
 
     /**
@@ -121,18 +110,17 @@ public class LibrarianController extends BooksController {
 
         this.addBookView.setVisible(true);
         this.addBookView.addBookListener(e -> {
+
             try {
 
                 addBooks();
 
             } catch (Exception ex) {
+
                 Logger.getLogger(BooksController.class.getName())
                         .log(Level.SEVERE, null, ex);
-
             }
-
         });
-
     }
 
     /**
@@ -148,11 +136,12 @@ public class LibrarianController extends BooksController {
         String ISBN = this.addBookView.getISBN();
 
         if (ISBN.equals("")) {
+
             this.librarianModel.loadBookNameByAuthorAndTitle(author, title);
         } else {
+
             this.librarianModel.loadBookByISBN(ISBN);
         }
-
     }
 
     /**
@@ -169,7 +158,5 @@ public class LibrarianController extends BooksController {
         this.individualUserView.setUserID(placeholder.getUserId());
         this.individualUserView.setUserType(placeholder.getUserType());
         this.individualUserView.setVisible(true);
-
     }
-
 }
