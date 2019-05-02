@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -160,23 +161,34 @@ public class MySQLDBTranslator {
         return null;
     }
 
-    // This checks out a book for a user within the MySQL Database.
-    public int checkoutBooks(String[] _isbn, String _id) {
+       /**
+     * This checks out a book for a user within the MySQL Database.
+     * @param _isbn
+     * @param _id
+     * @return
+     */
+    public int checkoutBooks(List<String> _isbn, String _id) {
+
         boolean result = false;
         String sql = "";
         int cnt = 0;
+        int length = _isbn.size();
 
         try {
-            for (int i = 0; i < _isbn.length; i++) {
-                if (!_isbn[i].equals("")) {
+
+            for (int i = 0; i < length; i++) {
+
+                if (!_isbn.get(i).equals("")) {
+
                     sql = "INSERT INTO checkout (ID, ISBN, status) VALUES"
-                            + "('" + _id + "', '" + _isbn[i] + "', 'Checked Out');";
+                            + "('" + _id + "', '" + _isbn.get(i) + "', 'Checked Out');";
                     this.preparedstate = this.connection.prepareCall(sql);
                     result = this.preparedstate.execute(sql);
                     cnt++;
                 }
             }
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return cnt;
@@ -189,20 +201,24 @@ public class MySQLDBTranslator {
      * @param _id
      * @return
      */
-    public int checkInBooks(String[] _isbn, String _id) {
+    public int checkInBooks(List<String> _isbn, String _id) {
+
         int result = 0;
         String sql = "";
+        int length = _isbn.size();
 
         try {
-            for (int i = 0; i < _isbn.length; i++) {
+
+            for (int i = 0; i < length; i++) {
 
                 sql = "UPDATE checkout SET status = 'Check In' WHERE isbn = '"
-                        + _isbn[i] + "' AND ID = '" + _id + "';";
+                        + _isbn.get(i) + "' AND ID = '" + _id + "';";
                 this.preparedstate = this.connection.prepareCall(sql);
                 result = this.preparedstate.executeUpdate();
             }
 
         } catch (SQLException e) {
+
             System.out.println(e.getMessage());
         }
         return result;

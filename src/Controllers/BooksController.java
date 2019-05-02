@@ -1,18 +1,14 @@
 package Controllers;
 
 import Models.BooksModel;
-import Models.UserModel;
 import Views.BookDatabaseView;
 import Views.BookScrollView;
 import Views.IndividualBookView;
-
-import java.awt.BorderLayout;
 import java.io.IOException;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -30,7 +26,6 @@ import javax.swing.JTable;
 public class BooksController {
 
     private BooksModel bookModel = new BooksModel();
-    UserModel userModel = new UserModel();
 
     /**
      * This displays the book DB view and listens for the search button.
@@ -84,16 +79,15 @@ public class BooksController {
      *
      *
      */
-    private void getIndividualBookViewTable(String author, String title, String ISBN) throws SQLException {
+    private void getIndividualBookViewTable(String _author, String _title, String _isbn) throws SQLException {
 
-        JTable table = bookModel.createTable(author, title, ISBN);
+        JTable table = bookModel.createTable(_author, _title, _isbn);
         JScrollPane scrollPane = new JScrollPane(table);
+        
         BookScrollView bookScrollView = new BookScrollView();
-
-        bookScrollView.getContentPane().setLayout(new BorderLayout());
-        bookScrollView.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        bookScrollView.scrollPaneSetter(scrollPane);
+  
         bookScrollView.setVisible(true);
-
         bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 
     }

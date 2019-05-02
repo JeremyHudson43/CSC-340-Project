@@ -1,6 +1,8 @@
 package Views;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,14 +30,16 @@ public class CheckoutView extends javax.swing.JFrame {
         return this.userTextField.getText();
     }
 
-    public String[] getISBN() {
-        String[] isbn = new String[3];
+    public List<String> getISBN() {
+
+        List<String> isbn = new ArrayList<>();
 
         try {
-            isbn[0] = this.isbnTextField1.getText();
-            isbn[1] = this.isbnTextField2.getText();
-            isbn[2] = this.isbnTextField3.getText();
-            isbn[3] = this.isbnTextField4.getText();
+            isbn.add(this.isbnTextField1.getText());
+            isbn.add(this.isbnTextField2.getText());
+            isbn.add(this.isbnTextField3.getText());
+            isbn.add(this.isbnTextField4.getText());
+
         } catch (Exception e) {
 
         }

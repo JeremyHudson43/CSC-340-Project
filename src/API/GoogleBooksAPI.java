@@ -21,7 +21,7 @@ import org.json.JSONObject;
  * parses the information using JSONobjects, then returns the information.
  *
  * It uses a loop to gather data from the API in a 2d array in the following
- * fashion 2dArray[book][detail of book]
+ * fashion: Array[book][detail of book].
  */
 public class GoogleBooksAPI implements ApiConnector {
 

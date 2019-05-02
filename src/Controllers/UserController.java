@@ -46,7 +46,7 @@ public class UserController {
 
         registerView.setVisible(true);
         registerView.registerListener(e -> checkRegister(_usertype, registerView.getName(),
-                registerView.getUserID(), registerView.getUserPassword(), registerView.getUserEmail()));
+        registerView.getUserID(), registerView.getUserPassword(), registerView.getUserEmail()));
     }
 
     /**
@@ -63,7 +63,7 @@ public class UserController {
     }
 
     /**
-     * This opens the library card view and prints the barcode when the print button is clicked.
+     * This opens the library card view and prints the bar code when the print button is clicked.
      *
      *
      *

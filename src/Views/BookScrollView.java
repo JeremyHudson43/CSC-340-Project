@@ -1,16 +1,18 @@
 package Views;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author Charles Brady
  * @author Jeremy Hudson
- * 
+ *
  * Last updated 4-22-2019
- * 
- * This class adds a listener to the select book button after the JFrame
- * in the view is passed a scrollView of books to select from 
+ *
+ * This class adds a listener to the select book button after the JFrame in the
+ * view is passed a scrollView of books to select from
  */
 public class BookScrollView extends javax.swing.JFrame {
 
@@ -58,6 +60,11 @@ public class BookScrollView extends javax.swing.JFrame {
 
     public void bookSelectionListener(ActionListener _listenForSelection) {
         this.selectBookButton.addActionListener(_listenForSelection);
+    }
+
+    public void scrollPaneSetter(JScrollPane scrollPane) {
+        this.getContentPane().setLayout(new BorderLayout());
+        this.getContentPane().add(scrollPane, BorderLayout.CENTER);
     }
 
     /**

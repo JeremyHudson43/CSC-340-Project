@@ -7,6 +7,7 @@ import Views.CheckinView;
 import Views.CheckoutView;
 import Views.IndividualUserView;
 import Views.LibrarianView;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,9 +26,6 @@ public class LibrarianController extends BooksController {
     private LibrarianModel librarianModel = new LibrarianModel();
     private UserController userController = new UserController();
     private UserModel user = new UserModel();
-    private CheckinView checkInView = new CheckinView();
-    private AddBookView addBookView = new AddBookView();
-    private CheckoutView checkoutView = new CheckoutView();
     private IndividualUserView individualUserView = new IndividualUserView();
 
     /**
@@ -48,27 +46,15 @@ public class LibrarianController extends BooksController {
     }
 
     /**
-     * This gets the userID and ISBNs from checkoutView and contacts the mode to
-     * checkout the books in the database
-     *
-     *
-     */
-    private void checkOut() {
-        String userID = this.checkoutView.getUserID();
-        String isbn[] = this.checkoutView.getISBN();
-
-        this.librarianModel.checkOutBooksByISBN(isbn, userID);
-
-    }
-
-    /**
      * This displays the check-in view.
      *
      *
      */
     private void displayCheckInView() {
-        this.checkInView.setVisible(true);
-        this.checkInView.checkinListener(e -> checkIn());
+        CheckinView checkInView = new CheckinView();
+
+        checkInView.setVisible(true);
+        checkInView.checkinListener(e -> checkIn(checkInView.getISBN(), checkInView.getUserID()));
     }
 
     /**
@@ -76,12 +62,8 @@ public class LibrarianController extends BooksController {
      *
      *
      */
-    private void checkIn() {
-        String userID = this.checkInView.getUserID();
-        String isbn[] = this.checkoutView.getISBN();
-
-        this.librarianModel.checkInBooksByISBN(isbn, userID);
-
+    private void checkIn(List<String> _isbn, String _userID) {
+        this.librarianModel.checkInBooksByISBN(_isbn, _userID);
     }
 
     /**
@@ -90,8 +72,20 @@ public class LibrarianController extends BooksController {
      *
      */
     private void displayCheckOutView() {
-        this.checkoutView.setVisible(true);
-        this.checkoutView.checkOutListener(e -> checkOut());
+        CheckoutView checkOutView = new CheckoutView();
+
+        checkOutView.setVisible(true);
+        checkOutView.checkOutListener(e -> checkOut(checkOutView.getISBN(), checkOutView.getUserID()));
+    }
+
+    /**
+     * This gets the userID and ISBNs from checkoutView and contacts the mode to
+     * checkout the books in the database
+     *
+     *
+     */
+    private void checkOut(List<String> _isbn, String _userID) {
+        this.librarianModel.checkOutBooksByISBN(_isbn, _userID);
     }
 
     /**
@@ -101,8 +95,10 @@ public class LibrarianController extends BooksController {
      *
      */
     private void displayAddBookView() {
-        this.addBookView.setVisible(true);
-        this.addBookView.addBookListener(e -> addBooks());
+        AddBookView addBookView = new AddBookView();
+        addBookView.setVisible(true);
+        
+        addBookView.addBookListener(e -> addBooks(addBookView.getAuthor(),addBookView.getBookTitle(), addBookView.getISBN()));
     }
 
     /**
@@ -110,17 +106,13 @@ public class LibrarianController extends BooksController {
      *
      *
      */
-    private void addBooks() {
-        String author = this.addBookView.getAuthor();
-        String title = this.addBookView.getTitle();
-        String ISBN = this.addBookView.getISBN();
-
+    private void addBooks(String _author, String _title, String _isbn) {
         try {
-            if (ISBN.equals("")) {
-                this.librarianModel.loadBookNameByAuthorAndTitle(author, title);
+            if (_isbn.equals("")) {
+                this.librarianModel.loadBookNameByAuthorAndTitle(_author, _title);
 
             } else {
-                this.librarianModel.loadBookByISBN(ISBN);
+                this.librarianModel.loadBookByISBN(_isbn);
             }
         } catch (Exception ex) {
             Logger.getLogger(LibrarianController.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,12 +126,13 @@ public class LibrarianController extends BooksController {
      */
     private void userDisplay() {
 
-        this.user = this.userModel.searchUser(this.librarianView.getUserSearchTextField());
+        this.user = this.user.searchUser(this.librarianView.getUserSearchTextField());
 
         this.individualUserView.setUsersName(user.getName());
         this.individualUserView.setUserEmail(user.getEmail());
         this.individualUserView.setUserID(user.getUserId());
         this.individualUserView.setUserType(user.getUserType());
+        
         this.individualUserView.setVisible(true);
 
     }

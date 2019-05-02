@@ -3,6 +3,7 @@ package Models;
 import API.APITranslator;
 import API.ApiConnector;
 import Views.CheckoutView;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,10 +29,16 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @param _userID
      */
-    public void checkOutBooksByISBN(String[] _isbn, String _userID) {
+       public void checkOutBooksByISBN(List<String> _isbn, String _userID) {
         int result = 0;
         try {
             result = this.sqlCaller.checkoutBooks(_isbn, _userID);
+            if (result > 0) {
+                JOptionPane.showMessageDialog(null, "Book(s) checked out");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to checkout");
+            }
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -45,7 +52,7 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @param _userID
      */
-    public void checkInBooksByISBN(String[] _isbn, String _userID) {
+     public void checkInBooksByISBN(List<String> _isbn, String _userID) {
         int result = 0;
         try {
             result = this.sqlCaller.checkinBooks(_isbn, _userID);

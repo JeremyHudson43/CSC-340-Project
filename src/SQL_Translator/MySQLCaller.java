@@ -3,6 +3,7 @@ package SQL_Translator;
 import Models.BooksModel;
 import Models.UserModel;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,7 +58,7 @@ public class MySQLCaller {
      * @param _id
      * @return
      */
-    public int checkoutBooks(String[] _bookISBN, String _id) {
+   public int checkoutBooks(List<String> _bookISBN, String _id) {
         return this.translator.checkoutBooks(_bookISBN, _id);
     }
 
@@ -68,8 +69,8 @@ public class MySQLCaller {
      * @param _id
      * @return
      */
-    public int checkinBooks(String[] _bookISBN, String _id) {
-        return translator.checkInBooks(_bookISBN, _id);
+   public int checkinBooks(List<String> _bookISBN, String _id) {
+        return this.translator.checkInBooks(_bookISBN, _id);
     }
 
     /**
