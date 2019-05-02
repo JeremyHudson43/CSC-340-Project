@@ -80,8 +80,8 @@ public class UserModel {
         this.password = _password;
     }
 
-    public void setUserId(String _UserId) {
-        this.userId = _UserId;
+    public void setUserId(String _userId) {
+        this.userId = _userId;
     }
 
     public void setUserType(String _userType) {

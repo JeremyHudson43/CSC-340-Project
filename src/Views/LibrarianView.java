@@ -30,8 +30,8 @@ public class LibrarianView extends javax.swing.JFrame {
         return this.userSearchTextField.getText();
     }
 
-    public void userSearchListener(ActionListener _listenForCustomerSearch) {
-        this.userSearchButton.addActionListener(_listenForCustomerSearch);
+    public void userSearchListener(ActionListener _listenForUserSearch) {
+        this.userSearchButton.addActionListener(_listenForUserSearch);
     }
 
     public void bookAddListener(ActionListener _listenForAddBook) {

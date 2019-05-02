@@ -99,10 +99,12 @@ public class UserController {
 
         try {
             BarcodeTranslator translator = new BarcodeTranslator();
-            Barcode barcode = translator.createBarcode(_userID, _name);
+            if(!_userID.equals("") && !_name.equals("")){
+            Barcode barcode = translator.createBarcode(_userID, _name);  
             BufferedImage image = BarcodeImageHandler.getImage(barcode);
             this.libraryCardView.setBarCode(new ImageIcon(image));
             this.libraryCardView.setNameField(_name);
+            }
         } catch (BarcodeException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }

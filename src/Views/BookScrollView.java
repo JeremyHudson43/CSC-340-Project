@@ -62,9 +62,9 @@ public class BookScrollView extends javax.swing.JFrame {
         this.selectBookButton.addActionListener(_listenForSelection);
     }
 
-    public void scrollPaneSetter(JScrollPane scrollPane) {
+    public void scrollPaneSetter(JScrollPane _scrollPane) {
         this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(scrollPane, BorderLayout.CENTER);
+        this.getContentPane().add(_scrollPane, BorderLayout.CENTER);
     }
 
     /**

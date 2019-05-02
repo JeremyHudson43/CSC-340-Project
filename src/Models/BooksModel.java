@@ -99,27 +99,30 @@ public class BooksModel {
         String isbn = "";
         String imagelink = "";
 
-        // get the selected row index
-        int selectedRowIndex = _table.getSelectedRow();
-        if (model.getValueAt(selectedRowIndex, 0) != null) {
-            isbn = model.getValueAt(selectedRowIndex, 0).toString();
-            bookInfo[0] = isbn;
-        }
-        if (model.getValueAt(selectedRowIndex, 1) != null) {
-            title = model.getValueAt(selectedRowIndex, 1).toString();
-            bookInfo[1] = title;
-        }
-        if (model.getValueAt(selectedRowIndex, 2) != null) {
-            author = model.getValueAt(selectedRowIndex, 2).toString();
-            bookInfo[2] = author;
-        }
-        if (model.getValueAt(selectedRowIndex, 3) != null) {
-            category = model.getValueAt(selectedRowIndex, 3).toString();
-            bookInfo[3] = category;
-        }
-        if (model.getValueAt(selectedRowIndex, 4) != null) {
-            imagelink = model.getValueAt(selectedRowIndex, 4).toString();
-            bookInfo[4] = imagelink;
+        // This gets the selected row index.
+        try {
+            int selectedRowIndex = _table.getSelectedRow();
+            if (model.getValueAt(selectedRowIndex, 0) != null) {
+                isbn = model.getValueAt(selectedRowIndex, 0).toString();
+                bookInfo[0] = isbn;
+            }
+            if (model.getValueAt(selectedRowIndex, 1) != null) {
+                title = model.getValueAt(selectedRowIndex, 1).toString();
+                bookInfo[1] = title;
+            }
+            if (model.getValueAt(selectedRowIndex, 2) != null) {
+                author = model.getValueAt(selectedRowIndex, 2).toString();
+                bookInfo[2] = author;
+            }
+            if (model.getValueAt(selectedRowIndex, 3) != null) {
+                category = model.getValueAt(selectedRowIndex, 3).toString();
+                bookInfo[3] = category;
+            }
+            if (model.getValueAt(selectedRowIndex, 4) != null) {
+                imagelink = model.getValueAt(selectedRowIndex, 4).toString();
+                bookInfo[4] = imagelink;
+            }
+        } catch (Exception e) {
         }
 
         return bookInfo;

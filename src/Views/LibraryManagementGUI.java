@@ -34,7 +34,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
         newUserLbl = new javax.swing.JLabel();
         returningUserLabel = new javax.swing.JLabel();
-        exitProgramButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
 
@@ -43,13 +42,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
         newUserLbl.setText("New User");
 
         returningUserLabel.setText("Returning User");
-
-        exitProgramButton.setText("Exit Program");
-        exitProgramButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitProgramButtonActionPerformed(evt);
-            }
-        });
 
         registerButton.setText("Register");
 
@@ -69,10 +61,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
                     .addComponent(registerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                     .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(exitProgramButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,20 +73,14 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newUserLbl)
                     .addComponent(registerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(exitProgramButton)
-                .addGap(21, 21, 21))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitProgramButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProgramButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitProgramButtonActionPerformed
-
-    public void addLoginListener(ActionListener listenForLogin) {
-        this.loginButton.addActionListener(listenForLogin);
+    public void addLoginListener(ActionListener _listenForLogin) {
+        this.loginButton.addActionListener(_listenForLogin);
     }
 
     public void addRegisterListener(ActionListener _listenForRegister) {
@@ -117,7 +99,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton exitProgramButton;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel newUserLbl;
     private javax.swing.JButton registerButton;

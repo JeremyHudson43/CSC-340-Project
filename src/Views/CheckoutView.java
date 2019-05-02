@@ -23,7 +23,7 @@ public class CheckoutView extends javax.swing.JFrame {
     }
 
     public void checkOutListener(ActionListener _listenForCheckout) {
-        this.CheckoutButton.addActionListener(_listenForCheckout);
+        this.checkOutButton.addActionListener(_listenForCheckout);
     }
 
     public String getUserID() {
@@ -59,7 +59,7 @@ public class CheckoutView extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         CustomerLabel = new javax.swing.JLabel();
         BookISBNLabel = new javax.swing.JLabel();
-        CheckoutButton = new javax.swing.JButton();
+        checkOutButton = new javax.swing.JButton();
         userTextField = new javax.swing.JTextField();
         isbnTextField1 = new javax.swing.JTextField();
         isbnTextField2 = new javax.swing.JTextField();
@@ -77,7 +77,7 @@ public class CheckoutView extends javax.swing.JFrame {
 
         BookISBNLabel.setText("Enter books by ISBN:");
 
-        CheckoutButton.setText("Checkout");
+        checkOutButton.setText("Checkout");
 
         checkOutViewLabel.setText("Checkout View");
 
@@ -98,7 +98,7 @@ public class CheckoutView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(CheckoutButton)
+                                .addComponent(checkOutButton)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(isbnTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
@@ -131,7 +131,7 @@ public class CheckoutView extends javax.swing.JFrame {
                     .addComponent(isbnTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isbnTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
-                .addComponent(CheckoutButton)
+                .addComponent(checkOutButton)
                 .addGap(20, 20, 20))
         );
 
@@ -144,8 +144,8 @@ public class CheckoutView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BookISBNLabel;
-    private javax.swing.JButton CheckoutButton;
     private javax.swing.JLabel CustomerLabel;
+    private javax.swing.JButton checkOutButton;
     private javax.swing.JLabel checkOutViewLabel;
     private javax.swing.JTextField isbnTextField1;
     private javax.swing.JTextField isbnTextField2;

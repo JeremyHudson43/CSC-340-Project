@@ -109,10 +109,10 @@ public class LibrarianController extends BooksController {
     private void addBooks(String _author, String _title, String _isbn) {
         try {
             if (_isbn.equals("")) {
-                this.librarianModel.loadBookNameByAuthorAndTitle(_author, _title);
+                this.librarianModel.callForBookNameByAuthorAndTitle(_author, _title);
 
             } else {
-                this.librarianModel.loadBookByISBN(_isbn);
+                this.librarianModel.callForBookByISBN(_isbn);
             }
         } catch (Exception ex) {
             Logger.getLogger(LibrarianController.class.getName()).log(Level.SEVERE, null, ex);

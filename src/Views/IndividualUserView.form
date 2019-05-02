@@ -49,7 +49,7 @@
                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="individualUserViewUserTypePlaceholderLbl" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerIDNumberPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="userIDNumberPlaceholderTxtLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -75,7 +75,7 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="individualUserViewIDNumberTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerIDNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userIDNumberPlaceholderTxtLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -93,7 +93,7 @@
         <Property name="text" type="java.lang.String" value="User ID Number:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="customerIDNumberPlaceholderTxtLbl">
+    <Component class="javax.swing.JLabel" name="userIDNumberPlaceholderTxtLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="User ID Number Placeholder"/>
       </Properties>

@@ -73,10 +73,6 @@ public class CustomerView extends javax.swing.JFrame {
         this.custSearchDatabaseButton.addActionListener(_listenForDatabase);
     }
 
-    public void goToBookListener(ActionListener _listenForGoToBook) {
-        this.custSearchDatabaseButton.addActionListener(_listenForGoToBook);
-    }
-
     /**
      * @param args the command line arguments
      */

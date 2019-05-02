@@ -36,11 +36,6 @@
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-              <Component id="exitProgramButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -56,9 +51,7 @@
                   <Component id="newUserLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="registerButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
-              <Component id="exitProgramButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,14 +66,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Returning User"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="exitProgramButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Exit Program"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitProgramButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="registerButton">
       <Properties>

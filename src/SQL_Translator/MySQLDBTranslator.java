@@ -137,6 +137,7 @@ public class MySQLDBTranslator {
                 this.preparedstate.setString(1, "%" + _isbn + "%");
             } else {
                 if (!_author.equals("") && !_title.equals("")) {
+                    
                     _sql = "SELECT * FROM book WHERE author like ?"
                             + " AND title like ?";
                     this.preparedstate = this.connection.prepareStatement(_sql);

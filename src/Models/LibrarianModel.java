@@ -81,7 +81,7 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @throws Exception
      */
-    public void loadBookByISBN(String _isbn) {
+    public void callForBookByISBN(String _isbn) {
 
         String bookData[][] = this.myAPI.loadBookNameByISBN(_isbn);
 
@@ -102,7 +102,7 @@ public class LibrarianModel extends BooksModel {
      * @param _title
      * @throws Exception
      */
-    public void loadBookNameByAuthorAndTitle(String _author, String _title) {
+    public void callForBookNameByAuthorAndTitle(String _author, String _title) {
 
         String bookData[][] = this.myAPI.loadBookNameByAuthorAndTitle(_author, _title);
 

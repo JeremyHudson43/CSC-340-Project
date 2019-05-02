@@ -26,7 +26,7 @@ public class IndividualUserView extends javax.swing.JFrame {
     private void initComponents() {
 
         individualUserViewIDNumberTxtLbl = new javax.swing.JLabel();
-        customerIDNumberPlaceholderTxtLbl = new javax.swing.JLabel();
+        userIDNumberPlaceholderTxtLbl = new javax.swing.JLabel();
         individualUserViewTxtLbl = new javax.swing.JLabel();
         individualUserViewNameTxtLbl = new javax.swing.JLabel();
         individualUserViewEmailTxtLbl = new javax.swing.JLabel();
@@ -39,7 +39,7 @@ public class IndividualUserView extends javax.swing.JFrame {
 
         individualUserViewIDNumberTxtLbl.setText("User ID Number:");
 
-        customerIDNumberPlaceholderTxtLbl.setText("User ID Number Placeholder");
+        userIDNumberPlaceholderTxtLbl.setText("User ID Number Placeholder");
 
         individualUserViewTxtLbl.setText("Individual User View");
 
@@ -80,7 +80,7 @@ public class IndividualUserView extends javax.swing.JFrame {
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(individualUserViewUserTypePlaceholderLbl)
-                            .addComponent(customerIDNumberPlaceholderTxtLbl))))
+                            .addComponent(userIDNumberPlaceholderTxtLbl))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +99,7 @@ public class IndividualUserView extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(individualUserViewIDNumberTxtLbl)
-                    .addComponent(customerIDNumberPlaceholderTxtLbl))
+                    .addComponent(userIDNumberPlaceholderTxtLbl))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UserTypeLbl)
@@ -110,20 +110,20 @@ public class IndividualUserView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setUsersName(String _customerName) {
-        this.namePlaceholderTxtLbl.setText(_customerName);
+    public void setUsersName(String _usersName) {
+        this.namePlaceholderTxtLbl.setText(_usersName);
     }
 
-    public void setUserEmail(String _customerEmail) {
-        this.emailAddressPlaceholderTxtLbl.setText(_customerEmail);
+    public void setUserEmail(String _userEmail) {
+        this.emailAddressPlaceholderTxtLbl.setText(_userEmail);
     }
 
-    public void setUserID(String _customerID) {
-        this.customerIDNumberPlaceholderTxtLbl.setText(_customerID);
+    public void setUserID(String _userID) {
+        this.userIDNumberPlaceholderTxtLbl.setText(_userID);
     }
 
     public void setUserType(String _userType) {
-        this.customerIDNumberPlaceholderTxtLbl.setText(_userType);
+        this.userIDNumberPlaceholderTxtLbl.setText(_userType);
     }
 
     /**
@@ -166,7 +166,6 @@ public class IndividualUserView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel UserTypeLbl;
-    private javax.swing.JLabel customerIDNumberPlaceholderTxtLbl;
     private javax.swing.JLabel emailAddressPlaceholderTxtLbl;
     private javax.swing.JLabel individualUserViewEmailTxtLbl;
     private javax.swing.JLabel individualUserViewIDNumberTxtLbl;
@@ -174,5 +173,6 @@ public class IndividualUserView extends javax.swing.JFrame {
     private javax.swing.JLabel individualUserViewTxtLbl;
     private javax.swing.JLabel individualUserViewUserTypePlaceholderLbl;
     private javax.swing.JLabel namePlaceholderTxtLbl;
+    private javax.swing.JLabel userIDNumberPlaceholderTxtLbl;
     // End of variables declaration//GEN-END:variables
 }
