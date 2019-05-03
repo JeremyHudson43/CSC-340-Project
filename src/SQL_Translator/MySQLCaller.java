@@ -1,19 +1,20 @@
-
 package SQL_Translator;
 
 import Models.BooksModel;
 import Models.UserModel;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Chip Brady
  *
  * Last updated 4/12
+ *
+ * This class simply returns what the MySQL translator gives for a certain input
+ * to it's caller.
  */
 public class MySQLCaller {
 
@@ -36,8 +37,8 @@ public class MySQLCaller {
     public int addBooks(BooksModel _book) {
         return this.translator.addBooks(_book);
     }
-
-    public boolean checkUser(UserModel _user) {
+    
+     public boolean checkUser(UserModel _user) {
         return this.translator.checkUser(_user);
     }
 
@@ -50,12 +51,8 @@ public class MySQLCaller {
      * @return
      */
     public Object[][] searchBooks(String _author, String _title, String _isbn) {
-        try {
-            return this.translator.searchBooks(_author, _title, _isbn);
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQLCaller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        return this.translator.searchBooks(_author, _title, _isbn);
+
     }
 
     /**
@@ -65,7 +62,7 @@ public class MySQLCaller {
      * @param _id
      * @return
      */
-    public int checkoutBooks(List<String> _bookISBN, String _id) {
+   public int checkoutBooks(List<String> _bookISBN, String _id) {
         return this.translator.checkoutBooks(_bookISBN, _id);
     }
 
@@ -76,8 +73,8 @@ public class MySQLCaller {
      * @param _id
      * @return
      */
-    public int checkinBooks(List<String> _bookISBN, String _id) {
-        return translator.checkInBooks(_bookISBN, _id);
+   public int checkinBooks(List<String> _bookISBN, String _id) {
+        return this.translator.checkInBooks(_bookISBN, _id);
     }
 
     /**
@@ -97,12 +94,8 @@ public class MySQLCaller {
      * @return
      */
     public String checkLogin(UserModel _user) {
-        try {
-            return this.translator.checkLogin(_user);
-        } catch (Exception ex) {
-            Logger.getLogger(MySQLCaller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        return this.translator.checkLogin(_user);
+
     }
 
     /**
