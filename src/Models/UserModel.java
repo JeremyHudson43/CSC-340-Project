@@ -197,7 +197,7 @@ public class UserModel {
      *
      *
      */
-    public int createAccount(UserModel _user) {
+    public static int createAccount(UserModel _user) {
         int result = 0;
         try {
             MySQLCaller SQL = new MySQLCaller();
@@ -210,7 +210,7 @@ public class UserModel {
     }
 
     /**
-     * This searches for user in the database. 
+     * This searches for user in the database.
      *
      *
      */
