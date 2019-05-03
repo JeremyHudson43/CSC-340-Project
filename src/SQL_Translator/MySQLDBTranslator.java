@@ -82,6 +82,33 @@ public class MySQLDBTranslator {
         return result;
     }
 
+    public boolean checkUser(UserModel _user) {
+        boolean check = false;
+        String sql;
+        ResultSet result;
+
+        try {
+
+            sql = "Select UserID from users where UserID = ?";
+
+            this.preparedstate = this.connection.prepareCall(sql);
+            this.preparedstate.setString(1, _user.getUserId());
+            result = this.preparedstate.executeQuery();
+
+            if (result.wasNull()) {
+
+                check = false;
+            } else {
+
+                check = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return check;
+    }
+
     /**
      * This searches for a book in the MySQL Database.
      *
@@ -98,10 +125,9 @@ public class MySQLDBTranslator {
         ResultSet resultset = null;
         resultset = searchBooksHelper(_author, _title, _isbn, sql);
 
-        if (resultset == null){
+        if (resultset == null) {
             JOptionPane.showMessageDialog(null, "Nothing entered. Please try again.");
-        }
-        else {
+        } else {
 
             resultset.last();
             int row = resultset.getRow();

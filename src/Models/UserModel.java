@@ -145,7 +145,7 @@ public class UserModel {
             user.setUserType(_userType);
 
             MySQLCaller SQL = new MySQLCaller();
-            result = SQL.createAccount(user);
+            result = createAccount(user);
 
             if (result > 0) {
                 JOptionPane.showMessageDialog(null, "Account Created");
@@ -172,9 +172,17 @@ public class UserModel {
     public static int createAccount(UserModel _user) {
 
         int result = 0;
+        boolean check = false;
         try {
             MySQLCaller SQL = new MySQLCaller();
-            result = SQL.createAccount(_user);
+            check = SQL.checkUser(_user);
+            if (check = false) {
+
+                result = SQL.createAccount(_user);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "User name alread used, please choose another");
+            }
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE,
                     null, ex);

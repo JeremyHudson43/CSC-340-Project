@@ -37,6 +37,10 @@ public class MySQLCaller {
         return this.translator.addBooks(_book);
     }
 
+    public boolean checkUser(UserModel _user) {
+        return this.translator.checkUser(_user);
+    }
+
     /**
      * This method calls the searchBooks method in the MySQL translator.
      *

@@ -5,14 +5,11 @@ import API.ApiConnector;
 import Views.CheckoutView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Jeremy Hudson
- * @author Charles Brady
- * Last updated 5-1-2019
+ * @author Charles Brady Last updated 5-1-2019
  */
 public class LibrarianModel extends BooksModel {
 
@@ -25,15 +22,10 @@ public class LibrarianModel extends BooksModel {
      * @param _userID
      */
     public void checkOutBooksByISBN(List<String> _isbn, String _userID) {
-        int result = 0;
-        try {
-            result = this.sqlCaller.checkoutBooks(_isbn, _userID);
-            if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Book(s) checked out");
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to checkout");
-            }
+        try {
+
+            this.sqlCaller.checkoutBooks(_isbn, _userID);
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
@@ -48,11 +40,12 @@ public class LibrarianModel extends BooksModel {
      * @param _userID
      */
     public void checkInBooksByISBN(List<String> _isbn, String _userID) {
-        int result = 0;
+
         try {
-            result = this.sqlCaller.checkinBooks(_isbn, _userID);
-            JOptionPane.showMessageDialog(null, "Book(s) checked in");
+
+            this.sqlCaller.checkinBooks(_isbn, _userID);
         } catch (Exception ex) {
+
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
@@ -65,14 +58,9 @@ public class LibrarianModel extends BooksModel {
      * @param _b
      */
     public void addBook(BooksModel _b) {
-        int result = 0;
-        result = this.sqlCaller.addBooks(_b);
-        if (result > 0) {
-            JOptionPane.showMessageDialog(null, "Book(s) added to database");
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: Book may not be in API");
-        }
+        this.sqlCaller.addBooks(_b);
+
     }
 
     /**
