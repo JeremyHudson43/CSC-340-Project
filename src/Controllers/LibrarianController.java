@@ -148,7 +148,7 @@ public class LibrarianController extends BooksController {
 
         this.individualUserView.setUsersName(user.getName());
         this.individualUserView.setUserEmail(user.getEmail());
-        this.individualUserView.setUserID(user.getUserId());
+        this.individualUserView.setUserID(user.getId());
         this.individualUserView.setUserType(user.getUserType());
 
         this.individualUserView.setVisible(true);

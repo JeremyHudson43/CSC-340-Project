@@ -38,6 +38,12 @@ public class MySQLCaller {
         return this.translator.addBooks(_book);
     }
     
+    /**
+     * This method checks if a user is already registered.
+     *
+     * @param _book
+     * @return
+     */
      public boolean checkUser(UserModel _user) {
         return this.translator.checkUser(_user);
     }

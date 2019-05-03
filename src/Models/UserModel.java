@@ -164,26 +164,26 @@ public class UserModel {
      *
      *
      */
-    public int checkRegisterHelper(UserModel user) {
+    public int checkRegisterHelper(UserModel _user) {
         boolean check = false;
         int result;
 
         MySQLCaller SQL = new MySQLCaller();
-        check = SQL.checkUser(user);
+        check = SQL.checkUser(_user);
 
         if (check == true) {
-            result = SQL.createAccount(user);
+            result = SQL.createAccount(_user);
             if (result > 0) {
-                String idNumber = SQL.searchUserID(user.getName());
-                user.setId(idNumber);
+                String idNumber = SQL.searchUserID(_user.getName());
+                _user.setId(idNumber);
                 return result;
             }
 
-            if (!user.getEmail().contains("@")) {
+            if (!_user.getEmail().contains("@")) {
                 result = 0;
                 return result;
             }
-            if (user.getName().equals("") || user.getUserId().equals("") || user.getPassword().equals("") || user.getEmail().equals("")) {
+            if (_user.getName().equals("") || _user.getUserId().equals("") || _user.getPassword().equals("") || _user.getEmail().equals("")) {
                 result = 0;
                 return result;
             }

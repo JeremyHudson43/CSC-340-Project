@@ -79,7 +79,7 @@ public class MySQLDBTranslator {
         }
         return result;
     }
-    
+
     public boolean checkUser(UserModel _user) {
         boolean check = false;
         String sql;
@@ -106,7 +106,6 @@ public class MySQLDBTranslator {
 
         return check;
     }
-
 
     /**
      * This searches for a book in the MySQL Database.
@@ -273,15 +272,13 @@ public class MySQLDBTranslator {
             this.preparedstate.setString(4, _user.getUserType());
             this.preparedstate.setString(5, _user.getEmail());
             result = this.preparedstate.executeUpdate();
- 
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return result;
     }
 
-    
-    
     /**
      * This checks within the MySQL database whether or not a user is a
      * Librarian or a Customer.
@@ -345,35 +342,49 @@ public class MySQLDBTranslator {
     public UserModel searchUser(String _id) {
 
         String sql = "";
-        ResultSet result;
 
         UserModel user = new UserModel();
 
         String name = "";
         String eMail = "";
+        String userID = "";
+        String userType = "";
+
+        user = searchUserHelper(_id, name, eMail, userID, userType);
+
+        return user;
+
+    }
+
+    //This is a helper method to ensure style guide requirements.
+    public UserModel searchUserHelper(String _id, String _name, String _email, String _userID, String _userType) {
+        ResultSet result;
 
         try {
 
-            sql = "SELECT Name, eMail FROM users WHERE ID = "
+            UserModel user = new UserModel();
+            String sql = "SELECT Name, eMail, userType FROM users WHERE ID = "
                     + "'" + _id + "';";
             this.preparedstate = this.connection.prepareStatement(sql);
             result = this.preparedstate.executeQuery();
 
             if (result.next()) {
-                name = result.getString(1);
-                eMail = result.getString(2);
+                _name = result.getString(1);
+                _email = result.getString(2);
+                _userType = result.getString(3);
             }
-            user.setName(name);
-            user.setEmail(eMail);
-            user.setUserId(_id);
-            return user;
+            user.setName(_name);
+            user.setEmail(_email);
+            user.setId(_id);
+            user.setUserType(_userType);
+                    return user;
+
+            
         } catch (SQLException ex) {
             Logger.getLogger(MySQLDBTranslator.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-
-        return user;
-
+        return null;
     }
 
     //This is the Table model

@@ -31,11 +31,11 @@ public class BookDatabaseView extends javax.swing.JFrame {
 
         searchLocalDatabaseButton = new javax.swing.JButton();
         LibManageSys2 = new javax.swing.JPanel();
-        searchDatabaseNoLogin2 = new javax.swing.JLabel();
-        searchAuthorNoLoginTxtFld2 = new javax.swing.JTextField();
-        searchTitleNoLoginTxtFld2 = new javax.swing.JTextField();
-        searchISBNNoLoginTxtFld2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        searchDatabaseLbl = new javax.swing.JLabel();
+        searchAuthorTxtFld = new javax.swing.JTextField();
+        searchTitleTxtFld = new javax.swing.JTextField();
+        searchISBNTxtFld = new javax.swing.JTextField();
+        searchByISBNLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,13 +43,13 @@ public class BookDatabaseView extends javax.swing.JFrame {
 
         LibManageSys2.setBorder(javax.swing.BorderFactory.createTitledBorder("Library Management System"));
 
-        searchDatabaseNoLogin2.setText("Search database ");
+        searchDatabaseLbl.setText("Search database ");
 
-        searchAuthorNoLoginTxtFld2.setText("Author Name");
+        searchAuthorTxtFld.setText("Author Name");
 
-        searchTitleNoLoginTxtFld2.setText("Title of Book");
+        searchTitleTxtFld.setText("Title of Book");
 
-        jLabel3.setText("Search by ISBN");
+        searchByISBNLbl.setText("Search by ISBN");
 
         javax.swing.GroupLayout LibManageSys2Layout = new javax.swing.GroupLayout(LibManageSys2);
         LibManageSys2.setLayout(LibManageSys2Layout);
@@ -60,29 +60,29 @@ public class BookDatabaseView extends javax.swing.JFrame {
                 .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LibManageSys2Layout.createSequentialGroup()
                         .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(searchAuthorNoLoginTxtFld2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(searchTitleNoLoginTxtFld2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                            .addComponent(searchAuthorTxtFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(searchTitleTxtFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(searchISBNNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchISBNTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 45, Short.MAX_VALUE))
                     .addGroup(LibManageSys2Layout.createSequentialGroup()
-                        .addComponent(searchDatabaseNoLogin2)
+                        .addComponent(searchDatabaseLbl)
                         .addGap(106, 106, 106)
-                        .addComponent(jLabel3)
+                        .addComponent(searchByISBNLbl)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         LibManageSys2Layout.setVerticalGroup(
             LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LibManageSys2Layout.createSequentialGroup()
                 .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchDatabaseNoLogin2)
-                    .addComponent(jLabel3))
+                    .addComponent(searchDatabaseLbl)
+                    .addComponent(searchByISBNLbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(LibManageSys2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchAuthorNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchISBNNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchAuthorTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchISBNTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchTitleNoLoginTxtFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchTitleTxtFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(77, Short.MAX_VALUE))
         );
 
@@ -116,60 +116,24 @@ public class BookDatabaseView extends javax.swing.JFrame {
     }
 
     public String getAuthorName() {
-        return this.searchAuthorNoLoginTxtFld2.getText();
+        return this.searchAuthorTxtFld.getText();
     }
 
     public String getBookTitle() {
-        return this.searchTitleNoLoginTxtFld2.getText();
+        return this.searchTitleTxtFld.getText();
     }
 
     public String getISBN() {
-        return this.searchISBNNoLoginTxtFld2.getText();
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookDatabaseView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BookDatabaseView().setVisible(true);
-            }
-        });
+        return this.searchISBNTxtFld.getText();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LibManageSys2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField searchAuthorNoLoginTxtFld2;
-    private javax.swing.JLabel searchDatabaseNoLogin2;
-    private javax.swing.JTextField searchISBNNoLoginTxtFld2;
+    private javax.swing.JTextField searchAuthorTxtFld;
+    private javax.swing.JLabel searchByISBNLbl;
+    private javax.swing.JLabel searchDatabaseLbl;
+    private javax.swing.JTextField searchISBNTxtFld;
     private javax.swing.JButton searchLocalDatabaseButton;
-    private javax.swing.JTextField searchTitleNoLoginTxtFld2;
+    private javax.swing.JTextField searchTitleTxtFld;
     // End of variables declaration//GEN-END:variables
 }
