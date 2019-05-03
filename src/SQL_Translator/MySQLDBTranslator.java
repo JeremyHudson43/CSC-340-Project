@@ -95,25 +95,31 @@ public class MySQLDBTranslator {
 
         int column = 5;
         String sql = "";
-        ResultSet resultset;
-
+        ResultSet resultset = null;
         resultset = searchBooksHelper(_author, _title, _isbn, sql);
 
-        resultset.last();
-        int row = resultset.getRow();
-        resultset.first();
-
-        Object[][] data = new Object[row][column];
-
-        for (int i = 0; i < row; i++) {
-
-            for (int j = 0; j < column; j++) {
-
-                data[i][j] = resultset.getString(j);
-                resultset.next();
-            }
+        if (resultset == null){
+            JOptionPane.showMessageDialog(null, "Nothing entered. Please try again.");
         }
-        return data;
+        else {
+
+            resultset.last();
+            int row = resultset.getRow();
+            resultset.first();
+
+            Object[][] data = new Object[row][column];
+
+            for (int i = 0; i < row; i++) {
+
+                for (int j = 0; j < column; j++) {
+
+                    data[i][j] = resultset.getString(j);
+                    resultset.next();
+                }
+            }
+            return data;
+        }
+        return null;
     }
 
     /**
@@ -126,8 +132,7 @@ public class MySQLDBTranslator {
      * @param _sql
      * @return
      */
-    public ResultSet searchBooksHelper(String _author, String _title, String _isbn,
-            String _sql) {
+    public ResultSet searchBooksHelper(String _author, String _title, String _isbn, String _sql) {
 
         try {
 
@@ -146,24 +151,22 @@ public class MySQLDBTranslator {
                     this.preparedstate.setString(1, "%" + _author + "%");
                     this.preparedstate.setString(2, "%" + _title + "%");
                 }
-
                 if (!_author.equals("")) {
 
-                    _sql = "select * from book where author like ? ";
+                    _sql = "SELECT * FROM book WHERE author like ? ";
                     this.preparedstate = this.connection.prepareStatement(_sql);
                     this.preparedstate.setString(1, "%" + _author + "%");
                 }
-
                 if (!_title.equals("")) {
 
                     _sql = "SELECT * FROM book WHERE title like ?";
                     this.preparedstate = connection.prepareStatement(_sql);
                     this.preparedstate.setString(1, "%" + _title + "%");
+                } else {
+                    return null;
                 }
             }
-
             return this.preparedstate.executeQuery();
-
         } catch (SQLException ex) {
 
             System.out.println(ex.getMessage());
@@ -174,6 +177,7 @@ public class MySQLDBTranslator {
 
     /**
      * This checks out a book for a user within the MySQL Database.
+     *
      * @param _isbn
      * @param _id
      * @return
@@ -323,11 +327,13 @@ public class MySQLDBTranslator {
             if (result.next()) {
 
                 id = result.getString(1);
+
             }
 
         } catch (SQLException ex) {
 
-            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLDBTranslator.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return id;
     }
@@ -359,9 +365,11 @@ public class MySQLDBTranslator {
             user.setEmail(eMail);
             user.setUserId(_id);
             return user;
+
         } catch (SQLException ex) {
 
-            Logger.getLogger(MySQLDBTranslator.class.getName())
+            Logger.getLogger(MySQLDBTranslator.class
+                    .getName())
                     .log(Level.SEVERE, null, ex);
         }
 
