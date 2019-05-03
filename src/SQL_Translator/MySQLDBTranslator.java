@@ -79,7 +79,35 @@ public class MySQLDBTranslator {
         }
         return result;
     }
- 
+    
+    public boolean checkUser(UserModel _user) {
+        boolean check = false;
+        String sql;
+        ResultSet result;
+
+        try {
+
+            sql = "Select UserID from users where UserID = ?";
+
+            this.preparedstate = this.connection.prepareCall(sql);
+            this.preparedstate.setString(1, _user.getUserId());
+            result = this.preparedstate.executeQuery();
+
+            if (result.next()) {
+
+                check = false;
+            } else {
+
+                check = true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return check;
+    }
+
+
     /**
      * This searches for a book in the MySQL Database.
      *
@@ -89,20 +117,20 @@ public class MySQLDBTranslator {
      * @return
      * @throws SQLException
      */
-    public Object[][] searchBooks(String _author, String _title, String _isbn)  {
+    public Object[][] searchBooks(String _author, String _title, String _isbn) {
 
         try {
             String sql = "";
             ResultSet resultset;
-            
+
             resultset = searchBooksHelper(_author, _title, _isbn, sql);
-            
+
             resultset.last();
             int row = resultset.getRow();
             resultset.first();
-            
+
             Object[][] data = new Object[row][5];
-            
+
             for (int i = 0; i < row; i++) {
                 data[i][0] = resultset.getString(1);
                 data[i][1] = resultset.getString(2);
@@ -117,7 +145,6 @@ public class MySQLDBTranslator {
         }
         return null;
     }
-
 
     /**
      * This is a helper method for searchBooks to ensure the main method is not
@@ -137,7 +164,7 @@ public class MySQLDBTranslator {
                 this.preparedstate.setString(1, "%" + _isbn + "%");
             } else {
                 if (!_author.equals("") && !_title.equals("")) {
-                    
+
                     _sql = "SELECT * FROM book WHERE author like ?"
                             + " AND title like ?";
                     this.preparedstate = this.connection.prepareStatement(_sql);
@@ -162,8 +189,9 @@ public class MySQLDBTranslator {
         return null;
     }
 
-       /**
+    /**
      * This checks out a book for a user within the MySQL Database.
+     *
      * @param _isbn
      * @param _id
      * @return
@@ -245,12 +273,15 @@ public class MySQLDBTranslator {
             this.preparedstate.setString(4, _user.getUserType());
             this.preparedstate.setString(5, _user.getEmail());
             result = this.preparedstate.executeUpdate();
+ 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return result;
     }
 
+    
+    
     /**
      * This checks within the MySQL database whether or not a user is a
      * Librarian or a Customer.
@@ -259,7 +290,7 @@ public class MySQLDBTranslator {
      * @return
      * @throws Exception
      */
-    public String checkLogin(UserModel _user)  {
+    public String checkLogin(UserModel _user) {
         String sql = "";
         ResultSet result = null;
         String type = "";
@@ -350,7 +381,7 @@ public class MySQLDBTranslator {
 
         try {
             ResultSetMetaData metaData = _resultSet.getMetaData();
-            
+
             //These are the names of the columns
             Vector<String> columnNames = new Vector<String>();
             int columnCount = metaData.getColumnCount();

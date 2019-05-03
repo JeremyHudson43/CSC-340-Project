@@ -5,6 +5,7 @@ import Models.PrinterModel;
 import Models.UserModel;
 import Views.LibraryCardView;
 import Views.LoginView;
+import Views.NotificationPopupView;
 import Views.RegisterView;
 import java.awt.image.BufferedImage;
 import java.awt.print.PrinterException;
@@ -22,7 +23,7 @@ import net.sourceforge.barbecue.output.OutputException;
  * @author Charles Brady
  * @author Jeremy Hudson
  *
- * Last updated 4-22-2019
+ * Last updated 5-3-2019
  *
  * This class routes the logic to display the registerView for a certain user
  * type, display the login view, display the library card view, and check the
@@ -35,7 +36,8 @@ public class UserController {
 
     private LibraryCardView libraryCardView = new LibraryCardView();
 
-    /** This opens the register view and registers a user if their info is valid.
+    /**
+     * This opens the register view and registers a user if their info is valid.
      *
      *
      *
@@ -63,13 +65,14 @@ public class UserController {
     }
 
     /**
-     * This opens the library card view and prints the bar code when the print button is clicked.
+     * This opens the library card view and prints the bar code when the print
+     * button is clicked.
      *
      *
      *
      */
     public void displayLibraryCard(String _id, String _name) {
-        this. libraryCardView.setVisible(true);
+        this.libraryCardView.setVisible(true);
         try {
             this.printCard(_id, _name);
         } catch (OutputException ex) {
@@ -91,7 +94,8 @@ public class UserController {
     }
 
     /**
-     * This prints out a bar code with user information to the library card view.
+     * This prints out a bar code with user information to the library card
+     * view.
      *
      *
      */
@@ -99,12 +103,11 @@ public class UserController {
 
         try {
             BarcodeTranslator translator = new BarcodeTranslator();
-            if(!_userID.equals("") && !_name.equals("")){
-            Barcode barcode = translator.createBarcode(_userID, _name);  
-            BufferedImage image = BarcodeImageHandler.getImage(barcode);
-            this.libraryCardView.setBarCode(new ImageIcon(image));
-            this.libraryCardView.setNameField(_name);
-            }
+                Barcode barcode = translator.createBarcode(_userID, _name);
+                BufferedImage image = BarcodeImageHandler.getImage(barcode);
+                this.libraryCardView.setBarCode(new ImageIcon(image));
+                this.libraryCardView.setNameField(_name);
+            
         } catch (BarcodeException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -119,12 +122,16 @@ public class UserController {
 
         UserModel userModel = new UserModel();
         String userType = userModel.checkLogin(_username, _password);
-        if (userType.equals("customer")) {
+        if (userType.equals(this.CUSTOMER)) {
             CustomerController customerController = new CustomerController();
             customerController.initCustomerController();
-        } else if (userType.equals("librarian")) {
+        } else if (userType.equals(this.LIBRARIAN)) {
             LibrarianController librarianController = new LibrarianController();
             librarianController.initLibrarianController();
+        } else {
+            NotificationPopupView popUp = new NotificationPopupView();
+            popUp.setMessage("Invalid login credentials.");
+            popUp.setVisible(true);
         }
     }
 
@@ -138,9 +145,18 @@ public class UserController {
 
         UserModel userModel = new UserModel();
 
-        userModel.checkRegister(_usertype, _name, _password, _userID, _email);
-        displayLibraryCard(_userID, _name);
-    }
+        int result = userModel.checkRegister(_usertype, _name, _password, _userID, _email);
+        
+        NotificationPopupView popUp = new NotificationPopupView();
+        if (result > 0) {
+            popUp.setMessage("Account created");
+            popUp.setVisible(true);
+            displayLibraryCard(_userID, _name);
+        } else {
+            popUp.setMessage("Unable to create account");
+            popUp.setVisible(true);
+        }
+
 
 //    public void testCase() {
 //        UserModel testUser1 = new UserModel();
@@ -203,4 +219,5 @@ public class UserController {
 //        }
 //
 //    }
+    }
 }

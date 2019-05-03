@@ -5,7 +5,6 @@ import SQL_Translator.MySQLCaller;
 import Views.LoginView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,10 +58,11 @@ public class UserModel {
         return userType;
     }
 
-    /** These are the setters of the variables.
-     * 
-     * 
-     * 
+    /**
+     * These are the setters of the variables.
+     *
+     *
+     *
      */
     public void setName(String _name) {
         this.name = _name;
@@ -89,16 +89,17 @@ public class UserModel {
     }
 
 //================================================================
-
-    /** If something is entered, the program will check to see if it exists in the database. 
-     * 
-     * 
-     * 
+    /**
+     * If something is entered, the program will check to see if it exists in
+     * the database.
+     *
+     *
+     *
      */
     public String checkLogin(String _username, String _password) {
+
         if (_username.equals("") || _password.equals("")) {
-            JOptionPane.showMessageDialog(null, "Required fields not entered. "
-                    + "Please try again.");
+
         } else {
             try {
                 UserModel user = new UserModel();
@@ -120,9 +121,6 @@ public class UserModel {
                     /* if the username and password is not in the database,
                     it will ask the user to try again.
                      */
-                } else {
-                    JOptionPane.showMessageDialog(null, " User does not exist."
-                            + " Please try again.");
                 }
             } catch (Exception ex) {
                 Logger.getLogger(LoginView.class.getName())
@@ -132,45 +130,75 @@ public class UserModel {
         return "";
     }
 
-    /** This verifies if all input is valid for registration.
-     * 
-     * 
-     * 
+    /**
+     * This verifies if all input is valid for registration.
+     *
+     *
+     *
      */
-    public void checkRegister(String _userType, String _name, String _password,
-            String _userID, String _email) {
+    public int checkRegister(String _userType, String _name, String _password, String _userID, String _email) {
 
         UserModel user = new UserModel();
 
         try {
-            int result;
+
             user.setName(_name);
             user.setPassword(_password);
             user.setUserId(_userID);
             user.setEmail(_email);
             user.setUserType(_userType);
 
-            MySQLCaller SQL = new MySQLCaller();
-            result = SQL.createAccount(user);
+            checkRegisterHelper(user);
 
-            if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Account Created");
-                String idNumber = SQL.searchUserID(_name);
-                user.setId(idNumber);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to create account");
-            }
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
+        return 0;
     }
 
-    /** This creates a new user account.
-    *
-    *
-    */
+    /**
+     * This is a helper method to ensure that checkRegister is not more than 30
+     * lines.
+     *
+     *
+     *
+     */
+    public int checkRegisterHelper(UserModel user) {
+        boolean check = false;
+        int result;
+
+        MySQLCaller SQL = new MySQLCaller();
+        check = SQL.checkUser(user);
+
+        if (check == true) {
+            result = SQL.createAccount(user);
+            if (result > 0) {
+                String idNumber = SQL.searchUserID(user.getName());
+                user.setId(idNumber);
+                return result;
+            }
+
+            if (!user.getEmail().contains("@")) {
+                result = 0;
+                return result;
+            }
+            if (user.getName().equals("") || user.getUserId().equals("") || user.getPassword().equals("") || user.getEmail().equals("")) {
+                result = 0;
+                return result;
+            }
+
+        }
+
+        return 0;
+
+    }
+
+    /**
+     * This creates a new user account.
+     *
+     *
+     */
     public int createAccount(UserModel _user) {
         int result = 0;
         try {
@@ -183,9 +211,10 @@ public class UserModel {
         return result;
     }
 
-    /** This searches for user in the database.     * 
-     * 
-     * 
+    /**
+     * This searches for user in the database. *
+     *
+     *
      */
     public UserModel searchUser(String _id) {
         UserModel user = new UserModel();

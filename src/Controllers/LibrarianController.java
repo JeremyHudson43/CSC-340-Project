@@ -7,6 +7,7 @@ import Views.CheckinView;
 import Views.CheckoutView;
 import Views.IndividualUserView;
 import Views.LibrarianView;
+import Views.NotificationPopupView;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * @author Jeremy Hudson
  *
- * Last updated 4-22-2019
+ * Last updated 5-3-2019
  *
  * This class routes the logic for book checkouts, book check-ins, addBooks and
  * individual user display to the LibrarianModel. In addition it displays the
@@ -63,7 +64,15 @@ public class LibrarianController extends BooksController {
      *
      */
     private void checkIn(List<String> _isbn, String _userID) {
-        this.librarianModel.checkInBooksByISBN(_isbn, _userID);
+        int result = this.librarianModel.checkInBooksByISBN(_isbn, _userID);
+        NotificationPopupView popUp = new NotificationPopupView();
+        if (result > 0) {
+            popUp.setMessage("Book(s) checked in");
+            popUp.setVisible(true);
+        } else {
+            popUp.setMessage("Book(s) unable to be checked in");
+            popUp.setVisible(true);
+        }
     }
 
     /**
@@ -85,7 +94,16 @@ public class LibrarianController extends BooksController {
      *
      */
     private void checkOut(List<String> _isbn, String _userID) {
-        this.librarianModel.checkOutBooksByISBN(_isbn, _userID);
+        int result = this.librarianModel.checkOutBooksByISBN(_isbn, _userID);
+        NotificationPopupView popUp = new NotificationPopupView();
+
+        if (result > 0) {
+            popUp.setMessage("Book(s) checked in");
+            popUp.setVisible(true);
+        } else {
+            popUp.setMessage("Book(s) unable to be checked in");
+            popUp.setVisible(true);
+        }
     }
 
     /**
@@ -97,8 +115,8 @@ public class LibrarianController extends BooksController {
     private void displayAddBookView() {
         AddBookView addBookView = new AddBookView();
         addBookView.setVisible(true);
-        
-        addBookView.addBookListener(e -> addBooks(addBookView.getAuthor(),addBookView.getBookTitle(), addBookView.getISBN()));
+
+        addBookView.addBookListener(e -> addBooks(addBookView.getAuthor(), addBookView.getBookTitle(), addBookView.getISBN()));
     }
 
     /**
@@ -132,7 +150,7 @@ public class LibrarianController extends BooksController {
         this.individualUserView.setUserEmail(user.getEmail());
         this.individualUserView.setUserID(user.getUserId());
         this.individualUserView.setUserType(user.getUserType());
-        
+
         this.individualUserView.setVisible(true);
 
     }

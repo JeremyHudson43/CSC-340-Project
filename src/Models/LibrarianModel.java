@@ -6,13 +6,12 @@ import Views.CheckoutView;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  * @author Jeremy Hudson
  * @author Charles Brady
  *
- * Last updated 4-22-2019
+ * Last updated 5-3-2019
  *
  * This class provides the logic that allows a librarian to checkout books by
  * ISBN, check-in books by ISBN, add a book to the SQL database and to contact
@@ -29,21 +28,19 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @param _userID
      */
-       public void checkOutBooksByISBN(List<String> _isbn, String _userID) {
-        int result = 0;
+       public int checkOutBooksByISBN(List<String> _isbn, String _userID) {
         try {
-            result = this.sqlCaller.checkoutBooks(_isbn, _userID);
+            int result = this.sqlCaller.checkoutBooks(_isbn, _userID);
             if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Book(s) checked out");
-
+                return result;
             } else {
-                JOptionPane.showMessageDialog(null, "Unable to checkout");
+                return result;
             }
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-
+        return 0;
     }
 
     /**
@@ -52,16 +49,15 @@ public class LibrarianModel extends BooksModel {
      * @param _isbn
      * @param _userID
      */
-     public void checkInBooksByISBN(List<String> _isbn, String _userID) {
-        int result = 0;
+     public int checkInBooksByISBN(List<String> _isbn, String _userID) {
         try {
-            result = this.sqlCaller.checkinBooks(_isbn, _userID);
-            JOptionPane.showMessageDialog(null, "Book(s) checked in");
+           int result = this.sqlCaller.checkinBooks(_isbn, _userID);
+            return result;
         } catch (Exception ex) {
             Logger.getLogger(CheckoutView.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-
+        return 0;
     }
 
     /**
