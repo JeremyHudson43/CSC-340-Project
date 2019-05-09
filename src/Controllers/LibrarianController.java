@@ -98,10 +98,10 @@ public class LibrarianController extends BooksController {
         NotificationPopupView popUp = new NotificationPopupView();
 
         if (result > 0) {
-            popUp.setMessage("Book(s) checked in");
+            popUp.setMessage("Book(s) checked out");
             popUp.setVisible(true);
         } else {
-            popUp.setMessage("Book(s) unable to be checked in");
+            popUp.setMessage("Book(s) unable to be checked out");
             popUp.setVisible(true);
         }
     }
