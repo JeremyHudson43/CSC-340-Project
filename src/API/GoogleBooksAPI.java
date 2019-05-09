@@ -40,7 +40,8 @@ public class GoogleBooksAPI implements ApiConnector {
     }
 
     /**
-     * This returns a 2d array of books based upon either the author, title, or both.
+     * This returns a 2d array of books based upon either the author, title, or
+     * both.
      *
      *
      */
@@ -72,7 +73,7 @@ public class GoogleBooksAPI implements ApiConnector {
             if (_isbn.equals("")) {
                 String responseString[][] = (connectionHelper(connection));
                 return responseString;
-                
+
             } else {
                 URL isbnURL = new URL(this.baseURL + _isbn + "&key=" + this.apiKey);
 
@@ -117,20 +118,25 @@ public class GoogleBooksAPI implements ApiConnector {
      *
      */
     private static String[][] parseBookFromAPI(String _responseString) {
-
-        JSONObject root = new JSONObject(_responseString);
-        JSONArray books = root.getJSONArray("items");
-
         String[] individualBookData = new String[4];
         String[][] totalBookData = new String[10][4];
+        try {
+            JSONObject root = new JSONObject(_responseString);
+            JSONArray books = root.getJSONArray("items");
 
-        totalBookData = parseBookFromAPIHelper(individualBookData, books, totalBookData);
+            totalBookData = parseBookFromAPIHelper(individualBookData, books, totalBookData);
 
+            return totalBookData;
+
+        } catch (org.json.JSONException e) {
+            System.out.println("There was an error parsing the JSONObject.");
+        }
         return totalBookData;
     }
 
     /**
-     * This is a helper method for the parseBook method to ensure that the parseBookFromAPI method is not longer than 30 lines.
+     * This is a helper method for the parseBook method to ensure that the
+     * parseBookFromAPI method is not longer than 30 lines.
      *
      *
      */

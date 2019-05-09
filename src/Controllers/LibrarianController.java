@@ -88,7 +88,7 @@ public class LibrarianController extends BooksController {
     }
 
     /**
-     * This gets the userID and ISBNs from checkoutView and contacts the mode to
+     * This gets the userID and ISBNs from checkoutView and contacts the model to
      * checkout the books in the database
      *
      *
