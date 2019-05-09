@@ -27,7 +27,6 @@ public class LibrarianController extends BooksController {
     private LibrarianModel librarianModel = new LibrarianModel();
     private UserController userController = new UserController();
     private UserModel user = new UserModel();
-    private IndividualUserView individualUserView = new IndividualUserView();
 
     /**
      * This tells the librarian view buttons what method to call when pressed.
@@ -88,8 +87,8 @@ public class LibrarianController extends BooksController {
     }
 
     /**
-     * This gets the userID and ISBNs from checkoutView and contacts the model to
-     * checkout the books in the database
+     * This gets the userID and ISBNs from checkoutView and contacts the model
+     * to checkout the books in the database
      *
      *
      */
@@ -138,20 +137,30 @@ public class LibrarianController extends BooksController {
     }
 
     /**
-     * This displays individual customer information.
+     * This displays individual user information.
      *
      *
      */
     private void userDisplay() {
 
+        IndividualUserView individualUserView = new IndividualUserView();
+
         this.user = this.user.searchUser(this.librarianView.getUserSearchTextField());
 
-        this.individualUserView.setUsersName(user.getName());
-        this.individualUserView.setUserEmail(user.getEmail());
-        this.individualUserView.setUserID(user.getId());
-        this.individualUserView.setUserType(user.getUserType());
+        if (user.getName() != "") {
 
-        this.individualUserView.setVisible(true);
+            individualUserView.setUsersName(user.getName());
+            individualUserView.setUserEmail(user.getEmail());
+            individualUserView.setUserID(user.getId());
+            individualUserView.setUserType(user.getUserType());
+        } else {
+            individualUserView.setUsersName("User does not exist");
+            individualUserView.setUserEmail("");
+            individualUserView.setUserID("");
+            individualUserView.setUserType("");
+        }
+
+        individualUserView.setVisible(true);
 
     }
 }
