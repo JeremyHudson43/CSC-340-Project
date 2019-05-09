@@ -148,8 +148,8 @@ public class UserModel {
             user.setEmail(_email);
             user.setUserType(_userType);
 
-           int result = checkRegisterHelper(user);
-           return result;
+            int result = checkRegisterHelper(user);
+            return result;
 
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
@@ -173,12 +173,6 @@ public class UserModel {
         check = SQL.checkUser(_user);
 
         if (check == true) {
-            result = SQL.createAccount(_user);
-            if (result > 0) {
-                String idNumber = SQL.searchUserID(_user.getName());
-                _user.setId(idNumber);
-                return result;
-            }
 
             if (!_user.getEmail().contains("@")) {
                 result = 0;
@@ -186,6 +180,13 @@ public class UserModel {
             }
             if (_user.getName().equals("") || _user.getUserId().equals("") || _user.getPassword().equals("") || _user.getEmail().equals("")) {
                 result = 0;
+                return result;
+            }
+
+            result = SQL.createAccount(_user);
+            if (result > 0) {
+                String idNumber = SQL.searchUserID(_user.getName());
+                _user.setId(idNumber);
                 return result;
             }
 
