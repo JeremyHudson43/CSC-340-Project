@@ -90,7 +90,7 @@ public class MySQLDBTranslator {
             sql = "Select UserID from users where UserID = ?";
 
             this.preparedstate = this.connection.prepareCall(sql);
-            this.preparedstate.setString(1, _user.getUserID());
+            this.preparedstate.setString(1, _user.getUserId());
             result = this.preparedstate.executeQuery();
 
             if (result.next()) {
@@ -266,7 +266,7 @@ public class MySQLDBTranslator {
             sql = "INSERT INTO users (UserID, PWD, Name, userType, eMail) "
                     + "VALUES(?,?,?,?,?)";
             this.preparedstate = this.connection.prepareStatement(sql);
-            this.preparedstate.setString(1, _user.getUserID());
+            this.preparedstate.setString(1, _user.getUserId());
             this.preparedstate.setString(2, _user.getPassword());
             this.preparedstate.setString(3, _user.getName());
             this.preparedstate.setString(4, _user.getUserType());
@@ -296,7 +296,7 @@ public class MySQLDBTranslator {
             sql = "SELECT userType FROM users WHERE UserID=? AND PWD=?";
             this.preparedstate = this.connection.prepareStatement(sql);
 
-            this.preparedstate.setString(1, _user.getUserID());
+            this.preparedstate.setString(1, _user.getUserId());
             this.preparedstate.setString(2, _user.getPassword());
 
             result = this.preparedstate.executeQuery();
@@ -341,6 +341,8 @@ public class MySQLDBTranslator {
     //This searches for a user within the MySQL Database.
     public UserModel searchUser(String _id) {
 
+        String sql = "";
+
         UserModel user = new UserModel();
 
         String name = "";
@@ -351,39 +353,38 @@ public class MySQLDBTranslator {
         user = searchUserHelper(_id, name, eMail, userID, userType);
 
         return user;
+
     }
 
-    public UserModel searchUserHelper(String _id, String _name, String _eMail, String _userID, String _userType) {
-
-        String sql = "";
+    //This is a helper method to ensure style guide requirements.
+    public UserModel searchUserHelper(String _id, String _name, String _email, String _userID, String _userType) {
         ResultSet result;
-        UserModel user = new UserModel();
+
         try {
 
-            sql = "SELECT Name, eMail, userType FROM users WHERE ID = "
+            UserModel user = new UserModel();
+            String sql = "SELECT Name, eMail, userType FROM users WHERE ID = "
                     + "'" + _id + "';";
             this.preparedstate = this.connection.prepareStatement(sql);
             result = this.preparedstate.executeQuery();
 
             if (result.next()) {
                 _name = result.getString(1);
-                _eMail = result.getString(2);
+                _email = result.getString(2);
                 _userType = result.getString(3);
             }
             user.setName(_name);
-            user.setEmail(_eMail);
+            user.setEmail(_email);
             user.setId(_id);
             user.setUserType(_userType);
-            return user;
+                    return user;
 
+            
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLDBTranslator.class
-                    .getName())
+            Logger.getLogger(MySQLDBTranslator.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-
         return null;
-
     }
 
     //This is the Table model
@@ -410,10 +411,8 @@ public class MySQLDBTranslator {
                 data.add(vector);
             }
             return new DefaultTableModel(data, columnNames);
-
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLDBTranslator.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLDBTranslator.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

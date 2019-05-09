@@ -1,12 +1,13 @@
+
 package Views;
 
 /**
  *
  * @author Jeremy Hudson
  * 
- * Last edited 5-3-2019
+ * Last updated 5-3-2019
  * 
- * This view simply displays a message that it has been routed. 
+ * This view displays a message to the user.
  */
 public class NotificationPopupView extends javax.swing.JFrame {
 

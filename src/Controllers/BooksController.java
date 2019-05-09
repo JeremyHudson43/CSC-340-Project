@@ -36,7 +36,7 @@ public class BooksController {
 
         BookDatabaseView bookDBView = new BookDatabaseView();
         bookDBView.setVisible(true);
-
+        
         bookDBView.searchDBListener(e -> {
             try {
                 getIndividualBookViewTable(bookDBView.getAuthorName(), bookDBView.getBookTitle(), bookDBView.getISBN());
@@ -46,6 +46,7 @@ public class BooksController {
         });
 
     }
+
 
     /**
      * This displays individual book info after an item has been clicked in the
@@ -82,10 +83,10 @@ public class BooksController {
 
         JTable table = bookModel.createTable(_author, _title, _isbn);
         JScrollPane scrollPane = new JScrollPane(table);
-
+        
         BookScrollView bookScrollView = new BookScrollView();
         bookScrollView.scrollPaneSetter(scrollPane);
-
+  
         bookScrollView.setVisible(true);
         bookScrollView.bookSelectionListener(e -> getInfoAboutBook(table));
 

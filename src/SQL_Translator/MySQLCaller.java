@@ -37,14 +37,14 @@ public class MySQLCaller {
     public int addBooks(BooksModel _book) {
         return this.translator.addBooks(_book);
     }
-
+    
     /**
      * This method checks if a user is already registered.
      *
-     * @param _user
+     * @param _book
      * @return
      */
-    public boolean checkUser(UserModel _user) {
+     public boolean checkUser(UserModel _user) {
         return this.translator.checkUser(_user);
     }
 
@@ -68,7 +68,7 @@ public class MySQLCaller {
      * @param _id
      * @return
      */
-    public int checkoutBooks(List<String> _bookISBN, String _id) {
+   public int checkoutBooks(List<String> _bookISBN, String _id) {
         return this.translator.checkoutBooks(_bookISBN, _id);
     }
 
@@ -79,7 +79,7 @@ public class MySQLCaller {
      * @param _id
      * @return
      */
-    public int checkinBooks(List<String> _bookISBN, String _id) {
+   public int checkinBooks(List<String> _bookISBN, String _id) {
         return this.translator.checkInBooks(_bookISBN, _id);
     }
 

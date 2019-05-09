@@ -48,7 +48,7 @@ public class UserController {
 
         registerView.setVisible(true);
         registerView.registerListener(e -> checkRegister(_usertype, registerView.getName(),
-                registerView.getUserID(), registerView.getUserPassword(), registerView.getUserEmail()));
+        registerView.getUserID(), registerView.getUserPassword(), registerView.getUserEmail()));
     }
 
     /**
@@ -103,11 +103,11 @@ public class UserController {
 
         try {
             BarcodeTranslator translator = new BarcodeTranslator();
-            Barcode barcode = translator.createBarcode(_userID, _name);
-            BufferedImage image = BarcodeImageHandler.getImage(barcode);
-            this.libraryCardView.setBarCode(new ImageIcon(image));
-            this.libraryCardView.setNameField(_name);
-
+                Barcode barcode = translator.createBarcode(_userID, _name);
+                BufferedImage image = BarcodeImageHandler.getImage(barcode);
+                this.libraryCardView.setBarCode(new ImageIcon(image));
+                this.libraryCardView.setNameField(_name);
+            
         } catch (BarcodeException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -146,7 +146,7 @@ public class UserController {
         UserModel userModel = new UserModel();
 
         int result = userModel.checkRegister(_usertype, _name, _password, _userID, _email);
-
+        
         NotificationPopupView popUp = new NotificationPopupView();
         if (result > 0) {
             popUp.setMessage("Account created");
@@ -156,70 +156,68 @@ public class UserController {
             popUp.setMessage("Unable to create account");
             popUp.setVisible(true);
         }
-    }
 
-    public void testCase() {
 
-        UserModel testUser1 = new UserModel();
-        UserModel testUser2 = new UserModel();
-        UserModel testUser3 = new UserModel();
-        UserModel testUser4 = new UserModel();
-
-        int test1 = 0;
-        int test2 = 0;
-        int test3 = 0;
-        int test4 = 0;
-
-        testUser1.setName("Michael");
-        testUser1.setUserID("mike");
-        testUser1.setId("23456789");
-        testUser1.setPassword("angelo");
-        testUser1.setUserType(CUSTOMER);
-
-        testUser2.setName("2343");
-        testUser2.setUserID("Don");
-        testUser2.setId("11122233");
-        testUser2.setPassword("324");
-        testUser2.setUserType(CUSTOMER);
-
-        testUser3.setName("");
-        testUser3.setUserID("");
-        testUser3.setId("");
-        testUser3.setPassword("");
-        testUser3.setUserType("");
-
-        testUser4.setName("x");
-        testUser4.setId("335");
-        testUser4.setPassword("fdsh");
-        testUser4.setUserType(CUSTOMER);
-
-        test1 = UserModel.createAccount(testUser1);
-        test2 = UserModel.createAccount(testUser2);
-        test3 = UserModel.createAccount(testUser3);
-        test4 = UserModel.createAccount(testUser4);
-
-        if (test1 > 0) {
-            System.out.println("PASS");
-        } else {
-            System.out.println("FAIL");
-        }
-
-        if (test2 > 0) {
-            System.out.println("PASS");
-        } else {
-            System.out.println("FAIL");
-        }
-
-        if (test3 > 0) {
-            System.out.println("PASS");
-        } else {
-            System.out.println("FAIL");
-        }
-
-        if (test4 > 0) {
-            System.out.println("PASS");
-        } else {
-            System.out.println("FAIL");
-        }
+//    public void testCase() {
+//        UserModel testUser1 = new UserModel();
+//        UserModel testUser2 = new UserModel();
+//        UserModel testUser3 = new UserModel();
+//        UserModel testUser4 = new UserModel();
+//
+//        int test1 = 0;
+//        int test2 = 0;
+//        int test3 = 0;
+//        int test4 = 0;
+//
+//        testUser1.setName("Michael");
+//        testUser1.setId("23456789");
+//        testUser1.setPassword("angelo");
+//        testUser1.setUserType(CUSTOMER);
+//
+//        testUser2.setName("2343");
+//        testUser2.setId("11122233");
+//        testUser2.setPassword("324");
+//        testUser2.setUserType(CUSTOMER);
+//
+//        testUser3.setName("Billy");
+//        testUser3.setId("4");
+//        testUser3.setPassword("sink");
+//        testUser3.setUserType(LIBRARIAN);
+//
+//        testUser4.setName("");
+//        testUser4.setId("");
+//        testUser4.setPassword("");
+//        testUser4.setUserType("");
+//
+//        test1 = UserModel.createAccount(testUser1);
+//        test2 = UserModel.createAccount(testUser2);
+//        test3 = UserModel.createAccount(testUser3);
+//        test4 = UserModel.createAccount(testUser4);
+//
+//        if (test1 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//        if (test2 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//        if (test3 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//        if (test4 > 0) {
+//            System.out.println("PASS");
+//        } else {
+//            System.out.println("FAIL");
+//        }
+//
+//    }
     }
 }

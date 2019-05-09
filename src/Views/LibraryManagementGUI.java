@@ -1,7 +1,6 @@
 package Views;
 
 import Controllers.ParentController;
-import Controllers.UserController;
 
 import java.awt.event.ActionListener;
 
@@ -10,7 +9,7 @@ import java.awt.event.ActionListener;
  * @author Jeremy Hudson
  *
  * Last Updated 4-24-2019
- *
+ * 
  *  This class adds a listener to the register and login button and initiates 
  * the parent controller that the rest of program starts from
  */
@@ -74,7 +73,7 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newUserLbl)
                     .addComponent(registerButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,8 +94,6 @@ public class LibraryManagementGUI extends javax.swing.JFrame {
 
         ParentController parentController = new ParentController();
         parentController.initParentController();
-//      UserController user = new UserController();
-//      user.testCase();
 
     }
 

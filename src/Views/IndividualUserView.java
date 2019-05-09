@@ -3,14 +3,15 @@ package Views;
 /**
  *
  * @author Jeremy Hudson
- *
+ * 
  * Last Updated 4-24-2019
- *
- * This class simply displays the info for an individual user after being passed
- * data from the LibrarianController
+ * 
+ * This class simply displays the info for an individual user after being
+ * passed data from the LibrarianController
  */
 public class IndividualUserView extends javax.swing.JFrame {
 
+    
     public IndividualUserView() {
         initComponents();
     }

@@ -9,9 +9,8 @@ import java.util.logging.Logger;
 /**
  *
  * @author Charles Brady
- * @author Jeremy Hudson
  *
- * Last Updated 5-3-2019
+ * Last Updated 3/7
  *
  * This model contains the variables for users and contains the logic that
  * verifies a customer or librarian against the SQL database for logins and
@@ -51,7 +50,7 @@ public class UserModel {
         return this.password;
     }
 
-    public String getUserID() {
+    public String getUserId() {
         return this.userId;
     }
 
@@ -81,7 +80,7 @@ public class UserModel {
         this.password = _password;
     }
 
-    public void setUserID(String _userId) {
+    public void setUserId(String _userId) {
         this.userId = _userId;
     }
 
@@ -104,7 +103,7 @@ public class UserModel {
         } else {
             try {
                 UserModel user = new UserModel();
-                user.setUserID(_username);
+                user.setUserId(_username);
                 user.setPassword(_password);
 
                 MySQLCaller call = new MySQLCaller();
@@ -145,11 +144,12 @@ public class UserModel {
 
             user.setName(_name);
             user.setPassword(_password);
-            user.setUserID(_userID);
+            user.setUserId(_userID);
             user.setEmail(_email);
             user.setUserType(_userType);
 
-            checkRegisterHelper(user);
+           int result = checkRegisterHelper(user);
+           return result;
 
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName())
@@ -161,6 +161,9 @@ public class UserModel {
     /**
      * This is a helper method to ensure that checkRegister is not more than 30
      * lines.
+     *
+     *
+     *
      */
     public int checkRegisterHelper(UserModel _user) {
         boolean check = false;
@@ -181,7 +184,7 @@ public class UserModel {
                 result = 0;
                 return result;
             }
-            if (_user.getName().equals("") || _user.getUserID().equals("") || _user.getPassword().equals("") || _user.getEmail().equals("")) {
+            if (_user.getName().equals("") || _user.getUserId().equals("") || _user.getPassword().equals("") || _user.getEmail().equals("")) {
                 result = 0;
                 return result;
             }
@@ -197,7 +200,7 @@ public class UserModel {
      *
      *
      */
-    public static int createAccount(UserModel _user) {
+    public int createAccount(UserModel _user) {
         int result = 0;
         try {
             MySQLCaller SQL = new MySQLCaller();
@@ -210,7 +213,7 @@ public class UserModel {
     }
 
     /**
-     * This searches for user in the database.
+     * This searches for user in the database. *
      *
      *
      */
