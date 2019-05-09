@@ -153,7 +153,7 @@ public class UserController {
             popUp.setVisible(true);
             displayLibraryCard(_userID, _name);
         } else {
-            popUp.setMessage("Unable to create account");
+            popUp.setMessage("Unable to create account, please check that all fields have been entered and that you have entered a valid email address.");
             popUp.setVisible(true);
         }
 
