@@ -49,7 +49,7 @@ public class IndividualBookView extends javax.swing.JFrame {
 
         jLabel3.setText("Book Category:");
 
-        IndividualBookVewISBNTxtLbl.setText("Book ISBN:");
+        IndividualBookVewISBNTxtLbl.setText("Book ISBN / Identifier:");
 
         individualBookVewNamePlaceholderTxtLbl.setText("Book Name Placeholder");
 

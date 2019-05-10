@@ -49,6 +49,8 @@ public class UserController {
         registerView.setVisible(true);
         registerView.registerListener(e -> checkRegister(_usertype, registerView.getName(),
         registerView.getUserID(), registerView.getUserPassword(), registerView.getUserEmail()));
+        
+        registerView.registerListener(e -> registerView.dispose());
     }
 
     /**
@@ -62,6 +64,10 @@ public class UserController {
 
         loginView.setVisible(true);
         loginView.loginListener(e -> checkLogin(loginView.getUsername(), loginView.getPassword()));
+        
+        loginView.loginListener(e -> loginView.dispose());
+        
+        
     }
 
     /**
@@ -122,12 +128,15 @@ public class UserController {
 
         UserModel userModel = new UserModel();
         String userType = userModel.checkLogin(_username, _password);
+        
         if (userType.equals(this.CUSTOMER)) {
             CustomerController customerController = new CustomerController();
             customerController.initCustomerController();
+            
         } else if (userType.equals(this.LIBRARIAN)) {
             LibrarianController librarianController = new LibrarianController();
             librarianController.initLibrarianController();
+            
         } else {
             NotificationPopupView popUp = new NotificationPopupView();
             popUp.setMessage("Invalid login credentials.");

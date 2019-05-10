@@ -118,8 +118,8 @@ public class GoogleBooksAPI implements ApiConnector {
      *
      */
     private static String[][] parseBookFromAPI(String _responseString) {
-        String[] individualBookData = new String[4];
-        String[][] totalBookData = new String[10][4];
+        String[] individualBookData = new String[5];
+        String[][] totalBookData = new String[10][5];
         try {
             JSONObject root = new JSONObject(_responseString);
             JSONArray books = root.getJSONArray("items");
@@ -136,7 +136,7 @@ public class GoogleBooksAPI implements ApiConnector {
 
     /**
      * This is a helper method for the parseBook method to ensure that the
-     * parseBookFromAPI method is not longer than 30 lines.
+     * parseBookFromAPI method is not too long.
      *
      *
      */
@@ -144,24 +144,35 @@ public class GoogleBooksAPI implements ApiConnector {
         for (int i = 0; i < _books.length(); i++) {
 
             String bookImageLink = "";
+            String bookISBN = "";
+            String bookAuthor = "";
+            
             JSONObject book = _books.getJSONObject(i);
             JSONObject info = book.getJSONObject("volumeInfo");
+
             String bookTitle = info.getString("title");
             JSONArray authors = info.getJSONArray("authors");
-            String bookAuthor = authors.getString(0);
+            JSONArray category = info.getJSONArray("categories");
+            String categoryString = category.getString(0);
+            
 
             try {
+                JSONArray isbn = info.getJSONArray("industryIdentifiers");
+                bookISBN = extractISBN(isbn.toString());
+
+                bookAuthor = authors.getString(0);
+
                 JSONObject imageLinks = info.getJSONObject("imageLinks");
                 bookImageLink = imageLinks.getString("smallThumbnail");
             } catch (org.json.JSONException exception) {
                 System.out.println("Warning: At least one imagelink was not found");
             }
-            String bookISBN = generateISBN();
 
             _individualBookData[0] = bookTitle;
             _individualBookData[1] = bookAuthor;
             _individualBookData[2] = bookISBN;
             _individualBookData[3] = bookImageLink;
+            _individualBookData[4] = categoryString;
 
             for (int j = 0; j < _individualBookData.length; j++) {
                 _totalBookData[i][j] = _individualBookData[j];
@@ -171,17 +182,28 @@ public class GoogleBooksAPI implements ApiConnector {
         return _totalBookData;
     }
 
-    /**
-     * This generates a random ISBN.
-     *
-     *
-     */
-    private static String generateISBN() {
-        String ISBN = "978";
-        for (int i = 0; i < 10; i++) {
-            ISBN += (int) (Math.random() * 9 + 1);
-        }
-        return ISBN;
-    }
+    private static String extractISBN(String _isbn) {
 
+        //This splits the resposne into multiple lines 
+        _isbn = _isbn.replaceAll(",", "\n");
+
+        //This turns every linebreak into an individual string and places them into an array
+        String textStr[] = _isbn.split("\\r\\n|\\n|\\r");
+        String finalISBN[] = new String[textStr.length];
+        String isbnToReturn;
+        try {
+
+            finalISBN[0] = textStr[0].replace("{\"identifier\":", "");
+            if (finalISBN[0].matches(".*\\d+.*")) {
+                _isbn = finalISBN[0].replace("[\"", "");
+                isbnToReturn = _isbn.replace("\"", "");
+
+                return isbnToReturn;
+
+            }
+        } catch (Exception exception) {
+            System.out.println("");
+        }
+        return "";
+    }
 }

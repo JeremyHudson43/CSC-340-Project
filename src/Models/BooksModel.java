@@ -135,13 +135,14 @@ public class BooksModel {
      * 
      */
     public static BooksModel buildBook(String _author, String _title,
-            String _isbn, String _imageLink)
+            String _isbn, String _imageLink, String category)
             throws Exception {
         BooksModel b = new BooksModel();
         b.setAuthor(_author);
         b.setTitle(_title);
         b.setISBN(_isbn);
         b.setImageLink(_imageLink);
+        b.setCategory(category);
         return b;
     }
 

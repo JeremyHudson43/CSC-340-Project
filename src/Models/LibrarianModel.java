@@ -83,7 +83,7 @@ public class LibrarianModel extends BooksModel {
 
         for (int i = 0; i < bookData.length; i++) {
             try {
-                BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3]);
+                BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3], bookData[i][4]);
                 addBook(book);
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +104,7 @@ public class LibrarianModel extends BooksModel {
 
         for (int i = 0; i < bookData.length; i++) {
             try {
-                BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3]);
+                BooksModel book = buildBook(bookData[i][1], bookData[i][0], bookData[i][2], bookData[i][3], bookData[i][4]);
                 addBook(book);
             } catch (Exception ex) {
                 Logger.getLogger(LibrarianModel.class.getName()).log(Level.SEVERE, null, ex);

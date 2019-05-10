@@ -1,7 +1,9 @@
 package Views;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
@@ -32,9 +34,23 @@ public class BookScrollView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
+        jFrame1 = new javax.swing.JFrame();
         selectBookButton = new javax.swing.JButton();
 
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         selectBookButton.setText("Select Book");
 
@@ -42,7 +58,7 @@ public class BookScrollView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(334, Short.MAX_VALUE)
                 .addComponent(selectBookButton)
                 .addContainerGap())
@@ -63,13 +79,16 @@ public class BookScrollView extends javax.swing.JFrame {
     }
 
     public void scrollPaneSetter(JScrollPane _scrollPane) {
+
         this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(_scrollPane, BorderLayout.CENTER);
+        this.getContentPane().add(_scrollPane, BorderLayout.NORTH);
+
     }
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JButton selectBookButton;
     // End of variables declaration//GEN-END:variables
 }
