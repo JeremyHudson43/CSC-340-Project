@@ -112,12 +112,12 @@ public class UserModel {
                 if (result == null ? this.LIBRARIAN == null
                         : result.equals(this.LIBRARIAN)) {
 
-                    return "librarian";
+                    return this.LIBRARIAN;
                     // if the user is a customer, it will open the customer view.
                 } else if (result == null ? this.CUSTOMER == null
                         : result.equals(this.CUSTOMER)) {
 
-                    return "customer";
+                    return this.CUSTOMER;
                     /* if the username and password is not in the database,
                     it will ask the user to try again.
                      */

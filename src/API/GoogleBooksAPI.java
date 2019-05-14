@@ -146,7 +146,7 @@ public class GoogleBooksAPI implements ApiConnector {
             String bookImageLink = "";
             String bookISBN = "";
             String bookAuthor = "";
-            
+
             JSONObject book = _books.getJSONObject(i);
             JSONObject info = book.getJSONObject("volumeInfo");
 
@@ -154,7 +154,6 @@ public class GoogleBooksAPI implements ApiConnector {
             JSONArray authors = info.getJSONArray("authors");
             JSONArray category = info.getJSONArray("categories");
             String categoryString = category.getString(0);
-            
 
             try {
                 JSONArray isbn = info.getJSONArray("industryIdentifiers");
@@ -184,22 +183,21 @@ public class GoogleBooksAPI implements ApiConnector {
 
     private static String extractISBN(String _isbn) {
 
-        //This splits the resposne into multiple lines 
+        //This splits the resposne into multiple lines
         _isbn = _isbn.replaceAll(",", "\n");
 
         //This turns every linebreak into an individual string and places them into an array
         String textStr[] = _isbn.split("\\r\\n|\\n|\\r");
         String finalISBN[] = new String[textStr.length];
         String isbnToReturn;
+        
         try {
-
             finalISBN[0] = textStr[0].replace("{\"identifier\":", "");
             if (finalISBN[0].matches(".*\\d+.*")) {
                 _isbn = finalISBN[0].replace("[\"", "");
                 isbnToReturn = _isbn.replace("\"", "");
 
                 return isbnToReturn;
-
             }
         } catch (Exception exception) {
             System.out.println("");
