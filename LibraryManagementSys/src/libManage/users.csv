@@ -1,4 +1,0 @@
-ID,UserID,PWD,userType,streetAddress1,streetAddress2,city,state,zip,homePhone,mobilePhone,eMail,Name,fees
-18765432,chip,tiger5,librarian,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,chip,NULL
-98765433,marie,patches,Customer,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,Marie,NULL
-123456790,chuck,tiger5,Customer,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,Chuck,NULL
