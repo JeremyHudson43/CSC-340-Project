@@ -1,9 +1,3 @@
 # CSC-340-Project
 
-Please clone the src folder under the master branch to your local machine, relevant .jar files are in libManage under src. Our final commit with all java classes was performed under this src folder. 
-
-Also the check-in and checkout functions will not work unless this SQL patch is applied to the server. 
-
-use library;
-alter table checkout
-add column status varchar(20) after checkoutDate;
+A simple Library Management System that uses the Google Books API and simulates checkout, librarian users and customers in Java Swing as part of a group project for the Spring 2019 semester at UNCG. A more detailed description can be found under docs under Requirements Document.
